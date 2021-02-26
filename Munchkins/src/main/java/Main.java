@@ -7,10 +7,14 @@ public class Main extends PApplet {
     public static void main(String[] args) {
         PApplet.main("Main");
     }
-ArrayList<Button> buttList= new ArrayList<>();
+
+    ArrayList<Button> buttList= new ArrayList<>();
+    //StringList list = new StringList();
+    //Database database = new Database(this);
     Menus menus = new Menus(this);
     int screenchange = 0;
     ImageLoader imageLoader = new ImageLoader(this);
+
     @Override
     public void settings() {
         super.settings();
