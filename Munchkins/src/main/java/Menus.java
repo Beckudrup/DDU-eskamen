@@ -20,7 +20,7 @@ public class Menus {
     }
 
     void ingame(ImageLoader imageLoader){
-
+    p.image(imageLoader.table,0,0);
 
 
     }
