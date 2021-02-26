@@ -29,7 +29,7 @@ clear();
     if(screenchange==0){
     menus.mainMenu(buttList,imageLoader);}
         if(screenchange==1){
-            menus.ingame(imageLoader);}
+            menus.ingame(buttList,imageLoader);}
         if(screenchange==2){
            }
         for (int i = 0; i < buttList.size() ; i++) {
@@ -64,6 +64,14 @@ clear();
             if (buttList.size()>0&&buttList.get(2).tryk==true) {
                 exit();
             }
+        }
+        if(screenchange==1){
+            if(buttList.size()>0&&buttList.get(0).tryk==true) {
+                screenchange = 0;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+
         }
     }
 }
