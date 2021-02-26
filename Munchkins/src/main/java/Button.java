@@ -2,7 +2,7 @@ import processing.core.PApplet;
 
 public class Button {
 
-    boolean Tryk;
+    boolean tryk;
     float xPos, yPos;
     float w, h;
     String text;
@@ -24,18 +24,18 @@ PApplet p;
         p.text(text, xPos + w/2, yPos + h/2);
     }
     boolean isButtonPressed() {
-        return Tryk;
+        return tryk;
     }
     void registerClick(float xin, float yin) {
 
         if (xin > xPos && xin < xPos + w && yin < yPos + h && yin > yPos) {
-            Tryk = true;
+            tryk = true;
         }
     }
     void valgt() {
         p.triangle(xPos + w/2, yPos + h + 10, xPos + w/2 - w/4, yPos + h + 30, xPos + w/2 + w/4, yPos + h + 30);
     }
     void release() {
-        Tryk = false;
+        tryk = false;
     }
 }
