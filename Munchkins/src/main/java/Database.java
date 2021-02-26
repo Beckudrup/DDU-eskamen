@@ -1,8 +1,8 @@
 import processing.core.PApplet;
-import de.bezier.data.sql.*;
+//import de.bezier.data.sql.*;
 
 public class Database {
-    Cards cards = new Cards();
+   /* Cards cards = new Cards();
     SQLite db;
     PApplet p;
 
@@ -22,7 +22,6 @@ public class Database {
         while (db.next()) {
             list.append(db.getString("man"));
         }
-    }
+    }*/
 }
 
-}

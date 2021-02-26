@@ -1,11 +1,10 @@
 import processing.core.PApplet;
 
 public class Card {
-    int x = 100, y = 100;
+/*    int x, y;
     PImage Card;
     int numb;
-
-
+    
     void Skinke() {
         for (int i = 0; i < numb; i++) {
             Card = loadImage(list.get(i), "png");
@@ -23,5 +22,5 @@ public class Card {
 
     void display() {
         image(Card, x, y);
-    }
+    }*/
 }
