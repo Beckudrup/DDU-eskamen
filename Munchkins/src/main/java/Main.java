@@ -1,7 +1,6 @@
 import processing.core.PApplet;
-
+import processing.data.StringList;
 import java.util.ArrayList;
-
 public class Main extends PApplet {
 
     public static void main(String[] args) {
@@ -9,8 +8,8 @@ public class Main extends PApplet {
     }
 
     ArrayList<Button> buttList= new ArrayList<>();
-    //StringList list = new StringList();
-    //Database database = new Database(this);
+    StringList list = new StringList();
+    Database database = new Database(this);
     Menus menus = new Menus(this);
     int screenchange = 0;
     ImageLoader imageLoader = new ImageLoader(this);
@@ -25,17 +24,25 @@ public class Main extends PApplet {
     public void setup() {
         super.setup();
         imageLoader.loadImage();
+        database.setups();
+        database.LoadCards(list);
+        database.cards.numb = 1;
     }
 
     @Override
     public void draw() {
-clear();
+    clear();
     if(screenchange==0){
     menus.mainMenu(buttList,imageLoader);
     }
         if(screenchange==1){
-            menus.ingame(buttList,imageLoader,board);}
-        if(screenchange==2){
+            menus.ingame(buttList,imageLoader,board);
+            database.cards.Skinke(list);
+            database.cards.display();        
+
+        }
+
+         if(screenchange==2){
            }
         for (int i = 0; i < buttList.size() ; i++) {
             buttList.get(i).isButtonPressed();

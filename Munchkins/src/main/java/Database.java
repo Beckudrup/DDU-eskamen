@@ -1,8 +1,9 @@
 import processing.core.PApplet;
-//import de.bezier.data.sql.*;
+import de.bezier.data.sql.*;
+import processing.data.StringList;
 
 public class Database {
-   /* Cards cards = new Cards();
+    Card cards = new Card();
     SQLite db;
     PApplet p;
 
@@ -17,11 +18,11 @@ public class Database {
         }
     }
 
-    void LoadCards() {
+    void LoadCards(StringList list) {
         db.query("SELECT * FROM Cards");
         while (db.next()) {
             list.append(db.getString("man"));
         }
-    }*/
+    }
 }
 
