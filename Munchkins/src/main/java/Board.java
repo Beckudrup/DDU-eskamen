@@ -22,7 +22,12 @@ public class Board {
     }
     if(playernr>1){
         p.rect(10,10,100,100);
-
+        p.rect(1660,40,60,100);
+        p.rect(1580,40,60,100);
+        p.rect(1500,40,60,100);
+        p.rect(1660,160,60,100);
+        p.rect(1580,160,60,100);
+        p.rect(1500,160,60,100);
 
     }
     if(playernr>2){
