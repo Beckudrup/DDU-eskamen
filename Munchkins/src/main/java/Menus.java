@@ -19,9 +19,12 @@ public class Menus {
         }
     }
 
-    void ingame(ImageLoader imageLoader){
+    void ingame(ArrayList<Button> buttList,ImageLoader imageLoader){
     p.image(imageLoader.table,0,0);
-
+    if(notdoneyet == true) {
+        buttList.add(new Button(p, 20, 20, 50, 50, "Beck"));
+        notdoneyet=false;
+    }
 
     }
 }

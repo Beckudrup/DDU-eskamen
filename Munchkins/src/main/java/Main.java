@@ -31,16 +31,17 @@ public class Main extends PApplet {
 
     @Override
     public void draw() {
-clear();
+    clear();
     if(screenchange==0){
     menus.mainMenu(buttList,imageLoader);}
         if(screenchange==1){
-            menus.ingame(imageLoader);
+            menus.ingame(buttList,imageLoader);
             database.cards.Skinke(list);
-            database.cards.display();
+            database.cards.display();        
 
         }
-        if(screenchange==2){
+
+         if(screenchange==2){
            }
         for (int i = 0; i < buttList.size() ; i++) {
             buttList.get(i).isButtonPressed();
@@ -74,6 +75,14 @@ clear();
             if (buttList.size()>0&&buttList.get(2).tryk==true) {
                 exit();
             }
+        }
+        if(screenchange==1){
+            if(buttList.size()>0&&buttList.get(0).tryk==true) {
+                screenchange = 0;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+
         }
     }
 }
