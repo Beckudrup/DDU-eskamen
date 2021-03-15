@@ -14,7 +14,7 @@ public class Main extends PApplet {
     Menus menus = new Menus(this);
     int screenchange = 0;
     ImageLoader imageLoader = new ImageLoader(this);
-
+    Board board;
     @Override
     public void settings() {
         super.settings();
@@ -31,9 +31,10 @@ public class Main extends PApplet {
     public void draw() {
 clear();
     if(screenchange==0){
-    menus.mainMenu(buttList,imageLoader);}
+    menus.mainMenu(buttList,imageLoader);
+    }
         if(screenchange==1){
-            menus.ingame(buttList,imageLoader);}
+            menus.ingame(buttList,imageLoader,board);}
         if(screenchange==2){
            }
         for (int i = 0; i < buttList.size() ; i++) {
