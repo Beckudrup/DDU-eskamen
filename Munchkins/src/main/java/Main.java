@@ -58,7 +58,7 @@ public class Main extends PApplet {
     public void mouseClicked() {
         for (int i = 0; i < buttList.size() ; i++) {
             buttList.get(i).registerClick(mouseX,mouseY);
-            println("hello");
+            
         }
     }
 
