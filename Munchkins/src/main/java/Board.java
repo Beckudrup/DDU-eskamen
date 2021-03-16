@@ -10,6 +10,10 @@ public class Board {
 
 
     void display(){
+        p.rect(700,270,90,150);
+        p.rect(830,270,90,150);
+        p.rect(960,270,90,150);
+        p.rect(1090,270,90,150);
     if(playernr>0){
      p.rect(10,950,100,100);
      p.rect(200,800,60,100);
