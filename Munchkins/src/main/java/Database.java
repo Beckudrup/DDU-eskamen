@@ -1,4 +1,4 @@
-/*import processing.core.PApplet;
+import processing.core.PApplet;
 import de.bezier.data.sql.*;
 import processing.data.StringList;
 
@@ -28,4 +28,4 @@ public class Database {
         }
     }
 }
-*/
+
