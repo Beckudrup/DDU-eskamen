@@ -1,14 +1,19 @@
 <component name="libraryTable">
   <library name="BezierSQLib">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Documents/Processing/BezierSQLib.jar!/" />
-      <root url="jar://$USER_HOME$/Documents/Processing/mysql-connector-java-3.1.14-bin.jar!/" />
-      <root url="jar://$USER_HOME$/Documents/Processing/postgresql-9.2-1002.jdbc3.jar!/" />
-      <root url="jar://$USER_HOME$/Documents/Processing/sqlite-jdbc-3.7.2.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/BezierSQLib.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/core.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/gluegen-rt-natives-windows-amd64.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/gluegen-rt.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/jogl-all-natives-windows-amd64.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/jogl-all.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/mysql-connector-java-3.1.14-bin.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/postgresql-9.2-1002.jdbc3.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/sqlite-jdbc-3.7.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/Documents/Processing/sqlite-jdbc-3.7.2.jar!/" />
+      <root url="jar://$USER_HOME$/Documents/Processing/libraries/BezierSQLib/examples/SQLite_example1/application.windows64/lib/sqlite-jdbc-3.7.2.jar!/" />
     </SOURCES>
   </library>
 </component>

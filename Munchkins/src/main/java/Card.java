@@ -4,14 +4,17 @@ import processing.data.StringList;
 
 public class Card {
     PApplet p;
-    int x, y;
-    PImage Card;
-    int numb;
-    
+    int x = 469, y = 300;
+    PImage cards;
+    int numb = 1;
+
+    Card(PApplet p){
+        this.p = p;
+    }
+
     void Skinke(StringList list) {
         for (int i = 0; i < numb; i++) {
-            Card = p.loadImage(list.get(i), "png");
-            p.println(list.get(i));
+            cards = p.loadImage(list.get(i), "png");
         }
         if (p.keyPressed) {
             numb++;
@@ -20,10 +23,11 @@ public class Card {
         if (numb > list.size()) {
             numb = 1;
         }
-        p.println(numb + " " + list.size());
+        //println(numb + " " + list.size());
     }
 
+
     void display() {
-        p.image(Card, x, y);
+        p.image(cards, x, y);
     }
 }

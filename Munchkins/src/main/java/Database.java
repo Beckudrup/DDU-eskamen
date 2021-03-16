@@ -2,8 +2,9 @@ import processing.core.PApplet;
 import de.bezier.data.sql.*;
 import processing.data.StringList;
 
+import static processing.core.PApplet.println;
+
 public class Database {
-    Card cards = new Card();
     SQLite db;
     PApplet p;
 
@@ -20,8 +21,10 @@ public class Database {
 
     void LoadCards(StringList list) {
         db.query("SELECT * FROM Cards");
+        int i = 0;
         while (db.next()) {
             list.append(db.getString("man"));
+            println(list.get(i++));
         }
     }
 }

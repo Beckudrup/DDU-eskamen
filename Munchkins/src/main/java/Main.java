@@ -10,6 +10,7 @@ public class Main extends PApplet {
     ArrayList<Button> buttList= new ArrayList<>();
     StringList list = new StringList();
     Database database = new Database(this);
+    Card cards = new Card(this);
     Menus menus = new Menus(this);
     int screenchange = 0;
     ImageLoader imageLoader = new ImageLoader(this);
@@ -18,6 +19,7 @@ public class Main extends PApplet {
     public void settings() {
         super.settings();
         size(1920,1080);
+        println(dataPath("test.db"));
     }
 
     @Override
@@ -26,7 +28,7 @@ public class Main extends PApplet {
         imageLoader.loadImage();
         database.setups();
         database.LoadCards(list);
-        database.cards.numb = 1;
+        cards.numb = 1;
     }
 
     @Override
@@ -37,8 +39,8 @@ public class Main extends PApplet {
     }
         if(screenchange==1){
             menus.ingame(buttList,imageLoader,board);
-            database.cards.Skinke(list);
-            database.cards.display();        
+            cards.Skinke(list);
+            cards.display();
 
         }
 
