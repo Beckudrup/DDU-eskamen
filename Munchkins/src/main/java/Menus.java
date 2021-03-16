@@ -25,7 +25,7 @@ public class Menus {
 
             notdoneyet=false;
         }
-        board = new Board(p,4);
+
     p.image(imageLoader.table,0,0);
    board.display();
 

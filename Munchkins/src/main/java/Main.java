@@ -38,10 +38,11 @@ public class Main extends PApplet {
     menus.mainMenu(buttList,imageLoader);
     }
         if(screenchange==1){
+            if(menus.notdoneyet)
+            board = new Board(this,4);
             menus.ingame(buttList,imageLoader,board);
             cards.Skinke(list);
             cards.display();
-
         }
 
          if(screenchange==2){
@@ -58,7 +59,7 @@ public class Main extends PApplet {
     public void mouseClicked() {
         for (int i = 0; i < buttList.size() ; i++) {
             buttList.get(i).registerClick(mouseX,mouseY);
-            println("hello");
+            
         }
     }
 
@@ -88,4 +89,5 @@ public class Main extends PApplet {
 
         }
     }
+
 }
