@@ -23,7 +23,7 @@ public class Database {
         db.query("SELECT * FROM Cards");
         int i = 0;
         while (db.next()) {
-            list.append(db.getString("man"));
+            list.append(db.getString("HTTP"));
             println(list.get(i++));
         }
     }
