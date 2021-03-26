@@ -6,8 +6,10 @@ public class Main extends PApplet {
     public static void main(String[] args) {
         PApplet.main("Main");
     }
-
+    BackgroundSystem backgroundSystem = new BackgroundSystem(this);
     ArrayList<Button> buttList= new ArrayList<>();
+    ArrayList<Players> playerList = new ArrayList<>();
+    Dice dice = new Dice(this);
     StringList list = new StringList();
     Database database = new Database(this);
     Card cards = new Card(this);
@@ -29,6 +31,7 @@ public class Main extends PApplet {
         database.setups();
         database.LoadCards(list);
         cards.numb = 1;
+
     }
 
     @Override
@@ -41,8 +44,13 @@ public class Main extends PApplet {
             if(menus.notdoneyet)
             board = new Board(this,4);
             menus.ingame(buttList,imageLoader,board);
+            backgroundSystem.startOfGame(buttList,playerList);
             cards.Skinke(list);
             cards.display();
+            dice.display(200,200);
+            for (int i = 0; i < 4; i++) {
+                System.out.println(playerList.get(i).gender);
+            }
         }
 
          if(screenchange==2){
@@ -52,6 +60,7 @@ public class Main extends PApplet {
             buttList.get(i).drawButton();
 
         }
+
         screenChanger();
     }
 
@@ -60,6 +69,10 @@ public class Main extends PApplet {
         for (int i = 0; i < buttList.size() ; i++) {
             buttList.get(i).registerClick(mouseX,mouseY);
             
+        }
+        if(screenchange==1){
+            dice.trowDie(7);
+
         }
     }
 

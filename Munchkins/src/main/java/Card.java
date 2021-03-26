@@ -30,4 +30,5 @@ public class Card {
     void display() {
         p.image(cards, x, y);
     }
+
 }
