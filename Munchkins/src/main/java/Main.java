@@ -17,6 +17,7 @@ public class Main extends PApplet {
     int screenchange = 0;
     ImageLoader imageLoader = new ImageLoader(this);
     Board board;
+    Rules rules = new Rules(this);
     @Override
     public void settings() {
         super.settings();
@@ -54,7 +55,9 @@ public class Main extends PApplet {
         }
 
          if(screenchange==2){
+             rules.displayRules();
            }
+
         for (int i = 0; i < buttList.size() ; i++) {
             buttList.get(i).isButtonPressed();
             buttList.get(i).drawButton();
@@ -89,18 +92,24 @@ public class Main extends PApplet {
                 menus.notdoneyet = true;
                 buttList.clear();
             }
+            if (buttList.size()>0&&buttList.get(1).tryk==true){
+                screenchange =2;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
             if (buttList.size()>0&&buttList.get(2).tryk==true) {
                 exit();
             }
         }
-        if(screenchange==1){
+        if(screenchange==1&& screenchange==2){
             if(buttList.size()>0&&buttList.get(0).tryk==true) {
                 screenchange = 0;
                 menus.notdoneyet = true;
                 buttList.clear();
             }
+            }
 
         }
     }
 
-}
+
