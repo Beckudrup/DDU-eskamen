@@ -76,6 +76,7 @@ public class Main extends PApplet {
             
         }
         if(screenchange==1){
+            if(mouseX>dice.posX&&mouseX<dice.posX+50&&mouseY>dice.posY&&mouseY<dice.posY+50)
             dice.trowDie(7);
 
         }
