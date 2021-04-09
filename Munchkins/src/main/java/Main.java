@@ -52,6 +52,8 @@ public class Main extends PApplet {
             for (int i = 0; i < 4; i++) {
                 playerList.get(i).displayicon();
             }
+            backgroundSystem.endturn( buttList);
+            println(backgroundSystem.turn);
         }
 
          if(screenchange==2){
