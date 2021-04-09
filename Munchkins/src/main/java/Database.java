@@ -19,12 +19,12 @@ public class Database {
         }
     }
 
-    void LoadCards(StringList list) {
+    void LoadCards(StringList RoomList, StringList TreasureList) {
         db.query("SELECT * FROM Cards");
         int i = 0;
         while (db.next()) {
-            list.append(db.getString("HTTP"));
-            println(list.get(i++));
+            RoomList.append(db.getString("HTTP"));
+            println(RoomList.get(i++));
         }
     }
 }

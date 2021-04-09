@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.data.StringList;
 import java.util.ArrayList;
 public class Main extends PApplet {
@@ -9,8 +10,11 @@ public class Main extends PApplet {
     BackgroundSystem backgroundSystem = new BackgroundSystem(this);
     ArrayList<Button> buttList= new ArrayList<>();
     ArrayList<Players> playerList = new ArrayList<>();
+    ArrayList<PImage> RoomImages = new ArrayList<>();
+    ArrayList<PImage> TreasureImages = new ArrayList<>();
+    StringList RoomList = new StringList();
+    StringList TreasureList = new StringList();
     Dice dice = new Dice(this);
-    StringList list = new StringList();
     Database database = new Database(this);
     Card cards = new Card(this);
     Menus menus = new Menus(this);
@@ -30,8 +34,9 @@ public class Main extends PApplet {
         super.setup();
         imageLoader.loadImage();
         database.setups();
-        database.LoadCards(list);
-        cards.numb = 1;
+        database.LoadCards(RoomList, TreasureList);
+        cards.Skinke(RoomList, TreasureList, RoomImages, TreasureImages);
+        cards.numb = 0;
 
     }
 
@@ -46,8 +51,7 @@ public class Main extends PApplet {
             board = new Board(this,4);
             menus.ingame(buttList,imageLoader,board);
             backgroundSystem.startOfGame(buttList,playerList,imageLoader);
-            cards.Skinke(list);
-            cards.display();
+            image(RoomImages.get(cards.numb), 0, 0);
             dice.display(200,200);
             for (int i = 0; i < 4; i++) {
                 playerList.get(i).displayicon();
@@ -88,6 +92,24 @@ public class Main extends PApplet {
             buttList.get(i).release();
         }
     }
+
+    @Override
+    public void keyPressed() {
+        if (key == CODED) {
+            if (keyCode == UP && cards.numb < RoomImages.size()-1) {
+                if (cards.numb >= RoomImages.size()) {
+                    cards.numb = (0);
+                }
+                cards.numb+=1;
+            } else if (keyCode == DOWN) {
+                if (cards.numb <= 0) {
+                    cards.numb = (RoomImages.size());
+                }
+                cards.numb-=1;
+            }
+        }
+    }
+
     void screenChanger(){
         if(screenchange==0) {
             if (buttList.size()>0&&buttList.get(0).tryk==true) {
