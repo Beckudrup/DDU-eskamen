@@ -52,6 +52,8 @@ public class Main extends PApplet {
             for (int i = 0; i < 4; i++) {
                 playerList.get(i).displayicon();
             }
+            backgroundSystem.endturn( buttList);
+            println(backgroundSystem.turn);
         }
 
          if(screenchange==2){
@@ -74,6 +76,7 @@ public class Main extends PApplet {
             
         }
         if(screenchange==1){
+            if(mouseX>dice.posX&&mouseX<dice.posX+50&&mouseY>dice.posY&&mouseY<dice.posY+50)
             dice.trowDie(7);
 
         }

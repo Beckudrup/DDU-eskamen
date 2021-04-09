@@ -7,8 +7,23 @@ public class BackgroundSystem {
     PApplet p;
     boolean notDoneYet = true;
     boolean removed;
+    int turn;
     BackgroundSystem(PApplet p){
         this.p=p;
+    }
+
+    void endturn(ArrayList<Button> buttList){
+        if(buttList.get(1).tryk){
+            if (turn<3){
+                turn++;
+                buttList.get(1).tryk=false;
+            }else{
+                turn=0;
+                buttList.get(1).tryk=false;
+            }
+
+        }
+
     }
     void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList,ImageLoader im){
 
@@ -30,48 +45,48 @@ public class BackgroundSystem {
             buttList.remove(1);
             removed=true;
         }
-        if(buttList.size()>=3&&buttList.get(1).tryk){
+        if(buttList.size()>=3&&buttList.get(2).tryk){
             if(player ==3){
                 playerList.get(3).gender=1;
                 player++;
-                buttList.get(1).tryk=false;
+                buttList.get(2).tryk=false;
             }
             if(player ==2){
                 playerList.get(2).gender=1;
                 player++;
-                buttList.get(1).tryk=false;
+                buttList.get(2).tryk=false;
             }
             if(player ==1){
                 playerList.get(1).gender=1;
                 player++;
-                buttList.get(1).tryk=false;
+                buttList.get(2).tryk=false;
             }
             if(player ==0){
                 playerList.get(0).gender=1;
                 player++;
-                buttList.get(1).tryk=false;
+                buttList.get(2).tryk=false;
             }
         }
-        if(buttList.size()>=3&&buttList.get(2).tryk){
+        if(buttList.size()>=3&&buttList.get(3).tryk){
             if(player ==3){
                 playerList.get(3).gender=2;
                 player++;
-                buttList.get(2).tryk=false;
+                buttList.get(3).tryk=false;
             }
             if(player ==2){
                 playerList.get(2).gender=2;
                 player++;
-                buttList.get(2).tryk=false;
+                buttList.get(3).tryk=false;
             }
             if(player ==1){
                 playerList.get(1).gender=2;
                 player++;
-                buttList.get(2).tryk=false;
+                buttList.get(3).tryk=false;
             }
             if(player ==0){
                 playerList.get(0).gender=2;
                 player++;
-                buttList.get(2).tryk=false;
+                buttList.get(3).tryk=false;
             }
 
 

@@ -19,6 +19,6 @@ this.p=p;
         p1 = p.loadImage("munchkinmanp1.png");
         p2 = p.loadImage("munchkinwomanp2.png");
         p3 = p.loadImage("muchkinmanp3.png");
-        p4 = p.loadImage("munchkintreep4.png");
+        p4 = p.loadImage("munchkintreep4.jpg" );
     }
 }
