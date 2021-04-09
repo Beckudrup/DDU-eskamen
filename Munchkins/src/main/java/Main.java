@@ -45,12 +45,12 @@ public class Main extends PApplet {
             if(menus.notdoneyet)
             board = new Board(this,4);
             menus.ingame(buttList,imageLoader,board);
-            backgroundSystem.startOfGame(buttList,playerList);
+            backgroundSystem.startOfGame(buttList,playerList,imageLoader);
             cards.Skinke(list);
             cards.display();
             dice.display(200,200);
             for (int i = 0; i < 4; i++) {
-                System.out.println(playerList.get(i).gender);
+                playerList.get(i).displayicon();
             }
         }
 
