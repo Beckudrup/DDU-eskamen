@@ -20,6 +20,10 @@ public class Card {
             cards = p.loadImage(RoomList.get(i), "png");
             RoomImages.add(cards);
         }
+        for (int j = 0; j < TreasureList.size(); j++) {
+            cards = p.loadImage(TreasureList.get(j), "png");
+            TreasureImages.add(cards);
+        }
     }
 
 

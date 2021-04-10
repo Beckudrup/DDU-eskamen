@@ -52,12 +52,13 @@ public class Main extends PApplet {
             menus.ingame(buttList,imageLoader,board);
             backgroundSystem.startOfGame(buttList,playerList,imageLoader);
             image(RoomImages.get(cards.numb), 0, 0);
+            image(TreasureImages.get(cards.numb), 300, 0);
             dice.display(200,200);
             for (int i = 0; i < 4; i++) {
                 playerList.get(i).displayicon();
             }
             backgroundSystem.endturn( buttList);
-            println(backgroundSystem.turn);
+            //println(backgroundSystem.turn);
         }
 
          if(screenchange==2){
@@ -96,7 +97,7 @@ public class Main extends PApplet {
     @Override
     public void keyPressed() {
         if (key == CODED) {
-            if (keyCode == UP && cards.numb < RoomImages.size()-1) {
+            if (keyCode == UP && cards.numb < TreasureImages.size()-1) {
                 if (cards.numb >= RoomImages.size()) {
                     cards.numb = (0);
                 }
