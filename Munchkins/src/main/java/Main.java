@@ -1,31 +1,37 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.data.StringList;
+
 import java.util.ArrayList;
+
 public class Main extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main("Main");
     }
+
     BackgroundSystem backgroundSystem = new BackgroundSystem(this);
-    ArrayList<Button> buttList= new ArrayList<>();
+    ArrayList<Button> buttList = new ArrayList<>();
     ArrayList<Players> playerList = new ArrayList<>();
-    ArrayList<PImage> RoomImages = new ArrayList<>();
-    ArrayList<PImage> TreasureImages = new ArrayList<>();
+    //ArrayList<PImage> RoomImages = new ArrayList<>();
+    //ArrayList<PImage> TreasureImages = new ArrayList<>();
+    Deck room = new Deck(this);
+    Deck treasure = new Deck(this);
     StringList RoomList = new StringList();
     StringList TreasureList = new StringList();
     Dice dice = new Dice(this);
     Database database = new Database(this);
-    Card cards = new Card(this);
+
     Menus menus = new Menus(this);
     int screenchange = 0;
     ImageLoader imageLoader = new ImageLoader(this);
     Board board;
     Rules rules = new Rules(this);
+
     @Override
     public void settings() {
         super.settings();
-        size(1920,1080);
+        size(1920, 1080);
         println(dataPath("test.db"));
     }
 
@@ -35,37 +41,42 @@ public class Main extends PApplet {
         imageLoader.loadImage();
         database.setups();
         database.LoadCards(RoomList, TreasureList);
-        cards.Skinke(RoomList, TreasureList, RoomImages, TreasureImages);
-        cards.numb = 0;
+        backgroundSystem.loaddecks(room, treasure, RoomList, TreasureList);
 
     }
 
     @Override
     public void draw() {
-    clear();
-    if(screenchange==0){
-    menus.mainMenu(buttList,imageLoader);
-    }
-        if(screenchange==1){
-            if(menus.notdoneyet)
-            board = new Board(this,4);
-            menus.ingame(buttList,imageLoader,board);
-            backgroundSystem.startOfGame(buttList,playerList,imageLoader);
-            image(RoomImages.get(cards.numb), 0, 0);
-            image(TreasureImages.get(cards.numb), 300, 0);
-            dice.display(200,200);
+        clear();
+        if (screenchange == 0) {
+            menus.mainMenu(buttList, imageLoader);
+        }
+        if (screenchange == 1) {
+            if (menus.notdoneyet)
+                board = new Board(this, 4);
+            menus.ingame(buttList, imageLoader, board);
+            backgroundSystem.startOfGame(buttList, playerList, imageLoader);
+            for (int i = 0; i < room.cardList.size(); i++) {
+                image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
+            }
+            System.out.println(treasure.cardList.size());
+            for (int i = 0; i < treasure.cardList.size(); i++) {
+                image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
+            }
+
+            dice.display(200, 200);
             for (int i = 0; i < 4; i++) {
                 playerList.get(i).displayicon();
             }
-            backgroundSystem.endturn( buttList);
+            backgroundSystem.endturn(buttList);
             //println(backgroundSystem.turn);
         }
 
-         if(screenchange==2){
-             rules.displayRules();
-           }
+        if (screenchange == 2) {
+            rules.displayRules();
+        }
 
-        for (int i = 0; i < buttList.size() ; i++) {
+        for (int i = 0; i < buttList.size(); i++) {
             buttList.get(i).isButtonPressed();
             buttList.get(i).drawButton();
 
@@ -76,66 +87,48 @@ public class Main extends PApplet {
 
     @Override
     public void mouseClicked() {
-        for (int i = 0; i < buttList.size() ; i++) {
-            buttList.get(i).registerClick(mouseX,mouseY);
-            
+        for (int i = 0; i < buttList.size(); i++) {
+            buttList.get(i).registerClick(mouseX, mouseY);
+
         }
-        if(screenchange==1){
-            if(mouseX>dice.posX&&mouseX<dice.posX+50&&mouseY>dice.posY&&mouseY<dice.posY+50)
-            dice.trowDie(7);
+        if (screenchange == 1) {
+            if (mouseX > dice.posX && mouseX < dice.posX + 50 && mouseY > dice.posY && mouseY < dice.posY + 50)
+                dice.trowDie(7);
 
         }
     }
 
     @Override
     public void mouseReleased() {
-        for (int i = 0; i < buttList.size() ; i++) {
+        for (int i = 0; i < buttList.size(); i++) {
             buttList.get(i).release();
         }
     }
 
-    @Override
-    public void keyPressed() {
-        if (key == CODED) {
-            if (keyCode == UP && cards.numb < TreasureImages.size()-1) {
-                if (cards.numb >= RoomImages.size()) {
-                    cards.numb = (0);
-                }
-                cards.numb+=1;
-            } else if (keyCode == DOWN) {
-                if (cards.numb <= 0) {
-                    cards.numb = (RoomImages.size());
-                }
-                cards.numb-=1;
-            }
-        }
-    }
-
-    void screenChanger(){
-        if(screenchange==0) {
-            if (buttList.size()>0&&buttList.get(0).tryk==true) {
+    void screenChanger() {
+        if (screenchange == 0) {
+            if (buttList.size() > 0 && buttList.get(0).tryk == true) {
                 screenchange = 1;
                 menus.notdoneyet = true;
                 buttList.clear();
             }
-            if (buttList.size()>0&&buttList.get(1).tryk==true){
-                screenchange =2;
+            if (buttList.size() > 0 && buttList.get(1).tryk == true) {
+                screenchange = 2;
                 menus.notdoneyet = true;
                 buttList.clear();
             }
-            if (buttList.size()>0&&buttList.get(2).tryk==true) {
+            if (buttList.size() > 0 && buttList.get(2).tryk == true) {
                 exit();
             }
         }
-        if(screenchange==1&& screenchange==2){
-            if(buttList.size()>0&&buttList.get(0).tryk==true) {
+        if (screenchange == 1 && screenchange == 2) {
+            if (buttList.size() > 0 && buttList.get(0).tryk == true) {
                 screenchange = 0;
                 menus.notdoneyet = true;
                 buttList.clear();
             }
-            }
-
         }
     }
+}
 
 
