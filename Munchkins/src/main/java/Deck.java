@@ -17,5 +17,4 @@ public class Deck {
         cardList.remove(random);
         hand.add(drawncard);
     }
-
 }

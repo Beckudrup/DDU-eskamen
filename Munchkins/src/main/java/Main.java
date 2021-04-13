@@ -42,7 +42,6 @@ public class Main extends PApplet {
         database.setups();
         database.LoadCards(RoomList, TreasureList);
         backgroundSystem.loaddecks(room, treasure, RoomList, TreasureList);
-
     }
 
     @Override
@@ -55,7 +54,7 @@ public class Main extends PApplet {
             if (menus.notdoneyet)
                 board = new Board(this, 4);
             menus.ingame(buttList, imageLoader, board);
-            backgroundSystem.startOfGame(buttList, playerList, imageLoader);
+            //backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure);
             for (int i = 0; i < room.cardList.size(); i++) {
                 image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
             }
@@ -63,7 +62,6 @@ public class Main extends PApplet {
             for (int i = 0; i < treasure.cardList.size(); i++) {
                 image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
             }
-
             dice.display(200, 200);
             for (int i = 0; i < 4; i++) {
                 playerList.get(i).displayicon();
@@ -79,9 +77,7 @@ public class Main extends PApplet {
         for (int i = 0; i < buttList.size(); i++) {
             buttList.get(i).isButtonPressed();
             buttList.get(i).drawButton();
-
         }
-
         screenChanger();
     }
 
@@ -89,12 +85,10 @@ public class Main extends PApplet {
     public void mouseClicked() {
         for (int i = 0; i < buttList.size(); i++) {
             buttList.get(i).registerClick(mouseX, mouseY);
-
         }
         if (screenchange == 1) {
             if (mouseX > dice.posX && mouseX < dice.posX + 50 && mouseY > dice.posY && mouseY < dice.posY + 50)
                 dice.trowDie(7);
-
         }
     }
 
@@ -130,5 +124,3 @@ public class Main extends PApplet {
         }
     }
 }
-
-
