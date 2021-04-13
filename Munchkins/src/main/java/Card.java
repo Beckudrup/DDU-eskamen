@@ -8,11 +8,14 @@ public class Card {
     PApplet p;
     int x = 469, y = 300;
     PImage cards;
-    int numb = 1;
+    int numb;
     ArrayList<Database> Deck = new ArrayList<>();
 
-    Card(PApplet p){
+
+    Card(PApplet p,String imglink,int numb){
         this.p = p;
+        cards = p.loadImage(imglink);
+        this.numb=numb;
     }
 
     void Skinke(StringList RoomList, StringList TreasureList, ArrayList RoomImages, ArrayList TreasureImages) {

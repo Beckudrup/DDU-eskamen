@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.data.StringList;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,15 @@ public class BackgroundSystem {
                 buttList.get(1).tryk=false;
             }
 
+        }
+
+    }
+    void loaddecks(Deck roomList, Deck tresureList, StringList roomlinklsit,StringList treasurelinkList) {
+        for (int i = 0; i <roomlinklsit.size() ; i++) {
+            roomList.addcard(new Card(p,roomlinklsit.get(i),0));
+        }
+        for (int i = 0; i <treasurelinkList.size() ; i++) {
+            tresureList.addcard(new Card(p,treasurelinkList.get(i),1));
         }
 
     }

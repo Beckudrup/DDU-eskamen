@@ -12,11 +12,13 @@ public class Main extends PApplet {
     ArrayList<Players> playerList = new ArrayList<>();
     ArrayList<PImage> RoomImages = new ArrayList<>();
     ArrayList<PImage> TreasureImages = new ArrayList<>();
+    Deck room = new Deck(this);
+    Deck treasure = new Deck(this);
     StringList RoomList = new StringList();
     StringList TreasureList = new StringList();
     Dice dice = new Dice(this);
     Database database = new Database(this);
-    Card cards = new Card(this);
+
     Menus menus = new Menus(this);
     int screenchange = 0;
     ImageLoader imageLoader = new ImageLoader(this);
@@ -35,8 +37,7 @@ public class Main extends PApplet {
         imageLoader.loadImage();
         database.setups();
         database.LoadCards(RoomList, TreasureList);
-        cards.Skinke(RoomList, TreasureList, RoomImages, TreasureImages);
-        cards.numb = 0;
+        backgroundSystem.loaddecks(room,treasure,RoomList,TreasureList);
 
     }
 
@@ -51,8 +52,14 @@ public class Main extends PApplet {
             board = new Board(this,4);
             menus.ingame(buttList,imageLoader,board);
             backgroundSystem.startOfGame(buttList,playerList,imageLoader);
-            image(RoomImages.get(cards.numb), 0, 0);
-            image(TreasureImages.get(cards.numb), 300, 0);
+            for (int i = 0; i <room.cardList.size() ; i++) {
+                image(room.cardList.get(i).cards,20+i*70,200,60,100);
+            }
+            System.out.println(treasure.cardList.size() );
+            for (int i = 0; i <treasure.cardList.size() ; i++) {
+                image(treasure.cardList.get(i).cards,20+i*70,600,60,100);
+            }
+
             dice.display(200,200);
             for (int i = 0; i < 4; i++) {
                 playerList.get(i).displayicon();
@@ -96,7 +103,7 @@ public class Main extends PApplet {
 
     @Override
     public void keyPressed() {
-        if (key == CODED) {
+       /* if (key == CODED) {
             if (keyCode == UP && cards.numb < TreasureImages.size()-1) {
                 if (cards.numb >= RoomImages.size()) {
                     cards.numb = (0);
@@ -108,7 +115,7 @@ public class Main extends PApplet {
                 }
                 cards.numb-=1;
             }
-        }
+        }*/
     }
 
     void screenChanger(){
