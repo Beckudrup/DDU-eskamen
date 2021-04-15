@@ -84,7 +84,43 @@ public class Main extends PApplet {
         }
 
         if (screenchange == 2) {
-            rules.displayRules();
+            rules.displayRules(buttList);
+        }
+        if (screenchange == 3) {
+            rules.rStartOfGame(buttList);
+        }
+        if (screenchange == 4) {
+            rules.rTurns(buttList);
+        }
+        if (screenchange == 5) {
+            rules.rKickOpenTheDoor(buttList);
+        }
+        if (screenchange == 6) {
+            rules.rCombat(buttList);
+        }
+        if (screenchange == 7) {
+            rules.rDeath(buttList);
+        }
+        if (screenchange == 8) {
+            rules.rRunAway(buttList);
+        }
+        if (screenchange == 9) {
+            rules.rAskForHelp(buttList);
+        }
+        if (screenchange == 10) {
+            rules.rLootTheRoom(buttList);
+        }
+        if (screenchange == 11) {
+            rules.rCurses(buttList);
+        }
+        if (screenchange == 12) {
+            rules.rClassAbilities(buttList);
+        }
+        if (screenchange == 13) {
+            rules.rCharity(buttList);
+        }
+        if (screenchange == 14) {
+            rules.rHowToWin(buttList);
         }
 
         for (int i = 0; i < buttList.size(); i++) {
@@ -132,12 +168,114 @@ public class Main extends PApplet {
                 exit();
             }
         }
-        if (screenchange == 1 && screenchange == 2) {
-            if (buttList.size() > 0 && buttList.get(0).tryk == true) {
-                screenchange = 0;
+        if (screenchange == 2) {
+            //Start of game
+            if (buttList.size() > 0 && buttList.get(1).tryk == true) {
+                screenchange = 3;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Turns
+            if (buttList.size() > 0 && buttList.get(2).tryk == true) {
+                screenchange = 4;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Kick Open The Door
+            if (buttList.size() > 0 && buttList.get(3).tryk == true) {
+                screenchange = 5;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Combat
+            if (buttList.size() > 0 && buttList.get(4).tryk == true) {
+                screenchange = 6;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Death
+            if (buttList.size() > 0 && buttList.get(5).tryk == true) {
+                screenchange = 7;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Run away
+            if (buttList.size() > 0 && buttList.get(6).tryk == true) {
+                screenchange = 8;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Ask for help
+            if (buttList.size() > 0 && buttList.get(7).tryk == true) {
+                screenchange = 9;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Loot the Room
+            if (buttList.size() > 0 && buttList.get(8).tryk == true) {
+                screenchange = 10;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Curses
+            if (buttList.size() > 0 && buttList.get(9).tryk == true) {
+                screenchange = 11;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Class Abilities
+            if (buttList.size() > 0 && buttList.get(10).tryk == true) {
+                screenchange = 12;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //Charity
+            if (buttList.size() > 0 && buttList.get(11).tryk == true) {
+                screenchange = 13;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+            //How to win
+            if (buttList.size() > 0 && buttList.get(12).tryk == true) {
+                screenchange = 14;
                 menus.notdoneyet = true;
                 buttList.clear();
             }
         }
+        if (screenchange == 3 || screenchange == 4 || screenchange == 5 || screenchange == 6 || screenchange == 7 || screenchange == 8 || screenchange == 9 || screenchange == 10 || screenchange == 11 || screenchange == 12 || screenchange == 13 || screenchange == 14) {
+            if (buttList.size() > 0 && buttList.get(0).tryk == true) {
+                screenchange = 2;
+            }
+            if (buttList.size() > 0 && buttList.get(1).tryk == true) {
+                if (screenchange == 3) {
+                    screenchange = 14;
+                } else {
+                    screenchange--;
+                    buttList.get(1).tryk = false;
+
+                }
+            }
+                if (buttList.size() > 0 && buttList.get(2).tryk == true) {
+                    if (screenchange == 14) {
+                        screenchange = 3;
+                    } else {
+                        screenchange++;
+
+                        buttList.get(2).tryk = false;
+
+                    }
+                }
+            }
+
+            if (screenchange == 1 || screenchange == 2) {
+                if (buttList.size() > 0 && buttList.get(0).tryk == true) {
+                    screenchange = 0;
+                    menus.notdoneyet = true;
+                    buttList.clear();
+                }
+            }
+        }
     }
-}
+
+
+
