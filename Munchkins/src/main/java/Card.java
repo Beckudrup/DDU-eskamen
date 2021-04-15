@@ -15,4 +15,8 @@ public class Card {
         cards = p.loadImage(imglink);
         this.numb = numb;
     }
+    void display(int x, int y, int w, int h){
+        p.image(cards,x,y,w,h);
+
+    }
 }

@@ -15,8 +15,10 @@ public class Main extends PApplet {
     ArrayList<Players> playerList = new ArrayList<>();
     //ArrayList<PImage> RoomImages = new ArrayList<>();
     //ArrayList<PImage> TreasureImages = new ArrayList<>();
-    Deck room = new Deck(this);
-    Deck treasure = new Deck(this);
+    Deck roomdisc = new Deck(this,700, 270, 90, 150);
+    Deck treasiredisc = new Deck(this,1090, 270, 90, 150);
+    Deck room = new Deck(this,830, 270, 90, 150);
+    Deck treasure = new Deck(this,960, 270, 90, 150);
     StringList RoomList = new StringList();
     StringList TreasureList = new StringList();
     Dice dice = new Dice(this);
@@ -55,19 +57,25 @@ public class Main extends PApplet {
                 board = new Board(this, 4);
             menus.ingame(buttList, imageLoader, board);
             backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure);
-            for (int i = 0; i < room.cardList.size(); i++) {
-                image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
-            }
-            System.out.println(treasure.cardList.size());
-            for (int i = 0; i < treasure.cardList.size(); i++) {
-                image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
-            }
+           // for (int i = 0; i < room.cardList.size(); i++) {
+             //  image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
+           // }
+          //  System.out.println(treasure.cardList.size());
+            //for (int i = 0; i < treasure.cardList.size(); i++) {
+                //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
+           // }
+
             dice.display(200, 200);
             for (int i = 0; i < 4; i++) {
+                playerList.get(i).displayHand(backgroundSystem.turn);
                 playerList.get(i).displayicon();
             }
             backgroundSystem.endturn(buttList);
             //println(backgroundSystem.turn);
+            room.resuffle(roomdisc);
+            treasure.resuffle(treasiredisc);
+           System.out.println(playerList.get(0).hand.size() + "  " + playerList.get(1).hand.size() + "  " +playerList.get(2).hand.size() + "  " +playerList.get(3).hand.size() );
+
         }
 
         if (screenchange == 2) {
@@ -79,6 +87,7 @@ public class Main extends PApplet {
             buttList.get(i).drawButton();
         }
         screenChanger();
+
     }
 
     @Override
@@ -89,6 +98,9 @@ public class Main extends PApplet {
         if (screenchange == 1) {
             if (mouseX > dice.posX && mouseX < dice.posX + 50 && mouseY > dice.posY && mouseY < dice.posY + 50)
                 dice.trowDie(7);
+
+            room.clicktodraw(backgroundSystem.turn, playerList);
+            treasure.clicktodraw(backgroundSystem.turn, playerList);
         }
     }
 

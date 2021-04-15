@@ -57,7 +57,7 @@ public class BackgroundSystem {
         }
         if (player > 3 && removed == false) {
             buttList.remove(2);
-            buttList.remove(1);
+            buttList.remove(2);
             removed = true;
         }
         if (buttList.size() >= 3 && buttList.get(2).tryk) {

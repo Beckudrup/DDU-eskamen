@@ -18,11 +18,16 @@ public class Players {
 
     }
 
-    void displayHand() {
+    void displayHand(int turn) {
+        if(turn-playernr==0)
         if (hand.size() > 0) {
             for (int i = 0; i < hand.size(); i++) {
-                //hand.get(i).display();
+                hand.get(i).display(700+i*180,800,160,200);
             }
+        }
+        if(turn-playernr==-3){
+
+
         }
     }
 
