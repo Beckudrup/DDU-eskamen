@@ -43,7 +43,7 @@ public class Main extends PApplet {
         imageLoader.loadImage();
         database.setups();
         database.LoadCards(RoomList, TreasureList);
-        backgroundSystem.loaddecks(room, treasure, RoomList, TreasureList);
+        backgroundSystem.loaddecks(room, treasure, RoomList, TreasureList,imageLoader);
     }
 
     @Override
@@ -72,9 +72,8 @@ public class Main extends PApplet {
                 playerList.get(i).displayHand(backgroundSystem.turn);
                 playerList.get(i).displayicon();
             }
-            for (int i = 0; i < 2; i++){
-                deckList.get(i).displayBackside();
-            }
+            room.displayBackside();
+            treasure.displayBackside();
             backgroundSystem.endturn(buttList);
             //println(backgroundSystem.turn);
             room.resuffle(roomdisc);

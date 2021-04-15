@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Deck {
     PApplet p;
-    int decknr;
+
     PImage backside;
     ArrayList<Card> cardList = new ArrayList<>();
 
@@ -38,17 +38,12 @@ public class Deck {
     
 
     void displayBackside() {
-        if (decknr == 0) {
-            p.image(backside, 700, 270, 90, 150);
-        }
-        if (decknr == 1) {
-            p.image(backside, 960, 270, 90, 150);
-        }
+        
+            p.image(backside, x, y, w, h);
+
     }
 
-    void addcard(Card card) {
-        cardList.add(card);
-    }
+
 
    
        
