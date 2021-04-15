@@ -54,7 +54,7 @@ public class Main extends PApplet {
             if (menus.notdoneyet)
                 board = new Board(this, 4);
             menus.ingame(buttList, imageLoader, board);
-            //backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure);
+            backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure);
             for (int i = 0; i < room.cardList.size(); i++) {
                 image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
             }
