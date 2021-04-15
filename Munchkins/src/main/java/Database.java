@@ -29,7 +29,7 @@ public class Database {
             // println(RoomList.get(i++));
         }
         db.query("SELECT * FROM Cards WHERE Deck = 'Treasure cards'");
-       // db.query("SELECT * FROM Cards WHERE Deck = 'Treasure cards' AND type = 'Monster'");
+        // db.query("SELECT * FROM Cards WHERE Deck = 'Treasure cards' AND type = 'Monster'");
         {
             while (db.next()) {
                 TreasureList.append(db.getString("HTTP"));

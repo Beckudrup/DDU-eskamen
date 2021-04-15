@@ -26,16 +26,14 @@ public class BackgroundSystem {
         }
     }
 
-    void loaddecks(Deck roomList, Deck treasureList, StringList roomlinklist, StringList treasurelinkList) {
+    void loaddecks(Deck roomList, Deck treasureList, StringList roomlinklist, StringList treasurelinklist, ImageLoader il) {
         for (int i = 0; i < roomlinklist.size(); i++) {
             roomList.addcard(new Card(p, roomlinklist.get(i), 0));
-
         }
-        roomList.backside=il.bs1;
-        tresureList.backside=il.bs2;
-        for (int i = 0; i < treasurelinkList.size(); i++) {
-            treasureList.addcard(new Card(p, roomlinklist.get(i), 1));
-
+        roomList.backside = il.bs1;
+        treasureList.backside = il.bs2;
+        for (int i = 0; i < treasurelinklist.size(); i++) {
+            treasureList.addcard(new Card(p, treasurelinklist.get(i), 1));
         }
     }
 
@@ -45,14 +43,12 @@ public class BackgroundSystem {
                 playerList.add(new Players(p));
                 playerList.get(i).playernr = i;
             }
-
             playerList.get(0).icon = im.p1;
             playerList.get(1).icon = im.p2;
             playerList.get(2).icon = im.p3;
             playerList.get(3).icon = im.p4;
             buttList.add(new Button(p, 400, 400, 200, 100, "Male"));
             buttList.add(new Button(p, 700, 400, 200, 100, "Woman"));
-
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
                     treasurelist.drawcard(playerList.get(i).hand);

@@ -17,14 +17,12 @@ public class Main extends PApplet {
     ArrayList<Cardinfo> cardinfoList = new ArrayList<>();
     //ArrayList<PImage> RoomImages = new ArrayList<>();
     //ArrayList<PImage> TreasureImages = new ArrayList<>();
-    Deck roomdisc = new Deck(this,700, 270, 90, 150);
-    Deck treasiredisc = new Deck(this,1090, 270, 90, 150);
-    Deck room = new Deck(this,830, 270, 90, 150);
-    Deck treasure = new Deck(this,960, 270, 90, 150);
+    Deck roomdisc = new Deck(this, 700, 270, 90, 150);
+    Deck treasiredisc = new Deck(this, 1090, 270, 90, 150);
+    Deck room = new Deck(this, 830, 270, 90, 150);
+    Deck treasure = new Deck(this, 960, 270, 90, 150);
     StringList RoomList = new StringList();
     StringList TreasureList = new StringList();
-    Deck room = new Deck(this);
-    Deck treasure = new Deck(this);
     Dice dice = new Dice(this);
     Database database = new Database(this);
     Menus menus = new Menus(this);
@@ -46,7 +44,7 @@ public class Main extends PApplet {
         imageLoader.loadImage();
         database.setups();
         database.LoadCards(RoomList, TreasureList);
-        backgroundSystem.loaddecks(room, treasure, RoomList, TreasureList,imageLoader);
+        backgroundSystem.loaddecks(room, treasure, RoomList, TreasureList, imageLoader);
     }
 
     @Override
@@ -61,13 +59,13 @@ public class Main extends PApplet {
             menus.ingame(buttList, imageLoader, board);
 
             backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure);
-           // for (int i = 0; i < room.cardList.size(); i++) {
-             //  image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
-           // }
-          //  System.out.println(treasure.cardList.size());
+            // for (int i = 0; i < room.cardList.size(); i++) {
+            //  image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
+            // }
+            //  System.out.println(treasure.cardList.size());
             //for (int i = 0; i < treasure.cardList.size(); i++) {
-                //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
-           // }
+            //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
+            // }
 
 
             dice.display(200, 200);
@@ -81,7 +79,7 @@ public class Main extends PApplet {
             //println(backgroundSystem.turn);
             room.resuffle(roomdisc);
             treasure.resuffle(treasiredisc);
-           System.out.println(playerList.get(0).hand.size() + "  " + playerList.get(1).hand.size() + "  " +playerList.get(2).hand.size() + "  " +playerList.get(3).hand.size() );
+            System.out.println(playerList.get(0).hand.size() + "  " + playerList.get(1).hand.size() + "  " + playerList.get(2).hand.size() + "  " + playerList.get(3).hand.size());
 
         }
 
@@ -257,27 +255,27 @@ public class Main extends PApplet {
 
                 }
             }
-                if (buttList.size() > 0 && buttList.get(2).tryk == true) {
-                    if (screenchange == 14) {
-                        screenchange = 3;
-                    } else {
-                        screenchange++;
+            if (buttList.size() > 0 && buttList.get(2).tryk == true) {
+                if (screenchange == 14) {
+                    screenchange = 3;
+                } else {
+                    screenchange++;
 
-                        buttList.get(2).tryk = false;
+                    buttList.get(2).tryk = false;
 
-                    }
-                }
-            }
-
-            if (screenchange == 1 || screenchange == 2) {
-                if (buttList.size() > 0 && buttList.get(0).tryk == true) {
-                    screenchange = 0;
-                    menus.notdoneyet = true;
-                    buttList.clear();
                 }
             }
         }
+
+        if (screenchange == 1 || screenchange == 2) {
+            if (buttList.size() > 0 && buttList.get(0).tryk == true) {
+                screenchange = 0;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
+        }
     }
+}
 
 
 
