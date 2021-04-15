@@ -14,12 +14,11 @@ public class Main extends PApplet {
     ArrayList<Button> buttList = new ArrayList<>();
     ArrayList<Players> playerList = new ArrayList<>();
     ArrayList<Deck> deckList = new ArrayList<>();
-    //ArrayList<PImage> RoomImages = new ArrayList<>();
-    //ArrayList<PImage> TreasureImages = new ArrayList<>();
-    Deck room = new Deck(this);
-    Deck treasure = new Deck(this);
+    ArrayList<Cardinfo> cardinfoList = new ArrayList<>();
     StringList RoomList = new StringList();
     StringList TreasureList = new StringList();
+    Deck room = new Deck(this);
+    Deck treasure = new Deck(this);
     Dice dice = new Dice(this);
     Database database = new Database(this);
     Menus menus = new Menus(this);

@@ -2,11 +2,14 @@ import processing.core.PApplet;
 import de.bezier.data.sql.*;
 import processing.data.StringList;
 
+import java.util.ArrayList;
+
 import static processing.core.PApplet.println;
 
 public class Database {
     SQLite db;
     PApplet p;
+    Cardinfo collected = new Cardinfo();
 
     Database(PApplet p) {
         this.p = p;
@@ -26,6 +29,7 @@ public class Database {
             // println(RoomList.get(i++));
         }
         db.query("SELECT * FROM Cards WHERE Deck = 'Treasure cards'");
+       // db.query("SELECT * FROM Cards WHERE Deck = 'Treasure cards' AND type = 'Monster'");
         {
             while (db.next()) {
                 TreasureList.append(db.getString("HTTP"));
