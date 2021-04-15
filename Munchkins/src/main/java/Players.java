@@ -15,7 +15,6 @@ public class Players {
 
     Players(PApplet p) {
         this.p = p;
-
     }
 
     void displayHand() {
