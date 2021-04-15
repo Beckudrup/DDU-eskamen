@@ -13,6 +13,7 @@ public class Main extends PApplet {
     BackgroundSystem backgroundSystem = new BackgroundSystem(this);
     ArrayList<Button> buttList = new ArrayList<>();
     ArrayList<Players> playerList = new ArrayList<>();
+    ArrayList<Deck> deckList = new ArrayList<>();
     //ArrayList<PImage> RoomImages = new ArrayList<>();
     //ArrayList<PImage> TreasureImages = new ArrayList<>();
     Deck roomdisc = new Deck(this,700, 270, 90, 150);
@@ -23,7 +24,6 @@ public class Main extends PApplet {
     StringList TreasureList = new StringList();
     Dice dice = new Dice(this);
     Database database = new Database(this);
-
     Menus menus = new Menus(this);
     int screenchange = 0;
     ImageLoader imageLoader = new ImageLoader(this);
@@ -56,6 +56,7 @@ public class Main extends PApplet {
             if (menus.notdoneyet)
                 board = new Board(this, 4);
             menus.ingame(buttList, imageLoader, board);
+
             backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure);
            // for (int i = 0; i < room.cardList.size(); i++) {
              //  image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
@@ -65,10 +66,14 @@ public class Main extends PApplet {
                 //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
            // }
 
+
             dice.display(200, 200);
             for (int i = 0; i < 4; i++) {
                 playerList.get(i).displayHand(backgroundSystem.turn);
                 playerList.get(i).displayicon();
+            }
+            for (int i = 0; i < 2; i++){
+                deckList.get(i).displayBackside();
             }
             backgroundSystem.endturn(buttList);
             //println(backgroundSystem.turn);

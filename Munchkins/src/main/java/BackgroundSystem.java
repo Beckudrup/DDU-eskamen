@@ -35,11 +35,15 @@ public class BackgroundSystem {
         }
     }
 
-    void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist) {
+    void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ArrayList<Deck> deckList, ImageLoader im, Deck roomlist, Deck treasurelist) {
         if (notDoneYet == true) {
             for (int i = 0; i < 4; i++) {
                 playerList.add(new Players(p));
                 playerList.get(i).playernr = i;
+            }
+            for (int i = 0; i < 2; i++) {
+                deckList.add(new Deck(p));
+                deckList.get(i).decknr = i;
             }
             playerList.get(0).icon = im.p1;
             playerList.get(1).icon = im.p2;
@@ -47,6 +51,8 @@ public class BackgroundSystem {
             playerList.get(3).icon = im.p4;
             buttList.add(new Button(p, 400, 400, 200, 100, "Male"));
             buttList.add(new Button(p, 700, 400, 200, 100, "Woman"));
+            deckList.get(0).backside = im.bs1;
+            deckList.get(1).backside = im.bs2;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
                     treasurelist.drawcard(playerList.get(i).hand);
