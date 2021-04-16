@@ -29,11 +29,13 @@ public class BackgroundSystem {
     void loaddecks(Deck roomList, Deck treasureList, StringList roomlinklist, StringList treasurelinklist, ImageLoader il) {
         for (int i = 0; i < roomlinklist.size(); i++) {
             roomList.addcard(new Card(p, roomlinklist.get(i), 0));
+            roomList.cardList.get(i).backside=il.bs1;
         }
         roomList.backside = il.bs1;
         treasureList.backside = il.bs2;
         for (int i = 0; i < treasurelinklist.size(); i++) {
             treasureList.addcard(new Card(p, treasurelinklist.get(i), 1));
+            treasureList.cardList.get(i).backside=il.bs2;
         }
     }
 
