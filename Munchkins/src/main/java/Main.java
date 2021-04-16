@@ -231,23 +231,30 @@ public class Main extends PApplet {
         if (screenchange == 3 || screenchange == 4 || screenchange == 5 || screenchange == 6 || screenchange == 7 || screenchange == 8 || screenchange == 9 || screenchange == 10 || screenchange == 11 || screenchange == 12 || screenchange == 13 || screenchange == 14) {
             if (buttList.size() > 0 && buttList.get(0).tryk == true) {
                 screenchange = 2;
+                buttList.get(0).tryk = false;
+                buttList.clear();
+                menus.notdoneyet = true;
+
             }
             if (buttList.size() > 0 && buttList.get(1).tryk == true) {
                 if (screenchange == 3) {
                     screenchange = 14;
+
                 } else {
-                    screenchange--;
                     buttList.get(1).tryk = false;
+
+                    screenchange--;
 
                 }
             }
                 if (buttList.size() > 0 && buttList.get(2).tryk == true) {
                     if (screenchange == 14) {
                         screenchange = 3;
+
                     } else {
+                        buttList.get(2).tryk = false;
                         screenchange++;
 
-                        buttList.get(2).tryk = false;
 
                     }
                 }
