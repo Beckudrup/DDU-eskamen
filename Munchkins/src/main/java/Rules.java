@@ -49,7 +49,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -62,7 +62,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -75,7 +75,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -88,7 +88,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -101,7 +101,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -114,7 +114,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -127,7 +127,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -140,7 +140,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -153,7 +153,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -166,7 +166,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -179,7 +179,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);
@@ -192,7 +192,7 @@ public class Rules {
         p.background(230);
         p.fill(0);
         buttList.add(new Button(p, 5, 25, 150, 50, "Back"));
-        buttList.add(new Button(p, 150, 700, 300, 300, "<-"));
+        buttList.add(new Button(p, 100, 700, 300, 300, "<-"));
         buttList.add(new Button(p, 1500, 700, 300, 300, "->"));
         p.textSize(40);
         p.fill(0);

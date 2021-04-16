@@ -253,21 +253,26 @@ public class Main extends PApplet {
             if (buttList.size() > 0 && buttList.get(1).tryk == true) {
                 if (screenchange == 3) {
                     screenchange = 14;
+                    buttList.get(1).tryk = false;
 
                 } else {
-                    buttList.get(1).tryk = false;
-                    screenchange--;
+                    if (screenchange != 3) {
+                        buttList.get(1).tryk = false;
+                        screenchange--;
 
+                    }
                 }
             }
             if (buttList.size() > 0 && buttList.get(2).tryk == true) {
                 if (screenchange == 14) {
                     screenchange = 3;
+                    buttList.get(2).tryk = false;
 
                 } else {
-                    buttList.get(2).tryk = false;
-                    screenchange++;
-
+                    if (screenchange != 14) {
+                        buttList.get(2).tryk = false;
+                        screenchange++;
+                    }
 
                 }
             }
