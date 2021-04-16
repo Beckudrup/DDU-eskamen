@@ -14,7 +14,8 @@ public class Main extends PApplet {
     ArrayList<Button> buttList = new ArrayList<>();
     ArrayList<Players> playerList = new ArrayList<>();
     ArrayList<Deck> deckList = new ArrayList<>();
-    ArrayList<Cardinfo> cardinfoList = new ArrayList<>();
+    ArrayList<Cardinfo> treasureinfoList = new ArrayList<>();
+    ArrayList<Cardinfo> roominfoList = new ArrayList<>();
     //ArrayList<PImage> RoomImages = new ArrayList<>();
     //ArrayList<PImage> TreasureImages = new ArrayList<>();
     Deck roomdisc = new Deck(this, 700, 270, 90, 150);
@@ -43,7 +44,7 @@ public class Main extends PApplet {
         super.setup();
         imageLoader.loadImage();
         database.setups();
-        database.LoadCards(RoomList, TreasureList);
+        database.LoadCards(RoomList, TreasureList, treasureinfoList, roominfoList);
         backgroundSystem.loaddecks(room, treasure, RoomList, TreasureList, imageLoader);
     }
 

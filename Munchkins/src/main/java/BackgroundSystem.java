@@ -34,6 +34,8 @@ public class BackgroundSystem {
         treasureList.backside = il.bs2;
         for (int i = 0; i < treasurelinklist.size(); i++) {
             treasureList.addcard(new Card(p, treasurelinklist.get(i), 1));
+//            p.println(cardinfoList.size(),cardinfoList.get(i).level, cardinfoList.get(i).name, i);
+
         }
     }
 
