@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Players {
     PApplet p;
-    int level = 0;
+    int level = 1;
     PImage icon;
     int gender;
     int playerClass = 0;
