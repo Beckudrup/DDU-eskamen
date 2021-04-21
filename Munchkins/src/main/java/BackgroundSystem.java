@@ -1,5 +1,4 @@
 import processing.core.PApplet;
-import processing.data.StringList;
 
 import java.util.ArrayList;
 
@@ -42,7 +41,7 @@ public class BackgroundSystem {
     }
 
     void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist) {
-        if (notDoneYet == true) {
+        if (notDoneYet) {
             for (int i = 0; i < 4; i++) {
                 playerList.add(new Players(p));
                 playerList.get(i).playernr = i;
@@ -59,12 +58,11 @@ public class BackgroundSystem {
                     //p.print(treasurelist.cardList.size());
                     roomlist.drawcard(playerList.get(i).hand);
                     //p.print(roomlist.cardList.size());
-
                 }
             }
             notDoneYet = false;
         }
-        if (player > 3 && removed == false) {
+        if (player > 3 && !removed) {
             buttList.remove(2);
             buttList.remove(2);
             removed = true;
