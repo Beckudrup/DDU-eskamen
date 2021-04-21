@@ -30,14 +30,14 @@ public class BackgroundSystem {
             roomList.addcard(new Card(p, roominfoList.get(i).http, 0));
             roomList.cardList.get(i).backside = il.bs1;
         }
-        p.println(roominfoList.size(), roominfoList.get(roominfoList.size() - 1).level, roominfoList.get(roominfoList.size() - 1).name);
+        //p.println(roominfoList.size(), roominfoList.get(roominfoList.size() - 1).level, roominfoList.get(roominfoList.size() - 1).name);
         roomList.backside = il.bs1;
         treasureList.backside = il.bs2;
         for (int i = 0; i < treasureinfoList.size(); i++) {
             treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1));
             treasureList.cardList.get(i).backside = il.bs2;
         }
-        p.println(treasureinfoList.size(), treasureinfoList.get(treasureinfoList.size() - 1).level, treasureinfoList.get(treasureinfoList.size() - 1).name);
+        //p.println(treasureinfoList.size(), treasureinfoList.get(treasureinfoList.size() - 1).level, treasureinfoList.get(treasureinfoList.size() - 1).name);
     }
 
     void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist) {

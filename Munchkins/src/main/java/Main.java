@@ -1,6 +1,4 @@
 import processing.core.PApplet;
-import processing.core.PImage;
-import processing.data.StringList;
 
 import java.util.ArrayList;
 
@@ -33,7 +31,7 @@ public class Main extends PApplet {
     public void settings() {
         super.settings();
         size(1920, 1080);
-        println(dataPath("test.db"));
+        //println(dataPath("test.db"));
     }
 
     @Override
@@ -48,7 +46,7 @@ public class Main extends PApplet {
     @Override
     public void draw() {
         clear();
-        badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasiredisc);
+        //badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasiredisc);
         if (screenchange == 0) {
             menus.mainMenu(buttList, imageLoader);
         }
@@ -78,7 +76,7 @@ public class Main extends PApplet {
             //println(backgroundSystem.turn);
             room.resuffle(roomdisc);
             treasure.resuffle(treasiredisc);
-            System.out.println(playerList.get(0).hand.size() + "  " + playerList.get(1).hand.size() + "  " + playerList.get(2).hand.size() + "  " + playerList.get(3).hand.size());
+            //System.out.println(playerList.get(0).hand.size() + "  " + playerList.get(1).hand.size() + "  " + playerList.get(2).hand.size() + "  " + playerList.get(3).hand.size());
 
         }
 
