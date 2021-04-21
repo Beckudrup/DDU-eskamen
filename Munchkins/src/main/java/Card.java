@@ -13,17 +13,17 @@ public class Card {
     int numb;
 
 
-    Card(PApplet p, String imglink/*, String name, String type, int level*/, int numb) {
+    Card(PApplet p, String imglink, int numb) {
         this.p = p;
         cards = p.loadImage(imglink);
         this.numb = numb;
 
     }
 
-    void display(int x, int y, int w, int h,int frontOrBack) {
-        if (frontOrBack==1)
-        p.image(cards, x, y, w, h);
-        if (frontOrBack==2)
+    void display(int x, int y, int w, int h, int frontOrBack) {
+        if (frontOrBack == 1)
+            p.image(cards, x, y, w, h);
+        if (frontOrBack == 2)
             p.image(backside, x, y, w, h);
     }
 }

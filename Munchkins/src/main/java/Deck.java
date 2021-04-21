@@ -1,5 +1,6 @@
 import processing.core.PApplet;
 import processing.core.PImage;
+
 import java.util.ArrayList;
 
 public class Deck {
@@ -47,5 +48,6 @@ public class Deck {
                 addcard(card);
                 disc.cardList.remove(disc.cardList.size() - 1);
             }
+
     }
 }

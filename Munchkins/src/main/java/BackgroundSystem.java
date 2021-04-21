@@ -1,5 +1,4 @@
 import processing.core.PApplet;
-import processing.data.StringList;
 
 import java.util.ArrayList;
 
@@ -47,23 +46,23 @@ public class BackgroundSystem {
         }
     }
 
-    void loaddecks(Deck roomList, Deck treasureList, ImageLoader il,  ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
+    void loaddecks(Deck roomList, Deck treasureList, ImageLoader il, ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
         for (int i = 0; i < roominfoList.size(); i++) {
             roomList.addcard(new Card(p, roominfoList.get(i).http, 0));
             roomList.cardList.get(i).backside = il.bs1;
         }
-        p.println(roominfoList.size(), roominfoList.get(roominfoList.size()-1).level, roominfoList.get(roominfoList.size()-1).name);
+        p.println(roominfoList.size(), roominfoList.get(roominfoList.size() - 1).level, roominfoList.get(roominfoList.size() - 1).name);
         roomList.backside = il.bs1;
         treasureList.backside = il.bs2;
         for (int i = 0; i < treasureinfoList.size(); i++) {
             treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1));
             treasureList.cardList.get(i).backside = il.bs2;
         }
-        p.println(treasureinfoList.size(), treasureinfoList.get(treasureinfoList.size()-1).level, treasureinfoList.get(treasureinfoList.size()-1).name);
+        p.println(treasureinfoList.size(), treasureinfoList.get(treasureinfoList.size() - 1).level, treasureinfoList.get(treasureinfoList.size() - 1).name);
     }
 
     void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist) {
-        if (notDoneYet == true) {
+        if (notDoneYet) {
             for (int i = 0; i < 4; i++) {
                 playerList.add(new Players(p));
                 playerList.get(i).playernr = i;
@@ -77,12 +76,14 @@ public class BackgroundSystem {
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
                     treasurelist.drawcard(playerList.get(i).hand);
+                    //p.print(treasurelist.cardList.size());
                     roomlist.drawcard(playerList.get(i).hand);
+                    //p.print(roomlist.cardList.size());
                 }
             }
             notDoneYet = false;
         }
-        if (player > 3 && removed == false) {
+        if (player > 3 && !removed) {
             buttList.remove(2);
             buttList.remove(2);
             removed = true;
