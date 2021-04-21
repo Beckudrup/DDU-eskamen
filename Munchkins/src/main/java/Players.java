@@ -73,11 +73,11 @@ public class Players {
         }
     }
 
-    void hoverCard(){
+    void hoverCard(BackgroundSystem backgroundSystem){
         for (int i = 0; i < hand.size(); i++) {
 
 
-        if(p.mouseX>700+i*180&&p.mouseX<860+i*180&&p.mouseY>800&&p.mouseY<1000){
+        if(p.mouseX>700+i*180&&p.mouseX<860+i*180&&p.mouseY>800&&p.mouseY<1000&&backgroundSystem.turn==playernr){
             hand.get(i).hovering=true;
         }else{
             hand.get(i).hovering=false;

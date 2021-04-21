@@ -68,13 +68,13 @@ public class Main extends PApplet {
 
             dice.display(200, 200);
             for (int i = 0; i < 4; i++) {
-                playerList.get(i).hoverCard();
+                playerList.get(i).hoverCard(backgroundSystem);
                 playerList.get(i).displayHand(backgroundSystem.turn);
                 playerList.get(i).displayicon();
             }
             room.displayBackside();
             treasure.displayBackside();
-            backgroundSystem.endturn(buttList);
+            backgroundSystem.endturn(buttList,playerList.get(backgroundSystem.turn),playerList);
             //println(backgroundSystem.turn);
             room.resuffle(roomdisc);
             treasure.resuffle(treasiredisc);
