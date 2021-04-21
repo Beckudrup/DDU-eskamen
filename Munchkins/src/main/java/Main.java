@@ -1,6 +1,4 @@
 import processing.core.PApplet;
-import processing.core.PImage;
-import processing.data.StringList;
 
 import java.util.ArrayList;
 
@@ -71,6 +69,7 @@ public class Main extends PApplet {
 
             dice.display(200, 200);
             for (int i = 0; i < 4; i++) {
+                playerList.get(i).hoverCard();
                 playerList.get(i).displayHand(backgroundSystem.turn);
                 playerList.get(i).displayicon();
             }
@@ -143,6 +142,10 @@ public class Main extends PApplet {
 
             room.clicktodraw(backgroundSystem.turn, playerList);
             treasure.clicktodraw(backgroundSystem.turn, playerList);
+            for (int i = 0; i < playerList.size() ; i++) {
+                playerList.get(i).selectCard(roomdisc,treasiredisc);
+
+            }
         }
     }
 
