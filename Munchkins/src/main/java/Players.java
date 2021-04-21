@@ -41,7 +41,7 @@ public class Players {
                     p.pushMatrix();
 
                     p.rotate((float) 1.5708 * 2);
-                    hand.get(i).display(-870-i*90,-100,160/2,200/2,2);
+                    hand.get(i).display(-870 - i * 90, -100, 160 / 2, 200 / 2, 2);
                     p.popMatrix();
                 }
             }

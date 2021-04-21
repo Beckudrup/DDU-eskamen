@@ -55,7 +55,7 @@ public class Rules {
         p.fill(0);
         p.text("Start of game", p.width / 2, 100);
         p.textSize(30);
-        p.text("The games starts out with all players being level 1 and drawing two room cards and \ntwo treassure cards, and then there is a round where you can play your playable \ncards if you want before the game really begins.",p.width/2,200);
+        p.text("The games starts out with all players being level 1 and drawing two room cards and \ntwo treassure cards, and then there is a round where you can play your playable \ncards if you want before the game really begins.", p.width / 2, 200);
     }
 
     void rTurns(ArrayList<Button> buttList) {
@@ -68,7 +68,7 @@ public class Rules {
         p.fill(0);
         p.text("Turns", p.width / 2, 100);
         p.textSize(30);
-        p.text("When your turn starts you must Kick Open The Door, after that depending on what you \ndrew different things will happen. Explained in Open Door. To end your turn \npress the end turn button, your cards will then be hidden \nand the next player can click start turn \nand then his cards will be shown.", p.width/2, 200);
+        p.text("When your turn starts you must Kick Open The Door, after that depending on what you \ndrew different things will happen. Explained in Open Door. To end your turn \npress the end turn button, your cards will then be hidden \nand the next player can click start turn \nand then his cards will be shown.", p.width / 2, 200);
     }
 
     void rKickOpenTheDoor(ArrayList<Button> buttList) {
@@ -81,7 +81,7 @@ public class Rules {
         p.fill(0);
         p.text("Kick Open The Door", p.width / 2, 100);
         p.textSize(30);
-        p.text("The first time each turn when you Kick Open The Door then the card you\ndrew is placed face-up and if it is a class, race or spell card you put it in your hand, if it \nis a monster then you battle it and if it is a curse  it activates.",p.width/2,200);
+        p.text("The first time each turn when you Kick Open The Door then the card you\ndrew is placed face-up and if it is a class, race or spell card you put it in your hand, if it \nis a monster then you battle it and if it is a curse  it activates.", p.width / 2, 200);
     }
 
     void rCombat(ArrayList<Button> buttList) {
@@ -94,7 +94,7 @@ public class Rules {
         p.fill(0);
         p.text("Combat", p.width / 2, 100);
         p.textSize(30);
-        p.text("When you battle a monster it will have a level and to beat it you must \nhave a higher power than its level. Your power is your level and item power combined. \nIf you win you get treassure(s) and level(s), if you lose you get the Badstuff of that monster.", p.width/2,200);
+        p.text("When you battle a monster it will have a level and to beat it you must \nhave a higher power than its level. Your power is your level and item power combined. \nIf you win you get treassure(s) and level(s), if you lose you get the Badstuff of that monster.", p.width / 2, 200);
     }
 
     void rDeath(ArrayList<Button> buttList) {
@@ -107,7 +107,7 @@ public class Rules {
         p.fill(0);
         p.text("Death", p.width / 2, 100);
         p.textSize(30);
-        p.text("If you lose a battle where the badstuff is you die, then you have to start \nfrom the begining discarding all of your items and go down to level 1 and draw  \ntwo room cards and two treassure cards.",p.width/2, 200);
+        p.text("If you lose a battle where the badstuff is you die, then you have to start \nfrom the begining discarding all of your items and go down to level 1 and draw  \ntwo room cards and two treassure cards.", p.width / 2, 200);
     }
 
     void rRunAway(ArrayList<Button> buttList) {
@@ -120,7 +120,7 @@ public class Rules {
         p.fill(0);
         p.text("Run Away", p.width / 2, 100);
         p.textSize(30);
-        p.text("If you can not beat the monster then you have the chance to run away.\nTo run away you must roll 5 or more with the dice. If you succed, then you don't get the Badstuff.",p.width/2,200);
+        p.text("If you can not beat the monster then you have the chance to run away.\nTo run away you must roll 5 or more with the dice. If you succed, then you don't get the Badstuff.", p.width / 2, 200);
     }
 
     void rAskForHelp(ArrayList<Button> buttList) {
@@ -133,7 +133,7 @@ public class Rules {
         p.fill(0);
         p.text("Ask For Help", p.width / 2, 100);
         p.textSize(30);
-        p.text("You also have the opportunity to call for help, which lets another player \nhelp you, but you must split the treassure among you.",p.width/2,200);
+        p.text("You also have the opportunity to call for help, which lets another player \nhelp you, but you must split the treassure among you.", p.width / 2, 200);
     }
 
     void rLootTheRoom(ArrayList<Button> buttList) {
@@ -146,7 +146,7 @@ public class Rules {
         p.fill(0);
         p.text("Loot The Room", p.width / 2, 100);
         p.textSize(30);
-        p.text("If you drew a card in Kick Open The Door then you can draw another Room card face-down\nor play a monster on yourself.",p.width/2,200);
+        p.text("If you drew a card in Kick Open The Door then you can draw another Room card face-down\nor play a monster on yourself.", p.width / 2, 200);
     }
 
     void rCurses(ArrayList<Button> buttList) {
@@ -159,7 +159,7 @@ public class Rules {
         p.fill(0);
         p.text("Curses", p.width / 2, 100);
         p.textSize(30);
-        p.text("If you have a curse in your hand you can play it anytime, \neven if it is not your turn.\nIf a curse is used in battle, even if it is a curse that says next battle -5 power it will count \nin the present battle and be removed after.",p.width/2,200);
+        p.text("If you have a curse in your hand you can play it anytime, \neven if it is not your turn.\nIf a curse is used in battle, even if it is a curse that says next battle -5 power it will count \nin the present battle and be removed after.", p.width / 2, 200);
     }
 
     void rClassAbilities(ArrayList<Button> buttList) {
@@ -172,7 +172,7 @@ public class Rules {
         p.fill(0);
         p.text("Class Abilities", p.width / 2, 100);
         p.textSize(30);
-        p.text("Different classes have different abilities, but you activate them by clicking your class under the right conditions.\nThe passive abilities are always activated.",p.width/2,200);
+        p.text("Different classes have different abilities, but you activate them by clicking your class under the right conditions.\nThe passive abilities are always activated.", p.width / 2, 200);
     }
 
     void rCharity(ArrayList<Button> buttList) {
@@ -185,7 +185,7 @@ public class Rules {
         p.fill(0);
         p.text("Charity", p.width / 2, 100);
         p.textSize(30);
-        p.text("At the end of your turn, if you have more than 5 cards in hand you must give cards untill \nyou have 5 cards in hand, to the player with the lowest level, \nif you are the lowest level you discard them instead.",p.width/2,200);
+        p.text("At the end of your turn, if you have more than 5 cards in hand you must give cards untill \nyou have 5 cards in hand, to the player with the lowest level, \nif you are the lowest level you discard them instead.", p.width / 2, 200);
     }
 
     void rHowToWin(ArrayList<Button> buttList) {
@@ -198,7 +198,7 @@ public class Rules {
         p.fill(0);
         p.text("How To Win", p.width / 2, 100);
         p.textSize(30);
-        p.text("You win by getting to level 10. Every player starts at level 1, and each \ntime they win a battle they earn 1 level, unless the monster says 2 levels. \nYou can also gain levels by selling items, 1000 gold = 1 level. There are also treassure cards that lets you level up. \nThese two methods cannot raise your level to 10. The only way to get level 10 is to beat a monster.",p.width/2,200);
+        p.text("You win by getting to level 10. Every player starts at level 1, and each \ntime they win a battle they earn 1 level, unless the monster says 2 levels. \nYou can also gain levels by selling items, 1000 gold = 1 level. There are also treassure cards that lets you level up. \nThese two methods cannot raise your level to 10. The only way to get level 10 is to beat a monster.", p.width / 2, 200);
     }
 }
 

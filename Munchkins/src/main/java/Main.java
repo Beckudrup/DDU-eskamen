@@ -16,14 +16,10 @@ public class Main extends PApplet {
     ArrayList<Deck> deckList = new ArrayList<>();
     ArrayList<Cardinfo> treasureinfoList = new ArrayList<>();
     ArrayList<Cardinfo> roominfoList = new ArrayList<>();
-    //ArrayList<PImage> RoomImages = new ArrayList<>();
-    //ArrayList<PImage> TreasureImages = new ArrayList<>();
     Deck roomdisc = new Deck(this, 700, 270, 90, 150);
     Deck treasiredisc = new Deck(this, 1090, 270, 90, 150);
     Deck room = new Deck(this, 830, 270, 90, 150);
     Deck treasure = new Deck(this, 960, 270, 90, 150);
-    //StringList RoomList = new StringList();
-    //StringList TreasureList = new StringList();
     Dice dice = new Dice(this);
     Database database = new Database(this);
     Menus menus = new Menus(this);
@@ -52,7 +48,7 @@ public class Main extends PApplet {
     @Override
     public void draw() {
         clear();
-        badstuff.badstuffdeath(playerList.get(backgroundSystem.turn),room,treasure,playerList,backgroundSystem,roomdisc,treasiredisc);
+        badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasiredisc);
         if (screenchange == 0) {
             menus.mainMenu(buttList, imageLoader);
         }

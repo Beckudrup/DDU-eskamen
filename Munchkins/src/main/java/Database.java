@@ -1,6 +1,7 @@
 import processing.core.PApplet;
 import de.bezier.data.sql.*;
 import processing.data.StringList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class Database {
         }
     }
 
-    void LoadCards(ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList ) {
+    void LoadCards(ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
         db.query("SELECT * FROM Cards WHERE Deck = 'Room cards'");
         int i = 0;
         while (db.next()) {
@@ -41,7 +42,7 @@ public class Database {
         {
             while (db.next()) {
                 Cardinfo treasure = new Cardinfo();
-                treasure.http  = (db.getString("HTTP"));
+                treasure.http = (db.getString("HTTP"));
                 treasure.type = (db.getString("Type"));
                 treasure.name = (db.getString("Name"));
                 treasure.level = (db.getInt("Level"));
