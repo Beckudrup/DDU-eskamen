@@ -26,16 +26,16 @@ public class BackgroundSystem {
         }
     }
 
-    void loaddecks(Deck roomList, Deck treasureList, StringList roomlinklist, StringList treasurelinklist, ImageLoader il,  ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
-        for (int i = 0; i < roomlinklist.size(); i++) {
-            roomList.addcard(new Card(p, roomlinklist.get(i), 0));
+    void loaddecks(Deck roomList, Deck treasureList, ImageLoader il,  ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
+        for (int i = 0; i < roominfoList.size(); i++) {
+            roomList.addcard(new Card(p, roominfoList.get(i).http, 0));
             roomList.cardList.get(i).backside = il.bs1;
         }
         p.println(roominfoList.size(), roominfoList.get(roominfoList.size()-1).level, roominfoList.get(roominfoList.size()-1).name);
         roomList.backside = il.bs1;
         treasureList.backside = il.bs2;
-        for (int i = 0; i < treasurelinklist.size(); i++) {
-            treasureList.addcard(new Card(p, treasurelinklist.get(i), 1));
+        for (int i = 0; i < treasureinfoList.size(); i++) {
+            treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1));
             treasureList.cardList.get(i).backside = il.bs2;
         }
         p.println(treasureinfoList.size(), treasureinfoList.get(treasureinfoList.size()-1).level, treasureinfoList.get(treasureinfoList.size()-1).name);

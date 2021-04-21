@@ -20,13 +20,14 @@ public class Database {
         }
     }
 
-    void LoadCards(StringList RoomList, StringList TreasureList, ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList ) {
+    void LoadCards(ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList ) {
         db.query("SELECT * FROM Cards WHERE Deck = 'Room cards'");
         int i = 0;
         while (db.next()) {
             Cardinfo room = new Cardinfo();
-            RoomList.append(db.getString("HTTP"));
-            TreasureList.append(db.getString("HTTP"));
+            //RoomList.append(db.getString("HTTP"));
+            //TreasureList.append(db.getString("HTTP"));
+            room.http = (db.getString("HTTP"));
             room.type = (db.getString("Type"));
             room.name = (db.getString("Name"));
             room.level = (db.getInt("Level"));
@@ -42,7 +43,8 @@ public class Database {
         {
             while (db.next()) {
                 Cardinfo treasure = new Cardinfo();
-                TreasureList.append(db.getString("HTTP"));
+                //TreasureList.append(db.getString("HTTP"));
+                treasure.http  = (db.getString("HTTP"));
                 treasure.type = (db.getString("Type"));
                 treasure.name = (db.getString("Name"));
                 treasure.level = (db.getInt("Level"));
