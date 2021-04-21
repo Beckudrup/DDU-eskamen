@@ -31,6 +31,7 @@ public class Main extends PApplet {
     ImageLoader imageLoader = new ImageLoader(this);
     Board board;
     Rules rules = new Rules(this);
+    Badstuff badstuff = new Badstuff(this);
 
     @Override
     public void settings() {
@@ -51,6 +52,7 @@ public class Main extends PApplet {
     @Override
     public void draw() {
         clear();
+        badstuff.badstuffdeath(playerList.get(backgroundSystem.turn),room,treasure,playerList,backgroundSystem,roomdisc,treasiredisc);
         if (screenchange == 0) {
             menus.mainMenu(buttList, imageLoader);
         }
