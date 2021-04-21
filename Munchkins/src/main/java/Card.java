@@ -14,7 +14,7 @@ public class Card {
     int numb;
 
 
-    Card(PApplet p, String imglink/*, String name, String type, int level*/, int numb) {
+    Card(PApplet p, String imglink, int numb) {
         this.p = p;
         cards = p.loadImage(imglink);
         this.numb = numb;

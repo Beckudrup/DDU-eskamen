@@ -14,14 +14,10 @@ public class Main extends PApplet {
     ArrayList<Deck> deckList = new ArrayList<>();
     ArrayList<Cardinfo> treasureinfoList = new ArrayList<>();
     ArrayList<Cardinfo> roominfoList = new ArrayList<>();
-    //ArrayList<PImage> RoomImages = new ArrayList<>();
-    //ArrayList<PImage> TreasureImages = new ArrayList<>();
     Deck roomdisc = new Deck(this, 700, 270, 90, 150);
     Deck treasiredisc = new Deck(this, 1090, 270, 90, 150);
     Deck room = new Deck(this, 830, 270, 90, 150);
     Deck treasure = new Deck(this, 960, 270, 90, 150);
-    //StringList RoomList = new StringList();
-    //StringList TreasureList = new StringList();
     Dice dice = new Dice(this);
     Database database = new Database(this);
     Menus menus = new Menus(this);
@@ -29,6 +25,7 @@ public class Main extends PApplet {
     ImageLoader imageLoader = new ImageLoader(this);
     Board board;
     Rules rules = new Rules(this);
+    Badstuff badstuff = new Badstuff(this);
 
     @Override
     public void settings() {
@@ -42,13 +39,14 @@ public class Main extends PApplet {
         super.setup();
         imageLoader.loadImage();
         database.setups();
-        database.LoadCards(/*RoomList, TreasureList,*/ treasureinfoList, roominfoList);
-        backgroundSystem.loaddecks(room, treasure, /*RoomList, TreasureList,*/ imageLoader, treasureinfoList, roominfoList);
+        database.LoadCards(treasureinfoList, roominfoList);
+        backgroundSystem.loaddecks(room, treasure, imageLoader, treasureinfoList, roominfoList);
     }
 
     @Override
     public void draw() {
         clear();
+
         if (screenchange == 0) {
             menus.mainMenu(buttList, imageLoader);
         }
@@ -65,6 +63,7 @@ public class Main extends PApplet {
             //for (int i = 0; i < treasure.cardList.size(); i++) {
             //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
             // }
+            badstuff.badstuffdeath(playerList.get(backgroundSystem.turn),room,treasure,playerList,backgroundSystem,roomdisc,treasiredisc);
 
 
             dice.display(200, 200);
