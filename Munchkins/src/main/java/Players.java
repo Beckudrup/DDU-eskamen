@@ -16,7 +16,21 @@ public class Players {
     Players(PApplet p) {
         this.p = p;
     }
-
+    void selectCard(Deck roomdisc,Deck treasuredisc){
+        for (int i = 0; i < hand.size() ; i++) {
+            if(hand.get(i).hovering){
+                if(hand.get(i).numb==0){
+                    Card card = hand.get(i);
+                    roomdisc.addcard(card);
+                    hand.remove(i);
+                }else{
+                if(hand.get(i).numb==1){}
+                    Card card = hand.get(i);
+                    treasuredisc.addcard(card);
+                    hand.remove(i);
+            }}
+        }
+    }
     void displayHand(int turn) {
         if (hand.size() > 0) {
             if (turn - playernr == 0) {
@@ -59,6 +73,16 @@ public class Players {
         }
     }
 
+    void hoverCard(BackgroundSystem backgroundSystem){
+        for (int i = 0; i < hand.size(); i++) {
+
+
+        if(p.mouseX>700+i*180&&p.mouseX<860+i*180&&p.mouseY>800&&p.mouseY<1000&&backgroundSystem.turn==playernr){
+            hand.get(i).hovering=true;
+        }else{
+            hand.get(i).hovering=false;
+        }
+    }}
 
     void displayicon() {
         if (playernr == 0) {

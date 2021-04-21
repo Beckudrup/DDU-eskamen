@@ -13,7 +13,7 @@ public class BackgroundSystem {
         this.p = p;
     }
 
-    void endturn(ArrayList<Button> buttList) {
+    void endturn(ArrayList<Button> buttList,Players players, ArrayList <Players> playerList) {
         if (buttList.get(1).tryk) {
             if (turn < 3) {
                 turn++;
@@ -21,6 +21,27 @@ public class BackgroundSystem {
             } else {
                 turn = 0;
                 buttList.get(1).tryk = false;
+            }
+            if (players.hand.size()>5 /* && !harfling er ikke en Harfling*/){
+
+                for (int i = 0; i < 4; i++) {
+                    int random = (int) p.random(players.hand.size());
+                    Card card = players.hand.get(random);
+                    int lowestLvL = 10;
+                    int found = 0;
+                    for (int j = 0; j <4 ; j++) {
+                        if (playerList.get(j).level<lowestLvL&&playerList.get(j)!=players){
+                            lowestLvL = players.level;
+                            j=found;
+                        }
+
+                    }
+                    playerList.get(found).hand.add(card);
+                    players.hand.remove(random);
+
+                }
+
+
             }
         }
     }
@@ -112,6 +133,9 @@ public class BackgroundSystem {
             }
         }
     }
-}
+
+
+    }
+
 
 

@@ -6,6 +6,7 @@ public class Card {
     PApplet p;
     PImage cards;
     PImage backside;
+    boolean hovering;
     String name;
     String type;
     int level;
@@ -20,10 +21,12 @@ public class Card {
 
     }
 
-    void display(int x, int y, int w, int h, int frontOrBack) {
-        if (frontOrBack == 1)
-            p.image(cards, x, y, w, h);
-        if (frontOrBack == 2)
+    void display(int x, int y, int w, int h,int frontOrBack) {
+        if (frontOrBack==1&&!hovering)
+        p.image(cards, x, y, w, h);
+        if (frontOrBack==1&&hovering)
+            p.image(cards, x, y-50, w, h);
+        if (frontOrBack==2)
             p.image(backside, x, y, w, h);
     }
 }

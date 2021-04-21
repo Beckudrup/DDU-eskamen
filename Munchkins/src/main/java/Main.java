@@ -46,7 +46,6 @@ public class Main extends PApplet {
     @Override
     public void draw() {
         clear();
-        //badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasiredisc);
         if (screenchange == 0) {
             menus.mainMenu(buttList, imageLoader);
         }
@@ -63,16 +62,18 @@ public class Main extends PApplet {
             //for (int i = 0; i < treasure.cardList.size(); i++) {
             //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
             // }
+            badstuff.badstuffdeath(playerList.get(backgroundSystem.turn),room,treasure,playerList,backgroundSystem,roomdisc,treasiredisc);
 
 
             dice.display(200, 200);
             for (int i = 0; i < 4; i++) {
+                playerList.get(i).hoverCard(backgroundSystem);
                 playerList.get(i).displayHand(backgroundSystem.turn);
                 playerList.get(i).displayicon();
             }
             room.displayBackside();
             treasure.displayBackside();
-            backgroundSystem.endturn(buttList);
+            backgroundSystem.endturn(buttList,playerList.get(backgroundSystem.turn),playerList);
             //println(backgroundSystem.turn);
             room.resuffle(roomdisc);
             treasure.resuffle(treasiredisc);
@@ -139,6 +140,10 @@ public class Main extends PApplet {
 
             room.clicktodraw(backgroundSystem.turn, playerList);
             treasure.clicktodraw(backgroundSystem.turn, playerList);
+            for (int i = 0; i < playerList.size() ; i++) {
+                playerList.get(i).selectCard(roomdisc,treasiredisc);
+
+            }
         }
     }
 

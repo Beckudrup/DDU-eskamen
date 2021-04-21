@@ -11,12 +11,29 @@ public class Badstuff {
     }
 
 
+
+
     void badstuffhand(Players players, ArrayList<Players> playerList, Deck roomdiscard, Deck treasurediscard) {
 
     }
 
+
+void badstufflevel(Players players, ArrayList<Players> playerList){
+/*
+        lose 1 lvl
+
+        lose 2 lvl
+
+        lose 3 lvl
+
+        set lvl
+
     void badstufflevel(Players players, ArrayList<Players> playerList) {
 
+    if (kamp mod kylling = loss){
+        playerlvl -=1;
+    }
+ */
 
     }
 
@@ -54,15 +71,24 @@ public class Badstuff {
     void badstuffClassRace(Players players, ArrayList<Players> playerList) {
 
     }
+void badstuffloseitem(){
+/*
+Mist 1 item
+mist 1000g værd af items
+Mist specifikt gear piece
+ */
 
-    void badstuffloseitem() {
 
     }
+void badstuffdice(Dice dice, Players players, ArrayList<Players> playerList){
+/*
+roll mist lvl eller dø
+ */
 
-    void badstuffdice(Dice dice, Players players, ArrayList<Players> playerList) {
+}
+void badstufftootherplayers(Players players,ArrayList<Players> playerList ) {
 
 
-    }
-
+}
 
 }
