@@ -52,7 +52,6 @@ public class Main extends PApplet {
     @Override
     public void draw() {
         clear();
-        badstuff.badstuffdeath(playerList.get(backgroundSystem.turn),room,treasure,playerList,backgroundSystem,roomdisc,treasiredisc);
         if (screenchange == 0) {
             menus.mainMenu(buttList, imageLoader);
         }
@@ -69,6 +68,7 @@ public class Main extends PApplet {
             //for (int i = 0; i < treasure.cardList.size(); i++) {
             //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
             // }
+            badstuff.badstuffdeath(playerList.get(backgroundSystem.turn),room,treasure,playerList,backgroundSystem,roomdisc,treasiredisc);
 
 
             dice.display(200, 200);

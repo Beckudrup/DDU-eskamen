@@ -11,12 +11,29 @@ boolean die = false;
 
 
 void badstuffhand(Players players, ArrayList<Players> playerList,Deck roomdiscard, Deck treasurediscard){
-
+/*
+Hele hånden
+1 ting fra hånden
+2 ting
+tag 1 item
+ */
 
 
 }
 void badstufflevel(Players players, ArrayList<Players> playerList){
+/*
+        lose 1 lvl
 
+        lose 2 lvl
+
+        lose 3 lvl
+
+        set lvl
+
+    if (kamp mod kylling = loss){
+        playerlvl -=1;
+    }
+ */
 
     }
 void badstuffdeath(Players players, Deck roomlist, Deck treasurelist, ArrayList<Players> playerList, BackgroundSystem backgroundSystem, Deck roomdiscard, Deck treasurediscard){
@@ -54,9 +71,21 @@ void badstuffClassRace(Players players, ArrayList<Players> playerList){
 
     }
 void badstuffloseitem(){
+/*
+Mist 1 item
+mist 1000g værd af items
+Mist specifikt gear piece
+ */
+
 
     }
 void badstuffdice(Dice dice, Players players, ArrayList<Players> playerList){
+/*
+roll mist lvl eller dø
+ */
+
+}
+void badstufftootherplayers(Players players,ArrayList<Players> playerList ){
 
 
 }
