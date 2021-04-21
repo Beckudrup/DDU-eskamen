@@ -47,5 +47,6 @@ public class Deck {
                 addcard(card);
                 disc.cardList.remove(disc.cardList.size() - 1);
             }
+
     }
 }

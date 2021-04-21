@@ -26,7 +26,7 @@ public class BackgroundSystem {
         }
     }
 
-    void loaddecks(Deck roomList, Deck treasureList, ImageLoader il,  ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
+    void loaddecks(Deck roomList, Deck treasureList, ImageLoader il, ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
         for (int i = 0; i < roominfoList.size(); i++) {
             roomList.addcard(new Card(p, roominfoList.get(i).http, 0));
             roomList.cardList.get(i).backside = il.bs1;
@@ -56,7 +56,10 @@ public class BackgroundSystem {
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
                     treasurelist.drawcard(playerList.get(i).hand);
+                    p.print(treasurelist.cardList.size());
                     roomlist.drawcard(playerList.get(i).hand);
+                    p.print(roomlist.cardList.size());
+
                 }
             }
             notDoneYet = false;

@@ -44,8 +44,8 @@ public class Main extends PApplet {
         super.setup();
         imageLoader.loadImage();
         database.setups();
-        database.LoadCards(/*RoomList, TreasureList,*/ treasureinfoList, roominfoList);
-        backgroundSystem.loaddecks(room, treasure, /*RoomList, TreasureList,*/ imageLoader, treasureinfoList, roominfoList);
+        database.LoadCards(treasureinfoList, roominfoList);
+        backgroundSystem.loaddecks(room, treasure, imageLoader, treasureinfoList, roominfoList);
     }
 
     @Override
