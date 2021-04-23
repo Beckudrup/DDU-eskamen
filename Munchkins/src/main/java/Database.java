@@ -1,9 +1,7 @@
 import processing.core.PApplet;
 import de.bezier.data.sql.*;
-import processing.data.StringList;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static processing.core.PApplet.println;
 
@@ -16,9 +14,9 @@ public class Database {
     }
 
     void setups() {
-        db = new SQLite(p, "test.db");  // open database file
+        db = new SQLite(p, "data/test.db");  // open database file
         if (db.connect()) {
-            //println(p.dataPath("test.db"));
+            println(p.dataPath("test.db"));
         }
     }
 
