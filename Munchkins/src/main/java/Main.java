@@ -26,7 +26,8 @@ public class Main extends PApplet {
     Board board;
     Rules rules = new Rules(this);
     Badstuff badstuff = new Badstuff(this);
-
+    boolean loadingDone;
+    int counter;
     @Override
     public void settings() {
         super.settings();
@@ -37,15 +38,45 @@ public class Main extends PApplet {
     @Override
     public void setup() {
         super.setup();
+        thread("thread");
+
+    }
+   public void thread(){
         imageLoader.loadImage();
         database.setups();
         database.LoadCards(treasureinfoList, roominfoList);
         backgroundSystem.loaddecks(room, treasure, imageLoader, treasureinfoList, roominfoList);
+        loadingDone=true;
     }
 
     @Override
     public void draw() {
         clear();
+        if(!loadingDone){
+            if(counter>=0&&counter<100){
+                textSize(30);
+                text("loading.",width/2,height/2);
+
+            }
+            if(counter>=100&&counter<200){
+                textSize(30);
+                text("loading..",width/2,height/2);
+
+            }
+            if(counter>=200&&counter<300){
+                textSize(30);
+                text("loading...",width/2,height/2);
+
+            }
+            if (counter<300){
+                counter++;
+            }
+            if(counter==300){
+                counter=0;
+            }
+
+        }
+        if (loadingDone){
         if (screenchange == 0) {
             menus.mainMenu(buttList, imageLoader);
         }
@@ -127,7 +158,7 @@ public class Main extends PApplet {
         }
         screenChanger();
 
-    }
+    }}
 
     @Override
     public void mouseClicked() {
