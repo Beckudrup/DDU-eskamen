@@ -56,15 +56,15 @@ public class Main extends PApplet {
         if (!loadingDone) {
             if (counter >= 0 && counter < 100) {
                 textSize(30);
-                text("loading.", width / 2, height / 2);
+                text("Loading.", width / 2, height / 2);
             }
             if (counter >= 100 && counter < 200) {
                 textSize(30);
-                text("loading..", width / 2, height / 2);
+                text("Loading..", width / 2, height / 2);
             }
             if (counter >= 200 && counter < 300) {
                 textSize(30);
-                text("loading...", width / 2, height / 2);
+                text("Loading...", width / 2, height / 2);
             }
             if (counter < 300) {
                 counter++;
