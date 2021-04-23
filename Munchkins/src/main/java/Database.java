@@ -18,7 +18,7 @@ public class Database {
     void setups() {
         db = new SQLite(p, "test.db");  // open database file
         if (db.connect()) {
-            //println(p.dataPath("test.db"));
+            println(p.dataPath("test.db"));
         }
     }
 
