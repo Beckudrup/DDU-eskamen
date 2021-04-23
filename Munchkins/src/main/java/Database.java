@@ -18,12 +18,12 @@ public class Database {
     void setups() {
         db = new SQLite(p, "test.db");  // open database file
         if (db.connect()) {
+            //println(p.dataPath("test.db"));
         }
     }
 
     void LoadCards(ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
         db.query("SELECT * FROM Cards WHERE Deck = 'Room cards'");
-        int i = 0;
         while (db.next()) {
             Cardinfo room = new Cardinfo();
             room.http = (db.getString("HTTP"));
@@ -38,7 +38,6 @@ public class Database {
             // println(RoomList.get(i++));
         }
         db.query("SELECT * FROM Cards WHERE Deck = 'Treasure cards'");
-        // db.query("SELECT * FROM Cards WHERE Deck = 'Treasure cards' AND Type = 'Monster'");
         {
             while (db.next()) {
                 Cardinfo treasure = new Cardinfo();

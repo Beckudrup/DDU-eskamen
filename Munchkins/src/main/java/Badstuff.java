@@ -11,14 +11,12 @@ public class Badstuff {
     }
 
 
-
-
     void badstuffhand(Players players, ArrayList<Players> playerList, Deck roomdiscard, Deck treasurediscard) {
 
     }
 
 
-void badstufflevel(Players players, ArrayList<Players> playerList){
+    void badstufflevel(Players players, ArrayList<Players> playerList) {
 /*
         lose 1 lvl
 
@@ -71,7 +69,8 @@ void badstufflevel(Players players, ArrayList<Players> playerList){
     void badstuffClassRace(Players players, ArrayList<Players> playerList) {
 
     }
-void badstuffloseitem(){
+
+    void badstuffloseitem() {
 /*
 Mist 1 item
 mist 1000g værd af items
@@ -80,15 +79,17 @@ Mist specifikt gear piece
 
 
     }
-void badstuffdice(Dice dice, Players players, ArrayList<Players> playerList){
+
+    void badstuffdice(Dice dice, Players players, ArrayList<Players> playerList) {
 /*
 roll mist lvl eller dø
  */
 
-}
-void badstufftootherplayers(Players players,ArrayList<Players> playerList ) {
+    }
+
+    void badstufftootherplayers(Players players, ArrayList<Players> playerList) {
 
 
-}
+    }
 
 }

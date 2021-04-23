@@ -28,6 +28,7 @@ public class Main extends PApplet {
     Badstuff badstuff = new Badstuff(this);
     boolean loadingDone;
     int counter;
+
     @Override
     public void settings() {
         super.settings();
@@ -40,121 +41,123 @@ public class Main extends PApplet {
         super.setup();
         thread("thread");
     }
-   public void thread(){
+
+    public void thread() {
         imageLoader.loadImage();
         database.setups();
         database.LoadCards(treasureinfoList, roominfoList);
         backgroundSystem.loaddecks(room, treasure, imageLoader, treasureinfoList, roominfoList);
-        loadingDone=true;
+        loadingDone = true;
     }
 
     @Override
     public void draw() {
         clear();
-        if(!loadingDone){
-            if(counter>=0&&counter<100){
+        if (!loadingDone) {
+            if (counter >= 0 && counter < 100) {
                 textSize(30);
-                text("loading.",width/2,height/2);
+                text("loading.", width / 2, height / 2);
             }
-            if(counter>=100&&counter<200){
+            if (counter >= 100 && counter < 200) {
                 textSize(30);
-                text("loading..",width/2,height/2);
+                text("loading..", width / 2, height / 2);
             }
-            if(counter>=200&&counter<300){
+            if (counter >= 200 && counter < 300) {
                 textSize(30);
-                text("loading...",width/2,height/2);
+                text("loading...", width / 2, height / 2);
             }
-            if (counter<300){
+            if (counter < 300) {
                 counter++;
             }
-            if(counter==300){
-                counter=0;
+            if (counter == 300) {
+                counter = 0;
             }
 
         }
-        if (loadingDone){
-        if (screenchange == 0) {
-            menus.mainMenu(buttList, imageLoader);
-        }
-        if (screenchange == 1) {
-            if (menus.notdoneyet)
-                board = new Board(this, 4);
-            menus.ingame(buttList, imageLoader, board);
-
-            backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure);
-            // for (int i = 0; i < room.cardList.size(); i++) {
-            //  image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
-            // }
-            //  System.out.println(treasure.cardList.size());
-            //for (int i = 0; i < treasure.cardList.size(); i++) {
-            //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
-            // }
-            badstuff.badstuffdeath(playerList.get(backgroundSystem.turn),room,treasure,playerList,backgroundSystem,roomdisc,treasiredisc);
-
-
-            dice.display(200, 200);
-            for (int i = 0; i < 4; i++) {
-                playerList.get(i).hoverCard(backgroundSystem);
-                playerList.get(i).displayHand(backgroundSystem.turn);
-                playerList.get(i).displayicon();
+        if (loadingDone) {
+            if (screenchange == 0) {
+                menus.mainMenu(buttList, imageLoader);
             }
-            room.displayBackside();
-            treasure.displayBackside();
-            backgroundSystem.endturn(buttList,playerList.get(backgroundSystem.turn),playerList);
-            //println(backgroundSystem.turn);
-            room.resuffle(roomdisc);
-            treasure.resuffle(treasiredisc);
-            //System.out.println(playerList.get(0).hand.size() + "  " + playerList.get(1).hand.size() + "  " + playerList.get(2).hand.size() + "  " + playerList.get(3).hand.size());
+            if (screenchange == 1) {
+                if (menus.notdoneyet)
+                    board = new Board(this, 4);
+                menus.ingame(buttList, imageLoader, board);
+
+                backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure);
+                // for (int i = 0; i < room.cardList.size(); i++) {
+                //  image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
+                // }
+                //  System.out.println(treasure.cardList.size());
+                //for (int i = 0; i < treasure.cardList.size(); i++) {
+                //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
+                // }
+                badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasiredisc);
+
+
+                dice.display(200, 200);
+                for (int i = 0; i < 4; i++) {
+                    playerList.get(i).hoverCard(backgroundSystem);
+                    playerList.get(i).displayHand(backgroundSystem.turn);
+                    playerList.get(i).displayicon();
+                }
+                room.displayBackside();
+                treasure.displayBackside();
+                backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList);
+                //println(backgroundSystem.turn);
+                room.resuffle(roomdisc);
+                treasure.resuffle(treasiredisc);
+                //System.out.println(playerList.get(0).hand.size() + "  " + playerList.get(1).hand.size() + "  " + playerList.get(2).hand.size() + "  " + playerList.get(3).hand.size());
+
+            }
+
+            if (screenchange == 2) {
+                rules.displayRules(buttList);
+            }
+            if (screenchange == 3) {
+                rules.rStartOfGame(buttList);
+            }
+            if (screenchange == 4) {
+                rules.rTurns(buttList);
+            }
+            if (screenchange == 5) {
+                rules.rKickOpenTheDoor(buttList);
+            }
+            if (screenchange == 6) {
+                rules.rCombat(buttList);
+            }
+            if (screenchange == 7) {
+                rules.rDeath(buttList);
+            }
+            if (screenchange == 8) {
+                rules.rRunAway(buttList);
+            }
+            if (screenchange == 9) {
+                rules.rAskForHelp(buttList);
+            }
+            if (screenchange == 10) {
+                rules.rLootTheRoom(buttList);
+            }
+            if (screenchange == 11) {
+                rules.rCurses(buttList);
+            }
+            if (screenchange == 12) {
+                rules.rClassAbilities(buttList);
+            }
+            if (screenchange == 13) {
+                rules.rCharity(buttList);
+            }
+            if (screenchange == 14) {
+                rules.rHowToWin(buttList);
+            }
+
+            for (int i = 0; i < buttList.size(); i++) {
+                buttList.get(i).isButtonPressed();
+                buttList.get(i).drawButton();
+            }
+            screenChanger();
 
         }
-
-        if (screenchange == 2) {
-            rules.displayRules(buttList);
-        }
-        if (screenchange == 3) {
-            rules.rStartOfGame(buttList);
-        }
-        if (screenchange == 4) {
-            rules.rTurns(buttList);
-        }
-        if (screenchange == 5) {
-            rules.rKickOpenTheDoor(buttList);
-        }
-        if (screenchange == 6) {
-            rules.rCombat(buttList);
-        }
-        if (screenchange == 7) {
-            rules.rDeath(buttList);
-        }
-        if (screenchange == 8) {
-            rules.rRunAway(buttList);
-        }
-        if (screenchange == 9) {
-            rules.rAskForHelp(buttList);
-        }
-        if (screenchange == 10) {
-            rules.rLootTheRoom(buttList);
-        }
-        if (screenchange == 11) {
-            rules.rCurses(buttList);
-        }
-        if (screenchange == 12) {
-            rules.rClassAbilities(buttList);
-        }
-        if (screenchange == 13) {
-            rules.rCharity(buttList);
-        }
-        if (screenchange == 14) {
-            rules.rHowToWin(buttList);
-        }
-
-        for (int i = 0; i < buttList.size(); i++) {
-            buttList.get(i).isButtonPressed();
-            buttList.get(i).drawButton();
-        }
-        screenChanger();
-
-    }}
+    }
 
     @Override
     public void mouseClicked() {
@@ -167,8 +170,8 @@ public class Main extends PApplet {
 
             room.clicktodraw(backgroundSystem.turn, playerList);
             treasure.clicktodraw(backgroundSystem.turn, playerList);
-            for (int i = 0; i < playerList.size() ; i++) {
-                playerList.get(i).selectCard(roomdisc,treasiredisc);
+            for (int i = 0; i < playerList.size(); i++) {
+                playerList.get(i).selectCard(roomdisc, treasiredisc);
 
             }
         }
