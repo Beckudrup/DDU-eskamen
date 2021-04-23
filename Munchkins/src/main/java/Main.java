@@ -39,7 +39,6 @@ public class Main extends PApplet {
     public void setup() {
         super.setup();
         thread("thread");
-
     }
    public void thread(){
         imageLoader.loadImage();
@@ -56,17 +55,14 @@ public class Main extends PApplet {
             if(counter>=0&&counter<100){
                 textSize(30);
                 text("loading.",width/2,height/2);
-
             }
             if(counter>=100&&counter<200){
                 textSize(30);
                 text("loading..",width/2,height/2);
-
             }
             if(counter>=200&&counter<300){
                 textSize(30);
                 text("loading...",width/2,height/2);
-
             }
             if (counter<300){
                 counter++;
