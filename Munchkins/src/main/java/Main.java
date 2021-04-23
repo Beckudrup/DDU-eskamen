@@ -53,6 +53,7 @@ public class Main extends PApplet {
     @Override
     public void draw() {
         clear();
+        textAlign(CENTER);
         if (!loadingDone) {
             if (counter >= 0 && counter < 100) {
                 textSize(30);
@@ -74,6 +75,7 @@ public class Main extends PApplet {
             }
 
         }
+        textAlign(LEFT);
         if (loadingDone) {
             if (screenchange == 0) {
                 menus.mainMenu(buttList, imageLoader);
