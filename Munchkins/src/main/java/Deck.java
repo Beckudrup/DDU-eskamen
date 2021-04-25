@@ -7,7 +7,7 @@ public class Deck {
     PApplet p;
     PImage backside;
     ArrayList<Card> cardList = new ArrayList<>();
-
+    boolean firstDraw;
     int x, y, w, h;
 
     Deck(PApplet p, int x, int y, int w, int h) {
