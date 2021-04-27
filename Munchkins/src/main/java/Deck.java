@@ -7,7 +7,6 @@ public class Deck {
     PApplet p;
     PImage backside;
     ArrayList<Card> cardList = new ArrayList<>();
-    boolean firstDraw;
     int x, y, w, h;
 
     Deck(PApplet p, int x, int y, int w, int h) {
@@ -49,5 +48,17 @@ public class Deck {
                 disc.cardList.remove(disc.cardList.size() - 1);
             }
 
+    }
+    void showDisc(Deck disc){
+        if (disc.cardList.size() >=0){
+            for (int i = 0; i < disc.cardList.size(); i++) {
+                if (disc.cardList.get(i).numb==1) {
+                    disc.cardList.get(i).display(1090, 320, 90, 150, 1);
+                }else{
+                    disc.cardList.get(i).display(700, 320, 90, 150, 1);
+
+                }
+            }
+        }
     }
 }
