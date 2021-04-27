@@ -36,11 +36,11 @@ public class Deck {
             hand.add(drawncard);
         }else {
             if (cardList.size() > 0 && type==1){
-                int onTop = cardList.size()-1;
-                hand.get(onTop).hovering= false;
-                Card drawncard = cardList.get(onTop);
+
+               
+                Card drawncard = cardList.get( cardList.size()-1);
                 hand.add(drawncard);
-                cardList.remove(onTop);
+                cardList.remove( cardList.size()-1);
                 System.out.println("Du er doarlig");
             }
         }
