@@ -75,11 +75,10 @@ public class BackgroundSystem {
             buttList.add(new Button(p, 700, 400, 200, 100, "Woman"));
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
-                    treasurelist.drawcard(playerList.get(i).hand,0);
+                    treasurelist.drawcard(playerList.get(i).hand);
                     //p.print(treasurelist.cardList.size());
-                    roomlist.drawcard(playerList.get(i).hand,0);
+                    roomlist.drawcard(playerList.get(i).hand);
                     //p.print(roomlist.cardList.size());
-
                 }
             }
             notDoneYet = false;

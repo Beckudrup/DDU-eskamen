@@ -37,8 +37,8 @@ public class Players {
                                 treasuredisc.addcard(body);
                         }
                     }
-                    hand.get(i).hovering=false;
-                    body=hand.get(i);
+
+                    body = hand.get(i);
                     hand.remove(i);
                 } else {
                     if (hand.get(i).type.equalsIgnoreCase("headgear")) {
@@ -50,8 +50,7 @@ public class Players {
                                     treasuredisc.addcard(head);
                             }
                         }
-                        hand.get(i).hovering=false;
-                        head=hand.get(i);
+                        head = hand.get(i);
                         hand.remove(i);
                     } else {
                         if (hand.get(i).type.equalsIgnoreCase("footgear")) {
@@ -63,8 +62,7 @@ public class Players {
                                         treasuredisc.addcard(feet);
                                 }
                             }
-                            hand.get(i).hovering=false;
-                            feet=hand.get(i);
+                            feet = hand.get(i);
                             hand.remove(i);
                         } else {
                             if ((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 == null) {
@@ -76,8 +74,7 @@ public class Players {
                                             treasuredisc.addcard(hand1);
                                     }
                                 }
-                                hand.get(i).hovering=false;
-                                hand1=hand.get(i);
+                                hand1 = hand.get(i);
                                 hand.remove(i);
                             } else {
                                 if ((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 != null && (!hand1.type.equalsIgnoreCase("2 hands") || !hand1.type.equalsIgnoreCase("2 hands big"))) {
@@ -89,22 +86,26 @@ public class Players {
                                                 treasuredisc.addcard(hand2);
                                         }
                                     }
-                                    hand.get(i).hovering=false;
-                                    hand2=hand.get(i);
+                                    hand2 = hand.get(i);
                                     hand.remove(i);
-                                }else{
+                                } else {
 
-                if (hand.get(i).numb == 0) {
-                    hand.get(i).hovering=false;
-                    Card card = hand.get(i);
-                    roomdisc.addcard(card);
-                    hand.remove(i);
-                } else {
-                    if (hand.get(i).numb == 1) {
-                        hand.get(i).hovering=false;
-                    Card card = hand.get(i);
-                    treasuredisc.addcard(card);
-                    hand.remove(i);
+                                    if (hand.get(i).numb == 0) {
+                                        Card card = hand.get(i);
+                                        roomdisc.addcard(card);
+                                        hand.remove(i);
+                                    } else {
+                                        if (hand.get(i).numb == 1) {
+
+                                            Card card = hand.get(i);
+                                            treasuredisc.addcard(card);
+                                            hand.remove(i);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
 
             }
