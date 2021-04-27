@@ -64,9 +64,9 @@ public class Deck {
         if (disc.cardList.size() > 0){
             for (int i = 0; i < disc.cardList.size(); i++) {
                 if (disc.cardList.get(i).numb==1) {
-                    disc.cardList.get(i).display(1090, 320, 90, 150, 1);
+                    disc.cardList.get(i).display(1090, 270, 90, 150, 1);
                 }else{
-                    disc.cardList.get(i).display(700, 320, 90, 150, 1);
+                    disc.cardList.get(i).display(700, 270, 90, 150, 1);
 
                 }
             }
