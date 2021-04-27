@@ -12,14 +12,16 @@ public class Card {
     int level;
     String imglink;
     int numb;
-    String tyoe;
+    int power;
+    int power2;
 
 
-    Card(PApplet p, String imglink, int numb,String type) {
+    Card(PApplet p, String imglink, int numb,String type, int power, int power2) {
         this.p = p;
         cards = p.loadImage(imglink);
         this.numb = numb;
-        this.type=type;
+        this.type = type;
+        this.power = power;
 
     }
 

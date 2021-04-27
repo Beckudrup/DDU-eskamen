@@ -28,6 +28,8 @@ public class Database {
             room.type = (db.getString("Type"));
             room.name = (db.getString("Name"));
             room.level = (db.getInt("Level"));
+            room.power = (db.getInt("Power"));
+            room.power2 = (db.getInt("Power2"));
             roominfoList.add(room);
             //collected.type = (db.getString("Type"));
             //collected.name = (db.getString("Name"));
@@ -43,6 +45,8 @@ public class Database {
                 treasure.type = (db.getString("Type"));
                 treasure.name = (db.getString("Name"));
                 treasure.level = (db.getInt("Level"));
+                treasure.power = (db.getInt("Power"));
+                treasure.power2 = (db.getInt("Power2"));
                 treasureinfoList.add(treasure);
                 //p.println(cardinfoList.size(),cardinfoList.get(cardinfoList.size()-1).level, cardinfoList.get(cardinfoList.size()-1).name, " i = " + i++ + "   At 0:" ,cardinfoList.get(0).level, cardinfoList.get(0).name);
                 //println(TreasureList.get(i++));
