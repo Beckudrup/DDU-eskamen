@@ -35,7 +35,7 @@ public class Players {
                             treasuredisc.addcard(body);
                         }
                     }
-
+                    hand.get(i).hovering=false;
                     body=hand.get(i);
                     hand.remove(i);
                 }else{
@@ -48,6 +48,7 @@ public class Players {
                                     treasuredisc.addcard(head);
                             }
                         }
+                        hand.get(i).hovering=false;
                         head=hand.get(i);
                         hand.remove(i);
                     }else{
@@ -60,6 +61,7 @@ public class Players {
                                         treasuredisc.addcard(feet);
                                 }
                             }
+                            hand.get(i).hovering=false;
                             feet=hand.get(i);
                             hand.remove(i);
                         }else{
@@ -72,6 +74,7 @@ public class Players {
                                             treasuredisc.addcard(hand1);
                                     }
                                 }
+                                hand.get(i).hovering=false;
                                 hand1=hand.get(i);
                                 hand.remove(i);
                             }else{
@@ -84,17 +87,19 @@ public class Players {
                                                 treasuredisc.addcard(hand2);
                                         }
                                     }
+                                    hand.get(i).hovering=false;
                                     hand2=hand.get(i);
                                     hand.remove(i);
                                 }else{
 
                 if (hand.get(i).numb == 0) {
+                    hand.get(i).hovering=false;
                     Card card = hand.get(i);
                     roomdisc.addcard(card);
                     hand.remove(i);
                 } else {
                     if (hand.get(i).numb == 1) {
-
+                        hand.get(i).hovering=false;
                     Card card = hand.get(i);
                     treasuredisc.addcard(card);
                     hand.remove(i);
