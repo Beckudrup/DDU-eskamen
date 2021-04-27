@@ -95,7 +95,8 @@ public class Main extends PApplet {
                 // }
                 badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasiredisc);
 
-
+                roomdisc.showDisc(roomdisc);
+                treasiredisc.showDisc(treasiredisc);
                 dice.display(200, 200);
                 for (int i = 0; i < 4; i++) {
                     playerList.get(i).hoverCard(backgroundSystem);
