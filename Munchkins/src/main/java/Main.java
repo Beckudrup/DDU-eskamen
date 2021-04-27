@@ -100,6 +100,7 @@ public class Main extends PApplet {
                 for (int i = 0; i < 4; i++) {
                     playerList.get(i).hoverCard(backgroundSystem);
                     playerList.get(i).displayHand(backgroundSystem.turn);
+                    playerList.get(i).displayequiped();
                     playerList.get(i).displayicon();
                 }
                 room.displayBackside();

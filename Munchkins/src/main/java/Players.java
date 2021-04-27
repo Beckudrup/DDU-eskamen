@@ -11,6 +11,12 @@ public class Players {
     int playerClass = 0;
     int race = 0;
     int playernr;
+    Card head;
+    Card body;
+    Card feet;
+    Card hand1;
+    Card hand2;
+
     ArrayList<Card> hand = new ArrayList();
 
     Players(PApplet p) {
@@ -20,21 +26,96 @@ public class Players {
     void selectCard(Deck roomdisc, Deck treasuredisc) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
+                if (hand.get(i).type.equalsIgnoreCase("Armor")||(hand.get(i).type.equalsIgnoreCase("armor big"))){
+                    if(body!=null){
+                        if(body.numb==0){
+                            roomdisc.addcard(body);
+                        }else{
+                          if(body.numb==1)
+                            treasuredisc.addcard(body);
+                        }
+                    }
+
+                    body=hand.get(i);
+                    hand.remove(i);
+                }else{
+                    if (hand.get(i).type.equalsIgnoreCase("headgear")){
+                        if(head!=null){
+                            if(head.numb==0){
+                                roomdisc.addcard(head);
+                            }else{
+                                if(head.numb==1)
+                                    treasuredisc.addcard(head);
+                            }
+                        }
+                        head=hand.get(i);
+                        hand.remove(i);
+                    }else{
+                        if (hand.get(i).type.equalsIgnoreCase("footgear")){
+                            if(feet!=null){
+                                if(feet.numb==0){
+                                    roomdisc.addcard(feet);
+                                }else{
+                                    if(feet.numb==1)
+                                        treasuredisc.addcard(feet);
+                                }
+                            }
+                            feet=hand.get(i);
+                            hand.remove(i);
+                        }else{
+                            if ((hand.get(i).type.equalsIgnoreCase("1 hand")||hand.get(i).type.equalsIgnoreCase("1 hand big"))&&hand1==null){
+                                if(hand1!=null){
+                                    if(hand1.numb==0){
+                                        roomdisc.addcard(hand1);
+                                    }else{
+                                        if(hand1.numb==1)
+                                            treasuredisc.addcard(hand1);
+                                    }
+                                }
+                                hand1=hand.get(i);
+                                hand.remove(i);
+                            }else{
+                                if ((hand.get(i).type.equalsIgnoreCase("1 hand")||hand.get(i).type.equalsIgnoreCase("1 hand big"))&&hand1!=null&&(!hand1.type.equalsIgnoreCase("2 hands")||!hand1.type.equalsIgnoreCase("2 hands big"))){
+                                    if(hand2!=null){
+                                        if(hand2.numb==0){
+                                            roomdisc.addcard(hand2);
+                                        }else{
+                                            if(hand2.numb==1)
+                                                treasuredisc.addcard(hand2);
+                                        }
+                                    }
+                                    hand2=hand.get(i);
+                                    hand.remove(i);
+                                }else{
+
                 if (hand.get(i).numb == 0) {
                     Card card = hand.get(i);
                     roomdisc.addcard(card);
                     hand.remove(i);
                 } else {
                     if (hand.get(i).numb == 1) {
-                    }
+
                     Card card = hand.get(i);
                     treasuredisc.addcard(card);
                     hand.remove(i);
                 }
+            }}}}}}
+
             }
         }
     }
-
+    void displayequiped(){
+        if(head!=null)
+        head.display(200,800,60,100,1);
+        if(body!=null)
+        body.display(280,800,60,100,1);
+        if(feet!=null)
+        feet.display(360,800,60,100,1);
+        if(hand1!=null)
+        hand1.display(200,920,60,100,1);
+        if(hand2!=null)
+        hand2.display(280,920,60,100,1);
+    }
     void displayHand(int turn) {
         if (hand.size() > 0) {
             if (turn - playernr == 0) {
