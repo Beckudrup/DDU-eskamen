@@ -34,6 +34,16 @@ public class Deck {
             Card drawncard = cardList.get(random);
             cardList.remove(random);
             hand.add(drawncard);
+
+        }else {
+            if (cardList.size() > 0 && type==1){
+
+               
+                Card drawncard = cardList.get( cardList.size()-1);
+                hand.add(drawncard);
+                cardList.remove( cardList.size()-1);
+                System.out.println("Du er doarlig");
+            }
         }
     }
 
@@ -49,5 +59,17 @@ public class Deck {
                 disc.cardList.remove(disc.cardList.size() - 1);
             }
 
+    }
+    void showDisc(Deck disc){
+        if (disc.cardList.size() > 0){
+            for (int i = 0; i < disc.cardList.size(); i++) {
+                if (disc.cardList.get(i).numb==1) {
+                    disc.cardList.get(i).display(1090, 270, 90, 150, 1);
+                }else{
+                    disc.cardList.get(i).display(700, 270, 90, 150, 1);
+
+                }
+            }
+        }
     }
 }
