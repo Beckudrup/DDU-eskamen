@@ -172,8 +172,10 @@ public class Main extends PApplet {
             if (mouseX > dice.posX && mouseX < dice.posX + 50 && mouseY > dice.posY && mouseY < dice.posY + 50)
                 dice.trowDie(7);
 
-            room.clicktodraw(backgroundSystem.turn, playerList);
-            treasure.clicktodraw(backgroundSystem.turn, playerList);
+            room.clicktodraw(backgroundSystem.turn, playerList,0);
+            treasure.clicktodraw(backgroundSystem.turn, playerList,0);
+            roomdisc.clicktodraw(backgroundSystem.turn, playerList,1);
+            treasiredisc.clicktodraw(backgroundSystem.turn,playerList,1);
             for (int i = 0; i < playerList.size(); i++) {
                 playerList.get(i).selectCard(roomdisc, treasiredisc);
 
