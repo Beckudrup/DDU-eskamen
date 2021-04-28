@@ -7,7 +7,6 @@ public class Deck {
     PApplet p;
     PImage backside;
     ArrayList<Card> cardList = new ArrayList<>();
-    boolean firstDraw;
     int x, y, w, h;
 
     Deck(PApplet p, int x, int y, int w, int h) {
@@ -22,19 +21,19 @@ public class Deck {
         cardList.add(card);
     }
 
-    void clicktodraw(int turn, ArrayList<Players> playerList) {
+    void clicktodraw(int turn, ArrayList<Players> playerList, int type) {
         if (p.mouseX > x && p.mouseX < x + w && p.mouseY > y && p.mouseY < y + h) {
-            drawcard(playerList.get(turn).hand);
+            drawcard(playerList.get(turn).hand, type);
         }
     }
 
-    void drawcard(ArrayList<Card> hand) {
-        if (cardList.size() > 0) {
+    void drawcard(ArrayList<Card> hand, int type) {
+        if (cardList.size() > 0 && type==0) {
+
             int random = (int) p.random(cardList.size());
             Card drawncard = cardList.get(random);
             cardList.remove(random);
             hand.add(drawncard);
-
         }else {
             if (cardList.size() > 0 && type==1){
 
@@ -45,6 +44,7 @@ public class Deck {
                 System.out.println("Du er doarlig");
             }
         }
+
     }
 
     void displayBackside() {

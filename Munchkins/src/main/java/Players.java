@@ -28,101 +28,100 @@ public class Players {
     void selectCard(Deck roomdisc, Deck treasuredisc) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
-                if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
-                    if (body != null) {
-                        if (body.numb == 0) {
+                if (hand.get(i).type.equalsIgnoreCase("Armor")||(hand.get(i).type.equalsIgnoreCase("armor big"))){
+                    if(body!=null){
+                        if(body.numb==0){
                             roomdisc.addcard(body);
-                        } else {
-                            if (body.numb == 1)
-                                treasuredisc.addcard(body);
+                        }else{
+                          if(body.numb==1)
+                            treasuredisc.addcard(body);
                         }
                     }
-
-                    body = hand.get(i);
+                    hand.get(i).hovering=false;
+                    body=hand.get(i);
                     hand.remove(i);
-                } else {
-                    if (hand.get(i).type.equalsIgnoreCase("headgear")) {
-                        if (head != null) {
-                            if (head.numb == 0) {
+                }else{
+                    if (hand.get(i).type.equalsIgnoreCase("headgear")){
+                        if(head!=null){
+                            if(head.numb==0){
                                 roomdisc.addcard(head);
-                            } else {
-                                if (head.numb == 1)
+                            }else{
+                                if(head.numb==1)
                                     treasuredisc.addcard(head);
                             }
                         }
-                        head = hand.get(i);
+                        hand.get(i).hovering=false;
+                        head=hand.get(i);
                         hand.remove(i);
-                    } else {
-                        if (hand.get(i).type.equalsIgnoreCase("footgear")) {
-                            if (feet != null) {
-                                if (feet.numb == 0) {
+                    }else{
+                        if (hand.get(i).type.equalsIgnoreCase("footgear")){
+                            if(feet!=null){
+                                if(feet.numb==0){
                                     roomdisc.addcard(feet);
-                                } else {
-                                    if (feet.numb == 1)
+                                }else{
+                                    if(feet.numb==1)
                                         treasuredisc.addcard(feet);
                                 }
                             }
-                            feet = hand.get(i);
+                            hand.get(i).hovering=false;
+                            feet=hand.get(i);
                             hand.remove(i);
-                        } else {
-                            if ((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 == null) {
-                                if (hand1 != null) {
-                                    if (hand1.numb == 0) {
+                        }else{
+                            if ((hand.get(i).type.equalsIgnoreCase("1 hand")||hand.get(i).type.equalsIgnoreCase("1 hand big"))&&hand1==null){
+                                if(hand1!=null){
+                                    if(hand1.numb==0){
                                         roomdisc.addcard(hand1);
-                                    } else {
-                                        if (hand1.numb == 1)
+                                    }else{
+                                        if(hand1.numb==1)
                                             treasuredisc.addcard(hand1);
                                     }
                                 }
-                                hand1 = hand.get(i);
+                                hand.get(i).hovering=false;
+                                hand1=hand.get(i);
                                 hand.remove(i);
-                            } else {
-                                if ((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 != null && (!hand1.type.equalsIgnoreCase("2 hands") || !hand1.type.equalsIgnoreCase("2 hands big"))) {
-                                    if (hand2 != null) {
-                                        if (hand2.numb == 0) {
+                            }else{
+                                if ((hand.get(i).type.equalsIgnoreCase("1 hand")||hand.get(i).type.equalsIgnoreCase("1 hand big"))&&hand1!=null&&(!hand1.type.equalsIgnoreCase("2 hands")||!hand1.type.equalsIgnoreCase("2 hands big"))){
+                                    if(hand2!=null){
+                                        if(hand2.numb==0){
                                             roomdisc.addcard(hand2);
-                                        } else {
-                                            if (hand2.numb == 1)
+                                        }else{
+                                            if(hand2.numb==1)
                                                 treasuredisc.addcard(hand2);
                                         }
                                     }
-                                    hand2 = hand.get(i);
+                                    hand.get(i).hovering=false;
+                                    hand2=hand.get(i);
                                     hand.remove(i);
-                                } else {
+                                }else{
 
-                                    if (hand.get(i).numb == 0) {
-                                        Card card = hand.get(i);
-                                        roomdisc.addcard(card);
-                                        hand.remove(i);
-                                    } else {
-                                        if (hand.get(i).numb == 1) {
-
-                                            Card card = hand.get(i);
-                                            treasuredisc.addcard(card);
-                                            hand.remove(i);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                if (hand.get(i).numb == 0) {
+                    hand.get(i).hovering=false;
+                    Card card = hand.get(i);
+                    roomdisc.addcard(card);
+                    hand.remove(i);
+                } else {
+                    if (hand.get(i).numb == 1) {
+                        hand.get(i).hovering=false;
+                    Card card = hand.get(i);
+                    treasuredisc.addcard(card);
+                    hand.remove(i);
                 }
+            }}}}}}
 
             }
         }
     }
-
-    void displayequiped() {
-        if (head != null)
-            head.display(200, 800, 60, 100, 1);
-        if (body != null)
-            body.display(280, 800, 60, 100, 1);
-        if (feet != null)
-            feet.display(360, 800, 60, 100, 1);
-        if (hand1 != null)
-            hand1.display(200, 920, 60, 100, 1);
-        if (hand2 != null)
-            hand2.display(280, 920, 60, 100, 1);
+    void displayequiped(){
+        if(head!=null)
+        head.display(200,800,60,100,1);
+        if(body!=null)
+        body.display(280,800,60,100,1);
+        if(feet!=null)
+        feet.display(360,800,60,100,1);
+        if(hand1!=null)
+        hand1.display(200,920,60,100,1);
+        if(hand2!=null)
+        hand2.display(280,920,60,100,1);
     }
 
     void getPower() {
@@ -138,8 +137,6 @@ public class Players {
             pow = (hand2.power);*/
         if (head != null && body != null && feet != null && hand1 != null && hand2 != null) {
             pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power);
-        }
-        if (playernr == 0) {
             p.println(pow);
         }
     }
@@ -195,21 +192,21 @@ public class Players {
     void displayicon() {
         if (playernr == 0) {
             p.image(icon, 10, 950, 100, 100);
-            p.text("lvl:" + level, 60, 920);
+            p.text("lvl:"+level,60,920);
         }
         if (playernr == 1) {
             p.image(icon, 10, 10, 100, 100);
-            p.text("lvl:" + level, 150, 75);
+            p.text("lvl:"+level,150,75);
 
         }
         if (playernr == 2) {
             p.image(icon, 1810, 10, 100, 100);
-            p.text("lvl:" + level, 1850, 150);
+            p.text("lvl:"+level,1850,150);
 
         }
         if (playernr == 3) {
             p.image(icon, 1810, 950, 100, 100);
-            p.text("lvl:" + level, 1750, 1000);
+            p.text("lvl:"+level,1750,1000);
 
         }
     }

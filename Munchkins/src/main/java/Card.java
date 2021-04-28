@@ -9,8 +9,9 @@ public class Card {
     boolean hovering;
     String name;
     String type;
-    int level;
     String imglink;
+    String tyoe;
+    int level;
     int numb;
     int power;
     int power2;
@@ -20,9 +21,9 @@ public class Card {
         this.p = p;
         cards = p.loadImage(imglink);
         this.numb = numb;
+        this.type=type;
         this.type = type;
         this.power = power;
-
     }
 
     void display(int x, int y, int w, int h, int frontOrBack) {
