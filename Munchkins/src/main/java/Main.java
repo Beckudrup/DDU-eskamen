@@ -176,10 +176,10 @@ public class Main extends PApplet {
             if (mouseX > dice.posX && mouseX < dice.posX + 50 && mouseY > dice.posY && mouseY < dice.posY + 50)
                 dice.trowDie(7);
 
-            room.clicktodraw(backgroundSystem.turn, playerList,0);
-            treasure.clicktodraw(backgroundSystem.turn, playerList,0);
-            roomdisc.clicktodraw(backgroundSystem.turn, playerList,1);
-            treasiredisc.clicktodraw(backgroundSystem.turn,playerList,1);
+            room.clicktodraw(backgroundSystem.turn, playerList, 0);
+            treasure.clicktodraw(backgroundSystem.turn, playerList, 0);
+            roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1);
+            treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1);
             for (int i = 0; i < playerList.size(); i++) {
                 playerList.get(i).selectCard(roomdisc, treasiredisc);
 
@@ -290,7 +290,7 @@ public class Main extends PApplet {
                 buttList.clear();
             }
         }
-        if (screenchange == 3 || screenchange == 4 || screenchange == 5 || screenchange == 6 || screenchange == 7 || screenchange == 8 || screenchange == 9 || screenchange == 10 || screenchange == 11 || screenchange == 12 || screenchange == 13 || screenchange == 14||screenchange == 15) {
+        if (screenchange == 3 || screenchange == 4 || screenchange == 5 || screenchange == 6 || screenchange == 7 || screenchange == 8 || screenchange == 9 || screenchange == 10 || screenchange == 11 || screenchange == 12 || screenchange == 13 || screenchange == 14 || screenchange == 15) {
             if (buttList.size() > 0 && buttList.get(0).tryk == true) {
                 screenchange = 2;
                 buttList.get(0).tryk = false;

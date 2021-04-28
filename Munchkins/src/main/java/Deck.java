@@ -28,20 +28,18 @@ public class Deck {
     }
 
     void drawcard(ArrayList<Card> hand, int type) {
-        if (cardList.size() > 0 && type==0) {
-
+        if (cardList.size() > 0 && type == 0) {
             int random = (int) p.random(cardList.size());
             Card drawncard = cardList.get(random);
             cardList.remove(random);
             hand.add(drawncard);
-        }else {
-            if (cardList.size() > 0 && type==1){
-                Card drawncard = cardList.get( cardList.size()-1);
+        } else {
+            if (cardList.size() > 0 && type == 1) {
+                Card drawncard = cardList.get(cardList.size() - 1);
                 hand.add(drawncard);
-                cardList.remove( cardList.size()-1);
+                cardList.remove(cardList.size() - 1);
             }
         }
-
     }
 
     void displayBackside() {
@@ -57,12 +55,13 @@ public class Deck {
             }
 
     }
-    void showDisc(Deck disc){
-        if (disc.cardList.size() > 0){
+
+    void showDisc(Deck disc) {
+        if (disc.cardList.size() > 0) {
             for (int i = 0; i < disc.cardList.size(); i++) {
-                if (disc.cardList.get(i).numb==1) {
+                if (disc.cardList.get(i).numb == 1) {
                     disc.cardList.get(i).display(1090, 270, 90, 150, 1);
-                }else{
+                } else {
                     disc.cardList.get(i).display(700, 270, 90, 150, 1);
 
                 }

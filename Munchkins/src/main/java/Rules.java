@@ -235,6 +235,7 @@ public class Rules {
         p.text("You win by getting to level 10. Every player starts at level 1, and each \ntime they win a battle they earn 1 level, unless the monster says 2 levels. \nYou can also gain levels by selling items, 1000 gold = 1 level. There are also treassure cards that lets you level up. \nThese two methods cannot raise your level to 10. The only way to get level 10 is to beat a monster.", p.width / 2, 200);
         p.textAlign(PConstants.LEFT);
     }
+
     void rGameControls(ArrayList<Button> buttList) {
         p.background(230);
         p.fill(0);
@@ -245,16 +246,16 @@ public class Rules {
         p.fill(0);
         p.textAlign(PConstants.CENTER);
         p.text("Game Controls", p.width / 2, 100);
-        p.text("Equip item",200,200);
-        p.text("Use ability", 700,200);
-        p.text("Hide and show hand", 1200,200);
-        p.text("Run away",1700,200);
+        p.text("Equip item", 200, 200);
+        p.text("Use ability", 700, 200);
+        p.text("Hide and show hand", 1200, 200);
+        p.text("Run away", 1700, 200);
         p.textSize(30);
         p.textAlign(PConstants.LEFT);
         p.text("To equip an item left \nclick on it, \nand if you have an \nopen slot for \nthat item then it will \nbe placed in that slot. \nbut you can only \nhave 1 big item \nat a time.", 50, 250);
-        p.text("Ability goes here",575,250);
-        p.text("Hide and show hand goes here",975,250);
-        p.text("Run goes here",1600,250);
+        p.text("Ability goes here", 575, 250);
+        p.text("Hide and show hand goes here", 975, 250);
+        p.text("Run goes here", 1600, 250);
 
     }
 }
