@@ -154,6 +154,9 @@ public class Main extends PApplet {
             if (screenchange == 14) {
                 rules.rHowToWin(buttList);
             }
+            if (screenchange == 15) {
+                rules.rGameControls(buttList);
+            }
 
             for (int i = 0; i < buttList.size(); i++) {
                 buttList.get(i).isButtonPressed();
@@ -280,8 +283,14 @@ public class Main extends PApplet {
                 menus.notdoneyet = true;
                 buttList.clear();
             }
+            //Game controls
+            if (buttList.size() > 0 && buttList.get(13).tryk == true) {
+                screenchange = 15;
+                menus.notdoneyet = true;
+                buttList.clear();
+            }
         }
-        if (screenchange == 3 || screenchange == 4 || screenchange == 5 || screenchange == 6 || screenchange == 7 || screenchange == 8 || screenchange == 9 || screenchange == 10 || screenchange == 11 || screenchange == 12 || screenchange == 13 || screenchange == 14) {
+        if (screenchange == 3 || screenchange == 4 || screenchange == 5 || screenchange == 6 || screenchange == 7 || screenchange == 8 || screenchange == 9 || screenchange == 10 || screenchange == 11 || screenchange == 12 || screenchange == 13 || screenchange == 14||screenchange == 15) {
             if (buttList.size() > 0 && buttList.get(0).tryk == true) {
                 screenchange = 2;
                 buttList.get(0).tryk = false;
@@ -291,7 +300,7 @@ public class Main extends PApplet {
             }
             if (buttList.size() > 0 && buttList.get(1).tryk == true) {
                 if (screenchange == 3) {
-                    screenchange = 14;
+                    screenchange = 15;
                     buttList.get(1).tryk = false;
 
                 } else {
@@ -303,12 +312,12 @@ public class Main extends PApplet {
                 }
             }
             if (buttList.size() > 0 && buttList.get(2).tryk == true) {
-                if (screenchange == 14) {
+                if (screenchange == 15) {
                     screenchange = 3;
                     buttList.get(2).tryk = false;
 
                 } else {
-                    if (screenchange != 14) {
+                    if (screenchange != 15) {
                         buttList.get(2).tryk = false;
                         screenchange++;
                     }
