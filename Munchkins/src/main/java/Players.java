@@ -8,6 +8,11 @@ public class Players {
     int level = 1;
     PImage icon;
     int gender;
+    int headpow;
+    int bodypow;
+    int feetpow;
+    int handpow;
+    int hand2pow;
     int pow;
     int tempPow;
     int playerClass = 0;
@@ -131,19 +136,28 @@ public class Players {
     }
 
     void getPower() {
-        /*if (head != null)
-            pow = (head.power);
-        if (body != null)
-            pow = (body.power);
-        if (feet != null)
-            pow = (feet.power);
-        if (hand1 != null)
-            pow = (hand1.power);
-        if (hand2 != null)
-            pow = (hand2.power);*/
+        if (head != null) {
+            headpow = (head.power);
+        }
+        if (body != null) {
+            bodypow = (body.power);
+        }
+        if (feet != null) {
+            feetpow = (feet.power);
+        }
+        if (hand1 != null) {
+            handpow = (hand1.power);
+        }
+        if (hand2 != null) {
+            hand2pow = (hand2.power);
+        }
         if (head != null && body != null && feet != null && hand1 != null && hand2 != null) {
             pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power);
             PApplet.println(pow);
+        } else {
+            if (playernr == 0){
+                PApplet.println(headpow + bodypow + feetpow + handpow + hand2pow);
+            }
         }
     }
 
