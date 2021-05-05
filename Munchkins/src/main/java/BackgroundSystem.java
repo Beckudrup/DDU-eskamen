@@ -13,7 +13,7 @@ public class BackgroundSystem {
         this.p = p;
     }
 
-    void endturn(ArrayList<Button> buttList, Players player, ArrayList<Players> playerList) {
+    void endturn(ArrayList<Button> buttList, Players player, ArrayList<Players> playerList, Deck roomdisc, Deck treasuredisc) {
         if (buttList.get(1).tryk) {
             if (turn < 3) {
                 turn++;
@@ -41,8 +41,18 @@ public class BackgroundSystem {
                         int random = (int) p.random(player.hand.size());
                         Card card = player.hand.get(random);
                         player.hand.remove(random);
-                        if (tmpSpiller != player) tmpSpiller.hand.add(card);
+                        if (tmpSpiller != player){
+                            tmpSpiller.hand.add(card);
+                        }else{
+                         if (card.numb==0){
+                             roomdisc.addcard(card);
+                         }else {
+                             if (card.numb==1){
+                                 treasuredisc.addcard(card);
+                             }
 
+                         }
+                        }
                     }
                 }
             }
