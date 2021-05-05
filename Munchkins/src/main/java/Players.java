@@ -189,10 +189,10 @@ public class Players {
             hand2pow = (hand2.power);
         }
         if (head != null && body != null && feet != null && hand1 != null && hand2 != null) {
-            pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power);
+            pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power+level);
             PApplet.println(pow);
         } else {
-            PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow) + " ");
+            PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow+level) + " ");
         }
     }
 
@@ -248,21 +248,23 @@ public class Players {
         if (playernr == 0) {
             p.image(icon, 10, 950, 100, 100);
             p.text("lvl:" + level, 40, 920);
+            p.text("p1",p.width/2,750);
         }
         if (playernr == 1) {
             p.image(icon, 10, 10, 100, 100);
             p.text("lvl:" + level, 150, 70);
+            p.text("p2",150,550);
 
         }
         if (playernr == 2) {
             p.image(icon, 1810, 10, 100, 100);
             p.text("lvl:" + level, 1840, 150);
-
+            p.text("p3",p.width/2,200);
         }
         if (playernr == 3) {
             p.image(icon, 1810, 950, 100, 100);
             p.text("lvl:" + level, 1750, 1010);
-
+            p.text("p4",1750,500);
         }
         p.fill(0);
     }

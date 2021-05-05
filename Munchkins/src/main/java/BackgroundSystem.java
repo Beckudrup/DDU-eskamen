@@ -21,7 +21,8 @@ public class BackgroundSystem {
                 turn = 0;
             }
             buttList.get(1).tryk = false;
-
+            roomdisc.allowedTreasure=0;
+            treasuredisc.allowedTreasure=0;
             if (player.hand.size() >= 6 /* && !harfling er ikke en Harfling*/) {
 
                 //find spiller med lavest level
@@ -34,8 +35,7 @@ public class BackgroundSystem {
 
                     }
                 }
-                //hvis man er lavest - discard cards
-
+                    //hvis man er lavest - discard cards
                     //ellers giv til lavest level
                     while (player.hand.size() > 5) {
                         int random = (int) p.random(player.hand.size());
