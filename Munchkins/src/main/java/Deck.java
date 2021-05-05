@@ -8,8 +8,8 @@ public class Deck {
     PImage backside;
     ArrayList<Card> cardList = new ArrayList<>();
     int x, y, w, h;
-    int allowedTreasure = 8;
-    boolean firstDraw = true;
+    int allowedTreasure = 0;
+    boolean firstDraw = false;
     Deck(PApplet p, int x, int y, int w, int h) {
         this.p = p;
         this.x = x;
@@ -52,10 +52,21 @@ public class Deck {
                     Card drawncard = cardList.get(cardList.size() - 1);
                     hand.add(drawncard);
                     cardList.remove(cardList.size() - 1);
-                }
-            }
-        }
+                }else{
+                    if(cardList.size() > 0 && type == 2){
+                        int rando = (int)p.random(cardList.size());
+                        Card drawncard = cardList.get(rando);
+                        hand.add(drawncard);
+                        cardList.remove(cardList.size() - 1);
 
+                    }
+            }
+
+        }
+        }
+    void q(){
+        //for christian
+    }
 
     void displayBackside() {
         p.image(backside, x, y, w, h);
