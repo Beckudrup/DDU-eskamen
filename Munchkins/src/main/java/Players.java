@@ -23,11 +23,13 @@ public class Players {
     Card feet;
     Card hand1;
     Card hand2;
+    Button showhand ;
 
     ArrayList<Card> hand = new ArrayList();
 
     Players(PApplet p) {
         this.p = p;
+        showhand = new Button(p,10,10,130,50,"Show hand");
     }
 
     void selectCard(Deck roomdisc, Deck treasuredisc) {
@@ -117,7 +119,6 @@ public class Players {
                         }
                     }
                 }
-
             }
         }
     }
@@ -160,17 +161,109 @@ public class Players {
             }
         }
     }
-
+    void changeButtonPos(BackgroundSystem backgroundSystem){
+        if(showhand.tryk==true){showhand.text="Hide hand";}
+        if(showhand.tryk==false){showhand.text="Show hand";}
+        if (playernr==0){
+            if (backgroundSystem.turn==0){
+                showhand.xPos=30;
+                showhand.yPos=820;
+            }
+            if (backgroundSystem.turn==1){
+                showhand.xPos=1550;
+                showhand.yPos=950;
+            }
+            if (backgroundSystem.turn==2){
+                showhand.xPos=1750;
+                showhand.yPos=170;
+            }
+            if (backgroundSystem.turn==3){
+                showhand.xPos=200;
+                showhand.yPos=30;
+            }
+        }
+        if (playernr==1){
+            if (backgroundSystem.turn==1){
+                showhand.xPos=30;
+                showhand.yPos=820;
+            }
+            if (backgroundSystem.turn==2){
+                showhand.xPos=1550;
+                showhand.yPos=950;
+            }
+            if (backgroundSystem.turn==3){
+                showhand.xPos=1750;
+                showhand.yPos=170;
+            }
+            if (backgroundSystem.turn==0){
+                showhand.xPos=200;
+                showhand.yPos=30;
+            }
+        }
+        if (playernr==2){
+            if (backgroundSystem.turn==2){
+                showhand.xPos=30;
+                showhand.yPos=820;
+            }
+            if (backgroundSystem.turn==3){
+                showhand.xPos=1550;
+                showhand.yPos=950;
+            }
+            if (backgroundSystem.turn==0){
+                showhand.xPos=1750;
+                showhand.yPos=170;
+            }
+            if (backgroundSystem.turn==1){
+                showhand.xPos=200;
+                showhand.yPos=30;
+            }
+        }
+        if (playernr==3){
+            if (backgroundSystem.turn==3){
+                showhand.xPos=30;
+                showhand.yPos=820;
+            }
+            if (backgroundSystem.turn==0){
+                showhand.xPos=1550;
+                showhand.yPos=950;
+            }
+            if (backgroundSystem.turn==1){
+                showhand.xPos=1750;
+                showhand.yPos=170;
+            }
+            if (backgroundSystem.turn==2){
+                showhand.xPos=200;
+                showhand.yPos=30;
+            }
+        }
+    }
     void displayHand(int turn) {
         if (hand.size() > 0) {
             if (turn - playernr == 0) {
-
+                if(showhand.tryk==true){
                 for (int i = 0; i < hand.size(); i++) {
                     hand.get(i).display(700 + i * 180, 800, 160, 200, 1);
+                }}
+                if (showhand.tryk==false){
+                    for (int i = 0; i < hand.size(); i++) {
+                        hand.get(i).display(700 + i * 180, 800, 160, 200, 2);
+                    }
+
                 }
             }
 
             if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
+                if(showhand.tryk==true){
+                    for (int i = 0; i < hand.size(); i++) {
+                        p.pushMatrix();
+
+                        p.rotate((float) 1.5708);
+
+                        hand.get(i).display(370 + i * 90, -100, 160 / 2, 200 / 2, 1);
+                        p.popMatrix();
+                    }
+                }
+                if(showhand.tryk==false){
                 for (int i = 0; i < hand.size(); i++) {
                     p.pushMatrix();
 
@@ -178,18 +271,41 @@ public class Players {
 
                     hand.get(i).display(370 + i * 90, -100, 160 / 2, 200 / 2, 2);
                     p.popMatrix();
-                }
+                }}
             }
             if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
+                if(showhand.tryk==true){
+                    for (int i = 0; i < hand.size(); i++) {
+                    p.pushMatrix();
+
+                    p.rotate((float) 1.5708 * 2);
+                    hand.get(i).display(-870 - i * 90, -100, 160 / 2, 200 / 2, 1);
+                    p.popMatrix();
+                }}
+                if(showhand.tryk==false){
                 for (int i = 0; i < hand.size(); i++) {
                     p.pushMatrix();
 
                     p.rotate((float) 1.5708 * 2);
                     hand.get(i).display(-870 - i * 90, -100, 160 / 2, 200 / 2, 2);
                     p.popMatrix();
-                }
+                }}
             }
+
+
+
+
             if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
+                if(showhand.tryk==true){
+                    for (int i = 0; i < hand.size(); i++) {
+                        p.pushMatrix();
+
+                        p.rotate((float) 1.5708 * 3);
+
+                        hand.get(i).display(-370 - i * 90, 1800, 160 / 2, 200 / 2, 1);
+                        p.popMatrix();
+                    }}
+                if(showhand.tryk==false){
                 for (int i = 0; i < hand.size(); i++) {
                     p.pushMatrix();
 
@@ -197,7 +313,7 @@ public class Players {
 
                     hand.get(i).display(-370 - i * 90, 1800, 160 / 2, 200 / 2, 2);
                     p.popMatrix();
-                }
+                }}
             }
 
         }

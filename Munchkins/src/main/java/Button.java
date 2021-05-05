@@ -36,6 +36,12 @@ public class Button {
             tryk = true;
         }
     }
+    void registerClick2(float xin, float yin) {
+
+        if (xin > xPos && xin < xPos + w && yin < yPos + h && yin > yPos) {
+            tryk = !tryk;
+        }
+    }
 
     void valgt() {
         p.triangle(xPos + w / 2, yPos + h + 10, xPos + w / 2 - w / 4, yPos + h + 30, xPos + w / 2 + w / 4, yPos + h + 30);
