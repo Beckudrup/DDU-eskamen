@@ -10,7 +10,6 @@ public class Card {
     String name;
     String type;
     String imglink;
-    String tyoe;
     int level;
     int numb;
     int power;
@@ -21,7 +20,6 @@ public class Card {
         this.p = p;
         cards = p.loadImage(imglink);
         this.numb = numb;
-        this.type = type;
         this.type = type;
         this.power = power;
     }
