@@ -23,6 +23,8 @@ public class Players {
     Card feet;
     Card hand1;
     Card hand2;
+    Card Class;
+    Card Race;
 
     ArrayList<Card> hand = new ArrayList();
 
@@ -117,10 +119,40 @@ public class Players {
                         }
                     }
                 }
-
             }
         }
     }
+
+    /*
+    if (hand.get(i).type.equalsIgnoreCase("Class")) {
+                            if (Class != null) {
+                                if (Class.numb == 0) {
+                                    roomdisc.addcard(Class);
+                                } else {
+                                    if (Class.numb == 1)
+                                        treasuredisc.addcard(Class);
+                                }
+                            }
+                            hand.get(i).hovering = false;
+                            Class = hand.get(i);
+                            hand.remove(i);
+                        } else {
+                            if (hand.get(i).type.equalsIgnoreCase("Race")) {
+                                if (Race != null) {
+                                    if (Race.numb == 0) {
+                                        roomdisc.addcard(Race);
+                                    } else {
+                                        if (Race.numb == 1)
+                                            treasuredisc.addcard(Race);
+                                    }
+                                }
+                                hand.get(i).hovering = false;
+                                Race = hand.get(i);
+                                hand.remove(i);
+                            }
+                        }
+     */
+
 
     void displayequiped() {
         if (head != null)
@@ -133,6 +165,11 @@ public class Players {
             hand1.display(200, 920, 60, 100, 1);
         if (hand2 != null)
             hand2.display(280, 920, 60, 100, 1);
+        if (Class != null)
+            Class.display(360, 800, 60, 100, 1);
+        if (Race != null)
+            Race.display(440, 800, 60, 100, 1);
+
     }
 
     void getPower() {
@@ -155,9 +192,7 @@ public class Players {
             pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power);
             PApplet.println(pow);
         } else {
-            if (playernr == 0){
-                PApplet.println(headpow + bodypow + feetpow + handpow + hand2pow);
-            }
+            PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow) + " ");
         }
     }
 
@@ -199,7 +234,6 @@ public class Players {
                     p.popMatrix();
                 }
             }
-
         }
     }
 
