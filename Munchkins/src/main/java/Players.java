@@ -210,24 +210,26 @@ public class Players {
     }
 
     void displayicon() {
+        p.fill(255);
         if (playernr == 0) {
             p.image(icon, 10, 950, 100, 100);
-            p.text("lvl:" + level, 60, 920);
+            p.text("lvl:" + level, 40, 920);
         }
         if (playernr == 1) {
             p.image(icon, 10, 10, 100, 100);
-            p.text("lvl:" + level, 150, 75);
+            p.text("lvl:" + level, 150, 70);
 
         }
         if (playernr == 2) {
             p.image(icon, 1810, 10, 100, 100);
-            p.text("lvl:" + level, 1850, 150);
+            p.text("lvl:" + level, 1840, 150);
 
         }
         if (playernr == 3) {
             p.image(icon, 1810, 950, 100, 100);
-            p.text("lvl:" + level, 1750, 1000);
+            p.text("lvl:" + level, 1750, 1010);
 
         }
+        p.fill(0);
     }
 }

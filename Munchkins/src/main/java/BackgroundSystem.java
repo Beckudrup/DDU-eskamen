@@ -13,38 +13,42 @@ public class BackgroundSystem {
         this.p = p;
     }
 
-    void endturn(ArrayList<Button> buttList, Players players, ArrayList<Players> playerList) {
+    void endturn(ArrayList<Button> buttList, Players player, ArrayList<Players> playerList) {
         if (buttList.get(1).tryk) {
             if (turn < 3) {
                 turn++;
-                buttList.get(1).tryk = false;
             } else {
                 turn = 0;
-                buttList.get(1).tryk = false;
             }
-            if (players.hand.size() > 5 /* && !harfling er ikke en Harfling*/) {
+            buttList.get(1).tryk = false;
 
+            if (player.hand.size() >= 6 /* && !harfling er ikke en Harfling*/) {
+
+                //find spiller med lavest level
+                int tmpLevel = player.level;
+                Players tmpSpiller = player;
                 for (int i = 0; i < 4; i++) {
-                    int random = (int) p.random(players.hand.size());
-                    Card card = players.hand.get(random);
-                    int lowestLvL = 10;
-                    int found = 0;
-                    for (int j = 0; j < 4; j++) {
-                        if (playerList.get(j).level < lowestLvL && playerList.get(j) != players) {
-                            lowestLvL = players.level;
-                            j = found;
-                        }
+                    if (playerList.get(i).level < tmpLevel) {
+                        tmpSpiller = playerList.get(i);
+                        tmpLevel = tmpSpiller.level;
 
                     }
-                    playerList.get(found).hand.add(card);
-                    players.hand.remove(random);
-
                 }
+                //hvis man er lavest - discard cards
 
+                    //ellers giv til lavest level
+                    while (player.hand.size() > 5) {
+                        int random = (int) p.random(player.hand.size());
+                        Card card = player.hand.get(random);
+                        player.hand.remove(random);
+                        if (tmpSpiller != player) tmpSpiller.hand.add(card);
 
+                    }
+                }
             }
         }
-    }
+
+
 
     void loaddecks(Deck roomList, Deck treasureList, ImageLoader il, ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
         for (int i = 0; i < roominfoList.size(); i++) {
