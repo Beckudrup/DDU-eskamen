@@ -66,7 +66,7 @@ public class Deck {
 
                 } else {
                     //Treasure draw
-                    if (drawncard.numb == 1 && allowedTreasure > 0) {
+                    if (drawncard.numb == 1 /*&& allowedTreasure > 0*/) {
                         hand.add(drawncard);
                         allowedTreasure--;
                     }
