@@ -107,7 +107,7 @@ public class Main extends PApplet {
                 }
                 room.displayBackside();
                 treasure.displayBackside();
-                backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList);
+                backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList, roomdisc, treasiredisc);
                 //println(backgroundSystem.turn);
                 room.resuffle(roomdisc);
                 treasure.resuffle(treasiredisc);
@@ -167,8 +167,10 @@ public class Main extends PApplet {
         }
     }
 
+
     @Override
     public void mouseClicked() {
+
         for (int i = 0; i < buttList.size(); i++) {
             buttList.get(i).registerClick(mouseX, mouseY);
         }

@@ -8,7 +8,8 @@ public class Deck {
     PImage backside;
     ArrayList<Card> cardList = new ArrayList<>();
     int x, y, w, h;
-
+    int allowedTreasure = 0;
+    boolean firstDraw = false;
     Deck(PApplet p, int x, int y, int w, int h) {
         this.p = p;
         this.x = x;
@@ -28,18 +29,43 @@ public class Deck {
     }
 
     void drawcard(ArrayList<Card> hand, int type) {
-        if (cardList.size() > 0 && type == 0) {
+        //træk fra ikke discarded decks
+        if (cardList.size() > 0 && type == 0 /*&& !firstDraw*/) {
             int random = (int) p.random(cardList.size());
             Card drawncard = cardList.get(random);
-            cardList.remove(random);
-            hand.add(drawncard);
-        } else {
-            if (cardList.size() > 0 && type == 1) {
-                Card drawncard = cardList.get(cardList.size() - 1);
+            if (drawncard.numb==0 && firstDraw== true) {
+                cardList.remove(random);
                 hand.add(drawncard);
-                cardList.remove(cardList.size() - 1);
+            }else {
+                if (drawncard.numb==1 && allowedTreasure >0){
+                    cardList.remove(random);
+                    hand.add(drawncard);
+                    allowedTreasure--;
+                }
             }
+        } else {
+                //hvis man trækker en curse
+                //Hvis man trækker et monster
+                //hvis man trækker andet (class,race,"spellkort"
+                //træk fra discarded decks
+                if (cardList.size() > 0 && type == 1 ) {
+                    Card drawncard = cardList.get(cardList.size() - 1);
+                    hand.add(drawncard);
+                    cardList.remove(cardList.size() - 1);
+                }else{
+                    if(cardList.size() > 0 && type == 2){
+                        int rando = (int)p.random(cardList.size());
+                        Card drawncard = cardList.get(rando);
+                        hand.add(drawncard);
+                        cardList.remove(cardList.size() - 1);
+
+                    }
+            }
+
         }
+        }
+    void q(){
+        //for christian
     }
 
     void displayBackside() {
