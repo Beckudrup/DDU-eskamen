@@ -7,9 +7,11 @@ public class Deck {
     PApplet p;
     PImage backside;
     ArrayList<Card> cardList = new ArrayList<>();
+    ArrayList<Card> boardDeck = new ArrayList<>();
     int x, y, w, h;
     int allowedTreasure = 0;
     boolean firstDraw = false;
+    Players player;
     Deck(PApplet p, int x, int y, int w, int h) {
         this.p = p;
         this.x = x;
@@ -25,30 +27,54 @@ public class Deck {
     void clicktodraw(int turn, ArrayList<Players> playerList, int type) {
         if (p.mouseX > x && p.mouseX < x + w && p.mouseY > y && p.mouseY < y + h) {
             drawcard(playerList.get(turn).hand, type);
+            System.out.println(firstDraw);
+
         }
     }
 
     void drawcard(ArrayList<Card> hand, int type) {
         //træk fra ikke discarded decks
-        if (cardList.size() > 0 && type == 0 /*&& !firstDraw*/) {
+        if (cardList.size() > 0 && type == 0||type==2) {
             int random = (int) p.random(cardList.size());
             Card drawncard = cardList.get(random);
-            if (drawncard.numb==0 && firstDraw== true) {
-                cardList.remove(random);
+            cardList.remove(random);
+            //Første room draw
+            if (drawncard.numb == 0 && !firstDraw || type==2 ) {
                 hand.add(drawncard);
-            }else {
-                if (drawncard.numb==1 && allowedTreasure >0){
-                    cardList.remove(random);
-                    hand.add(drawncard);
-                    allowedTreasure--;
+            } else {
+                //Andet room draw
+                if (drawncard.numb == 0 && firstDraw && type != 2) {
+                    //hvis man trækker en curse
+                    if (drawncard.type.equalsIgnoreCase("Curse")) {
+                        //Cursen skal komme ud på bordet og blive brugt
+                       // curses(drawncard, player); //kig på senere måske bad
+                        hand.add(drawncard);
+
+                    }
+                    //Hvis man trækker et monster
+                    if (drawncard.type.equalsIgnoreCase("Monster")) {
+                        //Monster kommer ud på bordet og engager i combat
+                        //monsters(drawncard);
+                        hand.add(drawncard);
+
+                    }
+                    //hvis man trækker andet (class,race,"spellkort")
+                    if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")) {
+                        hand.add(drawncard);
+                    }
+
+
+                } else {
+                    //Treasure draw
+                    if (drawncard.numb == 1 /*&& allowedTreasure > 0*/) {
+                        hand.add(drawncard);
+                        allowedTreasure--;
+                    }
                 }
             }
         } else {
-                //hvis man trækker en curse
-                //Hvis man trækker et monster
-                //hvis man trækker andet (class,race,"spellkort"
-                //træk fra discarded decks
-                if (cardList.size() > 0 && type == 1 ) {
+            //træk fra discarded decks
+                if (cardList.size() > 0 && type == 1 ||type==2) {
                     Card drawncard = cardList.get(cardList.size() - 1);
                     hand.add(drawncard);
                     cardList.remove(cardList.size() - 1);
@@ -64,9 +90,7 @@ public class Deck {
 
         }
         }
-    void q(){
-        //for christian
-    }
+
 
     void displayBackside() {
         p.image(backside, x, y, w, h);
@@ -93,5 +117,22 @@ public class Deck {
                 }
             }
         }
+    }
+    void showBoardDeck(){
+        if (boardDeck.size() > 0){
+            for (int i = 0; i < boardDeck.size(); i++) {
+                boardDeck.get(i).display(p.width/2+i*90,550,90,150,1);
+            }
+        }
+    }
+    void curses(Card drawncard, Players player){
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose a level")){
+            boardDeck.add(drawncard);
+            player.level--;
+        }
+    }
+    void monsters(Card drawncard){
+        boardDeck.add(drawncard);
+
     }
 }

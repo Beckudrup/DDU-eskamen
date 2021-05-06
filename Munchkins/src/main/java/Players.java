@@ -248,9 +248,9 @@ public class Players {
         }
         if (head != null && body != null && feet != null && hand1 != null && hand2 != null) {
             pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power+level);
-            PApplet.println(pow);
+           // PApplet.println(pow);
         } else {
-            PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow+level) + " ");
+           // PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow+level) + " ");
         }
     }
 
