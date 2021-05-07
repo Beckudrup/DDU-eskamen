@@ -124,14 +124,14 @@ public class Deck {
             }
         }
     }
-    void curses(Card drawncard, Players player){
+    void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc){
         boardDeck.add(drawncard);
         if (drawncard.name.equalsIgnoreCase("Curse! Lose a level")){
             if (player.level!=1)
             player.level--;
         }
         if (drawncard.name.equalsIgnoreCase("Truly obnoxious curse!")){
-
+            
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 big item")){
 
@@ -143,7 +143,8 @@ public class Deck {
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your footgear")){
-
+            treasuredisc.addcard(player.feet);
+            player.feet = null;
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 small item")){
 
@@ -161,22 +162,52 @@ public class Deck {
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose two cards")){
+            Players tmpSpiller = playerList.get(player.playernr-1);
+            Players tmpSpiller2 = playerList.get(player.playernr+1);
+
+
+            int random = (int) p.random(player.hand.size());
+            Card chosenCard = player.hand.get(random);
+            player.hand.remove(random);
+            int random2 = (int) p.random(player.hand.size());
+            Card chosenCard2 = player.hand.get(random2);
+            player.hand.remove(random);
+            if (player.playernr==3){
+                tmpSpiller.playernr=0;
+                tmpSpiller2.playernr=2;
+            }else {
+                if (player.playernr == 0) {
+                    tmpSpiller.playernr = 1;
+                    tmpSpiller2.playernr = 3;
+                }
+            }
+
+            tmpSpiller.hand.add(chosenCard);
+            tmpSpiller2.hand.add(chosenCard2);
+
+
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Change class")){
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your armor")){
-
+            treasuredisc.addcard(player.body);
+            player.body = null;
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Change your sex")){
-
+            if (player.gender==1){ //Burde også miste 5 power i en kamp
+            }else {
+                if (player.gender==2){
+                }
+            }
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Malign mirror")){
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your headgear")){
-
+            treasuredisc.addcard(player.head);
+            player.head = null;
         }
     }
     void monsters(Card drawncard){
