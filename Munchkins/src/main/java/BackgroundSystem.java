@@ -28,6 +28,7 @@ public class BackgroundSystem {
                     playerList.get(i).showhand.tryk=false;
                 }
                 buttList.get(1).tryk = false;
+
             }
             buttList.get(1).tryk = false;
             /*
