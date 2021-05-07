@@ -158,21 +158,79 @@ public class Players {
 
 
     void displayequiped() {
-        if (head != null)
-            head.display(200, 800, 60, 100, 1);
-        if (body != null)
-            body.display(280, 800, 60, 100, 1);
-        if (feet != null)
-            feet.display(360, 800, 60, 100, 1);
-        if (hand1 != null)
-            hand1.display(200, 920, 60, 100, 1);
-        if (hand2 != null)
-            hand2.display(280, 920, 60, 100, 1);
-        if (Class != null)
-            Class.display(360, 800, 60, 100, 1);
-        if (Race != null)
-            Race.display(440, 800, 60, 100, 1);
-
+        if (playernr == 0) {
+            if (head != null)
+                head.display(200, 800, 60, 100, 1);
+            if (body != null)
+                body.display(280, 800, 60, 100, 1);
+            if (feet != null)
+                feet.display(360, 800, 60, 100, 1);
+            if (hand1 != null)
+                hand1.display(200, 920, 60, 100, 1);
+            if (hand2 != null)
+                hand2.display(280, 920, 60, 100, 1);
+            if (Class != null)
+                Class.display(360, 800, 60, 100, 1);
+            if (Race != null)
+                Race.display(440, 800, 60, 100, 1);
+        }
+        if (playernr == 1) {
+            p.pushMatrix();
+            p.rotate((float) 1.5708);
+            if (head != null)
+                head.display(130, -230, 60, 100, 1);
+            if (body != null)
+                body.display(210, -230, 60, 100, 1);
+            if (feet != null)
+                feet.display(290, -230, 60, 100, 1);
+            if (hand1 != null)
+                hand1.display(130, -110, 60, 100, 1);
+            if (hand2 != null)
+                hand2.display(210, -110, 60, 100, 1);
+            if (Class != null)
+                Class.display(290, -110, 60, 100, 1);
+            if (Race != null)
+                Race.display(1720, 160, 60, 100, 1);
+            p.popMatrix();
+        }
+        if (playernr == 2) {
+            p.pushMatrix();
+            p.rotate((float) 1.5708 * 2);
+            if (head != null)
+                head.display(-1720, -260, 60, 100, 1);
+            if (body != null)
+                body.display(-1640, -260, 60, 100, 1);
+            if (feet != null)
+                feet.display(-1560, -260, 60, 100, 1);
+            if (hand1 != null)
+                hand1.display(-1720, -140, 60, 100, 1);
+            if (hand2 != null)
+                hand2.display(-1640, -140, 60, 100, 1);
+            if (Class != null)
+                Class.display(-1560, -140, 60, 100, 1);
+            if (Race != null)
+                Race.display(440, 800, 60, 100, 1);
+            p.popMatrix();
+        }
+        if (playernr == 3) {
+            p.pushMatrix();
+            p.rotate((float) 1.5708 * 3);
+            if (head != null)
+                head.display(-770, 1660, 60, 100, 1);
+            if (body != null)
+                body.display(-850, 1660, 60, 100, 1);
+            if (feet != null)
+                feet.display(-930, 1660, 60, 100, 1);
+            if (hand1 != null)
+                hand1.display(-770, 1780, 60, 100, 1);
+            if (hand2 != null)
+                hand2.display(-850, 1780, 60, 100, 1);
+            if (Class != null)
+                Class.display(-930, 1780, 60, 100, 1);
+            if (Race != null)
+                Race.display(440, 800, 60, 100, 1);
+            p.popMatrix();
+        }
     }
 
     void getPower() {
@@ -192,10 +250,10 @@ public class Players {
             hand2pow = (hand2.power);
         }
         if (head != null && body != null && feet != null && hand1 != null && hand2 != null) {
-            pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power);
-            PApplet.println(pow);
+            pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power+level);
+           // PApplet.println(pow);
         } else {
-            PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow) + " ");
+           // PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow+level) + " ");
         }
     }
     void changeButtonPos(BackgroundSystem backgroundSystem){
@@ -362,24 +420,28 @@ public class Players {
     }
 
     void displayicon() {
+        p.fill(255);
         if (playernr == 0) {
             p.image(icon, 10, 950, 100, 100);
-            p.text("lvl:" + level, 60, 920);
+            p.text("lvl:" + level, 40, 920);
+            p.text("p1",p.width/2,750);
         }
         if (playernr == 1) {
             p.image(icon, 10, 10, 100, 100);
-            p.text("lvl:" + level, 150, 75);
+            p.text("lvl:" + level, 150, 70);
+            p.text("p2",150,550);
 
         }
         if (playernr == 2) {
             p.image(icon, 1810, 10, 100, 100);
-            p.text("lvl:" + level, 1850, 150);
-
+            p.text("lvl:" + level, 1840, 150);
+            p.text("p3",p.width/2,200);
         }
         if (playernr == 3) {
             p.image(icon, 1810, 950, 100, 100);
-            p.text("lvl:" + level, 1750, 1000);
-
+            p.text("lvl:" + level, 1750, 1010);
+            p.text("p4",1750,500);
         }
+        p.fill(0);
     }
 }

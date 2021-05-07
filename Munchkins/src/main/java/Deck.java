@@ -7,8 +7,11 @@ public class Deck {
     PApplet p;
     PImage backside;
     ArrayList<Card> cardList = new ArrayList<>();
+    ArrayList<Card> boardDeck = new ArrayList<>();
     int x, y, w, h;
-
+    int allowedTreasure = 0;
+    boolean firstDraw = false;
+    Players player;
     Deck(PApplet p, int x, int y, int w, int h) {
         this.p = p;
         this.x = x;
@@ -24,23 +27,69 @@ public class Deck {
     void clicktodraw(int turn, ArrayList<Players> playerList, int type) {
         if (p.mouseX > x && p.mouseX < x + w && p.mouseY > y && p.mouseY < y + h) {
             drawcard(playerList.get(turn).hand, type);
+
         }
     }
 
     void drawcard(ArrayList<Card> hand, int type) {
-        if (cardList.size() > 0 && type == 0) {
+        //træk fra ikke discarded decks
+        if (cardList.size() > 0 && type == 0||type==2) {
             int random = (int) p.random(cardList.size());
             Card drawncard = cardList.get(random);
             cardList.remove(random);
-            hand.add(drawncard);
-        } else {
-            if (cardList.size() > 0 && type == 1) {
-                Card drawncard = cardList.get(cardList.size() - 1);
+            //Første room draw
+            if (drawncard.numb == 0 && !firstDraw || type==2 ) {
                 hand.add(drawncard);
-                cardList.remove(cardList.size() - 1);
+                firstDraw=true;
+            } else {
+                //Andet room draw
+                if (drawncard.numb == 0 && firstDraw && type != 2) {
+                    //hvis man trækker en curse
+                    if (drawncard.type.equalsIgnoreCase("Curse")) {
+                        //Cursen skal komme ud på bordet og blive brugt
+                       // curses(drawncard, player); //kig på senere måske bad
+                        hand.add(drawncard);
+                        System.out.println("Henrik");
+                    }
+                    //Hvis man trækker et monster
+                    if (drawncard.type.equalsIgnoreCase("Monster")) {
+                        //Monster kommer ud på bordet og engager i combat
+                        //monsters(drawncard);
+                        hand.add(drawncard);
+                        System.out.println("kål");
+                    }
+                    //hvis man trækker andet (class,race,"spellkort")
+                    if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")) {
+                        hand.add(drawncard);
+                        System.out.println("hapini");
+                    }
+                } else {
+                    //Treasure draw
+                    if (drawncard.numb == 1 /*&& allowedTreasure > 0*/) {
+                        hand.add(drawncard);
+                        allowedTreasure--;
+                    }
+                }
             }
+        } else {
+            //træk fra discarded decks
+                if (cardList.size() > 0 && type == 1 /*||type==2*/) {
+                    Card drawncard = cardList.get(cardList.size() - 1);
+                    hand.add(drawncard);
+                    cardList.remove(cardList.size() - 1);
+                }else{
+                    if(cardList.size() > 0 /*&& type == 2*/){
+                        int rando = (int)p.random(cardList.size());
+                        Card drawncard = cardList.get(rando);
+                        hand.add(drawncard);
+                        cardList.remove(cardList.size() - 1);
+
+                    }
+            }
+
         }
-    }
+        }
+
 
     void displayBackside() {
         p.image(backside, x, y, w, h);
@@ -67,5 +116,102 @@ public class Deck {
                 }
             }
         }
+    }
+    void showBoardDeck(){
+        if (boardDeck.size() > 0){
+            for (int i = 0; i < boardDeck.size(); i++) {
+                boardDeck.get(i).display(p.width/2+i*90,550,90,150,1);
+            }
+        }
+    }
+    void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc){
+        boardDeck.add(drawncard);
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose a level")){
+            if (player.level!=1)
+            player.level--;
+        }
+        if (drawncard.name.equalsIgnoreCase("Truly obnoxious curse!")){
+            
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 big item")){
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Income tax")){
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Chiken on your head")){
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose your footgear")){
+            treasuredisc.addcard(player.feet);
+            player.feet = null;
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 small item")){
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Change race")){
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Duck of Doom")){
+            player.level-=2;
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose your race")){
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose your class")){
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose two cards")){
+            Players tmpSpiller = playerList.get(player.playernr-1);
+            Players tmpSpiller2 = playerList.get(player.playernr+1);
+
+
+            int random = (int) p.random(player.hand.size());
+            Card chosenCard = player.hand.get(random);
+            player.hand.remove(random);
+            int random2 = (int) p.random(player.hand.size());
+            Card chosenCard2 = player.hand.get(random2);
+            player.hand.remove(random);
+            if (player.playernr==3){
+                tmpSpiller.playernr=0;
+                tmpSpiller2.playernr=2;
+            }else {
+                if (player.playernr == 0) {
+                    tmpSpiller.playernr = 1;
+                    tmpSpiller2.playernr = 3;
+                }
+            }
+
+            tmpSpiller.hand.add(chosenCard);
+            tmpSpiller2.hand.add(chosenCard2);
+
+
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Change class")){
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose your armor")){
+            treasuredisc.addcard(player.body);
+            player.body = null;
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Change your sex")){
+            if (player.gender==1){ //Burde også miste 5 power i en kamp
+            }else {
+                if (player.gender==2){
+                }
+            }
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Malign mirror")){
+
+        }
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose your headgear")){
+            treasuredisc.addcard(player.head);
+            player.head = null;
+        }
+    }
+    void monsters(Card drawncard){
+        boardDeck.add(drawncard);
+
     }
 }

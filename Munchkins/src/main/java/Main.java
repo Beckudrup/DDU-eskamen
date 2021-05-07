@@ -18,6 +18,7 @@ public class Main extends PApplet {
     Deck treasiredisc = new Deck(this, 1090, 270, 90, 150);
     Deck room = new Deck(this, 830, 270, 90, 150);
     Deck treasure = new Deck(this, 960, 270, 90, 150);
+    Deck boardDeck = new Deck (this, width/2,600,90,150);
     Dice dice = new Dice(this);
     Database database = new Database(this);
     Menus menus = new Menus(this);
@@ -97,6 +98,7 @@ public class Main extends PApplet {
 
                 roomdisc.showDisc(roomdisc);
                 treasiredisc.showDisc(treasiredisc);
+                boardDeck.showBoardDeck();
                 dice.display(200, 200);
                 for (int i = 0; i < 4; i++) {
                     playerList.get(i).hoverCard(backgroundSystem);
@@ -109,7 +111,8 @@ public class Main extends PApplet {
                 }
                 room.displayBackside();
                 treasure.displayBackside();
-                backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList);
+
+                backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList, roomdisc, treasiredisc);
                 //println(backgroundSystem.turn);
                 room.resuffle(roomdisc);
                 treasure.resuffle(treasiredisc);
@@ -169,8 +172,10 @@ public class Main extends PApplet {
         }
     }
 
+
     @Override
     public void mouseClicked() {
+
         for (int i = 0; i < buttList.size(); i++) {
             buttList.get(i).registerClick(mouseX, mouseY);
         }
