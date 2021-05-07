@@ -103,6 +103,8 @@ public class Main extends PApplet {
                 for (int i = 0; i < 4; i++) {
                     playerList.get(i).hoverCard(backgroundSystem);
                     playerList.get(i).displayHand(backgroundSystem.turn);
+                    playerList.get(i).changeButtonPos(backgroundSystem);
+                    playerList.get(i).showhand.drawButton();
                     playerList.get(i).displayequiped();
                     playerList.get(i).displayicon();
                     playerList.get(i).getPower();
@@ -187,7 +189,7 @@ public class Main extends PApplet {
             treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1);
             for (int i = 0; i < playerList.size(); i++) {
                 playerList.get(i).selectCard(roomdisc, treasiredisc);
-
+                playerList.get(i).showhand.registerClick2(mouseX,mouseY);
             }
         }
     }
