@@ -37,17 +37,20 @@ public class Deck {
             int random = (int) p.random(cardList.size());
             Card drawncard = cardList.get(random);
             cardList.remove(random);
-            //Første room draw
-            if (drawncard.numb == 0 && !firstDraw || type==2 ) {
+            //Andet og start game room draw
+            if (drawncard.numb == 0 && type==2)
+                hand.add(drawncard);
+
+            if (drawncard.numb == 0 && !firstDraw && type != 2) {
                 hand.add(drawncard);
                 firstDraw=true;
             } else {
-                //Andet room draw
+                //Første room draw
                 if (drawncard.numb == 0 && firstDraw && type != 2) {
                     //hvis man trækker en curse
                     if (drawncard.type.equalsIgnoreCase("Curse")) {
                         //Cursen skal komme ud på bordet og blive brugt
-                       // curses(drawncard, player); //kig på senere måske bad
+                        //curses(drawncard, player); //kig på senere måske bad
                         hand.add(drawncard);
                         System.out.println("Henrik");
                     }
@@ -60,8 +63,11 @@ public class Deck {
                     }
                     //hvis man trækker andet (class,race,"spellkort")
                     if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")) {
+                            hand.add(drawncard);
+                            System.out.println("hapini");
+                    }
+                    if (drawncard.type.equalsIgnoreCase("Class")||drawncard.type.equalsIgnoreCase("Race")){
                         hand.add(drawncard);
-                        System.out.println("hapini");
                     }
                 } else {
                     //Treasure draw
@@ -124,7 +130,7 @@ public class Deck {
             }
         }
     }
-    void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc){
+    void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc){
         boardDeck.add(drawncard);
         if (drawncard.name.equalsIgnoreCase("Curse! Lose a level")){
             if (player.level!=1)
@@ -133,14 +139,14 @@ public class Deck {
         if (drawncard.name.equalsIgnoreCase("Truly obnoxious curse!")){
             
         }
-        if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 big item")){
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 big item")) {
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Income tax")){
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Chiken on your head")){
-
+            //-1 til dice rolls
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your footgear")){
             treasuredisc.addcard(player.feet);
@@ -149,17 +155,32 @@ public class Deck {
         if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 small item")){
 
         }
-        if (drawncard.name.equalsIgnoreCase("Curse! Change race")){
+        if (drawncard.name.equalsIgnoreCase("Curse! Change race")) {
+            // Skal hente en anden race
+            if (player.Race != null && roomdisc.cardList.size()>0) {
+                boolean raceFound = false;
+                player.Race=null;
+                for (int i = 0; i < roomdisc.cardList.size()-2 && !raceFound; i++) {
+                    if (roomdisc.cardList.get(i).type.equalsIgnoreCase("Race")) {
+                        Card raceDraw = roomdisc.cardList.get(i);
+                        roomdisc.cardList.remove(i);
+                        player.Race = raceDraw;
+                        raceFound=true;
+                    }
 
+                }
+            }
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Duck of Doom")){
             player.level-=2;
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your race")){
-
+            roomdisc.addcard(player.Race);
+            player.Race = null;
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your class")){
-
+            roomdisc.addcard(player.Class);
+            player.Class = null;
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose two cards")){
             Players tmpSpiller = playerList.get(player.playernr-1);
@@ -189,20 +210,41 @@ public class Deck {
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Change class")){
+            // Skal hente en anden race roomdisc.cardList.get(1);
+            if (player.Class != null && roomdisc.cardList.size()>0) {
+                player.Class=null;
+                boolean classFound = false;
+                for (int i = 0; i < roomdisc.cardList.size()-2 && !classFound; i++) {
+                    if (roomdisc.cardList.get(i).type.equalsIgnoreCase("Class")) {
+                        Card classDraw = roomdisc.cardList.get(i);
+                        roomdisc.cardList.remove(i);
+                        player.Class = classDraw;
+                        classFound = true;
+                    }
 
+                }
+            }
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your armor")){
             treasuredisc.addcard(player.body);
             player.body = null;
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Change your sex")){
+            player.pow -=5;
             if (player.gender==1){ //Burde også miste 5 power i en kamp
+                player.gender=2;
             }else {
                 if (player.gender==2){
+                    player.gender=1;
                 }
             }
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Malign mirror")){
+            //alle powers fra alle items ud over armor = 0 i en kamp
+            player.handpow = 0;
+            player.hand2pow = 0;
+            player.feetpow = 0;
+            player.headpow = 0;
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your headgear")){
