@@ -17,8 +17,20 @@ public class BackgroundSystem {
         if (buttList.get(1).tryk) {
             if (turn < 3) {
                 turn++;
+
+                for (int i = 0; i < 4 ; i++) {
+                    playerList.get(i).showhand.tryk=false;
+                }
+                buttList.get(1).tryk = false;
             } else {
                 turn = 0;
+                for (int i = 0; i < 4 ; i++) {
+                    playerList.get(i).showhand.tryk=false;
+                }
+                buttList.get(1).tryk = false;
+            } else {
+                turn = 0;
+
             }
             buttList.get(1).tryk = false;
             /*
