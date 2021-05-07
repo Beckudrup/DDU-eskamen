@@ -37,17 +37,20 @@ public class Deck {
             int random = (int) p.random(cardList.size());
             Card drawncard = cardList.get(random);
             cardList.remove(random);
-            //Første room draw
-            if (drawncard.numb == 0 && !firstDraw || type==2 ) {
+            //Andet og start game room draw
+            if (drawncard.numb == 0 && type==2)
+                hand.add(drawncard);
+
+            if (drawncard.numb == 0 && !firstDraw && type != 2) {
                 hand.add(drawncard);
                 firstDraw=true;
             } else {
-                //Andet room draw
+                //Første room draw
                 if (drawncard.numb == 0 && firstDraw && type != 2) {
                     //hvis man trækker en curse
                     if (drawncard.type.equalsIgnoreCase("Curse")) {
                         //Cursen skal komme ud på bordet og blive brugt
-                       // curses(drawncard, player); //kig på senere måske bad
+                        //curses(drawncard, player); //kig på senere måske bad
                         hand.add(drawncard);
                         System.out.println("Henrik");
                     }
@@ -60,8 +63,11 @@ public class Deck {
                     }
                     //hvis man trækker andet (class,race,"spellkort")
                     if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")) {
+                            hand.add(drawncard);
+                            System.out.println("hapini");
+                    }
+                    if (drawncard.type.equalsIgnoreCase("Class")||drawncard.type.equalsIgnoreCase("Race")){
                         hand.add(drawncard);
-                        System.out.println("hapini");
                     }
                 } else {
                     //Treasure draw
@@ -133,7 +139,7 @@ public class Deck {
         if (drawncard.name.equalsIgnoreCase("Truly obnoxious curse!")){
             
         }
-        if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 big item")){
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 big item")) {
 
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Income tax")){
