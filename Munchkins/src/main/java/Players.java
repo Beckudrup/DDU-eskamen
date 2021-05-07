@@ -414,9 +414,29 @@ public class Players {
     }
 
     void hoverCard(BackgroundSystem backgroundSystem) {
+        if (backgroundSystem.turn - playernr == 0&& showhand.tryk==true) {
         for (int i = 0; i < hand.size(); i++) {
-            hand.get(i).hovering = p.mouseX > 700 + i * 180 && p.mouseX < 860 + i * 180 && p.mouseY > 800 && p.mouseY < 1000 && backgroundSystem.turn == playernr;
+            hand.get(i).hovering = p.mouseX > 700 + i * 180 && p.mouseX < 860 + i * 180 && p.mouseY > 800 && p.mouseY < 1000 ;
+        }}
+        if (((playernr == 1 && backgroundSystem.turn == 0) || (playernr == 2 && backgroundSystem.turn == 1) || (playernr == 3 && backgroundSystem.turn == 2) || (playernr == 0 && backgroundSystem.turn == 3))&& showhand.tryk==true) {
+            for (int i = 0; i < hand.size() ; i++) {
+
+                hand.get(i).hovering = p.mouseX > 0  && p.mouseX < 100 && p.mouseY > 370+i*90 && p.mouseY < 450+i*90  ;
+
+            }
+
         }
+        if (((playernr == 2 && backgroundSystem.turn == 0) || (playernr == 3 && backgroundSystem.turn == 1) || (playernr == 0 && backgroundSystem.turn == 2) || (playernr == 1 && backgroundSystem.turn == 3))&& showhand.tryk==true){
+            for (int i = 0; i < hand.size() ; i++) {
+
+                hand.get(i).hovering = p.mouseX > 790+ i*90  && p.mouseX < 870+ i*90 && p.mouseY > 0 && p.mouseY < 100  ;
+
+        }}
+        if (((playernr == 3 && backgroundSystem.turn == 0) || (playernr == 0 && backgroundSystem.turn == 1) || (playernr == 1 && backgroundSystem.turn == 2) || (playernr == 2 && backgroundSystem.turn == 3))&& showhand.tryk==true) {
+            for (int i = 0; i < hand.size() ; i++) {
+
+            hand.get(i).hovering = p.mouseX > 1800  && p.mouseX < 1900 && p.mouseY > 290 + i*90&& p.mouseY < 370 + i*90 ;
+        }}
     }
 
     void displayicon() {

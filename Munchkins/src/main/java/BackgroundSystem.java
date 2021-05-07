@@ -28,11 +28,11 @@ public class BackgroundSystem {
                     playerList.get(i).showhand.tryk=false;
                 }
                 buttList.get(1).tryk = false;
-            } else {
-                turn = 0;
+           // } else {
+            //    turn = 0;
 
-            }
-            buttList.get(1).tryk = false;
+           }
+           // buttList.get(1).tryk = false;
             /*
             roomdisc.allowedTreasure=1;
             roomdisc.firstDraw=true;

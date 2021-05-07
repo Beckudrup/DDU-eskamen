@@ -116,6 +116,13 @@ public class Main extends PApplet {
                 //println(backgroundSystem.turn);
                 room.resuffle(roomdisc);
                 treasure.resuffle(treasiredisc);
+                for (int i = 0; i < playerList.size() ; i++) {
+                    for (int j = 0; j < playerList.get(i).hand.size(); j++) {
+                        if (playerList.get(i).hand.get(j).hovering==true){
+                            System.out.println("hej");
+                        }
+                    }
+                }
                 //System.out.println(playerList.get(0).hand.size() + "  " + playerList.get(1).hand.size() + "  " + playerList.get(2).hand.size() + "  " + playerList.get(3).hand.size());
 
             }
