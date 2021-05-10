@@ -53,7 +53,7 @@ public class Deck {
                     if (drawncard.type.equalsIgnoreCase("Curse")) {
                         //Cursen skal komme ud på bordet og blive brugt
                         //curses(drawncard, player,playerList,treasuredisc,roomdisc); //kig på senere måske bad
-                        hand.add(drawncard);
+                        //hand.add(drawncard);
                         System.out.println("Henrik");
                     }
                     //Hvis man trækker et monster
