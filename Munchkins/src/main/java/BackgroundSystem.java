@@ -91,7 +91,7 @@ public class BackgroundSystem {
         //p.println(treasureinfoList.size(), treasureinfoList.get(treasureinfoList.size() - 1).level, treasureinfoList.get(treasureinfoList.size() - 1).name);
     }
 
-    void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist) {
+    void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist, Deck treasuredisc, Deck roomdisc) {
         if (notDoneYet) {
             for (int i = 0; i < 4; i++) {
                 playerList.add(new Players(p));
@@ -105,9 +105,9 @@ public class BackgroundSystem {
             buttList.add(new Button(p, 700, 400, 200, 100, "Woman"));
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
-                    treasurelist.drawcard(playerList.get(i).hand, 2);
+                    treasurelist.drawcard(playerList.get(i).hand, 2,playerList, treasuredisc, roomdisc);
                     //p.print(treasurelist.cardList.size());
-                    roomlist.drawcard(playerList.get(i).hand, 2);
+                    roomlist.drawcard(playerList.get(i).hand, 2, playerList,treasuredisc, roomdisc);
                     //p.print(roomlist.cardList.size());
 
                 }

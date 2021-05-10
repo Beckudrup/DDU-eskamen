@@ -10,8 +10,9 @@ public class Deck {
     ArrayList<Card> boardDeck = new ArrayList<>();
     int x, y, w, h;
     int allowedTreasure = 0;
-    boolean firstDraw = false;
+    boolean firstDraw = true;
     Players player;
+    boolean fix = true;
     Deck(PApplet p, int x, int y, int w, int h) {
         this.p = p;
         this.x = x;
@@ -24,33 +25,34 @@ public class Deck {
         cardList.add(card);
     }
 
-    void clicktodraw(int turn, ArrayList<Players> playerList, int type) {
+    void clicktodraw(int turn, ArrayList<Players> playerList, int type, Deck treasuredisc, Deck roomdisc) {
         if (p.mouseX > x && p.mouseX < x + w && p.mouseY > y && p.mouseY < y + h) {
-            drawcard(playerList.get(turn).hand, type);
+            drawcard(playerList.get(turn).hand, type, playerList, treasuredisc,roomdisc);
 
         }
     }
 
-    void drawcard(ArrayList<Card> hand, int type) {
+    void drawcard(ArrayList<Card> hand, int type, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc) {
         //træk fra ikke discarded decks
         if (cardList.size() > 0 && type == 0||type==2) {
             int random = (int) p.random(cardList.size());
             Card drawncard = cardList.get(random);
             cardList.remove(random);
-            //Andet og start game room draw
             if (drawncard.numb == 0 && type==2)
                 hand.add(drawncard);
 
-            if (drawncard.numb == 0 && !firstDraw && type != 2) {
+            //Andet og start game room draw
+            if (drawncard.numb == 0 && !firstDraw && type != 2 && fix==true) {
                 hand.add(drawncard);
-                firstDraw=true;
+                System.out.println("andet draw");
+                //fix=false;    TÆND IGEN! når spillet er ved at være done
             } else {
                 //Første room draw
                 if (drawncard.numb == 0 && firstDraw && type != 2) {
                     //hvis man trækker en curse
                     if (drawncard.type.equalsIgnoreCase("Curse")) {
                         //Cursen skal komme ud på bordet og blive brugt
-                        //curses(drawncard, player); //kig på senere måske bad
+                        curses(drawncard, player,playerList,treasuredisc,roomdisc); //kig på senere måske bad
                         hand.add(drawncard);
                         System.out.println("Henrik");
                     }
@@ -69,6 +71,7 @@ public class Deck {
                     if (drawncard.type.equalsIgnoreCase("Class")||drawncard.type.equalsIgnoreCase("Race")){
                         hand.add(drawncard);
                     }
+                    firstDraw=false;
                 } else {
                     //Treasure draw
                     if (drawncard.numb == 1 /*&& allowedTreasure > 0*/) {
