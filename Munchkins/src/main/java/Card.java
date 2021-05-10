@@ -17,11 +17,13 @@ public class Card {
 
 
 
-    Card(PApplet p, String imglink, int numb, String type, int power, int power2) {
+    Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name) {
+
         this.p = p;
         cards = p.loadImage(imglink);
         this.numb = numb;
         this.type = type;
+        this.name = name;
         this.power = power;
     }
 

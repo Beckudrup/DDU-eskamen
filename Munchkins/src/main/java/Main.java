@@ -27,6 +27,7 @@ public class Main extends PApplet {
     Board board;
     Rules rules = new Rules(this);
     Badstuff badstuff = new Badstuff(this);
+    Players players = new Players(this);
     boolean loadingDone;
     int counter;
     ArrayList<Card> monsterlist = new ArrayList<>();
@@ -86,7 +87,7 @@ public class Main extends PApplet {
                     board = new Board(this, 4);
                 menus.ingame(buttList, imageLoader, board);
 
-                backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure,treasiredisc,roomdisc);
+                backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure,treasiredisc,roomdisc, players);
                 // for (int i = 0; i < room.cardList.size(); i++) {
                 //  image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
                 // }
@@ -98,7 +99,7 @@ public class Main extends PApplet {
 
                 roomdisc.showDisc(roomdisc);
                 treasiredisc.showDisc(treasiredisc);
-                boardDeck.showBoardDeck();
+                //boardDeck.showBoardDeck();
                 dice.display(200, 200);
                 for (int i = 0; i < 4; i++) {
                     playerList.get(i).hoverCard(backgroundSystem);
@@ -108,6 +109,9 @@ public class Main extends PApplet {
                     playerList.get(i).displayequiped();
                     playerList.get(i).displayicon();
                     playerList.get(i).getPower();
+                    playerList.get(i).displayMonster();
+                    playerList.get(i).raceFunction();
+                    playerList.get(i).classFunction();
                 }
                 room.displayBackside();
                 treasure.displayBackside();
@@ -190,10 +194,10 @@ public class Main extends PApplet {
             if (mouseX > dice.posX && mouseX < dice.posX + 50 && mouseY > dice.posY && mouseY < dice.posY + 50)
                 dice.trowDie(7);
 
-            room.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc,roomdisc);
-            treasure.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc,roomdisc);
-            roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc,roomdisc);
-            treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc,roomdisc);
+            room.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc,roomdisc, players);
+            treasure.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc,roomdisc, players);
+            roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc,roomdisc, players);
+            treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc,roomdisc, players);
             for (int i = 0; i < playerList.size(); i++) {
                 playerList.get(i).selectCard(roomdisc, treasiredisc,backgroundSystem,monsterlist);
                 playerList.get(i).showhand.registerClick2(mouseX,mouseY);

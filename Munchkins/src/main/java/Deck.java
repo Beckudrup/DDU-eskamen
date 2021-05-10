@@ -11,7 +11,6 @@ public class Deck {
     int x, y, w, h;
     int allowedTreasure = 0;
     boolean firstDraw = true;
-    Players player;
     boolean fix = true;
     Deck(PApplet p, int x, int y, int w, int h) {
         this.p = p;
@@ -25,14 +24,14 @@ public class Deck {
         cardList.add(card);
     }
 
-    void clicktodraw(int turn, ArrayList<Players> playerList, int type, Deck treasuredisc, Deck roomdisc) {
+    void clicktodraw(int turn, ArrayList<Players> playerList, int type, Deck treasuredisc, Deck roomdisc, Players players) {
         if (p.mouseX > x && p.mouseX < x + w && p.mouseY > y && p.mouseY < y + h) {
-            drawcard(playerList.get(turn).hand, type, playerList, treasuredisc,roomdisc);
+            drawcard(playerList.get(turn).hand, type, playerList, treasuredisc,roomdisc, players);
 
         }
     }
 
-    void drawcard(ArrayList<Card> hand, int type, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc) {
+    void drawcard(ArrayList<Card> hand, int type, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc, Players player) {
         //træk fra ikke discarded decks
         if (cardList.size() > 0 && type == 0||type==2) {
             int random = (int) p.random(cardList.size());
@@ -51,8 +50,11 @@ public class Deck {
                 if (drawncard.numb == 0 && firstDraw && type != 2) {
                     //hvis man trækker en curse
                     if (drawncard.type.equalsIgnoreCase("Curse")) {
+                        System.out.println("Henrik");
                         //Cursen skal komme ud på bordet og blive brugt
-      //                  curses(drawncard, player,playerList,treasuredisc,roomdisc); //kig på senere måske bad
+
+                        //curses(drawncard, player,playerList, treasuredisc, roomdisc); //kig på senere måske bad
+
                         hand.add(drawncard);
                         System.out.println("Henrik");
                     }
@@ -71,7 +73,7 @@ public class Deck {
                     if (drawncard.type.equalsIgnoreCase("Class")||drawncard.type.equalsIgnoreCase("Race")){
                         hand.add(drawncard);
                     }
-                    firstDraw=false;
+                    //firstDraw=false;
                 } else {
                     //Treasure draw
                     if (drawncard.numb == 1 /*&& allowedTreasure > 0*/) {
@@ -125,20 +127,18 @@ public class Deck {
                 }
             }
         }
+
     }
-    void showBoardDeck(){
-        if (boardDeck.size() > 0){
-            for (int i = 0; i < boardDeck.size(); i++) {
-                boardDeck.get(i).display(p.width/2+i*90,550,90,150,1);
-            }
-        }
-    }
+
     void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc){
         boardDeck.add(drawncard);
+
         if (drawncard.name.equalsIgnoreCase("Curse! Lose a level")){
             if (player.level!=1)
             player.level--;
         }
+
+
         if (drawncard.name.equalsIgnoreCase("Truly obnoxious curse!")){
             
         }
@@ -148,6 +148,8 @@ public class Deck {
         if (drawncard.name.equalsIgnoreCase("Curse! Income tax")){
 
         }
+
+
         if (drawncard.name.equalsIgnoreCase("Curse! Chiken on your head")){
             //-1 til dice rolls
         }
@@ -155,27 +157,30 @@ public class Deck {
             treasuredisc.addcard(player.feet);
             player.feet = null;
         }
+
         if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 small item")){
 
         }
+
+
         if (drawncard.name.equalsIgnoreCase("Curse! Change race")) {
             // Skal hente en anden race
             if (player.Race != null && roomdisc.cardList.size()>0) {
                 boolean raceFound = false;
-                player.Race=null;
+                player.Race = null;
                 for (int i = 0; i < roomdisc.cardList.size()-2 && !raceFound; i++) {
                     if (roomdisc.cardList.get(i).type.equalsIgnoreCase("Race")) {
                         Card raceDraw = roomdisc.cardList.get(i);
                         roomdisc.cardList.remove(i);
                         player.Race = raceDraw;
-                        raceFound=true;
+                        raceFound = true;
                     }
 
                 }
             }
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Duck of Doom")){
-            player.level-=2;
+            player.level -= 2;
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your race")){
             roomdisc.addcard(player.Race);
@@ -259,4 +264,14 @@ public class Deck {
         boardDeck.add(drawncard);
 
     }
+
+    void showBoardDeck(){
+        if (boardDeck.size() > 0){
+            for (int i = 0; i < boardDeck.size(); i++) {
+                boardDeck.get(i).display(p.width/2+i*90,550,90,150,1);
+            }
+        }
+    }
+
+
 }

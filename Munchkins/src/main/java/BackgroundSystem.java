@@ -8,6 +8,8 @@ public class BackgroundSystem {
     boolean notDoneYet = true;
     boolean removed;
     boolean monsterfasedone;
+    boolean battlefase;
+    boolean gamestarted;
     int turn;
 
     BackgroundSystem(PApplet p) {
@@ -20,7 +22,7 @@ public class BackgroundSystem {
                 turn++;
 
                 for (int i = 0; i < 4 ; i++) {
-                    playerList.get(i).showhand.tryk=false;
+                    playerList.get(i).showhand.tryk = false;
                 }
                 buttList.get(1).tryk = false;
             } else {
@@ -32,7 +34,8 @@ public class BackgroundSystem {
 
 
            }
-           // buttList.get(1).tryk = false;
+
+            // buttList.get(1).tryk = false;
             /*
             roomdisc.allowedTreasure=1;
             roomdisc.firstDraw=true;
@@ -40,6 +43,11 @@ public class BackgroundSystem {
             treasuredisc.firstDraw=true;
 
              */
+            if (player.monster != null){
+                player.monster = null;
+            }
+
+
             if (player.hand.size() >= 6 /* && !harfling er ikke en Harfling*/) {
 
                 //find spiller med lavest level
@@ -79,20 +87,20 @@ public class BackgroundSystem {
 
     void loaddecks(Deck roomList, Deck treasureList, ImageLoader il, ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
         for (int i = 0; i < roominfoList.size(); i++) {
-            roomList.addcard(new Card(p, roominfoList.get(i).http, 0, roominfoList.get(i).type, roominfoList.get(i).power, roominfoList.get(i).power2));
+            roomList.addcard(new Card(p, roominfoList.get(i).http, 0, roominfoList.get(i).type, roominfoList.get(i).power, roominfoList.get(i).power2, roominfoList.get(i).name));
             roomList.cardList.get(i).backside = il.bs1;
         }
         //p.println(roominfoList.size(), roominfoList.get(roominfoList.size() - 1).level, roominfoList.get(roominfoList.size() - 1).name);
         roomList.backside = il.bs1;
         treasureList.backside = il.bs2;
         for (int i = 0; i < treasureinfoList.size(); i++) {
-            treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1, treasureinfoList.get(i).type, treasureinfoList.get(i).power, treasureinfoList.get(i).power2));
+            treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1, treasureinfoList.get(i).type, treasureinfoList.get(i).power, treasureinfoList.get(i).power2, treasureinfoList.get(i).name));
             treasureList.cardList.get(i).backside = il.bs2;
         }
         //p.println(treasureinfoList.size(), treasureinfoList.get(treasureinfoList.size() - 1).level, treasureinfoList.get(treasureinfoList.size() - 1).name);
     }
 
-    void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist, Deck treasuredisc, Deck roomdisc) {
+    void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist, Deck treasuredisc, Deck roomdisc, Players players) {
         if (notDoneYet) {
             for (int i = 0; i < 4; i++) {
                 playerList.add(new Players(p));
@@ -102,13 +110,13 @@ public class BackgroundSystem {
             playerList.get(1).icon = im.p2;
             playerList.get(2).icon = im.p3;
             playerList.get(3).icon = im.p4;
-            buttList.add(new Button(p, 400, 400, 200, 100, "Male"));
-            buttList.add(new Button(p, 700, 400, 200, 100, "Woman"));
+            buttList.add(new Button(p, 700, 400, 200, 100, "Male"));
+            buttList.add(new Button(p, 1000, 400, 200, 100, "Woman"));
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
-                    treasurelist.drawcard(playerList.get(i).hand, 2,playerList, treasuredisc, roomdisc);
+                    treasurelist.drawcard(playerList.get(i).hand, 2,playerList, treasuredisc, roomdisc, players);
                     //p.print(treasurelist.cardList.size());
-                    roomlist.drawcard(playerList.get(i).hand, 2, playerList,treasuredisc, roomdisc);
+                    roomlist.drawcard(playerList.get(i).hand, 2, playerList,treasuredisc, roomdisc, players);
                     //p.print(roomlist.cardList.size());
 
                 }
@@ -120,11 +128,16 @@ public class BackgroundSystem {
             buttList.remove(2);
             removed = true;
         }
+        if(player<4){
+            int temp = player +1;
+            p.text("Player: " + temp,900,350);
+        }
         if (buttList.size() >= 3 && buttList.get(2).tryk) {
             if (player == 3) {
                 playerList.get(3).gender = 1;
                 player++;
                 buttList.get(2).tryk = false;
+                gamestarted = true;
             }
             if (player == 2) {
                 playerList.get(2).gender = 1;
@@ -147,6 +160,7 @@ public class BackgroundSystem {
                 playerList.get(3).gender = 2;
                 player++;
                 buttList.get(3).tryk = false;
+                gamestarted = true;
             }
             if (player == 2) {
                 playerList.get(2).gender = 2;
@@ -163,13 +177,20 @@ public class BackgroundSystem {
                 player++;
                 buttList.get(3).tryk = false;
             }
+
         }
+
     }
+
 
     void battlefase(){
+if(battlefase) {
 
+
+}
 
     }
+
 
 }
 
