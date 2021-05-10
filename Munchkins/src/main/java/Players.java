@@ -118,6 +118,7 @@ public class Players {
                                         }
                                         hand.get(i).hovering = false;
                                         Class = hand.get(i);
+                                        Class.name = hand.get(i).name;
                                         hand.remove(i);
                                     } else {
                                         if (hand.get(i).type.equalsIgnoreCase("Race")) {
@@ -312,7 +313,20 @@ public class Players {
 
     void displayMonster() {
         if (monster != null)
-            monster.display(p.width / 2 - 60, p.height / 2 -100, 120, 200, 1);
+            monster.display(p.width / 2 - 60, p.height / 2 - 100, 120, 200, 1);
+    }
+
+    void raceFunction() {
+    }
+
+    void classFunction() {
+        if (Class != null) {
+            if (p.mouseX > 440 && p.mouseX < 440 + 60 && p.mouseY > 800 && p.mouseY < 800 + 100) {
+                if (Class.name.equalsIgnoreCase("Thief")) {
+                    p.println((int)p.random(1,7));
+                }
+            }
+        }
     }
 
     void changeButtonPos(BackgroundSystem backgroundSystem) {

@@ -110,6 +110,8 @@ public class Main extends PApplet {
                     playerList.get(i).displayicon();
                     playerList.get(i).getPower();
                     playerList.get(i).displayMonster();
+                    playerList.get(i).raceFunction();
+                    playerList.get(i).classFunction();
                 }
                 room.displayBackside();
                 treasure.displayBackside();
