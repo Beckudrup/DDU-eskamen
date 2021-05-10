@@ -99,7 +99,7 @@ public class Main extends PApplet {
 
                 roomdisc.showDisc(roomdisc);
                 treasiredisc.showDisc(treasiredisc);
-                boardDeck.showBoardDeck();
+                //boardDeck.showBoardDeck();
                 dice.display(200, 200);
                 for (int i = 0; i < 4; i++) {
                     playerList.get(i).hoverCard(backgroundSystem);

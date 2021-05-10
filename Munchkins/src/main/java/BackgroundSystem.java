@@ -32,17 +32,12 @@ public class BackgroundSystem {
 
            }
            // buttList.get(1).tryk = false;
-            /*
-            roomdisc.allowedTreasure=1;
-            roomdisc.firstDraw=true;
-            treasuredisc.allowedTreasure=1;
-            treasuredisc.firstDraw=true;
-
              */
 
             if (player.monster != null){
                 player.monster = null;
             }
+
 
             if (player.hand.size() >= 6 /* && !harfling er ikke en Harfling*/) {
 

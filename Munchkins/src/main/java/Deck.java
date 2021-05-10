@@ -50,6 +50,7 @@ public class Deck {
                 if (drawncard.numb == 0 && firstDraw && type != 2) {
                     //hvis man trækker en curse
                     if (drawncard.type.equalsIgnoreCase("Curse")) {
+                        System.out.println("Henrik");
                         //Cursen skal komme ud på bordet og blive brugt
                         //curses(drawncard, player,playerList, treasuredisc, roomdisc); //kig på senere måske bad
                         //hand.add(drawncard);
@@ -70,7 +71,7 @@ public class Deck {
                     if (drawncard.type.equalsIgnoreCase("Class")||drawncard.type.equalsIgnoreCase("Race")){
                         hand.add(drawncard);
                     }
-                    firstDraw=false;
+                    //firstDraw=false;
                 } else {
                     //Treasure draw
                     if (drawncard.numb == 1 /*&& allowedTreasure > 0*/) {
@@ -124,14 +125,18 @@ public class Deck {
                 }
             }
         }
+
     }
 
     void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc){
         boardDeck.add(drawncard);
+
         if (drawncard.name.equalsIgnoreCase("Curse! Lose a level")){
             if (player.level!=1)
             player.level--;
         }
+
+
         if (drawncard.name.equalsIgnoreCase("Truly obnoxious curse!")){
             
         }
@@ -141,6 +146,8 @@ public class Deck {
         if (drawncard.name.equalsIgnoreCase("Curse! Income tax")){
 
         }
+
+
         if (drawncard.name.equalsIgnoreCase("Curse! Chiken on your head")){
             //-1 til dice rolls
         }
@@ -148,9 +155,12 @@ public class Deck {
             treasuredisc.addcard(player.feet);
             player.feet = null;
         }
+
         if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 small item")){
 
         }
+
+
         if (drawncard.name.equalsIgnoreCase("Curse! Change race")) {
             // Skal hente en anden race
             if (player.Race != null && roomdisc.cardList.size()>0) {
@@ -252,6 +262,7 @@ public class Deck {
         boardDeck.add(drawncard);
 
     }
+
     void showBoardDeck(){
         if (boardDeck.size() > 0){
             for (int i = 0; i < boardDeck.size(); i++) {
@@ -259,4 +270,6 @@ public class Deck {
             }
         }
     }
+
+
 }
