@@ -51,7 +51,7 @@ public class Deck {
                     //hvis man trækker en curse
                     if (drawncard.type.equalsIgnoreCase("Curse")) {
                         //Cursen skal komme ud på bordet og blive brugt
-                        //curses(drawncard, player,playerList,treasuredisc,roomdisc); //kig på senere måske bad
+                        curses(drawncard, player,playerList,treasuredisc,roomdisc); //kig på senere måske bad
                         //hand.add(drawncard);
                         System.out.println("Henrik");
                     }
@@ -70,7 +70,7 @@ public class Deck {
                     if (drawncard.type.equalsIgnoreCase("Class")||drawncard.type.equalsIgnoreCase("Race")){
                         hand.add(drawncard);
                     }
-                    firstDraw=false;
+                    //firstDraw=false;
                 } else {
                     //Treasure draw
                     if (drawncard.numb == 1 /*&& allowedTreasure > 0*/) {
@@ -113,7 +113,7 @@ public class Deck {
 
     }
 
-    void showDisc(Deck disc) {
+    void showDisc(Deck disc, Deck boardDeck) {
         if (disc.cardList.size() > 0) {
             for (int i = 0; i < disc.cardList.size(); i++) {
                 if (disc.cardList.get(i).numb == 1) {
@@ -122,6 +122,11 @@ public class Deck {
                     disc.cardList.get(i).display(700, 270, 90, 150, 1);
 
                 }
+            }
+        }
+        if (boardDeck.cardList.size()>0){
+            for (int i = 0; i <boardDeck.cardList.size() ; i++) {
+                boardDeck.cardList.get(i).display(p.width/2,550,90,150,1);
             }
         }
     }
