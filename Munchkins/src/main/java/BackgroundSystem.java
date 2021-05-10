@@ -19,7 +19,7 @@ public class BackgroundSystem {
                 turn++;
 
                 for (int i = 0; i < 4 ; i++) {
-                    playerList.get(i).showhand.tryk=false;
+                    playerList.get(i).showhand.tryk = false;
                 }
                 buttList.get(1).tryk = false;
             } else {
@@ -39,6 +39,11 @@ public class BackgroundSystem {
             treasuredisc.firstDraw=true;
 
              */
+
+            if (player.monster != null){
+                player.monster = null;
+            }
+
             if (player.hand.size() >= 6 /* && !harfling er ikke en Harfling*/) {
 
                 //find spiller med lavest level
@@ -164,8 +169,6 @@ public class BackgroundSystem {
             }
         }
     }
-
-
 }
 
 

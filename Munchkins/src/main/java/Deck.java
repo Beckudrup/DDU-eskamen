@@ -51,7 +51,7 @@ public class Deck {
                     //hvis man trækker en curse
                     if (drawncard.type.equalsIgnoreCase("Curse")) {
                         //Cursen skal komme ud på bordet og blive brugt
-                        //curses(drawncard, player,playerList,treasuredisc,roomdisc); //kig på senere måske bad
+                        //curses(drawncard, player,playerList, treasuredisc, roomdisc); //kig på senere måske bad
                         //hand.add(drawncard);
                         System.out.println("Henrik");
                     }
@@ -155,20 +155,20 @@ public class Deck {
             // Skal hente en anden race
             if (player.Race != null && roomdisc.cardList.size()>0) {
                 boolean raceFound = false;
-                player.Race=null;
+                player.Race = null;
                 for (int i = 0; i < roomdisc.cardList.size()-2 && !raceFound; i++) {
                     if (roomdisc.cardList.get(i).type.equalsIgnoreCase("Race")) {
                         Card raceDraw = roomdisc.cardList.get(i);
                         roomdisc.cardList.remove(i);
                         player.Race = raceDraw;
-                        raceFound=true;
+                        raceFound = true;
                     }
 
                 }
             }
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Duck of Doom")){
-            player.level-=2;
+            player.level -= 2;
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your race")){
             roomdisc.addcard(player.Race);

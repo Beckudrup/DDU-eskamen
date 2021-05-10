@@ -24,6 +24,7 @@ public class Players {
     Card hand1;
     Card hand2;
     Card utility;
+    Card monster;
     Card Class;
     Card Class2;
     Card Race;
@@ -145,17 +146,31 @@ public class Players {
                                                 utility = hand.get(i);
                                                 hand.remove(i);
                                             } else {
-                                                if (hand.get(i).numb == 0) {
+                                                if (hand.get(i).type.equalsIgnoreCase("Monster")) {
+                                                    if (monster != null) {
+                                                        if (monster.numb == 0) {
+                                                            roomdisc.addcard(monster);
+                                                        } else {
+                                                            if (monster.numb == 1)
+                                                                treasuredisc.addcard(monster);
+                                                        }
+                                                    }
                                                     hand.get(i).hovering = false;
-                                                    Card card = hand.get(i);
-                                                    roomdisc.addcard(card);
+                                                    monster = hand.get(i);
                                                     hand.remove(i);
                                                 } else {
-                                                    if (hand.get(i).numb == 1) {
+                                                    if (hand.get(i).numb == 0) {
                                                         hand.get(i).hovering = false;
                                                         Card card = hand.get(i);
-                                                        treasuredisc.addcard(card);
+                                                        roomdisc.addcard(card);
                                                         hand.remove(i);
+                                                    } else {
+                                                        if (hand.get(i).numb == 1) {
+                                                            hand.get(i).hovering = false;
+                                                            Card card = hand.get(i);
+                                                            treasuredisc.addcard(card);
+                                                            hand.remove(i);
+                                                        }
                                                     }
                                                 }
                                             }
@@ -293,6 +308,11 @@ public class Players {
         } else {
             // PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow+level) + " ");
         }
+    }
+
+    void displayMonster() {
+        if (monster != null)
+            monster.display(p.width / 2 - 60, p.height / 2 -100, 120, 200, 1);
     }
 
     void changeButtonPos(BackgroundSystem backgroundSystem) {
@@ -462,29 +482,32 @@ public class Players {
     }
 
     void hoverCard(BackgroundSystem backgroundSystem) {
-        if (backgroundSystem.turn - playernr == 0&& showhand.tryk==true) {
-        for (int i = 0; i < hand.size(); i++) {
-            hand.get(i).hovering = p.mouseX > 700 + i * 180 && p.mouseX < 860 + i * 180 && p.mouseY > 800 && p.mouseY < 1000 ;
-        }}
-        if (((playernr == 1 && backgroundSystem.turn == 0) || (playernr == 2 && backgroundSystem.turn == 1) || (playernr == 3 && backgroundSystem.turn == 2) || (playernr == 0 && backgroundSystem.turn == 3))&& showhand.tryk==true) {
-            for (int i = 0; i < hand.size() ; i++) {
+        if (backgroundSystem.turn - playernr == 0 && showhand.tryk == true) {
+            for (int i = 0; i < hand.size(); i++) {
+                hand.get(i).hovering = p.mouseX > 700 + i * 180 && p.mouseX < 860 + i * 180 && p.mouseY > 800 && p.mouseY < 1000;
+            }
+        }
+        if (((playernr == 1 && backgroundSystem.turn == 0) || (playernr == 2 && backgroundSystem.turn == 1) || (playernr == 3 && backgroundSystem.turn == 2) || (playernr == 0 && backgroundSystem.turn == 3)) && showhand.tryk == true) {
+            for (int i = 0; i < hand.size(); i++) {
 
-                hand.get(i).hovering = p.mouseX > 0  && p.mouseX < 100 && p.mouseY > 370+i*90 && p.mouseY < 450+i*90  ;
+                hand.get(i).hovering = p.mouseX > 0 && p.mouseX < 100 && p.mouseY > 370 + i * 90 && p.mouseY < 450 + i * 90;
 
             }
 
         }
-        if (((playernr == 2 && backgroundSystem.turn == 0) || (playernr == 3 && backgroundSystem.turn == 1) || (playernr == 0 && backgroundSystem.turn == 2) || (playernr == 1 && backgroundSystem.turn == 3))&& showhand.tryk==true){
-            for (int i = 0; i < hand.size() ; i++) {
+        if (((playernr == 2 && backgroundSystem.turn == 0) || (playernr == 3 && backgroundSystem.turn == 1) || (playernr == 0 && backgroundSystem.turn == 2) || (playernr == 1 && backgroundSystem.turn == 3)) && showhand.tryk == true) {
+            for (int i = 0; i < hand.size(); i++) {
 
-                hand.get(i).hovering = p.mouseX > 790+ i*90  && p.mouseX < 870+ i*90 && p.mouseY > 0 && p.mouseY < 100  ;
+                hand.get(i).hovering = p.mouseX > 790 + i * 90 && p.mouseX < 870 + i * 90 && p.mouseY > 0 && p.mouseY < 100;
 
-        }}
-        if (((playernr == 3 && backgroundSystem.turn == 0) || (playernr == 0 && backgroundSystem.turn == 1) || (playernr == 1 && backgroundSystem.turn == 2) || (playernr == 2 && backgroundSystem.turn == 3))&& showhand.tryk==true) {
-            for (int i = 0; i < hand.size() ; i++) {
+            }
+        }
+        if (((playernr == 3 && backgroundSystem.turn == 0) || (playernr == 0 && backgroundSystem.turn == 1) || (playernr == 1 && backgroundSystem.turn == 2) || (playernr == 2 && backgroundSystem.turn == 3)) && showhand.tryk == true) {
+            for (int i = 0; i < hand.size(); i++) {
 
-            hand.get(i).hovering = p.mouseX > 1800  && p.mouseX < 1900 && p.mouseY > 290 + i*90&& p.mouseY < 370 + i*90 ;
-        }}
+                hand.get(i).hovering = p.mouseX > 1800 && p.mouseX < 1900 && p.mouseY > 290 + i * 90 && p.mouseY < 370 + i * 90;
+            }
+        }
     }
 
     void displayicon() {
