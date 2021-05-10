@@ -7,6 +7,7 @@ public class BackgroundSystem {
     PApplet p;
     boolean notDoneYet = true;
     boolean removed;
+    boolean monsterfasedone;
     int turn;
 
     BackgroundSystem(PApplet p) {
@@ -165,6 +166,10 @@ public class BackgroundSystem {
         }
     }
 
+    void battlefase(){
+
+
+    }
 
 }
 

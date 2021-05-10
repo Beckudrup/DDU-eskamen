@@ -16,6 +16,7 @@ public class Card {
     int power2;
 
 
+
     Card(PApplet p, String imglink, int numb, String type, int power, int power2) {
         this.p = p;
         cards = p.loadImage(imglink);
@@ -32,4 +33,6 @@ public class Card {
         if (frontOrBack == 2)
             p.image(backside, x, y, w, h);
     }
+
+
 }

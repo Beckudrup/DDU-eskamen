@@ -38,7 +38,7 @@ public class Players {
         showhand = new Button(p, 10, 10, 130, 50, "Show hand");
     }
 
-    void selectCard(Deck roomdisc, Deck treasuredisc) {
+    void selectCard(Deck roomdisc, Deck treasuredisc,BackgroundSystem backgroundSystem,ArrayList<Card> monsterList) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
                 if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
@@ -145,17 +145,25 @@ public class Players {
                                                 utility = hand.get(i);
                                                 hand.remove(i);
                                             } else {
-                                                if (hand.get(i).numb == 0) {
+                                                if (hand.get(i).type.equalsIgnoreCase("Monster") && !backgroundSystem.monsterfasedone) {
                                                     hand.get(i).hovering = false;
-                                                    Card card = hand.get(i);
-                                                    roomdisc.addcard(card);
+                                                    Card temp = hand.get(i);
+                                                    monsterList.add(temp);
                                                     hand.remove(i);
+
                                                 } else {
-                                                    if (hand.get(i).numb == 1) {
+                                                    if (hand.get(i).numb == 0) {
                                                         hand.get(i).hovering = false;
                                                         Card card = hand.get(i);
-                                                        treasuredisc.addcard(card);
+                                                        roomdisc.addcard(card);
                                                         hand.remove(i);
+                                                    } else {
+                                                        if (hand.get(i).numb == 1) {
+                                                            hand.get(i).hovering = false;
+                                                            Card card = hand.get(i);
+                                                            treasuredisc.addcard(card);
+                                                            hand.remove(i);
+                                                        }
                                                     }
                                                 }
                                             }

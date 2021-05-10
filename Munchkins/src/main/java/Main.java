@@ -29,7 +29,7 @@ public class Main extends PApplet {
     Badstuff badstuff = new Badstuff(this);
     boolean loadingDone;
     int counter;
-
+    ArrayList<Card> monsterlist = new ArrayList<>();
     @Override
     public void settings() {
         super.settings();
@@ -195,7 +195,7 @@ public class Main extends PApplet {
             roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc,roomdisc);
             treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc,roomdisc);
             for (int i = 0; i < playerList.size(); i++) {
-                playerList.get(i).selectCard(roomdisc, treasiredisc);
+                playerList.get(i).selectCard(roomdisc, treasiredisc,backgroundSystem,monsterlist);
                 playerList.get(i).showhand.registerClick2(mouseX,mouseY);
             }
         }
