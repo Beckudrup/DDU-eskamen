@@ -248,25 +248,25 @@ public class Players {
             p.pushMatrix();
             p.rotate((float) 1.5708 * 3);
             if (head != null)
-                head.display(-770, 1660, 60, 100, 1);
+                head.display(-930, 1660, 60, 100, 1);
             if (body != null)
                 body.display(-850, 1660, 60, 100, 1);
             if (feet != null)
-                feet.display(-930, 1660, 60, 100, 1);
+                feet.display(-770, 1660, 60, 100, 1);
             if (hand1 != null)
-                hand1.display(-770, 1780, 60, 100, 1);
+                hand1.display(-930, 1780, 60, 100, 1);
             if (hand2 != null)
                 hand2.display(-850, 1780, 60, 100, 1);
             if (utility != null)
-                utility.display(-930, 1780, 60, 100, 1);
+                utility.display(-770, 1780, 60, 100, 1);
             if (Class != null)
-                Class.display(-1010, 1660, 60, 100, 1);
+                Class.display(-690, 1660, 60, 100, 1);
             if (Class2 != null)
-                Class.display(-1010, 1780, 60, 100, 1);
+                Class.display(-690, 1780, 60, 100, 1);
             if (Race != null)
-                Race.display(-1090, 1660, 60, 100, 1);
+                Race.display(-610, 1660, 60, 100, 1);
             if (Race2 != null)
-                Race.display(-1090, 1780, 60, 100, 1);
+                Race.display(-610, 1780, 60, 100, 1);
             p.popMatrix();
         }
     }
