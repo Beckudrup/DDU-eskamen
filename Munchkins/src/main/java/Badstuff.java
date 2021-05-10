@@ -53,8 +53,8 @@ public class Badstuff {
             if (players.hand.size() == 0) {
                 for (int i = 0; i < 4; i++) {
                     for (int j = 0; j < 2; j++) {
-                        treasurelist.drawcard(playerList.get(i).hand, 0,playerList,treasurediscard,roomdiscard);
-                        roomlist.drawcard(playerList.get(i).hand, 0,playerList,treasurediscard,roomdiscard);
+                        treasurelist.drawcard(playerList.get(i).hand, 0,playerList,treasurediscard,roomdiscard, players);
+                        roomlist.drawcard(playerList.get(i).hand, 0,playerList,treasurediscard,roomdiscard, players);
 
                     }
                 }

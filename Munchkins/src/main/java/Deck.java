@@ -11,7 +11,6 @@ public class Deck {
     int x, y, w, h;
     int allowedTreasure = 0;
     boolean firstDraw = true;
-    Players player;
     boolean fix = true;
     Deck(PApplet p, int x, int y, int w, int h) {
         this.p = p;
@@ -25,14 +24,14 @@ public class Deck {
         cardList.add(card);
     }
 
-    void clicktodraw(int turn, ArrayList<Players> playerList, int type, Deck treasuredisc, Deck roomdisc) {
+    void clicktodraw(int turn, ArrayList<Players> playerList, int type, Deck treasuredisc, Deck roomdisc, Players players) {
         if (p.mouseX > x && p.mouseX < x + w && p.mouseY > y && p.mouseY < y + h) {
-            drawcard(playerList.get(turn).hand, type, playerList, treasuredisc,roomdisc);
+            drawcard(playerList.get(turn).hand, type, playerList, treasuredisc,roomdisc, players);
 
         }
     }
 
-    void drawcard(ArrayList<Card> hand, int type, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc) {
+    void drawcard(ArrayList<Card> hand, int type, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc, Players player) {
         //træk fra ikke discarded decks
         if (cardList.size() > 0 && type == 0||type==2) {
             int random = (int) p.random(cardList.size());
@@ -126,13 +125,7 @@ public class Deck {
             }
         }
     }
-    void showBoardDeck(){
-        if (boardDeck.size() > 0){
-            for (int i = 0; i < boardDeck.size(); i++) {
-                boardDeck.get(i).display(p.width/2+i*90,550,90,150,1);
-            }
-        }
-    }
+
     void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc){
         boardDeck.add(drawncard);
         if (drawncard.name.equalsIgnoreCase("Curse! Lose a level")){
@@ -258,5 +251,12 @@ public class Deck {
     void monsters(Card drawncard){
         boardDeck.add(drawncard);
 
+    }
+    void showBoardDeck(){
+        if (boardDeck.size() > 0){
+            for (int i = 0; i < boardDeck.size(); i++) {
+                boardDeck.get(i).display(p.width/2+i*90,550,90,150,1);
+            }
+        }
     }
 }
