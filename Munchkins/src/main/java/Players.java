@@ -13,8 +13,10 @@ public class Players {
     int feetpow;
     int handpow;
     int hand2pow;
+    int feetRunAway;
+    int handRunAway;
     int pow;
-    int tempPow;
+    int RunAway;
     int playerClass = 0;
     int race = 0;
     int playernr;
@@ -30,6 +32,7 @@ public class Players {
     Card Race;
     Card Race2;
     Button showhand;
+    boolean wanderingMonster;
 
 
     ArrayList<Card> hand = new ArrayList();
@@ -39,7 +42,7 @@ public class Players {
         showhand = new Button(p, 10, 10, 130, 50, "Show hand");
     }
 
-    void selectCard(Deck roomdisc, Deck treasuredisc) {
+    void selectCard(Deck roomdisc, Deck treasuredisc,BackgroundSystem backgroundSystem,ArrayList<Card> monsterList) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
                 if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
@@ -147,18 +150,16 @@ public class Players {
                                                 utility = hand.get(i);
                                                 hand.remove(i);
                                             } else {
-                                                if (hand.get(i).type.equalsIgnoreCase("Monster")) {
-                                                    if (monster != null) {
-                                                        if (monster.numb == 0) {
-                                                            roomdisc.addcard(monster);
-                                                        } else {
-                                                            if (monster.numb == 1)
-                                                                treasuredisc.addcard(monster);
-                                                        }
-                                                    }
+
+                                                if (hand.get(i).type.equalsIgnoreCase("Monster") && !backgroundSystem.monsterfasedone&&(!backgroundSystem.battlefase||wanderingMonster)) {
                                                     hand.get(i).hovering = false;
-                                                    monster = hand.get(i);
+                                                    Card temp = hand.get(i);
+                                                    monsterList.add(temp);
+                                                    backgroundSystem.startofbattlefase=true;
+                                                    backgroundSystem.battlefase=true;
                                                     hand.remove(i);
+                                                    wanderingMonster=false;
+
                                                 } else {
                                                     if (hand.get(i).numb == 0) {
                                                         hand.get(i).hovering = false;
@@ -187,8 +188,8 @@ public class Players {
     }
 
 
-    void displayequiped() {
-        if (playernr == 0) {
+    void displayequiped(int turn) {
+        if (turn - playernr == 0) {
             if (head != null)
                 head.display(200, 800, 60, 100, 1);
             if (body != null)
@@ -210,7 +211,7 @@ public class Players {
             if (Race2 != null)
                 Race.display(520, 920, 60, 100, 1);
         }
-        if (playernr == 1) {
+        if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
             p.pushMatrix();
             p.rotate((float) 1.5708);
             if (head != null)
@@ -235,7 +236,7 @@ public class Players {
                 Race.display(450, -110, 60, 100, 1);
             p.popMatrix();
         }
-        if (playernr == 2) {
+        if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
             p.pushMatrix();
             p.rotate((float) 1.5708 * 2);
             if (head != null)
@@ -260,7 +261,7 @@ public class Players {
                 Race.display(-1400, -140, 60, 100, 1);
             p.popMatrix();
         }
-        if (playernr == 3) {
+        if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
             p.pushMatrix();
             p.rotate((float) 1.5708 * 3);
             if (head != null)
@@ -296,13 +297,17 @@ public class Players {
         }
         if (feet != null) {
             feetpow = (feet.power);
+            feetRunAway = (feet.RunAway);
         }
         if (hand1 != null) {
             handpow = (hand1.power);
         }
         if (hand2 != null) {
             hand2pow = (hand2.power);
+            handRunAway = (hand2.RunAway);
         }
+        if (feet != null && hand2 != null)
+            RunAway = (handRunAway + feetRunAway);
         if (head != null && body != null && feet != null && hand1 != null && hand2 != null) {
             pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power + level);
             // PApplet.println(pow);
@@ -317,13 +322,44 @@ public class Players {
     }
 
     void raceFunction() {
+        if (Race != null) {
+            if (Race.name.equalsIgnoreCase("Elf")) {
+                //runAway + 1;
+                //p.println("Run Away = 1");
+                //If you help kill a monster +1 level, for each killed;
+            }
+            if (Race.name.equalsIgnoreCase("Dwarf")) {
+                //Carry any number of big weapons;
+                //Have 6 cards in hand (instead og 5);
+            }
+            if (Race.name.equalsIgnoreCase("Halfling")) {
+                //You may sell one item each turn for double price;
+                //If you fail your initial Run Away roll, you may discard a card and try once more;
+            }
+        }
     }
 
     void classFunction() {
         if (Class != null) {
+            //This if statement is only for player one;
             if (p.mouseX > 440 && p.mouseX < 440 + 60 && p.mouseY > 800 && p.mouseY < 800 + 100) {
                 if (Class.name.equalsIgnoreCase("Thief")) {
-                    p.println((int)p.random(1,7));
+                    //You may discard a card to backstab another player (-2 in combat). You may do this only once per victim per combat, but if two or more players are fighting a monster together, you may backstab each of them;
+                    //You may discard a card to try to steal a small item carried by another player. Roll a die; 4 or more succeeds. Otherwise, you get whacked and lose a level;
+                    //p.println((int) p.random(1, 7));
+                }
+                if (Class.name.equalsIgnoreCase("Cleric")) {
+                    //In draw-face, you may instead take some or all top of the appropriate discard pile. You must discard one card from your hand for each card drawn;
+                    //Against undead creatures
+                }
+                if (Class.name.equalsIgnoreCase("Wizard")) {
+                    //Either
+                    //Discard up to 3 cards after rolling a Run Away die. Each discard give +1 to Run Away;
+                    //You may discard you whole hand (minimum 3) to charm a single monster instead of fighting it. Discard the monster and take its treasure, but don't gain levels. If there are other monsters in the combat fight them normally.
+                }
+                if (Class.name.equalsIgnoreCase("Warrior")) {
+                    //You may discard up to 3 cards in combat; each one gives you a +1 bonus;
+                    //You win ties in combat.
                 }
             }
         }
@@ -432,7 +468,6 @@ public class Players {
                         p.pushMatrix();
 
                         p.rotate((float) 1.5708);
-
                         hand.get(i).display(370 + i * 90, -100, 160 / 2, 200 / 2, 1);
                         p.popMatrix();
                     }
@@ -442,7 +477,6 @@ public class Players {
                         p.pushMatrix();
 
                         p.rotate((float) 1.5708);
-
                         hand.get(i).display(370 + i * 90, -100, 160 / 2, 200 / 2, 2);
                         p.popMatrix();
                     }
@@ -476,7 +510,6 @@ public class Players {
                         p.pushMatrix();
 
                         p.rotate((float) 1.5708 * 3);
-
                         hand.get(i).display(-370 - i * 90, 1800, 160 / 2, 200 / 2, 1);
                         p.popMatrix();
                     }
@@ -505,7 +538,6 @@ public class Players {
             for (int i = 0; i < hand.size(); i++) {
 
                 hand.get(i).hovering = p.mouseX > 0 && p.mouseX < 100 && p.mouseY > 370 + i * 90 && p.mouseY < 450 + i * 90;
-
             }
 
         }
@@ -513,7 +545,6 @@ public class Players {
             for (int i = 0; i < hand.size(); i++) {
 
                 hand.get(i).hovering = p.mouseX > 790 + i * 90 && p.mouseX < 870 + i * 90 && p.mouseY > 0 && p.mouseY < 100;
-
             }
         }
         if (((playernr == 3 && backgroundSystem.turn == 0) || (playernr == 0 && backgroundSystem.turn == 1) || (playernr == 1 && backgroundSystem.turn == 2) || (playernr == 2 && backgroundSystem.turn == 3)) && showhand.tryk == true) {

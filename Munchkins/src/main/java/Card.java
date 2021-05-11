@@ -10,15 +10,19 @@ public class Card {
     String name;
     String type;
     String imglink;
+    int RunAway;
     int level;
     int numb;
     int power;
     int power2;
 
 
-    Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name) {
+
+    Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name, int RunAway) {
+
         this.p = p;
         cards = p.loadImage(imglink);
+        this.RunAway = RunAway;
         this.numb = numb;
         this.type = type;
         this.name = name;
@@ -33,4 +37,6 @@ public class Card {
         if (frontOrBack == 2)
             p.image(backside, x, y, w, h);
     }
+
+
 }
