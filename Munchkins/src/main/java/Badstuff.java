@@ -16,7 +16,7 @@ public class Badstuff {
     }
 
 
-    void badstufflevel(Players players, ArrayList<Players> playerList) {
+    void badstufflevel(Players players, ArrayList<Players> playerList,int roll) {
 /*
         lose 1 lvl
 
