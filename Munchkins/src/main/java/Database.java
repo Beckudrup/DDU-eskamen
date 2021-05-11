@@ -31,6 +31,7 @@ public class Database {
             room.power = (db.getInt("Power"));
             room.power2 = (db.getInt("Power2"));
             room.badStuff = (db.getString("BadStuff"));
+            room.RunAway = (db.getInt("Run Away"));
             roominfoList.add(room);
             //collected.type = (db.getString("Type"));
             //collected.name = (db.getString("Name"));
@@ -49,6 +50,7 @@ public class Database {
                 treasure.power = (db.getInt("Power"));
                 treasure.power2 = (db.getInt("Power2"));
                 treasure.badStuff = (db.getString("BadStuff"));
+                treasure.RunAway = (db.getInt("Run Away"));
                 treasureinfoList.add(treasure);
                 //p.println(cardinfoList.size(),cardinfoList.get(cardinfoList.size()-1).level, cardinfoList.get(cardinfoList.size()-1).name, " i = " + i++ + "   At 0:" ,cardinfoList.get(0).level, cardinfoList.get(0).name);
                 //println(TreasureList.get(i++));

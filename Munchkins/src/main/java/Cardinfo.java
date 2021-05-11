@@ -6,4 +6,5 @@ public class Cardinfo {
     int level;
     int power;
     int power2;
+    int RunAway;
 }
