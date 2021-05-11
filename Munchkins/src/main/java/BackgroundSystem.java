@@ -10,7 +10,9 @@ public class BackgroundSystem {
     boolean monsterfasedone;
     boolean battlefase;
     boolean gamestarted;
+    boolean startofbattlefase;
     int turn;
+    ArrayList<Players> allyList = new ArrayList<>();
 
     BackgroundSystem(PApplet p) {
         this.p = p;
@@ -183,9 +185,39 @@ public class BackgroundSystem {
     }
 
 
-    void battlefase(){
+    void battlefase(ArrayList<Button> buttList,ArrayList<Players> playerList,BackgroundSystem backgroundSystem, ArrayList<Card> monsterList){
 if(battlefase) {
 
+    if(startofbattlefase) {
+        allyList.add(playerList.get(backgroundSystem.turn));
+        if(backgroundSystem.turn!=0)
+        buttList.add(new Button(p,200,300,50,30,"p1"));
+        if(backgroundSystem.turn!=1)
+        buttList.add(new Button(p,260,300,50,30,"p2"));
+        if(backgroundSystem.turn!=2)
+        buttList.add(new Button(p,300,300,50,30,"p3"));
+        if(backgroundSystem.turn!=3)
+        buttList.add(new Button(p,360,300,50,30,"p4"));
+        buttList.add(new Button(p,500,700,100,60,"fight/run"));
+    }
+    for (int i = 0; i < 3 ; i++) {
+        if(buttList.get(i+3).tryk){
+            allyList.add(playerList.get(i));
+        }
+    }
+
+    if(buttList.get(buttList.size()-1).tryk==true){
+        int monsterPower = 0;
+        for (int i = 0; i < monsterList.size(); i++) {
+            monsterPower += monsterList.get(i).power;
+        }
+
+if(playerList.get(backgroundSystem.turn).pow>monsterPower) {
+//treasure draw
+}
+allyList.clear();
+buttList.remove(buttList.size()-1);
+    }
 
 }
 

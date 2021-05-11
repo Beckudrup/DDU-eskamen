@@ -183,8 +183,8 @@ public class Players {
     }
 
 
-    void displayequiped() {
-        if (playernr == 0) {
+    void displayequiped(int turn) {
+        if (turn - playernr == 0) {
             if (head != null)
                 head.display(200, 800, 60, 100, 1);
             if (body != null)
@@ -206,7 +206,7 @@ public class Players {
             if (Race2 != null)
                 Race.display(520, 920, 60, 100, 1);
         }
-        if (playernr == 1) {
+        if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
             p.pushMatrix();
             p.rotate((float) 1.5708);
             if (head != null)
@@ -231,7 +231,7 @@ public class Players {
                 Race.display(450, -110, 60, 100, 1);
             p.popMatrix();
         }
-        if (playernr == 2) {
+        if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
             p.pushMatrix();
             p.rotate((float) 1.5708 * 2);
             if (head != null)
@@ -256,7 +256,7 @@ public class Players {
                 Race.display(-1400, -140, 60, 100, 1);
             p.popMatrix();
         }
-        if (playernr == 3) {
+        if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
             p.pushMatrix();
             p.rotate((float) 1.5708 * 3);
             if (head != null)

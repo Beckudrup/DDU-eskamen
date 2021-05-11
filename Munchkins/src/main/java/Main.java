@@ -107,7 +107,7 @@ public class Main extends PApplet {
                         playerList.get(i).displayHand(backgroundSystem.turn);
                         playerList.get(i).changeButtonPos(backgroundSystem);
                         playerList.get(i).showhand.drawButton();
-                        playerList.get(i).displayequiped();
+                        playerList.get(i).displayequiped(backgroundSystem.turn);
                         playerList.get(i).displayicon();
                         playerList.get(i).getPower();
                         playerList.get(i).displayMonster();
@@ -116,7 +116,7 @@ public class Main extends PApplet {
                     }
                     room.displayBackside();
                     treasure.displayBackside();
-
+                    backgroundSystem.battlefase(buttList,playerList,backgroundSystem,monsterlist);
                     backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList, roomdisc, treasiredisc);
                     //println(backgroundSystem.turn);
                     room.resuffle(roomdisc);
@@ -175,11 +175,19 @@ public class Main extends PApplet {
             if (screenchange == 15) {
                 rules.rGameControls(buttList);
             }
-
+if(screenchange<1||screenchange>1||(screenchange==1&&backgroundSystem.gamestarted))
             for (int i = 0; i < buttList.size(); i++) {
                 buttList.get(i).isButtonPressed();
                 buttList.get(i).drawButton();
             }
+if(!backgroundSystem.gamestarted&&screenchange==1){
+    for (int i = 0; i < buttList.size(); i++) {
+        if(i==1)
+            i++;
+        buttList.get(i).isButtonPressed();
+        buttList.get(i).drawButton();
+    }
+}
             screenChanger();
 
         }
