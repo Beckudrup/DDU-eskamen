@@ -20,24 +20,24 @@ public class BackgroundSystem {
     }
 
     void endturn(ArrayList<Button> buttList, Players player, ArrayList<Players> playerList, Deck roomdisc, Deck treasuredisc) {
-        if (buttList.get(1).tryk&&!battlefase) {
+        if (buttList.get(1).tryk && !battlefase) {
             if (turn < 3) {
                 turn++;
 
-                for (int i = 0; i < 4 ; i++) {
+                for (int i = 0; i < 4; i++) {
                     playerList.get(i).showhand.tryk = false;
                 }
 
                 buttList.get(1).tryk = false;
             } else {
                 turn = 0;
-                for (int i = 0; i < 4 ; i++) {
-                    playerList.get(i).showhand.tryk=false;
+                for (int i = 0; i < 4; i++) {
+                    playerList.get(i).showhand.tryk = false;
                 }
                 buttList.get(1).tryk = false;
 
 
-           }
+            }
 
             // buttList.get(1).tryk = false;
             /*
@@ -47,7 +47,7 @@ public class BackgroundSystem {
             treasuredisc.firstDraw=true;
 
              */
-            if (player.monster != null){
+            if (player.monster != null) {
                 player.monster = null;
             }
 
@@ -64,30 +64,29 @@ public class BackgroundSystem {
 
                     }
                 }
-                    //hvis man er lavest - discard cards
-                    //ellers giv til lavest level
-                    while (player.hand.size() > 5) {
-                        int random = (int) p.random(player.hand.size());
-                        Card card = player.hand.get(random);
-                        player.hand.remove(random);
-                        if (tmpSpiller != player){
-                            tmpSpiller.hand.add(card);
-                        }else{
-                         if (card.numb==0){
-                             roomdisc.addcard(card);
-                         }else {
-                             if (card.numb==1){
-                                 treasuredisc.addcard(card);
-                             }
+                //hvis man er lavest - discard cards
+                //ellers giv til lavest level
+                while (player.hand.size() > 5) {
+                    int random = (int) p.random(player.hand.size());
+                    Card card = player.hand.get(random);
+                    player.hand.remove(random);
+                    if (tmpSpiller != player) {
+                        tmpSpiller.hand.add(card);
+                    } else {
+                        if (card.numb == 0) {
+                            roomdisc.addcard(card);
+                        } else {
+                            if (card.numb == 1) {
+                                treasuredisc.addcard(card);
+                            }
 
-                         }
                         }
                     }
                 }
-            monsterfasedone=false;
             }
+            monsterfasedone = false;
         }
-
+    }
 
 
     void loaddecks(Deck roomList, Deck treasureList, ImageLoader il, ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
@@ -119,9 +118,9 @@ public class BackgroundSystem {
             buttList.add(new Button(p, 1000, 400, 200, 100, "Woman"));
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
-                    treasurelist.drawcard(playerList.get(i).hand, 2,playerList, treasuredisc, roomdisc, players);
+                    treasurelist.drawcard(playerList.get(i).hand, 2, playerList, treasuredisc, roomdisc, players);
                     //p.print(treasurelist.cardList.size());
-                    roomlist.drawcard(playerList.get(i).hand, 2, playerList,treasuredisc, roomdisc, players);
+                    roomlist.drawcard(playerList.get(i).hand, 2, playerList, treasuredisc, roomdisc, players);
                     //p.print(roomlist.cardList.size());
 
                 }
@@ -133,9 +132,9 @@ public class BackgroundSystem {
             buttList.remove(2);
             removed = true;
         }
-        if(player<4){
-            int temp = player +1;
-            p.text("Player: " + temp,900,350);
+        if (player < 4) {
+            int temp = player + 1;
+            p.text("Player: " + temp, 900, 350);
         }
         if (buttList.size() >= 3 && buttList.get(2).tryk) {
             if (player == 3) {
@@ -187,6 +186,7 @@ public class BackgroundSystem {
 
     }
 
+
 void displayenemy(ArrayList<Card> monsterList){
     for (int i = 0; i < monsterList.size(); i++) {
         monsterList.get(i).display(600+i*70,500,60,100,1);
@@ -212,24 +212,26 @@ if(battlefase) {
     for (int i = 0; i < 3 ; i++) {
         if(buttList.get(i+2).tryk){
             allyList.add(playerList.get(i));
-        }
-    }
+   
+                }
+            }
 
-    if(buttList.get(buttList.size()-1).tryk==true){
-        int monsterPower = 0;
-        int allyPower = 0;
-        for (int i = 0; i < monsterList.size(); i++) {
-            monsterPower += monsterList.get(i).power;
-        }
-        for (int i = 0; i < allyList.size(); i++) {
-            allyPower += allyList.get(i).pow;
-        }
-if((allyPower>monsterPower/*&&playerList.get(backgroundSystem.turn).Class.equalsignorecase("warrior")*/)||(allyPower>monsterPower)) {
+            if (buttList.get(buttList.size() - 1).tryk == true) {
+                int monsterPower = 0;
+                int allyPower = 0;
+                for (int i = 0; i < monsterList.size(); i++) {
+                    monsterPower += monsterList.get(i).power;
+                }
+                for (int i = 0; i < allyList.size(); i++) {
+                    allyPower += allyList.get(i).pow;
+                }
+                if ((allyPower > monsterPower/*&&playerList.get(backgroundSystem.turn).Class.equalsignorecase("warrior")*/) || (allyPower > monsterPower)) {
 //treasure draw
-}
-if(monsterPower>allyPower){
-    // go gennem bad stuff
-    for (int j = 0; j < playerList.size(); j++) {
+
+                }
+                if (monsterPower > allyPower) {
+                    // go gennem bad stuff
+                    for (int j = 0; j < playerList.size(); j++) {
 
 
     for (int i = 0; i < monsterList.size(); i++) {
@@ -243,36 +245,58 @@ if(monsterPower>allyPower){
         
     }}
 
-}
-allyList.clear();
-battlefase=false;
-monsterfasedone = true;
-        for (int i = 0; i < 4 ; i++) {
-            buttList.remove(buttList.size()-1);
-        }
-        while(monsterList.size()>0){
-            if (monsterList.get(monsterList.size()-1).numb == 0) {
-                monsterList.get(monsterList.size()-1).hovering = false;
-                Card card = monsterList.get(monsterList.size()-1);
-                roomdisc.addcard(card);
-                monsterList.remove(monsterList.size()-1);
-            } else {
-                if (monsterList.get(monsterList.size()-1).numb == 1) {
-                    monsterList.get(monsterList.size()-1).hovering = false;
-                    Card card = monsterList.get(monsterList.size()-1);
-                    treasuredisc.addcard(card);
-                    monsterList.remove(monsterList.size()-1);
+                        }
+                    }
+
                 }
+                allyList.clear();
+                battlefase = false;
+                monsterfasedone = true;
+                for (int i = 0; i < 4; i++) {
+                    buttList.remove(buttList.size() - 1);
+                }
+                while (monsterList.size() > 0) {
+                    if (monsterList.get(monsterList.size() - 1).numb == 0) {
+                        monsterList.get(monsterList.size() - 1).hovering = false;
+                        Card card = monsterList.get(monsterList.size() - 1);
+                        roomdisc.addcard(card);
+                        monsterList.remove(monsterList.size() - 1);
+                    } else {
+                        if (monsterList.get(monsterList.size() - 1).numb == 1) {
+                            monsterList.get(monsterList.size() - 1).hovering = false;
+                            Card card = monsterList.get(monsterList.size() - 1);
+                            treasuredisc.addcard(card);
+                            monsterList.remove(monsterList.size() - 1);
+                        }
+                        if (monsterPower > allyPower) {
+                            // go gennem bad stuff
+                        }
+                        allyList.clear();
+                        battlefase = false;
+                        monsterfasedone = true;
+                        for (int i = 0; i < 4; i++) {
+                            buttList.remove(buttList.size() - 1);
+                        }
+                        while (monsterList.size() > 0) {
+                            if (monsterList.get(monsterList.size() - 1).numb == 0) {
+                                monsterList.get(monsterList.size() - 1).hovering = false;
+                                Card card = monsterList.get(monsterList.size() - 1);
+                                roomdisc.addcard(card);
+                                monsterList.remove(monsterList.size() - 1);
+                            } else {
+                                if (monsterList.get(monsterList.size() - 1).numb == 1) {
+                                    monsterList.get(monsterList.size() - 1).hovering = false;
+                                    Card card = monsterList.get(monsterList.size() - 1);
+                                    treasuredisc.addcard(card);
+                                    monsterList.remove(monsterList.size() - 1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-
     }
-
 }
-
-    }
-
-
-}}
-
 
 

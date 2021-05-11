@@ -16,7 +16,7 @@ public class Badstuff {
     }
 
 
-    void badstufflevel(Players players, ArrayList<Players> playerList,int roll) {
+    void badstufflevel(Players players, ArrayList<Players> playerList, int roll) {
 /*
         lose 1 lvl
 
@@ -53,8 +53,8 @@ public class Badstuff {
             if (players.hand.size() == 0) {
                 for (int i = 0; i < 4; i++) {
                     for (int j = 0; j < 2; j++) {
-                        treasurelist.drawcard(playerList.get(i).hand, 0,playerList,treasurediscard,roomdiscard, players);
-                        roomlist.drawcard(playerList.get(i).hand, 0,playerList,treasurediscard,roomdiscard, players);
+                        treasurelist.drawcard(playerList.get(i).hand, 0, playerList, treasurediscard, roomdiscard, players);
+                        roomlist.drawcard(playerList.get(i).hand, 0, playerList, treasurediscard, roomdiscard, players);
 
                     }
                 }

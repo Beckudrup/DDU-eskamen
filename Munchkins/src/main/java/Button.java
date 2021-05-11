@@ -36,6 +36,7 @@ public class Button {
             tryk = true;
         }
     }
+
     void registerClick2(float xin, float yin) {
 
         if (xin > xPos && xin < xPos + w && yin < yPos + h && yin > yPos) {
