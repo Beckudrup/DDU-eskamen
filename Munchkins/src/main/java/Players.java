@@ -27,6 +27,7 @@ public class Players {
     Card hand2;
     Card utility;
     Card monster;
+    Card playable;
     Card Class;
     Card Class2;
     Card Race;
@@ -42,7 +43,7 @@ public class Players {
         showhand = new Button(p, 10, 10, 130, 50, "Show hand");
     }
 
-    void selectCard(Deck roomdisc, Deck treasuredisc,BackgroundSystem backgroundSystem,ArrayList<Card> monsterList) {
+    void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
                 if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
@@ -151,27 +152,42 @@ public class Players {
                                                 hand.remove(i);
                                             } else {
 
-                                                if (hand.get(i).type.equalsIgnoreCase("Monster") && !backgroundSystem.monsterfasedone&&(!backgroundSystem.battlefase||wanderingMonster)) {
+                                                if (hand.get(i).type.equalsIgnoreCase("Monster") && !backgroundSystem.monsterfasedone && (!backgroundSystem.battlefase || wanderingMonster)) {
                                                     hand.get(i).hovering = false;
                                                     Card temp = hand.get(i);
                                                     monsterList.add(temp);
-                                                    backgroundSystem.startofbattlefase=true;
-                                                    backgroundSystem.battlefase=true;
+                                                    backgroundSystem.startofbattlefase = true;
+                                                    backgroundSystem.battlefase = true;
                                                     hand.remove(i);
-                                                    wanderingMonster=false;
+                                                    wanderingMonster = false;
 
                                                 } else {
-                                                    if (hand.get(i).numb == 0) {
+                                                    if (hand.get(i).type.equalsIgnoreCase("Playable") && (!backgroundSystem.battlefase)) {
+                                                        if (playable != null) {
+                                                            if (playable.numb == 0) {
+                                                                roomdisc.addcard(playable);
+                                                            } else {
+                                                                if (playable.numb == 1)
+                                                                    treasuredisc.addcard(playable);
+                                                            }
+                                                        }
                                                         hand.get(i).hovering = false;
-                                                        Card card = hand.get(i);
-                                                        roomdisc.addcard(card);
+                                                        playable = hand.get(i);
+                                                        playable.name = hand.get(i).name;
                                                         hand.remove(i);
                                                     } else {
-                                                        if (hand.get(i).numb == 1) {
+                                                        if (hand.get(i).numb == 0) {
                                                             hand.get(i).hovering = false;
                                                             Card card = hand.get(i);
-                                                            treasuredisc.addcard(card);
+                                                            roomdisc.addcard(card);
                                                             hand.remove(i);
+                                                        } else {
+                                                            if (hand.get(i).numb == 1) {
+                                                                hand.get(i).hovering = false;
+                                                                Card card = hand.get(i);
+                                                                treasuredisc.addcard(card);
+                                                                hand.remove(i);
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -316,10 +332,64 @@ public class Players {
         }
     }
 
-    void displayMonster() {
-        if (monster != null)
-            monster.display(p.width / 2 - 60, p.height / 2 - 100, 120, 200, 1);
+    void playables(BackgroundSystem backgroundSystem) {
+        if (!backgroundSystem.battlefase) {
+            if (level <= 8) {
+                if (playable != null) {
+                    if (playable.name.equalsIgnoreCase("Invoke obscure rules")) {
+                        level = level + 1;
+                        p.println(1);
+                    }
+                    if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
+                        p.println(2);
+                        level = level + 1;
+                    }
+                    if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
+                        level = level + 1;
+                        p.println(3);
+                    }
+                    if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
+                        level = level + 1;
+                        p.println(4);
+                    }
+                    if (playable.name.equalsIgnoreCase("Boil an anthill")) {
+                        p.println(5);
+                        level = level + 1;
+                    }
+                    if (playable.name.equalsIgnoreCase("Convenient addition error")) {
+                        level = level + 1;
+                        p.println(6);
+                    }
+                    if (playable.name.equalsIgnoreCase("Mutilate the bodies") /*&& backgroundSyste.battlefase ;; end of *any* combat */) {
+                        level = level + 1;
+                        p.println(7);
+
+                    }
+                    //If hireling is on the bord utility.name.equalsIgnoreCase("Hireling")
+                    if (playable.name.equalsIgnoreCase("Kill the hireling")) {
+                        level = level + 1;
+                        p.println(8);
+                    }
+                    if (playable.name.equalsIgnoreCase("Steal a level")) {
+                        //Selected person level = level -1;
+                        level = level + 1;
+                        p.println(9);
+                    }
+                    if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
+                        //Go through the discards to find any one card you want. Take that card and discard this one.
+                    }
+                    /*if (!Class.name.equalsIgnoreCase("Cleric")) {
+                        if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
+                            if (level < /*other players level*/ /* 10) {
+                                //Player will always help, they gain no treasure, but you gain no level.
+                            }
+                        }
+                    }*/
+                }
+            }
+        }
     }
+
 
     void raceFunction() {
         if (Race != null) {

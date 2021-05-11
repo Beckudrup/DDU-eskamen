@@ -18,7 +18,7 @@ public class Main extends PApplet {
     Deck treasiredisc = new Deck(this, 1090, 270, 90, 150);
     Deck room = new Deck(this, 830, 270, 90, 150);
     Deck treasure = new Deck(this, 960, 270, 90, 150);
-    Deck boardDeck = new Deck (this, width/2,600,90,150);
+    Deck boardDeck = new Deck(this, width / 2, 600, 90, 150);
     Dice dice = new Dice(this);
     Database database = new Database(this);
     Menus menus = new Menus(this);
@@ -31,6 +31,7 @@ public class Main extends PApplet {
     boolean loadingDone;
     int counter;
     ArrayList<Card> monsterlist = new ArrayList<>();
+
     @Override
     public void settings() {
         super.settings();
@@ -87,7 +88,7 @@ public class Main extends PApplet {
                     board = new Board(this, 4);
                 menus.ingame(buttList, imageLoader, board);
 
-                backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure,treasiredisc,roomdisc, players);
+                backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure, treasiredisc, roomdisc, players);
                 // for (int i = 0; i < room.cardList.size(); i++) {
                 //  image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
                 // }
@@ -95,7 +96,7 @@ public class Main extends PApplet {
                 //for (int i = 0; i < treasure.cardList.size(); i++) {
                 //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
                 // }
-                if(backgroundSystem.gamestarted) {
+                if (backgroundSystem.gamestarted) {
                     badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasiredisc);
 
                     roomdisc.showDisc(roomdisc);
@@ -110,14 +111,14 @@ public class Main extends PApplet {
                         playerList.get(i).displayequiped(backgroundSystem.turn);
                         playerList.get(i).displayicon();
                         playerList.get(i).getPower();
-                        playerList.get(i).displayMonster();
+                        playerList.get(i).playables(backgroundSystem);
                         playerList.get(i).raceFunction();
                         playerList.get(i).classFunction();
                     }
                     room.displayBackside();
                     treasure.displayBackside();
                     backgroundSystem.displayenemy(monsterlist);
-                    backgroundSystem.battlefase(buttList,playerList,backgroundSystem,monsterlist,roomdisc,treasiredisc,dice);
+                    backgroundSystem.battlefase(buttList, playerList, backgroundSystem, monsterlist, roomdisc, treasiredisc, dice);
                     backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList, roomdisc, treasiredisc);
                     //println(backgroundSystem.turn);
                     room.resuffle(roomdisc);
@@ -176,19 +177,19 @@ public class Main extends PApplet {
             if (screenchange == 15) {
                 rules.rGameControls(buttList);
             }
-if(screenchange<1||screenchange>1||(screenchange==1&&backgroundSystem.gamestarted))
-            for (int i = 0; i < buttList.size(); i++) {
-                buttList.get(i).isButtonPressed();
-                buttList.get(i).drawButton();
+            if (screenchange < 1 || screenchange > 1 || (screenchange == 1 && backgroundSystem.gamestarted))
+                for (int i = 0; i < buttList.size(); i++) {
+                    buttList.get(i).isButtonPressed();
+                    buttList.get(i).drawButton();
+                }
+            if (!backgroundSystem.gamestarted && screenchange == 1) {
+                for (int i = 0; i < buttList.size(); i++) {
+                    if (i == 1)
+                        i++;
+                    buttList.get(i).isButtonPressed();
+                    buttList.get(i).drawButton();
+                }
             }
-if(!backgroundSystem.gamestarted&&screenchange==1){
-    for (int i = 0; i < buttList.size(); i++) {
-        if(i==1)
-            i++;
-        buttList.get(i).isButtonPressed();
-        buttList.get(i).drawButton();
-    }
-}
             screenChanger();
 
         }
@@ -202,19 +203,20 @@ if(!backgroundSystem.gamestarted&&screenchange==1){
             buttList.get(i).registerClick(mouseX, mouseY);
         }
         if (screenchange == 1) {
-            if(backgroundSystem.gamestarted){
-            if (mouseX > dice.posX && mouseX < dice.posX + 50 && mouseY > dice.posY && mouseY < dice.posY + 50)
-                dice.trowDie(7);
+            if (backgroundSystem.gamestarted) {
+                if (mouseX > dice.posX && mouseX < dice.posX + 50 && mouseY > dice.posY && mouseY < dice.posY + 50)
+                    dice.trowDie(7);
 
-            room.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc,roomdisc, players);
-            treasure.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc,roomdisc, players);
-            roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc,roomdisc, players);
-            treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc,roomdisc, players);
-            for (int i = 0; i < playerList.size(); i++) {
-                playerList.get(i).selectCard(roomdisc, treasiredisc,backgroundSystem,monsterlist);
-                playerList.get(i).showhand.registerClick2(mouseX,mouseY);
+                room.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc, roomdisc, players);
+                treasure.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc, roomdisc, players);
+                roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players);
+                treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players);
+                for (int i = 0; i < playerList.size(); i++) {
+                    playerList.get(i).selectCard(roomdisc, treasiredisc, backgroundSystem, monsterlist);
+                    playerList.get(i).showhand.registerClick2(mouseX, mouseY);
+                }
             }
-        }}
+        }
     }
 
     @Override

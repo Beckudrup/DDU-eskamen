@@ -33,11 +33,6 @@ public class Database {
             room.badStuff = (db.getString("BadStuff"));
             room.RunAway = (db.getInt("Run Away"));
             roominfoList.add(room);
-            //collected.type = (db.getString("Type"));
-            //collected.name = (db.getString("Name"));
-            //collected.level = (db.getInt("Level"));
-            //cardinfoList.add(collected);
-            // println(RoomList.get(i++));
         }
         db.query("SELECT * FROM Cards WHERE Deck = 'Treasure cards'");
         {

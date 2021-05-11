@@ -18,7 +18,6 @@ public class Card {
     int power2;
 
 
-
     Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name, int RunAway) {
 
         this.p = p;
