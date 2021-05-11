@@ -127,10 +127,9 @@ public class Deck {
                 }
             }
         }
-
     }
 
-    void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc){
+    void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc, BackgroundSystem backgroundSystem){
         boardDeck.add(drawncard);
 
         if (drawncard.name.equalsIgnoreCase("Curse! Lose a level")){
@@ -249,11 +248,12 @@ public class Deck {
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Malign mirror")){
             //alle powers fra alle items ud over armor = 0 i en kamp
-            player.handpow = 0;
-            player.hand2pow = 0;
-            player.feetpow = 0;
-            player.headpow = 0;
-
+            if (backgroundSystem.battlefase) {
+                player.handpow = 0;
+                player.hand2pow = 0;
+                player.feetpow = 0;
+                player.headpow = 0;
+            }
         }
         if (drawncard.name.equalsIgnoreCase("Curse! Lose your headgear")){
             treasuredisc.addcard(player.head);
@@ -272,6 +272,4 @@ public class Deck {
             }
         }
     }
-
-
 }

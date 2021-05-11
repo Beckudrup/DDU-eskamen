@@ -110,7 +110,7 @@ public class Main extends PApplet {
                         playerList.get(i).displayequiped(backgroundSystem.turn);
                         playerList.get(i).displayicon();
                         playerList.get(i).getPower();
-                        playerList.get(i).displayMonster();
+                        playerList.get(i).playables(backgroundSystem);
                         playerList.get(i).raceFunction();
                         playerList.get(i).classFunction();
                     }
