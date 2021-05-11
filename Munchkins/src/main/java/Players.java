@@ -152,7 +152,8 @@ public class Players {
                                                     hand.get(i).hovering = false;
                                                     Card temp = hand.get(i);
                                                     monsterList.add(temp);
-
+                                                    backgroundSystem.startofbattlefase=true;
+                                                    backgroundSystem.battlefase=true;
                                                     hand.remove(i);
 
                                                 } else {

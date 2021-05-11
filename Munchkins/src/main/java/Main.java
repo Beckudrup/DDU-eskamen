@@ -116,7 +116,8 @@ public class Main extends PApplet {
                     }
                     room.displayBackside();
                     treasure.displayBackside();
-                    backgroundSystem.battlefase(buttList,playerList,backgroundSystem,monsterlist);
+                    backgroundSystem.displayenemy(monsterlist);
+                    backgroundSystem.battlefase(buttList,playerList,backgroundSystem,monsterlist,roomdisc,treasiredisc);
                     backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList, roomdisc, treasiredisc);
                     //println(backgroundSystem.turn);
                     room.resuffle(roomdisc);
