@@ -317,13 +317,28 @@ public class Players {
     }
 
     void raceFunction() {
+        if (Race != null) {
+            if (Race.name.equalsIgnoreCase("Elf")) {
+                //runAway+1;
+                p.println("Run Away = 1");
+                //If you help kill a monster +1 level, for each killed;
+            }
+            if (Race.name.equalsIgnoreCase("Dwarf")) {
+                //Carry any number of big weapons;
+                //Have 6 cards in hand (instead og 5);
+            }
+            if (Race.name.equalsIgnoreCase("Wizard")) {
+                //Either
+                //Discard up to 3 card. ;
+            }
+        }
     }
 
     void classFunction() {
         if (Class != null) {
             if (p.mouseX > 440 && p.mouseX < 440 + 60 && p.mouseY > 800 && p.mouseY < 800 + 100) {
                 if (Class.name.equalsIgnoreCase("Thief")) {
-                    p.println((int)p.random(1,7));
+                    p.println((int) p.random(1, 7));
                 }
             }
         }
