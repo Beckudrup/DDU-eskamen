@@ -332,47 +332,49 @@ public class Players {
         }
     }
 
-    void playables(BackgroundSystem backgroundSyste) {
-        if (!backgroundSyste.battlefase) {
+    void playables(BackgroundSystem backgroundSystem) {
+        if (!backgroundSystem.battlefase) {
             if (level <= 8) {
-                if (playable.name.equalsIgnoreCase("Invoke obscure rules")) {
-                    level = level + 1;
-                }
-                if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
-                    level = level + 1;
-                }
-                if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
-                    level = level + 1;
-                }
-                if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
-                    level = level + 1;
-                }
-                if (playable.name.equalsIgnoreCase("Boil an anthill")) {
-                    level = level + 1;
-                }
-                if (playable.name.equalsIgnoreCase("Convenient addition error")) {
-                    level = level + 1;
-                }
-                if (playable.name.equalsIgnoreCase("Mutilate the bodies") /*&& backgroundSyste.battlefase ;; end of *any* combat */) {
-                    level = level + 1;
-                }
-                //If hireling is on the bord utility.name.equalsIgnoreCase("Hireling")
-                if (playable.name.equalsIgnoreCase("Kill the hireling")) {
-                    level = level + 1;
-                }
-                if (playable.name.equalsIgnoreCase("Steal a level")) {
-                    //Selected person level = level -1;
-                    level = level + 1;
-                }
-                if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
-                    //Go through the discards to find any one card you want. Take that card and discard this one.
-                }
-                if (!Class.name.equalsIgnoreCase("Cleric")) {
-                    if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
-                        if (level < /*other players level*/ 10) {
-                            //Player will always help, they gain no treasure, but you gain no level.
-                        }
+                if (playable != null) {
+                    if (playable.name.equalsIgnoreCase("Invoke obscure rules")) {
+                        level = level + 1;
                     }
+                    if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
+                        level = level + 1;
+                    }
+                    if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
+                        level = level + 1;
+                    }
+                    if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
+                        level = level + 1;
+                    }
+                    if (playable.name.equalsIgnoreCase("Boil an anthill")) {
+                        level = level + 1;
+                    }
+                    if (playable.name.equalsIgnoreCase("Convenient addition error")) {
+                        level = level + 1;
+                    }
+                    if (playable.name.equalsIgnoreCase("Mutilate the bodies") /*&& backgroundSyste.battlefase ;; end of *any* combat */) {
+                        level = level + 1;
+                    }
+                    //If hireling is on the bord utility.name.equalsIgnoreCase("Hireling")
+                    if (playable.name.equalsIgnoreCase("Kill the hireling")) {
+                        level = level + 1;
+                    }
+                    if (playable.name.equalsIgnoreCase("Steal a level")) {
+                        //Selected person level = level -1;
+                        level = level + 1;
+                    }
+                    if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
+                        //Go through the discards to find any one card you want. Take that card and discard this one.
+                    }
+                    /*if (!Class.name.equalsIgnoreCase("Cleric")) {
+                        if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
+                            if (level < /*other players level*/ /* 10) {
+                                //Player will always help, they gain no treasure, but you gain no level.
+                            }
+                        }
+                    }*/
                 }
             }
         }

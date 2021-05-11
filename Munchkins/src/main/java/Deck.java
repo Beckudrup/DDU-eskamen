@@ -12,6 +12,7 @@ public class Deck {
     int allowedTreasure = 0;
     boolean firstDraw = true;
     boolean fix = true;
+
     Deck(PApplet p, int x, int y, int w, int h) {
         this.p = p;
         this.x = x;
@@ -26,22 +27,22 @@ public class Deck {
 
     void clicktodraw(int turn, ArrayList<Players> playerList, int type, Deck treasuredisc, Deck roomdisc, Players players) {
         if (p.mouseX > x && p.mouseX < x + w && p.mouseY > y && p.mouseY < y + h) {
-            drawcard(playerList.get(turn).hand, type, playerList, treasuredisc,roomdisc, players);
+            drawcard(playerList.get(turn).hand, type, playerList, treasuredisc, roomdisc, players);
 
         }
     }
 
     void drawcard(ArrayList<Card> hand, int type, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc, Players player) {
         //træk fra ikke discarded decks
-        if (cardList.size() > 0 && type == 0||type==2) {
+        if (cardList.size() > 0 && type == 0 || type == 2) {
             int random = (int) p.random(cardList.size());
             Card drawncard = cardList.get(random);
             cardList.remove(random);
-            if (drawncard.numb == 0 && type==2)
+            if (drawncard.numb == 0 && type == 2)
                 hand.add(drawncard);
 
             //Andet og start game room draw
-            if (drawncard.numb == 0 && !firstDraw && type != 2 && fix==true) {
+            if (drawncard.numb == 0 && !firstDraw && type != 2 && fix == true) {
                 hand.add(drawncard);
                 System.out.println("andet draw");
                 //fix=false;    TÆND IGEN! når spillet er ved at være done
@@ -67,10 +68,10 @@ public class Deck {
                     }
                     //hvis man trækker andet (class,race,"spellkort")
                     if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")) {
-                            hand.add(drawncard);
-                            System.out.println("hapini");
+                        hand.add(drawncard);
+                        System.out.println("hapini");
                     }
-                    if (drawncard.type.equalsIgnoreCase("Class")||drawncard.type.equalsIgnoreCase("Race")){
+                    if (drawncard.type.equalsIgnoreCase("Class") || drawncard.type.equalsIgnoreCase("Race")) {
                         hand.add(drawncard);
                     }
                     //firstDraw=false;
@@ -84,22 +85,22 @@ public class Deck {
             }
         } else {
             //træk fra discarded decks
-                if (cardList.size() > 0 && type == 1 /*||type==2*/) {
-                    Card drawncard = cardList.get(cardList.size() - 1);
+            if (cardList.size() > 0 && type == 1 /*||type==2*/) {
+                Card drawncard = cardList.get(cardList.size() - 1);
+                hand.add(drawncard);
+                cardList.remove(cardList.size() - 1);
+            } else {
+                if (cardList.size() > 0 /*&& type == 2*/) {
+                    int rando = (int) p.random(cardList.size());
+                    Card drawncard = cardList.get(rando);
                     hand.add(drawncard);
                     cardList.remove(cardList.size() - 1);
-                }else{
-                    if(cardList.size() > 0 /*&& type == 2*/){
-                        int rando = (int)p.random(cardList.size());
-                        Card drawncard = cardList.get(rando);
-                        hand.add(drawncard);
-                        cardList.remove(cardList.size() - 1);
 
-                    }
+                }
             }
 
         }
-        }
+    }
 
 
     void displayBackside() {
@@ -129,7 +130,7 @@ public class Deck {
         }
     }
 
-    void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc){
+    void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc) {
 
         boardDeck.add(drawncard);
 
@@ -275,44 +276,45 @@ public class Deck {
                 }
             }
         }
-        if (drawncard.name.equalsIgnoreCase("Curse! Lose your armor")){
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose your armor")) {
             treasuredisc.addcard(player.body);
             player.body = null;
         }
-        if (drawncard.name.equalsIgnoreCase("Curse! Change your sex")){
-            player.pow -=5;
-            if (player.gender==1){ //Burde også miste 5 power i en kamp
-                player.gender=2;
-            }else {
-                if (player.gender==2){
-                    player.gender=1;
+        if (drawncard.name.equalsIgnoreCase("Curse! Change your sex")) {
+            player.pow -= 5;
+            if (player.gender == 1) { //Burde også miste 5 power i en kamp
+                player.gender = 2;
+            } else {
+                if (player.gender == 2) {
+                    player.gender = 1;
                 }
             }
         }
-        if (drawncard.name.equalsIgnoreCase("Curse! Malign mirror")){
+        if (drawncard.name.equalsIgnoreCase("Curse! Malign mirror")) {
             //alle powers fra alle items ud over armor = 0 i en kamp
-        
+
             player.handpow = 0;
             player.hand2pow = 0;
             player.feetpow = 0;
             player.headpow = 0;
-        
+
         }
-        if (drawncard.name.equalsIgnoreCase("Curse! Lose your headgear")){
+        if (drawncard.name.equalsIgnoreCase("Curse! Lose your headgear")) {
             treasuredisc.addcard(player.head);
             player.head = null;
         }
 
     }
-    void monsters(Card drawncard){
+
+    void monsters(Card drawncard) {
         boardDeck.add(drawncard);
 
     }
 
-    void showBoardDeck(){
-        if (boardDeck.size() > 0){
+    void showBoardDeck() {
+        if (boardDeck.size() > 0) {
             for (int i = 0; i < boardDeck.size(); i++) {
-                boardDeck.get(i).display(p.width/2+i*90,550,90,150,1);
+                boardDeck.get(i).display(p.width / 2 + i * 90, 550, 90, 150, 1);
             }
         }
     }
