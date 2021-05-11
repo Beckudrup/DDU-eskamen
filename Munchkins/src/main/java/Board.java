@@ -10,6 +10,7 @@ public class Board {
     }
 
     void display() {
+        /*
         p.rect(700, 270, 90, 150);
         p.rect(830, 270, 90, 150);
         p.rect(960, 270, 90, 150);
@@ -53,5 +54,7 @@ public class Board {
             p.rect(130, 210, 100, 60);
             p.rect(130, 290, 100, 60);
         }
+
+         */
     }
 }
