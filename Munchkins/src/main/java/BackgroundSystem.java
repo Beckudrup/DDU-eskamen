@@ -245,10 +245,13 @@ if(battlefase) {
         
     }}
 
-                        }
-                    }
 
-                }
+                        }
+                allyList.clear();
+                battlefase = false;
+                monsterfasedone = true;
+
+
                 allyList.clear();
                 battlefase = false;
                 monsterfasedone = true;
@@ -267,36 +270,15 @@ if(battlefase) {
                             Card card = monsterList.get(monsterList.size() - 1);
                             treasuredisc.addcard(card);
                             monsterList.remove(monsterList.size() - 1);
-                        }
-                        if (monsterPower > allyPower) {
-                            // go gennem bad stuff
-                        }
-                        allyList.clear();
-                        battlefase = false;
-                        monsterfasedone = true;
-                        for (int i = 0; i < 4; i++) {
-                            buttList.remove(buttList.size() - 1);
-                        }
-                        while (monsterList.size() > 0) {
-                            if (monsterList.get(monsterList.size() - 1).numb == 0) {
-                                monsterList.get(monsterList.size() - 1).hovering = false;
-                                Card card = monsterList.get(monsterList.size() - 1);
-                                roomdisc.addcard(card);
-                                monsterList.remove(monsterList.size() - 1);
-                            } else {
-                                if (monsterList.get(monsterList.size() - 1).numb == 1) {
-                                    monsterList.get(monsterList.size() - 1).hovering = false;
-                                    Card card = monsterList.get(monsterList.size() - 1);
-                                    treasuredisc.addcard(card);
-                                    monsterList.remove(monsterList.size() - 1);
+                    }
+
+                }
+
                                 }
                             }
                         }
                     }
                 }
-            }
-        }
-    }
-}
+
 
 
