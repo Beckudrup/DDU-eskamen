@@ -336,6 +336,10 @@ public class Players {
         if (!backgroundSystem.battlefase) {
             if (level <= 8) {
                 if (playable != null) {
+                    if (playable.name.equalsIgnoreCase("Hoard!")) {
+                        //Draw three treasures
+                        p.println(1);
+                    }
                     if (playable.name.equalsIgnoreCase("Invoke obscure rules")) {
                         level = level + 1;
                         p.println(1);
@@ -378,13 +382,13 @@ public class Players {
                     if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
                         //Go through the discards to find any one card you want. Take that card and discard this one.
                     }
-                    /*if (!Class.name.equalsIgnoreCase("Cleric")) {
+                    if (Class == null || !Class.name.equalsIgnoreCase("Cleric")) {
                         if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
-                            if (level < /*other players level*/ /* 10) {
+                            if (level < /*other players level*/ 10) {
                                 //Player will always help, they gain no treasure, but you gain no level.
                             }
                         }
-                    }*/
+                    }
                 }
             }
         }
@@ -627,25 +631,30 @@ public class Players {
 
     void displayicon() {
         p.fill(255);
+        p.textAlign(p.LEFT, p.BOTTOM);
         if (playernr == 0) {
             p.image(icon, 10, 950, 100, 100);
-            p.text("lvl:" + level, 40, 920);
+            p.text("lvl:" + level, 10, 920);
+            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 10, 940);
             p.text("p1", p.width / 2, 750);
         }
         if (playernr == 1) {
             p.image(icon, 10, 10, 100, 100);
-            p.text("lvl:" + level, 150, 70);
+            p.text("lvl:" + level, 110, 70);
+            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 110, 95);
             p.text("p2", 150, 550);
 
         }
         if (playernr == 2) {
             p.image(icon, 1810, 10, 100, 100);
-            p.text("lvl:" + level, 1840, 150);
+            p.text("lvl:" + level, 1810, 150);
+            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1810, 170);
             p.text("p3", p.width / 2, 200);
         }
         if (playernr == 3) {
             p.image(icon, 1810, 950, 100, 100);
-            p.text("lvl:" + level, 1750, 1010);
+            p.text("lvl:" + level, 1710, 1010);
+            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1710, 1030);
             p.text("p4", 1750, 500);
         }
         p.fill(0);
