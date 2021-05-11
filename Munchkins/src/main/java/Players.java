@@ -30,6 +30,7 @@ public class Players {
     Card Race;
     Card Race2;
     Button showhand;
+    boolean wanderingMonster;
 
 
     ArrayList<Card> hand = new ArrayList();
@@ -148,13 +149,14 @@ public class Players {
                                                 hand.remove(i);
                                             } else {
 
-                                                if (hand.get(i).type.equalsIgnoreCase("Monster") && !backgroundSystem.monsterfasedone) {
+                                                if (hand.get(i).type.equalsIgnoreCase("Monster") && !backgroundSystem.monsterfasedone&&(!backgroundSystem.battlefase||wanderingMonster)) {
                                                     hand.get(i).hovering = false;
                                                     Card temp = hand.get(i);
                                                     monsterList.add(temp);
                                                     backgroundSystem.startofbattlefase=true;
                                                     backgroundSystem.battlefase=true;
                                                     hand.remove(i);
+                                                    wanderingMonster=false;
 
                                                 } else {
                                                     if (hand.get(i).numb == 0) {

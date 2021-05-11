@@ -19,13 +19,14 @@ public class BackgroundSystem {
     }
 
     void endturn(ArrayList<Button> buttList, Players player, ArrayList<Players> playerList, Deck roomdisc, Deck treasuredisc) {
-        if (buttList.get(1).tryk) {
+        if (buttList.get(1).tryk&&!battlefase) {
             if (turn < 3) {
                 turn++;
 
                 for (int i = 0; i < 4 ; i++) {
                     playerList.get(i).showhand.tryk = false;
                 }
+
                 buttList.get(1).tryk = false;
             } else {
                 turn = 0;
@@ -82,6 +83,7 @@ public class BackgroundSystem {
                         }
                     }
                 }
+            monsterfasedone=false;
             }
         }
 
@@ -221,7 +223,7 @@ if(battlefase) {
         for (int i = 0; i < allyList.size(); i++) {
             allyPower += allyList.get(i).pow;
         }
-if(allyPower>monsterPower) {
+if((allyPower>monsterPower/*&&playerList.get(backgroundSystem.turn).Class.equalsignorecase("warrior")*/)||(allyPower>monsterPower)) {
 //treasure draw
 }
 if(monsterPower>allyPower){
@@ -229,21 +231,22 @@ if(monsterPower>allyPower){
 }
 allyList.clear();
 battlefase=false;
+monsterfasedone = true;
         for (int i = 0; i < 4 ; i++) {
             buttList.remove(buttList.size()-1);
         }
-        for (int i = 0; i < monsterList.size(); i++) {
-            if (monsterList.get(i).numb == 0) {
-                monsterList.get(i).hovering = false;
-                Card card = monsterList.get(i);
+        while(monsterList.size()>0){
+            if (monsterList.get(monsterList.size()-1).numb == 0) {
+                monsterList.get(monsterList.size()-1).hovering = false;
+                Card card = monsterList.get(monsterList.size()-1);
                 roomdisc.addcard(card);
-                monsterList.remove(i);
+                monsterList.remove(monsterList.size()-1);
             } else {
-                if (monsterList.get(i).numb == 1) {
-                    monsterList.get(i).hovering = false;
-                    Card card = monsterList.get(i);
+                if (monsterList.get(monsterList.size()-1).numb == 1) {
+                    monsterList.get(monsterList.size()-1).hovering = false;
+                    Card card = monsterList.get(monsterList.size()-1);
                     treasuredisc.addcard(card);
-                    monsterList.remove(i);
+                    monsterList.remove(monsterList.size()-1);
                 }
         }
 
