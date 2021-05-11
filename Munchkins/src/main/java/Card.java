@@ -9,6 +9,7 @@ public class Card {
     boolean hovering;
     String name;
     String type;
+    String badStuff;
     String imglink;
     int RunAway;
     int level;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class BackgroundSystem {
     int player;
     PApplet p;
+    Badstuff badstuff = new Badstuff(p);
     boolean notDoneYet = true;
     boolean removed;
     boolean monsterfasedone;
@@ -188,6 +189,28 @@ public class BackgroundSystem {
     void displayenemy(ArrayList<Card> monsterList) {
         for (int i = 0; i < monsterList.size(); i++) {
             monsterList.get(i).display(600 + i * 70, 500, 60, 100, 1);
+    }
+
+}
+    void battlefase(ArrayList<Button> buttList,ArrayList<Players> playerList,BackgroundSystem backgroundSystem, ArrayList<Card> monsterList,Deck roomdisc,Deck treasuredisc, Dice die){
+if(battlefase) {
+
+    if(startofbattlefase) {
+        allyList.add(playerList.get(backgroundSystem.turn));
+        if(backgroundSystem.turn!=0)
+        buttList.add(new Button(p,200,300,50,30,"p1"));
+        if(backgroundSystem.turn!=1)
+        buttList.add(new Button(p,260,300,50,30,"p2"));
+        if(backgroundSystem.turn!=2)
+        buttList.add(new Button(p,300,300,50,30,"p3"));
+        if(backgroundSystem.turn!=3)
+        buttList.add(new Button(p,360,300,50,30,"p4"));
+        buttList.add(new Button(p,500,700,100,60,"fight/run"));
+        startofbattlefase=false;
+    }
+    for (int i = 0; i < 3 ; i++) {
+        if(buttList.get(i+2).tryk){
+            allyList.add(playerList.get(i));
         }
 
     }
@@ -225,6 +248,40 @@ public class BackgroundSystem {
                 }
                 if ((allyPower > monsterPower/*&&playerList.get(backgroundSystem.turn).Class.equalsignorecase("warrior")*/) || (allyPower > monsterPower)) {
 //treasure draw
+
+}
+if(monsterPower>allyPower){
+    // go gennem bad stuff
+    for (int j = 0; j < playerList.size(); j++) {
+
+
+    for (int i = 0; i < monsterList.size(); i++) {
+        int roll = die.trowDie(7);
+        if(monsterList.get(i).badStuff.equalsIgnoreCase("- 1 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 3 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 level -3 if elf")||(monsterList.get(i).badStuff.equalsIgnoreCase("- class if no -3lvl")&&playerList.get(backgroundSystem.turn).Class==null)||monsterList.get(i).badStuff.equalsIgnoreCase("- head and level = 1")||monsterList.get(i).badStuff.equalsIgnoreCase("set level = to lovest player")||(monsterList.get(i).badStuff.equalsIgnoreCase("Roll die of less than 2 death else lose level = die")&&roll>2)||monsterList.get(i).badStuff.equalsIgnoreCase("Player level = 1")){
+            badstuff.badstufflevel(playerList.get(j),playerList,roll);
+        }
+
+    }}
+
+}
+allyList.clear();
+battlefase=false;
+monsterfasedone = true;
+        for (int i = 0; i < 4 ; i++) {
+            buttList.remove(buttList.size()-1);
+        }
+        while(monsterList.size()>0){
+            if (monsterList.get(monsterList.size()-1).numb == 0) {
+                monsterList.get(monsterList.size()-1).hovering = false;
+                Card card = monsterList.get(monsterList.size()-1);
+                roomdisc.addcard(card);
+                monsterList.remove(monsterList.size()-1);
+            } else {
+                if (monsterList.get(monsterList.size()-1).numb == 1) {
+                    monsterList.get(monsterList.size()-1).hovering = false;
+                    Card card = monsterList.get(monsterList.size()-1);
+                    treasuredisc.addcard(card);
+                    monsterList.remove(monsterList.size()-1);
                 }
                 if (monsterPower > allyPower) {
                     // go gennem bad stuff
