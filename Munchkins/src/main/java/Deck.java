@@ -130,6 +130,7 @@ public class Deck {
         }
     }
 
+
     void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc) {
 
         boardDeck.add(drawncard);
