@@ -24,6 +24,7 @@ public class Badstuff {
                 player.hand.remove(player.hand.size() - 1);
             }
         }
+        System.out.println("badstuffhand");
     }
 
 
@@ -88,6 +89,7 @@ public class Badstuff {
         if (monster.badStuff.equalsIgnoreCase("player level = 1")) {
             player.level = 1;
         }
+        System.out.println("badstuffloselevel");
     }
 
     void badstuffdeath(Players player, Deck roomlist, Deck treasurelist, ArrayList<Players> playerList, BackgroundSystem backgroundSystem, Deck roomdiscard, Deck treasurediscard) {
@@ -117,7 +119,7 @@ public class Badstuff {
             player.level = 1;
         }
 
-
+        System.out.println("badstufflosedeath");
     }
 
 
@@ -420,7 +422,7 @@ mist 1000g værd af items
 Mist specifikt gear piece
  */
 
-
+System.out.println("badstuffloseitem");
     }
 
 

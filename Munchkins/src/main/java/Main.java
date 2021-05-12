@@ -97,7 +97,7 @@ public class Main extends PApplet {
                 //image(treasure.cardList.get(i).cards, 20 + i * 70, 600, 60, 100);
                 // }
                 if (backgroundSystem.gamestarted) {
-                    badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasiredisc);
+                    //badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasiredisc);
 
                     roomdisc.showDisc(roomdisc);
                     treasiredisc.showDisc(treasiredisc);
@@ -113,6 +113,11 @@ public class Main extends PApplet {
                         playerList.get(i).getPower();
                         playerList.get(i).raceFunction();
                         playerList.get(i).classFunction();
+                    }
+                    for (int i = 0; i < room.cardList.size() ; i++) {
+                        if(room.cardList.get(i).badStuff!=null){
+                            System.out.println(room.cardList.get(i).badStuff);
+                        }
                     }
                     room.displayBackside();
                     treasure.displayBackside();
