@@ -187,32 +187,33 @@ public class BackgroundSystem {
     }
 
 
-void displayenemy(ArrayList<Card> monsterList){
-    for (int i = 0; i < monsterList.size(); i++) {
-        monsterList.get(i).display(600+i*70,500,60,100,1);
+    void displayenemy(ArrayList<Card> monsterList) {
+        for (int i = 0; i < monsterList.size(); i++) {
+            monsterList.get(i).display(600 + i * 70, 500, 60, 100, 1);
+        }
+
     }
 
-}
-    void battlefase(ArrayList<Button> buttList,ArrayList<Players> playerList,BackgroundSystem backgroundSystem, ArrayList<Card> monsterList,Deck roomdisc,Deck treasuredisc, Dice die,Deck room,Deck treasure){
-if(battlefase) {
+    void battlefase(ArrayList<Button> buttList, ArrayList<Players> playerList, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList, Deck roomdisc, Deck treasuredisc, Dice die, Deck room, Deck treasure) {
+        if (battlefase) {
 
-    if(startofbattlefase) {
-        allyList.add(playerList.get(backgroundSystem.turn));
-        if(backgroundSystem.turn!=0)
-        buttList.add(new Button(p,200,300,50,30,"p1"));
-        if(backgroundSystem.turn!=1)
-        buttList.add(new Button(p,260,300,50,30,"p2"));
-        if(backgroundSystem.turn!=2)
-        buttList.add(new Button(p,300,300,50,30,"p3"));
-        if(backgroundSystem.turn!=3)
-        buttList.add(new Button(p,360,300,50,30,"p4"));
-        buttList.add(new Button(p,500,700,100,60,"fight/run"));
-        startofbattlefase=false;
-    }
-    for (int i = 0; i < 3 ; i++) {
-        if(buttList.get(i+2).tryk){
-            allyList.add(playerList.get(i));
-   
+            if (startofbattlefase) {
+                allyList.add(playerList.get(backgroundSystem.turn));
+                if (backgroundSystem.turn != 0)
+                    buttList.add(new Button(p, 200, 300, 50, 30, "p1"));
+                if (backgroundSystem.turn != 1)
+                    buttList.add(new Button(p, 260, 300, 50, 30, "p2"));
+                if (backgroundSystem.turn != 2)
+                    buttList.add(new Button(p, 300, 300, 50, 30, "p3"));
+                if (backgroundSystem.turn != 3)
+                    buttList.add(new Button(p, 360, 300, 50, 30, "p4"));
+                buttList.add(new Button(p, 500, 700, 100, 60, "fight/run"));
+                startofbattlefase = false;
+            }
+            for (int i = 0; i < 3; i++) {
+                if (buttList.get(i + 2).tryk) {
+                    allyList.add(playerList.get(i));
+
                 }
             }
 
@@ -225,12 +226,15 @@ if(battlefase) {
                 for (int i = 0; i < allyList.size(); i++) {
                     allyPower += allyList.get(i).pow;
                 }
+
                 if ((allyPower >= monsterPower &&playerList.get(backgroundSystem.turn).Class!=null&&playerList.get(backgroundSystem.turn).Class.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower)) {
+
 //treasure draw
                 }
                 if (monsterPower > allyPower) {
                     // go gennem bad stuff
                     for (int j = 0; j < allyList.size(); j++) {
+
 
 
     for (int i = 0; i < monsterList.size(); i++) {
@@ -250,7 +254,8 @@ if(battlefase) {
     }}
 
 
-                        }
+
+                }
                 allyList.clear();
                 battlefase = false;
                 monsterfasedone = true;
@@ -274,15 +279,15 @@ if(battlefase) {
                             Card card = monsterList.get(monsterList.size() - 1);
                             treasuredisc.addcard(card);
                             monsterList.remove(monsterList.size() - 1);
-                    }
-
-                }
-
-                                }
-                            }
                         }
+
                     }
+
                 }
+            }
+        }
+    }
+}
 
 
 
