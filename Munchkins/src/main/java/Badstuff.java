@@ -66,9 +66,7 @@ public class Badstuff {
     }
 
 
-    void badstuffClassRace(Players players, ArrayList<Players> playerList) {
 
-    }
 
     void badstuffloseitem() {
 /*
@@ -80,16 +78,8 @@ Mist specifikt gear piece
 
     }
 
-    void badstuffdice(Dice dice, Players players, ArrayList<Players> playerList) {
-/*
-roll mist lvl eller dø
- */
-
-    }
-
-    void badstufftootherplayers(Players players, ArrayList<Players> playerList) {
 
 
-    }
+
 
 }
