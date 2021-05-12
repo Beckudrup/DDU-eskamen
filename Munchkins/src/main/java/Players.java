@@ -164,6 +164,13 @@ public class Players {
 
                                                 } else {
                                                     if (hand.get(i).type.equalsIgnoreCase("Playable")) {
+
+                                                        hand.get(i).hovering = false;
+                                                        playable = hand.get(i);
+                                                        playable.name = hand.get(i).name;
+                                                        once = true;
+                                                        hand.remove(i);
+                                                        playables(backgroundSystem);
                                                         if (playable != null) {
                                                             if (playable.numb == 0) {
                                                                 roomdisc.addcard(playable);
@@ -172,11 +179,6 @@ public class Players {
                                                                     treasuredisc.addcard(playable);
                                                             }
                                                         }
-                                                        hand.get(i).hovering = false;
-                                                        playable = hand.get(i);
-                                                        playable.name = hand.get(i).name;
-                                                        once = true;
-                                                        hand.remove(i);
                                                     } else {
                                                         if (hand.get(i).numb == 0) {
                                                             hand.get(i).hovering = false;
