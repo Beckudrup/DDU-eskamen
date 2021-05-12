@@ -54,7 +54,7 @@ public class Deck {
                         System.out.println("Henrik");
                         //Cursen skal komme ud på bordet og blive brugt
 
-                        curses(drawncard, player,playerList, treasuredisc, roomdisc); //kig på senere måske bad
+                        //curses(drawncard, player,playerList, treasuredisc, roomdisc); //kig på senere måske bad
 
                         hand.add(drawncard);
                         System.out.println("Henrik");

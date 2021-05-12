@@ -27,63 +27,65 @@ public class Badstuff {
     }
 
 
-    void badstufflevel(Players player, ArrayList<Players> playerList, int roll,Card monster) {
+    void badstufflevel(Players player, ArrayList<Players> playerList, int roll, Card monster) {
 
-        if(monster.badStuff.equalsIgnoreCase("- 1 level")){
-            player.level-= 1;
-            if (player.level<1){
-                player.level=1;
+        if (monster.badStuff.equalsIgnoreCase("- 1 level")) {
+            player.level -= 1;
+            if (player.level < 1) {
+                player.level = 1;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("- 2 level")){
-            player.level-= 2;
-            if (player.level<1){
-                player.level=1;
+        if (monster.badStuff.equalsIgnoreCase("- 2 level")) {
+            player.level -= 2;
+            if (player.level < 1) {
+                player.level = 1;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("- 3 level")){
-            player.level-= 3;
-            if (player.level<1){
-                player.level=1;
+        if (monster.badStuff.equalsIgnoreCase("- 3 level")) {
+            player.level -= 3;
+            if (player.level < 1) {
+                player.level = 1;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("- 2 level -3 if elf")){
-            if (!player.Class.name.equalsIgnoreCase("elf")){
-                player.level-= 2;}
-            if (player.Class.name.equalsIgnoreCase("elf")){
-                player.level-= 3;}
-            if (player.level<1){
-                player.level=1;
+        if (monster.badStuff.equalsIgnoreCase("- 2 level -3 if elf")) {
+            if (!player.Class.name.equalsIgnoreCase("elf")) {
+                player.level -= 2;
+            }
+            if (player.Class.name.equalsIgnoreCase("elf")) {
+                player.level -= 3;
+            }
+            if (player.level < 1) {
+                player.level = 1;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("- class if no -3lvl")){
-            player.level-= 3;
-            if (player.level<1){
-                player.level=1;
+        if (monster.badStuff.equalsIgnoreCase("- class if no -3lvl")) {
+            player.level -= 3;
+            if (player.level < 1) {
+                player.level = 1;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("- head and level - 1")){
-            player.level-= 1;
-            if (player.level<1){
-                player.level=1;
+        if (monster.badStuff.equalsIgnoreCase("- head and level - 1")) {
+            player.level -= 1;
+            if (player.level < 1) {
+                player.level = 1;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("set level = to lovest player")){
-            int lovestlvl=9;
+        if (monster.badStuff.equalsIgnoreCase("set level = to lovest player")) {
+            int lovestlvl = 9;
             for (int i = 0; i < playerList.size(); i++) {
-                if(playerList.get(i).level<lovestlvl){
-                    lovestlvl=playerList.get(i).level;
+                if (playerList.get(i).level < lovestlvl) {
+                    lovestlvl = playerList.get(i).level;
                 }
-                player.level=lovestlvl;
+                player.level = lovestlvl;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("roll die of less than 2 death else lose level = die")){
-            player.level-= roll;
-            if (player.level<1){
-                player.level=1;
+        if (monster.badStuff.equalsIgnoreCase("roll die of less than 2 death else lose level = die")) {
+            player.level -= roll;
+            if (player.level < 1) {
+                player.level = 1;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("player level = 1")){
+        if (monster.badStuff.equalsIgnoreCase("player level = 1")) {
             player.level = 1;
         }
     }
@@ -119,10 +121,11 @@ public class Badstuff {
     }
 
 
-
+    
 
     void badstuffloseitem(Card monster,Players player,ArrayList<Players> playerList,Dice die,Deck roomdisc,Deck treasuredisc, int roll) {
         if (monster.badStuff.equalsIgnoreCase("all armor")) {
+
 
             if (player.body != null) {
                 treasuredisc.addcard(player.body);
@@ -229,6 +232,7 @@ public class Badstuff {
             if (player.utility != null) {
                 treasuredisc.addcard(player.utility);
                 player.utility = null;
+
             }
         }
         if (monster.badStuff.equalsIgnoreCase("roll die - treasure = number on die")) {
@@ -350,6 +354,7 @@ public class Badstuff {
                         }
                     }
                 }
+
             }
         }
 
@@ -361,9 +366,6 @@ Mist specifikt gear piece
 
 
     }
-
-
-
 
 
 }

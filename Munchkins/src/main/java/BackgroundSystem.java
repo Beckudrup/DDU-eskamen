@@ -189,7 +189,7 @@ public class BackgroundSystem {
 
     void displayenemy(ArrayList<Card> monsterList) {
         for (int i = 0; i < monsterList.size(); i++) {
-            monsterList.get(i).display(600 + i * 70, 500, 60, 100, 1);
+            monsterList.get(i).display(p.width / 2 - 460 / 2 + i * 70, 460, 180, 300, 1);
         }
 
     }
@@ -227,13 +227,14 @@ public class BackgroundSystem {
                     allyPower += allyList.get(i).pow;
                 }
 
-                if ((allyPower >= monsterPower &&playerList.get(backgroundSystem.turn).Class!=null&&playerList.get(backgroundSystem.turn).Class.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower)) {
+                if ((allyPower >= monsterPower && playerList.get(backgroundSystem.turn).Class != null && playerList.get(backgroundSystem.turn).Class.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower)) {
 
 //treasure draw
                 }
                 if (monsterPower > allyPower) {
                     // go gennem bad stuff
                     for (int j = 0; j < allyList.size(); j++) {
+
 
 
 
@@ -252,6 +253,7 @@ public class BackgroundSystem {
             badstuff.badstuffhand(allyList.get(j),playerList,roomdisc,treasuredisc);
         }
     }}
+
 
 
 
