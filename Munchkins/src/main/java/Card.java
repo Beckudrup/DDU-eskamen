@@ -16,9 +16,9 @@ public class Card {
     int numb;
     int power;
     int power2;
+    int gold;
 
-
-    Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name, int RunAway) {
+    Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name, int RunAway, int gold) {
 
         this.p = p;
         cards = p.loadImage(imglink);
@@ -27,6 +27,7 @@ public class Card {
         this.type = type;
         this.name = name;
         this.power = power;
+        this.gold = gold;
     }
 
     void display(int x, int y, int w, int h, int frontOrBack) {
