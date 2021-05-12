@@ -236,7 +236,7 @@ if(battlefase) {
     for (int i = 0; i < monsterList.size(); i++) {
         int roll = die.trowDie(7);
         if(monsterList.get(i).badStuff.equalsIgnoreCase("- 1 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 3 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 level -3 if elf")||(monsterList.get(i).badStuff.equalsIgnoreCase("- class if no -3lvl")&&playerList.get(backgroundSystem.turn).Class==null)||monsterList.get(i).badStuff.equalsIgnoreCase("- head and level - 1")||monsterList.get(i).badStuff.equalsIgnoreCase("set level = to lovest player")||(monsterList.get(i).badStuff.equalsIgnoreCase("Roll die of less than 2 death else lose level = die")&&roll>2)||monsterList.get(i).badStuff.equalsIgnoreCase("Player level = 1")){
-            badstuff.badstufflevel(playerList.get(j),playerList,roll);
+            badstuff.badstufflevel(playerList.get(j),playerList,roll,monsterList.get(i));
         }
         if (monsterList.get(i).badStuff.equalsIgnoreCase("death")||(monsterList.get(i).badStuff.equalsIgnoreCase("death if wizard instead lose class")&&allyList.get(j).Class.name.equalsIgnoreCase("wizard"))||(monsterList.get(i).badStuff.equalsIgnoreCase("Roll die if less than 2 death else lose level = die")&&roll<3)){
           badstuff.badstuffdeath(playerList.get(backgroundSystem.turn),room,treasure,playerList,backgroundSystem, roomdisc,treasuredisc);
