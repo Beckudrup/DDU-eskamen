@@ -8,4 +8,7 @@ public class Cardinfo {
     int power2;
     int RunAway;
     int gold;
+    int xp;
+    int xp2;
+    int treasures;
 }
