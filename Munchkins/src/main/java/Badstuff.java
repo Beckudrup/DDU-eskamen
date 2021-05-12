@@ -11,8 +11,19 @@ public class Badstuff {
     }
 
 
-    void badstuffhand(Players players, ArrayList<Players> playerList, Deck roomdiscard, Deck treasurediscard) {
-
+    void badstuffhand(Players player, ArrayList<Players> playerList, Deck roomdiscard, Deck treasurediscard) {
+        while (player.hand.size() > 0) {
+            if (player.hand.get(player.hand.size() - 1).numb == 0) {
+                Card card = player.hand.get(player.hand.size() - 1);
+                roomdiscard.addcard(card);
+                player.hand.remove(player.hand.size() - 1);
+            }
+            if (player.hand.get(player.hand.size() - 1).numb == 1) {
+                Card card = player.hand.get(player.hand.size() - 1);
+                treasurediscard.addcard(card);
+                player.hand.remove(player.hand.size() - 1);
+            }
+        }
     }
 
 
@@ -77,31 +88,31 @@ public class Badstuff {
         }
     }
 
-    void badstuffdeath(Players players, Deck roomlist, Deck treasurelist, ArrayList<Players> playerList, BackgroundSystem backgroundSystem, Deck roomdiscard, Deck treasurediscard) {
+    void badstuffdeath(Players player, Deck roomlist, Deck treasurelist, ArrayList<Players> playerList, BackgroundSystem backgroundSystem, Deck roomdiscard, Deck treasurediscard) {
         if (die == true) {
-            while (players.hand.size() > 0) {
-                if (players.hand.get(players.hand.size() - 1).numb == 0) {
-                    Card card = players.hand.get(players.hand.size() - 1);
+            while (player.hand.size() > 0) {
+                if (player.hand.get(player.hand.size() - 1).numb == 0) {
+                    Card card = player.hand.get(player.hand.size() - 1);
                     roomdiscard.addcard(card);
-                    players.hand.remove(players.hand.size() - 1);
+                    player.hand.remove(player.hand.size() - 1);
                 }
-                if (players.hand.get(players.hand.size() - 1).numb == 1) {
-                    Card card = players.hand.get(players.hand.size() - 1);
+                if (player.hand.get(player.hand.size() - 1).numb == 1) {
+                    Card card = player.hand.get(player.hand.size() - 1);
                     treasurediscard.addcard(card);
-                    players.hand.remove(players.hand.size() - 1);
+                    player.hand.remove(player.hand.size() - 1);
                 }
             }
 
-            if (players.hand.size() == 0) {
+            if (player.hand.size() == 0) {
                 for (int i = 0; i < 4; i++) {
                     for (int j = 0; j < 2; j++) {
-                        treasurelist.drawcard(playerList.get(i).hand, 0, playerList, treasurediscard, roomdiscard, players);
-                        roomlist.drawcard(playerList.get(i).hand, 0, playerList, treasurediscard, roomdiscard, players);
+                        treasurelist.drawcard(playerList.get(i).hand, 0, playerList, treasurediscard, roomdiscard, player);
+                        roomlist.drawcard(playerList.get(i).hand, 0, playerList, treasurediscard, roomdiscard, player);
 
                     }
                 }
             }
-            playerList.get(backgroundSystem.turn).level = 1;
+            player.level = 1;
         }
 
 
