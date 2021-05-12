@@ -7,4 +7,5 @@ public class Cardinfo {
     int power;
     int power2;
     int RunAway;
+    int gold;
 }
