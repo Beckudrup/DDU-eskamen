@@ -220,12 +220,12 @@ if(battlefase) {
                 int monsterPower = 0;
                 int allyPower = 0;
                 for (int i = 0; i < monsterList.size(); i++) {
-                    monsterPower += monsterList.get(i).power;
+                    monsterPower += monsterList.get(i).level;
                 }
                 for (int i = 0; i < allyList.size(); i++) {
                     allyPower += allyList.get(i).pow;
                 }
-                if ((allyPower >= monsterPower &&playerList.get(backgroundSystem.turn).Class.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower)) {
+                if ((allyPower >= monsterPower &&playerList.get(backgroundSystem.turn).Class!=null&&playerList.get(backgroundSystem.turn).Class.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower)) {
 //treasure draw
                 }
                 if (monsterPower > allyPower) {
@@ -241,8 +241,8 @@ if(battlefase) {
         if (monsterList.get(i).badStuff.equalsIgnoreCase("death")||(monsterList.get(i).badStuff.equalsIgnoreCase("death if wizard instead lose class")&&!allyList.get(j).Class.name.equalsIgnoreCase("wizard"))||(monsterList.get(i).badStuff.equalsIgnoreCase("Roll die if less than 2 death else lose level = die")&&roll<3)){
           badstuff.badstuffdeath(playerList.get(backgroundSystem.turn),room,treasure,playerList,backgroundSystem, roomdisc,treasuredisc);
         }
-        if(monsterList.get(i).badStuff.equalsIgnoreCase("roll die - treasure = number on die")||monsterList.get(i).badStuff.equalsIgnoreCase("- Bigitem")||monsterList.get(i).badStuff.equalsIgnoreCase("All armor")||monsterList.get(i).badStuff.equalsIgnoreCase("Footgear")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 items, players choose")||monsterList.get(i).badStuff.equalsIgnoreCase("- class and race")||(monsterList.get(i).badStuff.equalsIgnoreCase("- class if no -3lvl")&&allyList.get(j).Class!=null)||monsterList.get(i).badStuff.equalsIgnoreCase("highlvl take item")||monsterList.get(i).badStuff.equalsIgnoreCase("- headgear")||monsterList.get(i).badStuff.equalsIgnoreCase("-1000g of items")||(monsterList.get(i).badStuff.equalsIgnoreCase("death if wizard instead lose class")&&allyList.get(i).Class.name.equalsIgnoreCase("wizard"))||monsterList.get(i).badStuff.equalsIgnoreCase("lose all items and discard hand")||monsterList.get(i).badStuff.equalsIgnoreCase("players take 1 treasure from you board or hand")){
-            badstuff.badstuffloseitem();
+        if(monsterList.get(i).badStuff.equalsIgnoreCase("roll die - treasure = number on die")||monsterList.get(i).badStuff.equalsIgnoreCase("- Bigitem")||monsterList.get(i).badStuff.equalsIgnoreCase("All armor")||monsterList.get(i).badStuff.equalsIgnoreCase("Footgear")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 items, players choose")||monsterList.get(i).badStuff.equalsIgnoreCase("- class and race")||(monsterList.get(i).badStuff.equalsIgnoreCase("- class if no -3lvl")&&allyList.get(j).Class!=null)||monsterList.get(i).badStuff.equalsIgnoreCase("highlvl take item")||monsterList.get(i).badStuff.equalsIgnoreCase("- headgear")||monsterList.get(i).badStuff.equalsIgnoreCase("-1000g of items")||(monsterList.get(i).badStuff.equalsIgnoreCase("death if wizard instead lose class")&&(allyList.get(i).Class.name.equalsIgnoreCase("wizard")||allyList.get(i).Class2.name.equalsIgnoreCase("wizard")))||monsterList.get(i).badStuff.equalsIgnoreCase("lose all items and discard hand")||monsterList.get(i).badStuff.equalsIgnoreCase("players take 1 treasure from you board or hand")){
+            badstuff.badstuffloseitem(monsterList.get(i),allyList.get(j),playerList,die,roomdisc,treasuredisc);
         }
         if(monsterList.get(i).badStuff.equalsIgnoreCase("discard hand")||monsterList.get(i).badStuff.equalsIgnoreCase("lose all items and discard hand")){
             badstuff.badstuffhand(allyList.get(j),playerList,roomdisc,treasuredisc);

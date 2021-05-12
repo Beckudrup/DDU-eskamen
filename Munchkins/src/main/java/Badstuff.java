@@ -121,7 +121,117 @@ public class Badstuff {
 
 
 
-    void badstuffloseitem() {
+    void badstuffloseitem(Card monster,Players player,ArrayList<Players> playerList,Dice die,Deck roomdisc,Deck treasuredisc) {
+        if(monster.badStuff.equalsIgnoreCase("all armor")){
+
+            if(player.body!=null){
+                treasuredisc.addcard(player.body);
+                player.body=null;
+            }
+
+            if(player.hand1!=null){
+                treasuredisc.addcard(player.hand1);
+                player.hand1=null;
+            }
+
+            if(player.hand2!=null){
+                treasuredisc.addcard(player.hand2);
+                player.hand2=null;
+            }
+
+            if(player.head!=null){
+                treasuredisc.addcard(player.head);
+                player.head=null;
+            }
+
+            if(player.feet!=null){
+                treasuredisc.addcard(player.feet);
+                player.feet=null;
+            }
+        }
+        if(monster.badStuff.equalsIgnoreCase("foorgear")) {
+
+            if(player.feet!=null){
+                treasuredisc.addcard(player.feet);
+                player.feet=null;
+            }
+        }
+        if(monster.badStuff.equalsIgnoreCase("- class and race")) {
+            if(player.Class!=null){
+                roomdisc.addcard(player.Class);
+                player.Class=null;
+            }
+            if(player.Class2!=null){
+                roomdisc.addcard(player.Class2);
+                player.Class2=null;
+            }
+            if(player.Race!=null){
+                roomdisc.addcard(player.Race);
+                player.Race=null;
+            }
+            if(player.Race2!=null){
+                roomdisc.addcard(player.Race2);
+                player.Race2=null;
+            }
+        }
+        if(monster.badStuff.equalsIgnoreCase("- class if no -3lvl")){
+            if(player.Class!=null){
+                roomdisc.addcard(player.Class);
+                player.Class=null;
+            }
+            if(player.Class2!=null){
+                roomdisc.addcard(player.Class2);
+                player.Class2=null;
+            }
+        }
+        if(monster.badStuff.equalsIgnoreCase("- headgear")) {
+
+            if(player.head!=null){
+                treasuredisc.addcard(player.head);
+                player.head=null;
+            }
+        }
+        if(monster.badStuff.equalsIgnoreCase("death if wizard instead lose class")){
+            if(player.Class!=null&&player.Class.name.equalsIgnoreCase("wizard")){
+                roomdisc.addcard(player.Class);
+                player.Class=null;
+            }
+            if(player.Class2!=null&&player.Class2.name.equalsIgnoreCase("wizard")){
+                roomdisc.addcard(player.Class2);
+                player.Class2=null;
+            }
+        }
+        if(monster.badStuff.equalsIgnoreCase("lose all items and discard hand")){
+            if(player.body!=null){
+                treasuredisc.addcard(player.body);
+                player.body=null;
+            }
+
+            if(player.hand1!=null){
+                treasuredisc.addcard(player.hand1);
+                player.hand1=null;
+            }
+
+            if(player.hand2!=null){
+                treasuredisc.addcard(player.hand2);
+                player.hand2=null;
+            }
+
+            if(player.head!=null){
+                treasuredisc.addcard(player.head);
+                player.head=null;
+            }
+
+            if(player.feet!=null){
+                treasuredisc.addcard(player.feet);
+                player.feet=null;
+            }
+            if(player.utility!=null){
+                treasuredisc.addcard(player.utility);
+                player.utility=null;
+            }
+        }
+
 /*
 Mist 1 item
 mist 1000g værd af items
