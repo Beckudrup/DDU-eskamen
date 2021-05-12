@@ -19,7 +19,7 @@ public class BackgroundSystem {
         this.p = p;
     }
 
-    void endturn(ArrayList<Button> buttList, Players player, ArrayList<Players> playerList, Deck roomdisc, Deck treasuredisc) {
+    void endturn(ArrayList<Button> buttList, Players player, ArrayList<Players> playerList, Deck roomdisc, Deck treasuredisc,Deck room) {
         if (buttList.get(1).tryk && !battlefase) {
             if (turn < 3) {
                 turn++;
@@ -84,6 +84,8 @@ public class BackgroundSystem {
                     }
                 }
             }
+            room.fix=true;
+            room.firstDraw=true;
             monsterfasedone = false;
         }
     }
