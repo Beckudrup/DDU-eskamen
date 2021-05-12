@@ -121,114 +121,235 @@ public class Badstuff {
 
 
 
-    void badstuffloseitem(Card monster,Players player,ArrayList<Players> playerList,Dice die,Deck roomdisc,Deck treasuredisc) {
-        if(monster.badStuff.equalsIgnoreCase("all armor")){
+    void badstuffloseitem(Card monster,Players player,ArrayList<Players> playerList,Dice die,Deck roomdisc,Deck treasuredisc, int roll) {
+        if (monster.badStuff.equalsIgnoreCase("all armor")) {
 
-            if(player.body!=null){
+            if (player.body != null) {
                 treasuredisc.addcard(player.body);
-                player.body=null;
+                player.body = null;
             }
 
-            if(player.hand1!=null){
+            if (player.hand1 != null) {
                 treasuredisc.addcard(player.hand1);
-                player.hand1=null;
+                player.hand1 = null;
             }
 
-            if(player.hand2!=null){
+            if (player.hand2 != null) {
                 treasuredisc.addcard(player.hand2);
-                player.hand2=null;
+                player.hand2 = null;
             }
 
-            if(player.head!=null){
+            if (player.head != null) {
                 treasuredisc.addcard(player.head);
-                player.head=null;
+                player.head = null;
             }
 
-            if(player.feet!=null){
+            if (player.feet != null) {
                 treasuredisc.addcard(player.feet);
-                player.feet=null;
+                player.feet = null;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("foorgear")) {
+        if (monster.badStuff.equalsIgnoreCase("foorgear")) {
 
-            if(player.feet!=null){
+            if (player.feet != null) {
                 treasuredisc.addcard(player.feet);
-                player.feet=null;
+                player.feet = null;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("- class and race")) {
-            if(player.Class!=null){
+        if (monster.badStuff.equalsIgnoreCase("- class and race")) {
+            if (player.Class != null) {
                 roomdisc.addcard(player.Class);
-                player.Class=null;
+                player.Class = null;
             }
-            if(player.Class2!=null){
+            if (player.Class2 != null) {
                 roomdisc.addcard(player.Class2);
-                player.Class2=null;
+                player.Class2 = null;
             }
-            if(player.Race!=null){
+            if (player.Race != null) {
                 roomdisc.addcard(player.Race);
-                player.Race=null;
+                player.Race = null;
             }
-            if(player.Race2!=null){
+            if (player.Race2 != null) {
                 roomdisc.addcard(player.Race2);
-                player.Race2=null;
+                player.Race2 = null;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("- class if no -3lvl")){
-            if(player.Class!=null){
+        if (monster.badStuff.equalsIgnoreCase("- class if no -3lvl")) {
+            if (player.Class != null) {
                 roomdisc.addcard(player.Class);
-                player.Class=null;
+                player.Class = null;
             }
-            if(player.Class2!=null){
+            if (player.Class2 != null) {
                 roomdisc.addcard(player.Class2);
-                player.Class2=null;
+                player.Class2 = null;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("- headgear")) {
+        if (monster.badStuff.equalsIgnoreCase("- headgear")) {
 
-            if(player.head!=null){
+            if (player.head != null) {
                 treasuredisc.addcard(player.head);
-                player.head=null;
+                player.head = null;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("death if wizard instead lose class")){
-            if(player.Class!=null&&player.Class.name.equalsIgnoreCase("wizard")){
+        if (monster.badStuff.equalsIgnoreCase("death if wizard instead lose class")) {
+            if (player.Class != null && player.Class.name.equalsIgnoreCase("wizard")) {
                 roomdisc.addcard(player.Class);
-                player.Class=null;
+                player.Class = null;
             }
-            if(player.Class2!=null&&player.Class2.name.equalsIgnoreCase("wizard")){
+            if (player.Class2 != null && player.Class2.name.equalsIgnoreCase("wizard")) {
                 roomdisc.addcard(player.Class2);
-                player.Class2=null;
+                player.Class2 = null;
             }
         }
-        if(monster.badStuff.equalsIgnoreCase("lose all items and discard hand")){
-            if(player.body!=null){
+        if (monster.badStuff.equalsIgnoreCase("lose all items and discard hand")) {
+            if (player.body != null) {
                 treasuredisc.addcard(player.body);
-                player.body=null;
+                player.body = null;
             }
 
-            if(player.hand1!=null){
+            if (player.hand1 != null) {
                 treasuredisc.addcard(player.hand1);
-                player.hand1=null;
+                player.hand1 = null;
             }
 
-            if(player.hand2!=null){
+            if (player.hand2 != null) {
                 treasuredisc.addcard(player.hand2);
-                player.hand2=null;
+                player.hand2 = null;
             }
 
-            if(player.head!=null){
+            if (player.head != null) {
                 treasuredisc.addcard(player.head);
-                player.head=null;
+                player.head = null;
             }
 
-            if(player.feet!=null){
+            if (player.feet != null) {
                 treasuredisc.addcard(player.feet);
-                player.feet=null;
+                player.feet = null;
             }
-            if(player.utility!=null){
+            if (player.utility != null) {
                 treasuredisc.addcard(player.utility);
-                player.utility=null;
+                player.utility = null;
+            }
+        }
+        if (monster.badStuff.equalsIgnoreCase("roll die - treasure = number on die")) {
+            ArrayList<Card> treasuresList = new ArrayList<>();
+            if (player.body != null) {
+                treasuresList.add(player.body);
+                player.body = null;
+            }
+
+            if (player.hand1 != null) {
+                treasuresList.add(player.hand1);
+                player.hand1 = null;
+            }
+
+            if (player.hand2 != null) {
+                treasuresList.add(player.hand2);
+                player.hand2 = null;
+            }
+
+            if (player.head != null) {
+                treasuresList.add(player.head);
+                player.head = null;
+            }
+
+            if (player.feet != null) {
+                treasuresList.add(player.feet);
+                player.feet = null;
+            }
+            if (player.utility != null) {
+                treasuresList.add(player.utility);
+                player.utility = null;
+            }
+            for (int i = 0; i < roll; i++) {
+                if (treasuresList.size() > 0) {
+                    treasuresList.remove((int) p.random(treasuresList.size()));
+                }
+            }
+            for (int i = 0; i < treasuresList.size(); i++) {
+                if (treasuresList.get(i).type.equalsIgnoreCase("Armor") || (treasuresList.get(i).type.equalsIgnoreCase("armor big"))) {
+                    if (player.body != null) {
+                        if (player.body.numb == 0) {
+                            roomdisc.addcard(player.body);
+                        } else {
+                            if (player.body.numb == 1)
+                                treasuredisc.addcard(player.body);
+                        }
+                    }
+                    treasuresList.get(i).hovering = false;
+                    player.body = treasuresList.get(i);
+                    treasuresList.remove(i);
+                } else {
+                    if (treasuresList.get(i).type.equalsIgnoreCase("headgear")) {
+                        if (treasuresList != null) {
+                            if (player.head.numb == 0) {
+                                roomdisc.addcard(player.head);
+                            } else {
+                                if (player.head.numb == 1)
+                                    treasuredisc.addcard(player.head);
+                            }
+                        }
+                        player.hand.get(i).hovering = false;
+                        player.head = treasuresList.get(i);
+                        treasuresList.remove(i);
+                    } else {
+                        if (treasuresList.get(i).type.equalsIgnoreCase("footgear")) {
+                            if (player.feet != null) {
+                                if (player.feet.numb == 0) {
+                                    roomdisc.addcard(player.feet);
+                                } else {
+                                    if (player.feet.numb == 1)
+                                        treasuredisc.addcard(player.feet);
+                                }
+                            }
+                            treasuresList.get(i).hovering = false;
+                            player.feet = treasuresList.get(i);
+                            treasuresList.remove(i);
+                        } else {
+                            if ((treasuresList.get(i).type.equalsIgnoreCase("1 hand") || treasuresList.get(i).type.equalsIgnoreCase("1 hand big")) && player.hand1 == null) {
+                                if (player.hand1 != null) {
+                                    if (player.hand1.numb == 0) {
+                                        roomdisc.addcard(player.hand1);
+                                    } else {
+                                        if (player.hand1.numb == 1)
+                                            treasuredisc.addcard(player.hand1);
+                                    }
+                                }
+                                treasuresList.get(i).hovering = false;
+                                player.hand1 = treasuresList.get(i);
+                                treasuresList.remove(i);
+                            } else {
+                                if ((treasuresList.get(i).type.equalsIgnoreCase("1 hand") || treasuresList.get(i).type.equalsIgnoreCase("1 hand big")) && player.hand1 != null && (!player.hand1.type.equalsIgnoreCase("2 hands") || !player.hand1.type.equalsIgnoreCase("2 hands big"))) {
+                                    if (player.hand2 != null) {
+                                        if (player.hand2.numb == 0) {
+                                            roomdisc.addcard(player.hand2);
+                                        } else {
+                                            if (player.hand2.numb == 1)
+                                                treasuredisc.addcard(player.hand2);
+                                        }
+                                    }
+                                    treasuresList.get(i).hovering = false;
+                                    player.hand2 = treasuresList.get(i);
+                                    treasuresList.remove(i);
+                                } else {
+                                    if (treasuresList.get(i).type.equalsIgnoreCase("Utility") || treasuresList.get(i).type.equalsIgnoreCase("Utility big")) {
+                                        if (player.utility != null) {
+                                            if (player.utility.numb == 0) {
+                                                roomdisc.addcard(player.utility);
+                                            } else {
+                                                if (player.utility.numb == 1)
+                                                    treasuredisc.addcard(player.utility);
+                                            }
+                                        }
+                                        treasuresList.get(i).hovering = false;
+                                        player.utility = treasuresList.get(i);
+                                        treasuresList.remove(i);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
