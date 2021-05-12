@@ -163,7 +163,6 @@ public class Deck {
 
                     }
 
-
                     if (drawncard.name.equalsIgnoreCase("Curse! Chiken on your head")) {
                         //-1 til dice rolls
                     }
