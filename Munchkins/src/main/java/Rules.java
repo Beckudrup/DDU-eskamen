@@ -14,17 +14,6 @@ public class Rules {
         p.textSize(32);
         p.background(230);
         p.fill(0);
-    /*
-    p.rect(20,120,240,888); // Turns
-    p.rect(290,120,240,888); // Start of game and death
-    p.rect(560,120,240,888); // Combat Run away ask for help
-    p.rect(830,120,240,888); // Class abilities
-    p.rect(1100,120,240,888); // Open the door Loot the room
-    p.rect(1370,120,240,888); // Curses
-    p.rect(1640,120,240,888); // How to win
-
-
-     */
         p.textSize(26);
         p.text("Rules", p.width / 2, 50);
 
@@ -260,43 +249,6 @@ public class Rules {
     }
 }
 
-
-
-
-   /*
-    p.text("Turns", 130,160);
-    p.text("Charity", 130,680);
-
-    p.text("The start of \nthe game", 400,160);
-    p.text("Death", 400,600);
-
-    p.text("Combat", 670,160);
-    p.text("Run away", 670,550);
-    p.text("Ask for help", 670,810);
-
-    p.text("Class abilities", 940,160);
-
-    p.text("Open door", 1210,160);
-    p.text("Loot the room", 1210,660);
-
-    p.text("Curses", 1480,160);
-
-    p.text("How to win", 1750,160);
-
-    //Teksten til boksene
-    p.textSize(18);
-    p.textAlign(PConstants.LEFT);
-    p.text("When your turn starts\nyou must Kick Open \nThe Door, after that \ndepending on what you \ndrew different things \nwill happen.\nExplained in \nOpen Door. \nTo end your turn \npress the end turn \nbutton, your cards \nwill then be hidden \nand the next player \ncan click start turn \nand then his cards \nwill be shown.", 30, 200);
-    p.textSize(18);
-    p.textSize(20);
-
-    p.textSize(16);
-    p.textSize(20);
-
-
-
-
-    */
 
 
 
