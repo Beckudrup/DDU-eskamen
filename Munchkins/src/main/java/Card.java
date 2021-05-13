@@ -22,7 +22,7 @@ public class Card {
     int treasures;
 
 
-    Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name, int RunAway, int gold, int xp, int xp2, int treasures,String badStuff) {
+    Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name, int RunAway, int gold, int xp, int xp2, int treasures,String badStuff,int level) {
 
 
         this.p = p;
@@ -37,6 +37,7 @@ public class Card {
         this.xp = xp;
         this.xp2 = xp2;
         this.treasures = treasures;
+        this.level=level;
     }
 
     void display(int x, int y, int w, int h, int frontOrBack) {

@@ -17,9 +17,8 @@ public class Players {
     int handRunAway;
     int pow;
     int RunAway;
-    int playerClass = 0;
-    int race = 0;
     int playernr;
+    int powChange;
     Card head;
     Card body;
     Card feet;
@@ -28,13 +27,16 @@ public class Players {
     Card utility;
     Card monster;
     Card playable;
-    Card Class;
-    Card Class2;
-    Card Race;
-    Card Race2;
+    Card playerClass;
+    Card playerClass2;
+    Card race;
+    Card race2;
+    Card curse;
     Button showhand;
     boolean wanderingMonster;
     boolean once;
+    boolean mirror;
+    boolean chikenonhed;
 
 
     ArrayList<Card> hand = new ArrayList();
@@ -113,30 +115,30 @@ public class Players {
                                     hand.remove(i);
                                 } else {
                                     if (hand.get(i).type.equalsIgnoreCase("Class")) {
-                                        if (Class != null) {
-                                            if (Class.numb == 0) {
-                                                roomdisc.addcard(Class);
+                                        if (playerClass != null) {
+                                            if (playerClass.numb == 0) {
+                                                roomdisc.addcard(playerClass);
                                             } else {
-                                                if (Class.numb == 1)
-                                                    treasuredisc.addcard(Class);
+                                                if (playerClass.numb == 1)
+                                                    treasuredisc.addcard(playerClass);
                                             }
                                         }
                                         hand.get(i).hovering = false;
-                                        Class = hand.get(i);
-                                        Class.name = hand.get(i).name;
+                                        playerClass = hand.get(i);
+                                        playerClass.name = hand.get(i).name;
                                         hand.remove(i);
                                     } else {
                                         if (hand.get(i).type.equalsIgnoreCase("Race")) {
-                                            if (Race != null) {
-                                                if (Race.numb == 0) {
-                                                    roomdisc.addcard(Race);
+                                            if (race != null) {
+                                                if (race.numb == 0) {
+                                                    roomdisc.addcard(race);
                                                 } else {
-                                                    if (Race.numb == 1)
-                                                        treasuredisc.addcard(Race);
+                                                    if (race.numb == 1)
+                                                        treasuredisc.addcard(race);
                                                 }
                                             }
                                             hand.get(i).hovering = false;
-                                            Race = hand.get(i);
+                                            race = hand.get(i);
                                             hand.remove(i);
                                         } else {
                                             if (hand.get(i).type.equalsIgnoreCase("Utility") || hand.get(i).type.equalsIgnoreCase("Utility big")) {
@@ -223,14 +225,14 @@ public class Players {
                 hand2.display(280, 920, 60, 100, 1);
             if (utility != null)
                 utility.display(360, 920, 60, 100, 1);
-            if (Class != null)
-                Class.display(440, 800, 60, 100, 1);
-            if (Class2 != null)
-                Class.display(440, 920, 60, 100, 1);
-            if (Race != null)
-                Race.display(520, 800, 60, 100, 1);
-            if (Race2 != null)
-                Race.display(520, 920, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(440, 800, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(440, 920, 60, 100, 1);
+            if (race != null)
+                race.display(520, 800, 60, 100, 1);
+            if (race2 != null)
+                race.display(520, 920, 60, 100, 1);
         }
         if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
             p.pushMatrix();
@@ -247,14 +249,14 @@ public class Players {
                 hand2.display(210, -110, 60, 100, 1);
             if (utility != null)
                 utility.display(290, -110, 60, 100, 1);
-            if (Class != null)
-                Class.display(370, -230, 60, 100, 1);
-            if (Class2 != null)
-                Class.display(370, -110, 60, 100, 1);
-            if (Race != null)
-                Race.display(450, -230, 60, 100, 1);
-            if (Race2 != null)
-                Race.display(450, -110, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(370, -230, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(370, -110, 60, 100, 1);
+            if (race != null)
+                race.display(450, -230, 60, 100, 1);
+            if (race2 != null)
+                race.display(450, -110, 60, 100, 1);
             p.popMatrix();
         }
         if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
@@ -272,14 +274,14 @@ public class Players {
                 hand2.display(-1640, -140, 60, 100, 1);
             if (utility != null)
                 utility.display(-1560, -140, 60, 100, 1);
-            if (Class != null)
-                Class.display(-1480, -260, 60, 100, 1);
-            if (Class2 != null)
-                Class.display(-1480, -140, 60, 100, 1);
-            if (Race != null)
-                Race.display(-1400, -260, 60, 100, 1);
-            if (Race2 != null)
-                Race.display(-1400, -140, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(-1480, -260, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(-1480, -140, 60, 100, 1);
+            if (race != null)
+                race.display(-1400, -260, 60, 100, 1);
+            if (race2 != null)
+                race.display(-1400, -140, 60, 100, 1);
             p.popMatrix();
         }
         if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
@@ -297,14 +299,14 @@ public class Players {
                 hand2.display(-850, 1780, 60, 100, 1);
             if (utility != null)
                 utility.display(-770, 1780, 60, 100, 1);
-            if (Class != null)
-                Class.display(-690, 1660, 60, 100, 1);
-            if (Class2 != null)
-                Class.display(-690, 1780, 60, 100, 1);
-            if (Race != null)
-                Race.display(-610, 1660, 60, 100, 1);
-            if (Race2 != null)
-                Race.display(-610, 1780, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(-690, 1660, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(-690, 1780, 60, 100, 1);
+            if (race != null)
+                race.display(-610, 1660, 60, 100, 1);
+            if (race2 != null)
+                race.display(-610, 1780, 60, 100, 1);
             p.popMatrix();
         }
     }
@@ -329,12 +331,15 @@ public class Players {
         }
         if (feet != null && hand2 != null)
             RunAway = (handRunAway + feetRunAway);
-        if (head != null && body != null && feet != null && hand1 != null && hand2 != null) {
-            pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power + level);
-            // PApplet.println(pow);
-        } else {
-            // PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow+level) + " ");
+        if(mirror){
+            handpow=0;
+            hand2pow=0;
+            headpow=0;
+            feetpow=0;
         }
+            pow = headpow + bodypow + feetpow + handpow + hand2pow + level + powChange;
+            // PApplet.println(pow);
+
     }
 
     void playables(BackgroundSystem backgroundSystem) {
@@ -351,44 +356,44 @@ public class Players {
                 }
                 if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
                     PApplet.println(2);
-                    level = level + 1;
+                    level +=  1;
                 }
                 if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
-                    level = level + 1;
+                    level += 1;
                    // PApplet.println(3);
                 }
                 if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
-                    level = level + 1;
+                    level += 1;
                  //   PApplet.println(4);
                 }
                 if (playable.name.equalsIgnoreCase("Boil an anthill")) {
                     PApplet.println(5);
-                    level = level + 1;
+                    level += 1;
                 }
                 if (playable.name.equalsIgnoreCase("Convenient addition error")) {
-                    level = level + 1;
+                    level += 1;
                   //  PApplet.println(6);
                 }
                 if (playable.name.equalsIgnoreCase("Mutilate the bodies")  /*&& backgroundSyste.battlefase ;; end of *any* combat */) {
-                    level = level + 1;
+                    level += 1;
                 //    PApplet.println(7);
 
                 }
                 //If hireling is on the bord utility.name.equalsIgnoreCase("Hireling")
                 if (playable.name.equalsIgnoreCase("Kill the hireling")) {
-                    level = level + 1;
+                    level += 1;
                //     PApplet.println(8);
                 }
                 if (playable.name.equalsIgnoreCase("Steal a level")) {
                     //Selected person level = level -1;
-                    level = level + 1;
+                    level += 1;
                //     PApplet.println(9);
                 }
             }
             if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
                 //Go through the discards to find any one card you want. Take that card and discard this one.
             }
-            if (Class == null || !Class.name.equalsIgnoreCase("Cleric")) {
+            if (playerClass == null || !playerClass.name.equalsIgnoreCase("Cleric")) {
                 if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
                     if (level < /*other players level*/ 10) {
                         //Player will always help, they gain no treasure, but you gain no level.
@@ -401,17 +406,17 @@ public class Players {
     }
 
     void raceFunction() {
-        if (Race != null) {
-            if (Race.name.equalsIgnoreCase("Elf")) {
+        if (race != null) {
+            if (race.name.equalsIgnoreCase("Elf")) {
                 //runAway + 1;
                 //p.println("Run Away = 1");
                 //If you help kill a monster +1 level, for each killed;
             }
-            if (Race.name.equalsIgnoreCase("Dwarf")) {
+            if (race.name.equalsIgnoreCase("Dwarf")) {
                 //Carry any number of big weapons;
                 //Have 6 cards in hand (instead og 5);
             }
-            if (Race.name.equalsIgnoreCase("Halfling")) {
+            if (race.name.equalsIgnoreCase("Halfling")) {
                 //You may sell one item each turn for double price;
                 //If you fail your initial Run Away roll, you may discard a card and try once more;
             }
@@ -419,24 +424,24 @@ public class Players {
     }
 
     void classFunction() {
-        if (Class != null) {
+        if (playerClass != null) {
             //This if statement is only for player one;
             if (p.mouseX > 440 && p.mouseX < 440 + 60 && p.mouseY > 800 && p.mouseY < 800 + 100) {
-                if (Class.name.equalsIgnoreCase("Thief")) {
+                if (playerClass.name.equalsIgnoreCase("Thief")) {
                     //You may discard a card to backstab another player (-2 in combat). You may do this only once per victim per combat, but if two or more players are fighting a monster together, you may backstab each of them;
                     //You may discard a card to try to steal a small item carried by another player. Roll a die; 4 or more succeeds. Otherwise, you get whacked and lose a level;
                     //p.println((int) p.random(1, 7));
                 }
-                if (Class.name.equalsIgnoreCase("Cleric")) {
+                if (playerClass.name.equalsIgnoreCase("Cleric")) {
                     //In draw-face, you may instead take some or all top of the appropriate discard pile. You must discard one card from your hand for each card drawn;
                     //Against undead creatures
                 }
-                if (Class.name.equalsIgnoreCase("Wizard")) {
+                if (playerClass.name.equalsIgnoreCase("Wizard")) {
                     //Either
                     //Discard up to 3 cards after rolling a Run Away die. Each discard give +1 to Run Away;
                     //You may discard you whole hand (minimum 3) to charm a single monster instead of fighting it. Discard the monster and take its treasure, but don't gain levels. If there are other monsters in the combat fight them normally.
                 }
-                if (Class.name.equalsIgnoreCase("Warrior")) {
+                if (playerClass.name.equalsIgnoreCase("Warrior")) {
                     //You may discard up to 3 cards in combat; each one gives you a +1 bonus;
                     //You win ties in combat.
                 }
