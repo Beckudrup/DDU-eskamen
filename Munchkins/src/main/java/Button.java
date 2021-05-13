@@ -44,9 +44,7 @@ public class Button {
         }
     }
 
-    void valgt() {
-        p.triangle(xPos + w / 2, yPos + h + 10, xPos + w / 2 - w / 4, yPos + h + 30, xPos + w / 2 + w / 4, yPos + h + 30);
-    }
+
 
     void release() {
         tryk = false;
