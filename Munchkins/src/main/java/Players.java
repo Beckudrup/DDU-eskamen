@@ -329,12 +329,10 @@ public class Players {
         }
         if (feet != null && hand2 != null)
             RunAway = (handRunAway + feetRunAway);
-        if (head != null && body != null && feet != null && hand1 != null && hand2 != null) {
-            pow = (head.power + head.power2 + body.power + body.power2 + feet.power + hand1.power + hand2.power + level);
+
+            pow = headpow + bodypow + feetpow + handpow + hand2pow + level;
             // PApplet.println(pow);
-        } else {
-            // PApplet.println(playernr + ": " + (headpow + bodypow + feetpow + handpow + hand2pow+level) + " ");
-        }
+
     }
 
     void playables(BackgroundSystem backgroundSystem) {

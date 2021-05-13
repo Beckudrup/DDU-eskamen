@@ -93,31 +93,31 @@ public class Badstuff {
     }
 
     void badstuffdeath(Players player, Deck roomlist, Deck treasurelist, ArrayList<Players> playerList, BackgroundSystem backgroundSystem, Deck roomdiscard, Deck treasurediscard) {
-        if (die == true) {
+
             while (player.hand.size() > 0) {
                 if (player.hand.get(player.hand.size() - 1).numb == 0) {
                     Card card = player.hand.get(player.hand.size() - 1);
                     roomdiscard.addcard(card);
                     player.hand.remove(player.hand.size() - 1);
-                }
-                if (player.hand.get(player.hand.size() - 1).numb == 1) {
-                    Card card = player.hand.get(player.hand.size() - 1);
-                    treasurediscard.addcard(card);
-                    player.hand.remove(player.hand.size() - 1);
-                }
-            }
-
-            if (player.hand.size() == 0) {
-                for (int i = 0; i < 4; i++) {
-                    for (int j = 0; j < 2; j++) {
-                        treasurelist.drawcard(playerList.get(i).hand, 0, playerList, treasurediscard, roomdiscard, player);
-                        roomlist.drawcard(playerList.get(i).hand, 0, playerList, treasurediscard, roomdiscard, player);
-
+                } else {
+                    if (player.hand.get(player.hand.size() - 1).numb == 1) {
+                        Card card = player.hand.get(player.hand.size() - 1);
+                        treasurediscard.addcard(card);
+                        player.hand.remove(player.hand.size() - 1);
                     }
                 }
             }
+            if (player.hand.size() == 0) {
+
+                    for (int j = 0; j < 2; j++) {
+                        treasurelist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player);
+                        roomlist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player);
+
+                    }
+
+            }
             player.level = 1;
-        }
+
 
         System.out.println("badstufflosedeath");
     }
@@ -270,14 +270,20 @@ public class Badstuff {
             if(monster.badStuff.equalsIgnoreCase("roll die - treasure = number on die")){
             for (int i = 0; i < roll; i++) {
                 if (treasuresList.size() > 0) {
-                    treasuresList.remove((int) p.random(treasuresList.size()));
+                    int rando = (int) p.random(treasuresList.size());
+                    Card temp = treasuresList.get(rando);
+                    treasuredisc.addcard(temp);
+                    treasuresList.remove(rando);
                 }
             }
             }
             if(monster.badStuff.equalsIgnoreCase("- 2 items, players choose")){
                 for (int i = 0; i < 2; i++) {
                     if (treasuresList.size() > 0) {
-                        treasuresList.remove((int) p.random(treasuresList.size()));
+                        int rando = (int) p.random(treasuresList.size());
+                        Card temp = treasuresList.get(rando);
+                        treasuredisc.addcard(temp);
+                        treasuresList.remove(rando);
                     }
                 }
             }
