@@ -213,12 +213,20 @@ public class Deck {
                     }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your race")) {
-                    roomdisc.addcard(player.Race);
-                    player.Race = null;
+                    if(player.Race!=null) {
+                        roomdisc.addcard(player.Race);
+                        player.Race = null;
+                    }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your class")) {
-                    roomdisc.addcard(player.playerClass);
-                    player.playerClass = null;
+                    if(player.playerClass!=null) {
+                        roomdisc.addcard(player.playerClass);
+                        player.playerClass = null;
+                        if (player.playerClass2!=null){
+                            roomdisc.addcard(player.playerClass);
+                            player.playerClass = null;
+                        }
+                    }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose two cards")) {
                     //rewrite this @batman
@@ -272,11 +280,13 @@ public class Deck {
                     }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your armor")) {
-                    treasuredisc.addcard(player.body);
-                    player.body = null;
+                    if (player.body!=null) {
+                        treasuredisc.addcard(player.body);
+                        player.body = null;
+                    }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Change your sex")) {
-                    player.pow -= 5;
+                    player.powChange -= 5;
                     if (player.gender == 1) { //Burde også miste 5 power i en kamp
                         player.gender = 2;
                     } else {
@@ -287,46 +297,15 @@ public class Deck {
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Malign mirror")) {
                     //alle powers fra alle items ud over armor = 0 i en kamp
-                    player.handpow = 0;
-                    player.hand2pow = 0;
-                    player.feetpow = 0;
-                    player.headpow = 0;
+                    player.mirror=true;
 
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your headgear")) {
-                    treasuredisc.addcard(player.head);
-                    player.head = null;
-                }
-
-
-                if (drawncard.name.equalsIgnoreCase("Curse! Lose your armor")) {
-                    treasuredisc.addcard(player.body);
-                    player.body = null;
-                }
-                if (drawncard.name.equalsIgnoreCase("Curse! Change your sex")) {
-                    player.pow -= 5;
-                    if (player.gender == 1) { //Burde også miste 5 power i en kamp
-                        player.gender = 2;
-                    } else {
-                        if (player.gender == 2) {
-                            player.gender = 1;
-                        }
+                    if (player.head!=null) {
+                        treasuredisc.addcard(player.head);
+                        player.head = null;
                     }
                 }
-                if (drawncard.name.equalsIgnoreCase("Curse! Malign mirror")) {
-                    //alle powers fra alle items ud over armor = 0 i en kamp
-
-                    player.handpow = 0;
-                    player.hand2pow = 0;
-                    player.feetpow = 0;
-                    player.headpow = 0;
-
-                }
-                if (drawncard.name.equalsIgnoreCase("Curse! Lose your headgear")) {
-                    treasuredisc.addcard(player.head);
-                    player.head = null;
-                }
-
             }
             roomdisc.addcard(drawncard);
             boardDeck.remove(0);

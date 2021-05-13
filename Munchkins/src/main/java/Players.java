@@ -18,6 +18,7 @@ public class Players {
     int pow;
     int RunAway;
     int playernr;
+    int powChange;
     Card head;
     Card body;
     Card feet;
@@ -33,6 +34,7 @@ public class Players {
     Button showhand;
     boolean wanderingMonster;
     boolean once;
+    boolean mirror;
 
 
     ArrayList<Card> hand = new ArrayList();
@@ -327,8 +329,13 @@ public class Players {
         }
         if (feet != null && hand2 != null)
             RunAway = (handRunAway + feetRunAway);
-
-            pow = headpow + bodypow + feetpow + handpow + hand2pow + level;
+        if(mirror){
+            handpow=0;
+            hand2pow=0;
+            headpow=0;
+            feetpow=0;
+        }
+            pow = headpow + bodypow + feetpow + handpow + hand2pow + level + powChange;
             // PApplet.println(pow);
 
     }
