@@ -170,13 +170,13 @@ public class Badstuff {
                 roomdisc.addcard(player.playerClass2);
                 player.playerClass2 = null;
             }
-            if (player.Race != null) {
-                roomdisc.addcard(player.Race);
-                player.Race = null;
+            if (player.race != null) {
+                roomdisc.addcard(player.race);
+                player.race = null;
             }
-            if (player.Race2 != null) {
-                roomdisc.addcard(player.Race2);
-                player.Race2 = null;
+            if (player.race2 != null) {
+                roomdisc.addcard(player.race2);
+                player.race2 = null;
             }
         }
         if (monster.badStuff.equalsIgnoreCase("- class if no -3lvl")) {

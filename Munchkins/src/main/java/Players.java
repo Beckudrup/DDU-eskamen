@@ -29,12 +29,14 @@ public class Players {
     Card playable;
     Card playerClass;
     Card playerClass2;
-    Card Race;
-    Card Race2;
+    Card race;
+    Card race2;
+    Card curse;
     Button showhand;
     boolean wanderingMonster;
     boolean once;
     boolean mirror;
+    boolean chikenonhed;
 
 
     ArrayList<Card> hand = new ArrayList();
@@ -127,16 +129,16 @@ public class Players {
                                         hand.remove(i);
                                     } else {
                                         if (hand.get(i).type.equalsIgnoreCase("Race")) {
-                                            if (Race != null) {
-                                                if (Race.numb == 0) {
-                                                    roomdisc.addcard(Race);
+                                            if (race != null) {
+                                                if (race.numb == 0) {
+                                                    roomdisc.addcard(race);
                                                 } else {
-                                                    if (Race.numb == 1)
-                                                        treasuredisc.addcard(Race);
+                                                    if (race.numb == 1)
+                                                        treasuredisc.addcard(race);
                                                 }
                                             }
                                             hand.get(i).hovering = false;
-                                            Race = hand.get(i);
+                                            race = hand.get(i);
                                             hand.remove(i);
                                         } else {
                                             if (hand.get(i).type.equalsIgnoreCase("Utility") || hand.get(i).type.equalsIgnoreCase("Utility big")) {
@@ -227,10 +229,10 @@ public class Players {
                 playerClass.display(440, 800, 60, 100, 1);
             if (playerClass2 != null)
                 playerClass.display(440, 920, 60, 100, 1);
-            if (Race != null)
-                Race.display(520, 800, 60, 100, 1);
-            if (Race2 != null)
-                Race.display(520, 920, 60, 100, 1);
+            if (race != null)
+                race.display(520, 800, 60, 100, 1);
+            if (race2 != null)
+                race.display(520, 920, 60, 100, 1);
         }
         if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
             p.pushMatrix();
@@ -251,10 +253,10 @@ public class Players {
                 playerClass.display(370, -230, 60, 100, 1);
             if (playerClass2 != null)
                 playerClass.display(370, -110, 60, 100, 1);
-            if (Race != null)
-                Race.display(450, -230, 60, 100, 1);
-            if (Race2 != null)
-                Race.display(450, -110, 60, 100, 1);
+            if (race != null)
+                race.display(450, -230, 60, 100, 1);
+            if (race2 != null)
+                race.display(450, -110, 60, 100, 1);
             p.popMatrix();
         }
         if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
@@ -276,10 +278,10 @@ public class Players {
                 playerClass.display(-1480, -260, 60, 100, 1);
             if (playerClass2 != null)
                 playerClass.display(-1480, -140, 60, 100, 1);
-            if (Race != null)
-                Race.display(-1400, -260, 60, 100, 1);
-            if (Race2 != null)
-                Race.display(-1400, -140, 60, 100, 1);
+            if (race != null)
+                race.display(-1400, -260, 60, 100, 1);
+            if (race2 != null)
+                race.display(-1400, -140, 60, 100, 1);
             p.popMatrix();
         }
         if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
@@ -301,10 +303,10 @@ public class Players {
                 playerClass.display(-690, 1660, 60, 100, 1);
             if (playerClass2 != null)
                 playerClass.display(-690, 1780, 60, 100, 1);
-            if (Race != null)
-                Race.display(-610, 1660, 60, 100, 1);
-            if (Race2 != null)
-                Race.display(-610, 1780, 60, 100, 1);
+            if (race != null)
+                race.display(-610, 1660, 60, 100, 1);
+            if (race2 != null)
+                race.display(-610, 1780, 60, 100, 1);
             p.popMatrix();
         }
     }
@@ -404,17 +406,17 @@ public class Players {
     }
 
     void raceFunction() {
-        if (Race != null) {
-            if (Race.name.equalsIgnoreCase("Elf")) {
+        if (race != null) {
+            if (race.name.equalsIgnoreCase("Elf")) {
                 //runAway + 1;
                 //p.println("Run Away = 1");
                 //If you help kill a monster +1 level, for each killed;
             }
-            if (Race.name.equalsIgnoreCase("Dwarf")) {
+            if (race.name.equalsIgnoreCase("Dwarf")) {
                 //Carry any number of big weapons;
                 //Have 6 cards in hand (instead og 5);
             }
-            if (Race.name.equalsIgnoreCase("Halfling")) {
+            if (race.name.equalsIgnoreCase("Halfling")) {
                 //You may sell one item each turn for double price;
                 //If you fail your initial Run Away roll, you may discard a card and try once more;
             }

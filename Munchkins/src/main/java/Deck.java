@@ -168,7 +168,9 @@ public class Deck {
                 }
 
                 if (drawncard.name.equalsIgnoreCase("Curse! Chiken on your head")) {
-                    //-1 til dice rolls
+                    player.chikenonhed = true;
+                    player.curse=drawncard;
+
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your footgear")) {
                     if(player.feet!=null){
@@ -184,25 +186,25 @@ public class Deck {
 
                 if (drawncard.name.equalsIgnoreCase("Curse! Change race")) {
                     // Skal hente en anden race
-                    if (player.Race != null && roomdisc.cardList.size() > 0) {
+                    if (player.race != null && roomdisc.cardList.size() > 0) {
                         boolean raceFound = false;
                         for (int j = 0; j < roomdisc.cardList.size()  && !raceFound; j++) {
                             if (roomdisc.cardList.get(j).type.equalsIgnoreCase("Race")) {
-                               roomdisc.addcard(player.Race);
-                               roomdisc.addcard(player.Race2);
-                                player.Race2=null;
+                               roomdisc.addcard(player.race);
+                               roomdisc.addcard(player.race2);
+                                player.race2 =null;
                                 Card raceDraw = roomdisc.cardList.get(j);
                                 roomdisc.cardList.remove(j);
-                                player.Race = raceDraw;
+                                player.race = raceDraw;
                                 raceFound = true;
                             }
 
                         }
                         if(!raceFound){
-                            roomdisc.addcard(player.Race);
-                            roomdisc.addcard(player.Race2);
-                            player.Race=null;
-                            player.Race2=null;
+                            roomdisc.addcard(player.race);
+                            roomdisc.addcard(player.race2);
+                            player.race =null;
+                            player.race2 =null;
                         }
                     }
                 }
@@ -213,52 +215,99 @@ public class Deck {
                     }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your race")) {
-                    if(player.Race!=null) {
-                        roomdisc.addcard(player.Race);
-                        player.Race = null;
+                    if(player.race !=null) {
+                        roomdisc.addcard(player.race);
+                        player.race = null;
+                        if(player.race2!=null){
+                            roomdisc.addcard(player.race2);
+                            player.race2 = null;
+                        }
+
                     }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your class")) {
+                    if (player.playerClass2!=null){
+                        roomdisc.addcard(player.playerClass);
+                        player.playerClass = null;
+                    }else{
                     if(player.playerClass!=null) {
                         roomdisc.addcard(player.playerClass);
                         player.playerClass = null;
-                        if (player.playerClass2!=null){
-                            roomdisc.addcard(player.playerClass);
-                            player.playerClass = null;
-                        }
-                    }
+
+                    }}
+                    if(player.level>1)
+                        player.level-=1;
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose two cards")) {
                     //rewrite this @batman
-                    Players tmpSpiller = playerList.get(player.playernr - 1);
-                    Players tmpSpiller2 = playerList.get(player.playernr + 1);
-
-
-                    int random = (int) p.random(player.hand.size());
-                    Card chosenCard = player.hand.get(random);
-                    player.hand.remove(random);
-                    int random2 = (int) p.random(player.hand.size());
-                    Card chosenCard2 = player.hand.get(random2);
-                    player.hand.remove(random);
-                    if (player.playernr == 3) {
-                        tmpSpiller.playernr = 0;
-                        tmpSpiller2.playernr = 2;
-                    } else {
-                        if (player.playernr == 0) {
-                            tmpSpiller.playernr = 1;
-                            tmpSpiller2.playernr = 3;
-                        }
+                    ArrayList<Card> treasuresList = new ArrayList<>();
+                    if (player.body != null) {
+                        treasuresList.add(player.body);
+                        player.body = null;
                     }
 
-                    tmpSpiller.hand.add(chosenCard);
-                    tmpSpiller2.hand.add(chosenCard2);
+                    if (player.hand1 != null) {
+                        treasuresList.add(player.hand1);
+                        player.hand1 = null;
+                    }
+
+                    if (player.hand2 != null) {
+                        treasuresList.add(player.hand2);
+                        player.hand2 = null;
+                    }
+
+                    if (player.head != null) {
+                        treasuresList.add(player.head);
+                        player.head = null;
+                    }
+
+                    if (player.feet != null) {
+                        treasuresList.add(player.feet);
+                        player.feet = null;
+                    }
+                    if (player.utility != null) {
+                        treasuresList.add(player.utility);
+                        player.utility = null;
+                    }
+
+                        if (treasuresList.size() > 0) {
+                            boolean secondtime = false;
+
+                            for (int i = 0; i < 2 ; i++) {
+
+                            if (treasuresList.size()>0){
+                            int rando = (int) p.random(treasuresList.size());
+                            Card temp = treasuresList.get(rando);
+
+                            if(player.playernr>0&&secondtime==false){
+                                playerList.get(player.playernr-1).hand.add(temp);
+                                treasuresList.remove(rando);
+                                secondtime=true;
+                            }else{
+                                if (secondtime==false){
+                                playerList.get(3).hand.add(temp);
+                                treasuresList.remove(rando);}
+                            }
+                            if(player.playernr<3&&secondtime==true){
+                                playerList.get(player.playernr+1).hand.add(temp);
+                                treasuresList.remove(rando);
+                            }else{
+                                if(secondtime==true) {
+                                    playerList.get(0).hand.add(temp);
+                                    treasuresList.remove(rando);
+                                }
+                            }
+                        }}}
+
+
 
 
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Change class")) {
                     // Skal hente en anden race roomdisc.cardList.get(1);
-                    if (player.playerClass != null && roomdisc.cardList.size() > 0) {
+                    if (player.playerClass != null ) {
                         boolean classFound = false;
+                        if(roomdisc.cardList.size() > 0){
                         for (int j = 0; j < roomdisc.cardList.size()  && !classFound; j++) {
                             if (roomdisc.cardList.get(j).type.equalsIgnoreCase("Class")) {
                                 roomdisc.addcard(player.playerClass);
@@ -268,7 +317,7 @@ public class Deck {
                                 roomdisc.cardList.remove(j);
                                 player.playerClass = classDraw;
                                 classFound = true;
-                            }
+                            }}
 
                         }
                         if(!classFound){
@@ -278,6 +327,8 @@ public class Deck {
                             player.playerClass2 =null;
                         }
                     }
+
+
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your armor")) {
                     if (player.body!=null) {
@@ -304,9 +355,13 @@ public class Deck {
                     if (player.head!=null) {
                         treasuredisc.addcard(player.head);
                         player.head = null;
+                        if(player.chikenonhed){
+                            player.chikenonhed=false;
+                        }
                     }
                 }
             }
+            if(!player.chikenonhed)
             roomdisc.addcard(drawncard);
             boardDeck.remove(0);
         }
