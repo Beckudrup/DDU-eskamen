@@ -46,7 +46,7 @@ public class BackgroundSystem {
             }
 
 
-            if (player.hand.size() >5 && !player.playerClass.name.equalsIgnoreCase("Dwarf") ||player.playerClass.name.equalsIgnoreCase("Dwarf") && player.hand.size() >6) {
+            if (player.race == null ||player.hand.size() >=6 && !player.race.name.equalsIgnoreCase("Dwarf") && !player.race2.name.equalsIgnoreCase("Dwarf")/* || player.race.name.equalsIgnoreCase("Dwarf") && player.hand.size() >=7 || player.race2.name.equalsIgnoreCase("Dwarf") && player.hand.size() >=7*/){
 
                 //find spiller med lavest level
                 int tmpLevel = player.level;
