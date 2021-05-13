@@ -94,7 +94,7 @@ public class BackgroundSystem {
     void loaddecks(Deck roomList, Deck treasureList, ImageLoader il, ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
         for (int i = 0; i < roominfoList.size(); i++) {
 
-            roomList.addcard(new Card(p, roominfoList.get(i).http, 0, roominfoList.get(i).type, roominfoList.get(i).power, roominfoList.get(i).power2, roominfoList.get(i).name, roominfoList.get(i).RunAway, roominfoList.get(i).gold, roominfoList.get(i).xp, roominfoList.get(i).xp2, roominfoList.get(i).treasures,roominfoList.get(i).badStuff));
+            roomList.addcard(new Card(p, roominfoList.get(i).http, 0, roominfoList.get(i).type, roominfoList.get(i).power, roominfoList.get(i).power2, roominfoList.get(i).name, roominfoList.get(i).RunAway, roominfoList.get(i).gold, roominfoList.get(i).xp, roominfoList.get(i).xp2, roominfoList.get(i).treasures,roominfoList.get(i).badStuff,roominfoList.get(i).level));
 
             roomList.cardList.get(i).backside = il.bs1;
         }
@@ -103,7 +103,7 @@ public class BackgroundSystem {
         treasureList.backside = il.bs2;
         for (int i = 0; i < treasureinfoList.size(); i++) {
 
-            treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1, treasureinfoList.get(i).type, treasureinfoList.get(i).power, treasureinfoList.get(i).power2, treasureinfoList.get(i).name, treasureinfoList.get(i).RunAway, treasureinfoList.get(i).gold, treasureinfoList.get(i).xp, treasureinfoList.get(i).xp2, treasureinfoList.get(i).treasures,treasureinfoList.get(i).badStuff));
+            treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1, treasureinfoList.get(i).type, treasureinfoList.get(i).power, treasureinfoList.get(i).power2, treasureinfoList.get(i).name, treasureinfoList.get(i).RunAway, treasureinfoList.get(i).gold, treasureinfoList.get(i).xp, treasureinfoList.get(i).xp2, treasureinfoList.get(i).treasures,treasureinfoList.get(i).badStuff,treasureinfoList.get(i).level));
 
             treasureList.cardList.get(i).backside = il.bs2;
         }
@@ -210,12 +210,13 @@ public class BackgroundSystem {
                 if (backgroundSystem.turn != 1)
                     buttList.add(new Button(p, 260, 300, 50, 30, "p2"));
                 if (backgroundSystem.turn != 2)
-                    buttList.add(new Button(p, 300, 300, 50, 30, "p3"));
+                    buttList.add(new Button(p, 200, 400, 50, 30, "p3"));
                 if (backgroundSystem.turn != 3)
-                    buttList.add(new Button(p, 360, 300, 50, 30, "p4"));
+                    buttList.add(new Button(p, 260, 400, 50, 30, "p4"));
                 buttList.add(new Button(p, 500, 700, 100, 60, "fight/run"));
                 startofbattlefase = false;
             }
+            //neden under er skrevet forkert fix sometime @batman
             for (int i = 0; i < 3; i++) {
                 if (buttList.get(i + 2).tryk) {
                     allyList.add(playerList.get(i));
@@ -237,7 +238,7 @@ public class BackgroundSystem {
 
 //treasure draw
                 }
-                if (monsterPower > allyPower) {
+                if ((monsterPower >= allyPower&&playerList.get(backgroundSystem.turn).Class != null && !playerList.get(backgroundSystem.turn).Class.name.equalsIgnoreCase("warrior"))||monsterPower > allyPower) {
                     // go gennem bad stuff
                     for (int j = 0; j < allyList.size(); j++) {
 
@@ -264,9 +265,6 @@ public class BackgroundSystem {
 
 
                 }
-                allyList.clear();
-                battlefase = false;
-                monsterfasedone = true;
 
 
                 allyList.clear();
