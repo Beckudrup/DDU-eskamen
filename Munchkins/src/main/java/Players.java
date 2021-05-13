@@ -17,8 +17,6 @@ public class Players {
     int handRunAway;
     int pow;
     int RunAway;
-    int playerClass = 0;
-    int race = 0;
     int playernr;
     Card head;
     Card body;
@@ -28,8 +26,8 @@ public class Players {
     Card utility;
     Card monster;
     Card playable;
-    Card Class;
-    Card Class2;
+    Card playerClass;
+    Card playerClass2;
     Card Race;
     Card Race2;
     Button showhand;
@@ -113,17 +111,17 @@ public class Players {
                                     hand.remove(i);
                                 } else {
                                     if (hand.get(i).type.equalsIgnoreCase("Class")) {
-                                        if (Class != null) {
-                                            if (Class.numb == 0) {
-                                                roomdisc.addcard(Class);
+                                        if (playerClass != null) {
+                                            if (playerClass.numb == 0) {
+                                                roomdisc.addcard(playerClass);
                                             } else {
-                                                if (Class.numb == 1)
-                                                    treasuredisc.addcard(Class);
+                                                if (playerClass.numb == 1)
+                                                    treasuredisc.addcard(playerClass);
                                             }
                                         }
                                         hand.get(i).hovering = false;
-                                        Class = hand.get(i);
-                                        Class.name = hand.get(i).name;
+                                        playerClass = hand.get(i);
+                                        playerClass.name = hand.get(i).name;
                                         hand.remove(i);
                                     } else {
                                         if (hand.get(i).type.equalsIgnoreCase("Race")) {
@@ -223,10 +221,10 @@ public class Players {
                 hand2.display(280, 920, 60, 100, 1);
             if (utility != null)
                 utility.display(360, 920, 60, 100, 1);
-            if (Class != null)
-                Class.display(440, 800, 60, 100, 1);
-            if (Class2 != null)
-                Class.display(440, 920, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(440, 800, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(440, 920, 60, 100, 1);
             if (Race != null)
                 Race.display(520, 800, 60, 100, 1);
             if (Race2 != null)
@@ -247,10 +245,10 @@ public class Players {
                 hand2.display(210, -110, 60, 100, 1);
             if (utility != null)
                 utility.display(290, -110, 60, 100, 1);
-            if (Class != null)
-                Class.display(370, -230, 60, 100, 1);
-            if (Class2 != null)
-                Class.display(370, -110, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(370, -230, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(370, -110, 60, 100, 1);
             if (Race != null)
                 Race.display(450, -230, 60, 100, 1);
             if (Race2 != null)
@@ -272,10 +270,10 @@ public class Players {
                 hand2.display(-1640, -140, 60, 100, 1);
             if (utility != null)
                 utility.display(-1560, -140, 60, 100, 1);
-            if (Class != null)
-                Class.display(-1480, -260, 60, 100, 1);
-            if (Class2 != null)
-                Class.display(-1480, -140, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(-1480, -260, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(-1480, -140, 60, 100, 1);
             if (Race != null)
                 Race.display(-1400, -260, 60, 100, 1);
             if (Race2 != null)
@@ -297,10 +295,10 @@ public class Players {
                 hand2.display(-850, 1780, 60, 100, 1);
             if (utility != null)
                 utility.display(-770, 1780, 60, 100, 1);
-            if (Class != null)
-                Class.display(-690, 1660, 60, 100, 1);
-            if (Class2 != null)
-                Class.display(-690, 1780, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(-690, 1660, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(-690, 1780, 60, 100, 1);
             if (Race != null)
                 Race.display(-610, 1660, 60, 100, 1);
             if (Race2 != null)
@@ -386,7 +384,7 @@ public class Players {
             if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
                 //Go through the discards to find any one card you want. Take that card and discard this one.
             }
-            if (Class == null || !Class.name.equalsIgnoreCase("Cleric")) {
+            if (playerClass == null || !playerClass.name.equalsIgnoreCase("Cleric")) {
                 if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
                     if (level < /*other players level*/ 10) {
                         //Player will always help, they gain no treasure, but you gain no level.
@@ -417,24 +415,24 @@ public class Players {
     }
 
     void classFunction() {
-        if (Class != null) {
+        if (playerClass != null) {
             //This if statement is only for player one;
             if (p.mouseX > 440 && p.mouseX < 440 + 60 && p.mouseY > 800 && p.mouseY < 800 + 100) {
-                if (Class.name.equalsIgnoreCase("Thief")) {
+                if (playerClass.name.equalsIgnoreCase("Thief")) {
                     //You may discard a card to backstab another player (-2 in combat). You may do this only once per victim per combat, but if two or more players are fighting a monster together, you may backstab each of them;
                     //You may discard a card to try to steal a small item carried by another player. Roll a die; 4 or more succeeds. Otherwise, you get whacked and lose a level;
                     //p.println((int) p.random(1, 7));
                 }
-                if (Class.name.equalsIgnoreCase("Cleric")) {
+                if (playerClass.name.equalsIgnoreCase("Cleric")) {
                     //In draw-face, you may instead take some or all top of the appropriate discard pile. You must discard one card from your hand for each card drawn;
                     //Against undead creatures
                 }
-                if (Class.name.equalsIgnoreCase("Wizard")) {
+                if (playerClass.name.equalsIgnoreCase("Wizard")) {
                     //Either
                     //Discard up to 3 cards after rolling a Run Away die. Each discard give +1 to Run Away;
                     //You may discard you whole hand (minimum 3) to charm a single monster instead of fighting it. Discard the monster and take its treasure, but don't gain levels. If there are other monsters in the combat fight them normally.
                 }
-                if (Class.name.equalsIgnoreCase("Warrior")) {
+                if (playerClass.name.equalsIgnoreCase("Warrior")) {
                     //You may discard up to 3 cards in combat; each one gives you a +1 bonus;
                     //You win ties in combat.
                 }

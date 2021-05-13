@@ -49,10 +49,10 @@ public class Badstuff {
             }
         }
         if (monster.badStuff.equalsIgnoreCase("- 2 level -3 if elf")) {
-            if (!player.Class.name.equalsIgnoreCase("elf")) {
+            if (!player.playerClass.name.equalsIgnoreCase("elf")) {
                 player.level -= 2;
             }
-            if (player.Class.name.equalsIgnoreCase("elf")) {
+            if (player.playerClass.name.equalsIgnoreCase("elf")) {
                 player.level -= 3;
             }
             if (player.level < 1) {
@@ -162,13 +162,13 @@ public class Badstuff {
             }
         }
         if (monster.badStuff.equalsIgnoreCase("- class and race")) {
-            if (player.Class != null) {
-                roomdisc.addcard(player.Class);
-                player.Class = null;
+            if (player.playerClass != null) {
+                roomdisc.addcard(player.playerClass);
+                player.playerClass = null;
             }
-            if (player.Class2 != null) {
-                roomdisc.addcard(player.Class2);
-                player.Class2 = null;
+            if (player.playerClass2 != null) {
+                roomdisc.addcard(player.playerClass2);
+                player.playerClass2 = null;
             }
             if (player.Race != null) {
                 roomdisc.addcard(player.Race);
@@ -180,13 +180,13 @@ public class Badstuff {
             }
         }
         if (monster.badStuff.equalsIgnoreCase("- class if no -3lvl")) {
-            if (player.Class != null) {
-                roomdisc.addcard(player.Class);
-                player.Class = null;
+            if (player.playerClass != null) {
+                roomdisc.addcard(player.playerClass);
+                player.playerClass = null;
             }
-            if (player.Class2 != null) {
-                roomdisc.addcard(player.Class2);
-                player.Class2 = null;
+            if (player.playerClass2 != null) {
+                roomdisc.addcard(player.playerClass2);
+                player.playerClass2 = null;
             }
         }
         if (monster.badStuff.equalsIgnoreCase("- headgear")) {
@@ -197,13 +197,13 @@ public class Badstuff {
             }
         }
         if (monster.badStuff.equalsIgnoreCase("death if wizard instead lose class")) {
-            if (player.Class != null && player.Class.name.equalsIgnoreCase("wizard")) {
-                roomdisc.addcard(player.Class);
-                player.Class = null;
+            if (player.playerClass != null && player.playerClass.name.equalsIgnoreCase("wizard")) {
+                roomdisc.addcard(player.playerClass);
+                player.playerClass = null;
             }
-            if (player.Class2 != null && player.Class2.name.equalsIgnoreCase("wizard")) {
-                roomdisc.addcard(player.Class2);
-                player.Class2 = null;
+            if (player.playerClass2 != null && player.playerClass2.name.equalsIgnoreCase("wizard")) {
+                roomdisc.addcard(player.playerClass2);
+                player.playerClass2 = null;
             }
         }
         if (monster.badStuff.equalsIgnoreCase("lose all items and discard hand")) {

@@ -217,8 +217,8 @@ public class Deck {
                     player.Race = null;
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your class")) {
-                    roomdisc.addcard(player.Class);
-                    player.Class = null;
+                    roomdisc.addcard(player.playerClass);
+                    player.playerClass = null;
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose two cards")) {
                     //rewrite this @batman
@@ -249,25 +249,25 @@ public class Deck {
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Change class")) {
                     // Skal hente en anden race roomdisc.cardList.get(1);
-                    if (player.Class != null && roomdisc.cardList.size() > 0) {
+                    if (player.playerClass != null && roomdisc.cardList.size() > 0) {
                         boolean classFound = false;
                         for (int j = 0; j < roomdisc.cardList.size()  && !classFound; j++) {
                             if (roomdisc.cardList.get(j).type.equalsIgnoreCase("Class")) {
-                                roomdisc.addcard(player.Class);
-                                roomdisc.addcard(player.Class2);
-                                player.Class2=null;
+                                roomdisc.addcard(player.playerClass);
+                                roomdisc.addcard(player.playerClass2);
+                                player.playerClass2 =null;
                                 Card classDraw = roomdisc.cardList.get(j);
                                 roomdisc.cardList.remove(j);
-                                player.Class = classDraw;
+                                player.playerClass = classDraw;
                                 classFound = true;
                             }
 
                         }
                         if(!classFound){
-                            roomdisc.addcard(player.Class);
-                            roomdisc.addcard(player.Class2);
-                            player.Class=null;
-                            player.Class2=null;
+                            roomdisc.addcard(player.playerClass);
+                            roomdisc.addcard(player.playerClass2);
+                            player.playerClass=null;
+                            player.playerClass2 =null;
                         }
                     }
                 }
