@@ -56,7 +56,7 @@ public class Deck {
 
                         curses(drawncard, player, playerList, treasuredisc, roomdisc); //kig på senere måske bad
 
-                        hand.add(drawncard);
+                       // hand.add(drawncard);
                         System.out.println("Henrik");
                     }
                     //Hvis man trækker et monster
@@ -134,10 +134,11 @@ public class Deck {
     void curses(Card drawncard, Players player, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc) {
 
         boardDeck.add(drawncard);
-        roomdisc.addcard(drawncard);
+
 
         if (player.feet != null && player.feet.name.equalsIgnoreCase("Sandals of protection")) {
-            boardDeck.remove(drawncard);
+            roomdisc.addcard(drawncard);
+            boardDeck.remove(0);
         } else {
             for (int i = 0; i < player.hand.size(); i++) {
 
@@ -152,29 +153,32 @@ public class Deck {
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose a level")) {
                     if (player.level != 1)
                         player.level--;
+
                 }
 
 
                 if (drawncard.name.equalsIgnoreCase("Truly obnoxious curse!")) {
-
+//kig iggennem alle kort og fjern største bonus
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 big item")) {
 
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Income tax")) {
-
+// discard 1  item at random other people discard 1
                 }
 
                 if (drawncard.name.equalsIgnoreCase("Curse! Chiken on your head")) {
                     //-1 til dice rolls
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your footgear")) {
+                    if(player.feet!=null){
                     treasuredisc.addcard(player.feet);
                     player.feet = null;
+                    }
                 }
 
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 small item")) {
-
+// 1 item der ikke er big
                 }
 
 
@@ -182,9 +186,11 @@ public class Deck {
                     // Skal hente en anden race
                     if (player.Race != null && roomdisc.cardList.size() > 0) {
                         boolean raceFound = false;
-                        player.Race = null;
-                        for (int j = 0; j < roomdisc.cardList.size() - 2 && !raceFound; j++) {
+                        for (int j = 0; j < roomdisc.cardList.size()  && !raceFound; j++) {
                             if (roomdisc.cardList.get(j).type.equalsIgnoreCase("Race")) {
+                               roomdisc.addcard(player.Race);
+                               roomdisc.addcard(player.Race2);
+                                player.Race2=null;
                                 Card raceDraw = roomdisc.cardList.get(j);
                                 roomdisc.cardList.remove(j);
                                 player.Race = raceDraw;
@@ -192,10 +198,19 @@ public class Deck {
                             }
 
                         }
+                        if(!raceFound){
+                            roomdisc.addcard(player.Race);
+                            roomdisc.addcard(player.Race2);
+                            player.Race=null;
+                            player.Race2=null;
+                        }
                     }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Duck of Doom")) {
                     player.level -= 2;
+                    if(player.level<1){
+                        player.level=1;
+                    }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your race")) {
                     roomdisc.addcard(player.Race);
@@ -206,6 +221,7 @@ public class Deck {
                     player.Class = null;
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose two cards")) {
+                    //rewrite this @batman
                     Players tmpSpiller = playerList.get(player.playernr - 1);
                     Players tmpSpiller2 = playerList.get(player.playernr + 1);
 
@@ -234,16 +250,24 @@ public class Deck {
                 if (drawncard.name.equalsIgnoreCase("Curse! Change class")) {
                     // Skal hente en anden race roomdisc.cardList.get(1);
                     if (player.Class != null && roomdisc.cardList.size() > 0) {
-                        player.Class = null;
                         boolean classFound = false;
-                        for (int k = 0; k < roomdisc.cardList.size() - 2 && !classFound; k++) {
-                            if (roomdisc.cardList.get(k).type.equalsIgnoreCase("Class")) {
-                                Card classDraw = roomdisc.cardList.get(k);
-                                roomdisc.cardList.remove(k);
+                        for (int j = 0; j < roomdisc.cardList.size()  && !classFound; j++) {
+                            if (roomdisc.cardList.get(j).type.equalsIgnoreCase("Class")) {
+                                roomdisc.addcard(player.Class);
+                                roomdisc.addcard(player.Class2);
+                                player.Class2=null;
+                                Card classDraw = roomdisc.cardList.get(j);
+                                roomdisc.cardList.remove(j);
                                 player.Class = classDraw;
                                 classFound = true;
                             }
 
+                        }
+                        if(!classFound){
+                            roomdisc.addcard(player.Class);
+                            roomdisc.addcard(player.Class2);
+                            player.Class=null;
+                            player.Class2=null;
                         }
                     }
                 }
