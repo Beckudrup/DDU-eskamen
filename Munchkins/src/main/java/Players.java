@@ -46,7 +46,7 @@ public class Players {
         showhand = new Button(p, 10, 10, 130, 50, "Show hand");
     }
 
-    void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList) {
+    void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList, Deck treasure, Deck room) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
                 if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
@@ -172,7 +172,7 @@ public class Players {
                                                         playable.name = hand.get(i).name;
                                                         once = true;
                                                         hand.remove(i);
-                                                        playables(backgroundSystem);
+                                                        playables(backgroundSystem, treasure,room);
                                                         if (playable != null) {
                                                             if (playable.numb == 0) {
                                                                 roomdisc.addcard(playable);
@@ -342,29 +342,36 @@ public class Players {
 
     }
 
-    void playables(BackgroundSystem backgroundSystem) {
+    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room) {
         //if (!backgroundSystem.battlefase) {
         if (playable != null && once) {
             if (level <= 8) {
                 if (playable.name.equalsIgnoreCase("Hoard!")) {
                     //Draw three treasures
                     //PApplet.println(1);
+                    for (int i = 0; i < 3; i++) {
+                        int random = (int) p.random(treasure.cardList.size());
+                        Card drawncard = treasure.cardList.get(random);
+                        hand.add(drawncard);
+                        treasure.cardList.remove(random);
+                    }
+
                 }
                 if (playable.name.equalsIgnoreCase("Invoke obscure rules")) {
                     level = level + 1;
-                   // PApplet.println(1);
+                    // PApplet.println(1);
                 }
                 if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
                     PApplet.println(2);
-                    level +=  1;
+                    level += 1;
                 }
                 if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
                     level += 1;
-                   // PApplet.println(3);
+                    // PApplet.println(3);
                 }
                 if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
                     level += 1;
-                 //   PApplet.println(4);
+                    //   PApplet.println(4);
                 }
                 if (playable.name.equalsIgnoreCase("Boil an anthill")) {
                     PApplet.println(5);
@@ -372,18 +379,25 @@ public class Players {
                 }
                 if (playable.name.equalsIgnoreCase("Convenient addition error")) {
                     level += 1;
-                  //  PApplet.println(6);
+                    //  PApplet.println(6);
                 }
                 if (playable.name.equalsIgnoreCase("Mutilate the bodies")  /*&& backgroundSyste.battlefase ;; end of *any* combat */) {
                     level += 1;
-                //    PApplet.println(7);
+                    //    PApplet.println(7);
 
                 }
                 //If hireling is on the bord utility.name.equalsIgnoreCase("Hireling")
                 if (playable.name.equalsIgnoreCase("Kill the hireling")) {
                     level += 1;
-               //     PApplet.println(8);
+                    if (utility.name.equalsIgnoreCase("Hireling")) {
+                        treasure.addcard(utility);
+                        utility = null;
+                    }
                 }
+
+                //     PApplet.println(8);
+
+
                 if (playable.name.equalsIgnoreCase("Steal a level")) {
                     //Selected person level = level -1;
                     level += 1;

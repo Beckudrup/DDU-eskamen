@@ -60,43 +60,48 @@ public class BackgroundSystem {
                 
                     //hvis man er lavest - discard cards
                     //ellers giv til lavest level
-            if (player.race ==null || player.race.name.equalsIgnoreCase("Elf") || player.race.name.equalsIgnoreCase("Halfling") || player.race.name.equalsIgnoreCase("Elf") && player.race2.name.equalsIgnoreCase("Halfling") ||player.race2.name.equalsIgnoreCase("Elf") && player.race.name.equalsIgnoreCase("Halfling")) {
-                while (player.hand.size() > 5) {
-                    int random = (int) p.random(player.hand.size());
-                    Card card = player.hand.get(random);
-                    player.hand.remove(random);
-                    if (tmpSpiller != player) {
-                        tmpSpiller.hand.add(card);
-                    } else {
-                        if (card.numb == 0) {
-                            roomdisc.addcard(card);
+            try {
+                if (player.race == null || player.race.name.equalsIgnoreCase("Elf") || player.race.name.equalsIgnoreCase("Halfling") || player.race.name.equalsIgnoreCase("Elf") && player.race2.name.equalsIgnoreCase("Halfling") || player.race2.name.equalsIgnoreCase("Elf") && player.race.name.equalsIgnoreCase("Halfling")) {
+                    while (player.hand.size() > 5) {
+                        int random = (int) p.random(player.hand.size());
+                        Card card = player.hand.get(random);
+                        player.hand.remove(random);
+                        if (tmpSpiller != player) {
+                            tmpSpiller.hand.add(card);
                         } else {
-                            if (card.numb == 1) {
-                                treasuredisc.addcard(card);
-                            }
+                            if (card.numb == 0) {
+                                roomdisc.addcard(card);
+                            } else {
+                                if (card.numb == 1) {
+                                    treasuredisc.addcard(card);
+                                }
 
 
-                        }
-                    }
-                }
-            }else {
-                while (player.hand.size() > 6) {
-                    int random = (int) p.random(player.hand.size());
-                    Card card = player.hand.get(random);
-                    player.hand.remove(random);
-                    if (tmpSpiller != player) {
-                        tmpSpiller.hand.add(card);
-                    } else {
-                        if (card.numb == 0) {
-                            roomdisc.addcard(card);
-                        } else {
-                            if (card.numb == 1) {
-                                treasuredisc.addcard(card);
                             }
                         }
                     }
                 }
             }
+                catch (Exception e) {
+                        while (player.hand.size() > 6) {
+                            int random = (int) p.random(player.hand.size());
+                            Card card = player.hand.get(random);
+                            player.hand.remove(random);
+                            if (tmpSpiller != player) {
+                                tmpSpiller.hand.add(card);
+                            } else {
+                                if (card.numb == 0) {
+                                    roomdisc.addcard(card);
+                                } else {
+                                    if (card.numb == 1) {
+                                        treasuredisc.addcard(card);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
             room.fix=true;
             room.firstDraw=true;
             monsterfasedone = false;
