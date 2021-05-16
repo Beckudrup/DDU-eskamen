@@ -265,7 +265,7 @@ public class BackgroundSystem {
 
                 if (((allyPower >= monsterPower && playerList.get(backgroundSystem.turn).playerClass != null && playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower||forcestop2==true))&&!forcestop1) {
 
-//treasure draw
+                backgroundSystem.treasuredraw(allyList,treasure,playerList,treasuredisc,roomdisc);
                 }
                 if (((monsterPower >= allyPower&&playerList.get(backgroundSystem.turn).playerClass != null && !playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior"))||monsterPower > allyPower)&&!forcestop1||!forcestop2) {
                     // go gennem bad stuff

@@ -887,29 +887,29 @@ public class Players {
         }
     }
 
-    void displayicon() {
+    void displayicon(int turn) {
         p.fill(255);
         p.textAlign(p.LEFT, p.BOTTOM);
-        if (playernr == 0) {
+        if (turn - playernr == 0) {
             p.image(icon, 10, 950, 100, 100);
             p.text("lvl:" + level, 10, 920);
             p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 10, 940);
             p.text("p1", p.width / 2, 750);
         }
-        if (playernr == 1) {
+        if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
             p.image(icon, 10, 10, 100, 100);
             p.text("lvl:" + level, 110, 70);
             p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 110, 95);
             p.text("p2", 150, 550);
 
         }
-        if (playernr == 2) {
+        if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
             p.image(icon, 1810, 10, 100, 100);
             p.text("lvl:" + level, 1810, 150);
             p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1810, 170);
             p.text("p3", p.width / 2, 200);
         }
-        if (playernr == 3) {
+        if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
             p.image(icon, 1810, 950, 100, 100);
             p.text("lvl:" + level, 1710, 1010);
             p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1710, 1030);

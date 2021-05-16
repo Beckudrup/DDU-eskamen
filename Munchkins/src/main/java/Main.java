@@ -109,7 +109,7 @@ public class Main extends PApplet {
                         playerList.get(i).changeButtonPos(backgroundSystem);
                         playerList.get(i).showhand.drawButton();
                         playerList.get(i).displayequiped(backgroundSystem.turn);
-                        playerList.get(i).displayicon();
+                        playerList.get(i).displayicon(backgroundSystem.turn);
                         playerList.get(i).getPower();
                         playerList.get(i).raceFunction();
                         playerList.get(i).classFunction();
