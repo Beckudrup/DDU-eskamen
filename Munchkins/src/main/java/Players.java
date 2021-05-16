@@ -20,6 +20,7 @@ public class Players {
     int playernr;
     int powChange;
     Card head;
+    Card card;
     Card body;
     Card feet;
     Card hand1;
@@ -190,7 +191,7 @@ public class Players {
                                                             usable.name = hand.get(i).name;
                                                             once = true;
                                                             hand.remove(i);
-                                                            usable(buttList,treasure,treasuredisc,roomdisc, playerList, backgroundSystem);
+                                                            usable(buttList, treasure, treasuredisc, playerList, backgroundSystem);
                                                             if (usable != null) {
                                                                 if (usable.numb == 0) {
                                                                     roomdisc.addcard(usable);
@@ -200,17 +201,32 @@ public class Players {
                                                                 }
                                                             }
                                                         } else {
-                                                            if (hand.get(i).numb == 0) {
+                                                            if (hand.get(i).type.equalsIgnoreCase("Card")) {
+
                                                                 hand.get(i).hovering = false;
-                                                                Card card = hand.get(i);
-                                                                roomdisc.addcard(card);
+                                                                card = hand.get(i);
+                                                                card.name = hand.get(i).name;
+                                                                once = true;
                                                                 hand.remove(i);
+                                                                monsterpowchanger(treasure);
+                                                                if (card != null) {
+                                                                    if (card.numb == 0) {
+                                                                        roomdisc.addcard(card);
+                                                                    }
+                                                                }
                                                             } else {
-                                                                if (hand.get(i).numb == 1) {
+                                                                if (hand.get(i).numb == 0) {
                                                                     hand.get(i).hovering = false;
                                                                     Card card = hand.get(i);
-                                                                    treasuredisc.addcard(card);
+                                                                    roomdisc.addcard(card);
                                                                     hand.remove(i);
+                                                                } else {
+                                                                    if (hand.get(i).numb == 1) {
+                                                                        hand.get(i).hovering = false;
+                                                                        Card card = hand.get(i);
+                                                                        treasuredisc.addcard(card);
+                                                                        hand.remove(i);
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -222,8 +238,8 @@ public class Players {
                                 }
                             }
                         }
-                    }
 
+                    }
                 }
             }
         }
@@ -495,7 +511,7 @@ public class Players {
         once = false;
     }
 
-    void usable(ArrayList<Button> buttList, Deck treasure, Deck treasuredisc, Deck roomdisc,ArrayList<Players> playerList, BackgroundSystem backgroundSystem ){
+    void usable(ArrayList<Button> buttList, Deck treasure, Deck treasuredisc,ArrayList<Players> playerList, BackgroundSystem backgroundSystem ){
         if (backgroundSystem.battlefase) {
             if (usable.name.equalsIgnoreCase("Potion of Idiotic Bravery") || usable.name.equalsIgnoreCase("Nasty-tasting sports drink") || usable.name.equalsIgnoreCase("Potion of halitosis") || usable.name.equalsIgnoreCase("Sleep Potion")) {
                 //giv plus 2 til spiller siden eller monster siden i en combat
@@ -544,9 +560,26 @@ public class Players {
                     treasure.cardList.remove(treasures);
                 }
             }
+
         }
         once=false;
 
+    }
+
+    void monsterpowchanger(Deck treasure){
+        if (card.name.equalsIgnoreCase("baby")){
+            monster.level-=5;
+            treasure.allowedTreasure-=1;
+        }
+        if (card.name.equalsIgnoreCase("Enraged")||card.name.equalsIgnoreCase("Intelligent")){
+            monster.level+=5;
+            treasure.allowedTreasure+=1;
+        }
+        if (card.name.equalsIgnoreCase("humongous")|| card.name.equalsIgnoreCase("ancient")){
+            monster.level+=10;
+            treasure.allowedTreasure+=2;
+        }
+        once=false;
     }
 
     void raceFunction() {
