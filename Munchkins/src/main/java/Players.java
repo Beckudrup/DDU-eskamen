@@ -172,7 +172,7 @@ public class Players {
                                                         playable.name = hand.get(i).name;
                                                         once = true;
                                                         hand.remove(i);
-                                                        playables(backgroundSystem, treasure,room);
+                                                        playables(backgroundSystem, treasure,room,treasuredisc);
                                                         if (playable != null) {
                                                             if (playable.numb == 0) {
                                                                 roomdisc.addcard(playable);
@@ -342,10 +342,10 @@ public class Players {
 
     }
 
-    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room) {
+    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room, Deck treasureDisc) {
         //if (!backgroundSystem.battlefase) {
         if (playable != null && once) {
-            if (level <= 8) {
+            if (level <= 9) {
                 if (playable.name.equalsIgnoreCase("Hoard!")) {
                     //Draw three treasures
                     //PApplet.println(1);
@@ -406,6 +406,10 @@ public class Players {
             }
             if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
                 //Go through the discards to find any one card you want. Take that card and discard this one.
+
+                Card drawncard = treasureDisc.cardList.get(treasureDisc.cardList.size()-1);
+                hand.add(drawncard);
+                treasureDisc.cardList.remove(treasureDisc.cardList.size()-1);
             }
             if (playerClass == null || !playerClass.name.equalsIgnoreCase("Cleric")) {
                 if (playable.name.equalsIgnoreCase("Kneepads of allure")) {

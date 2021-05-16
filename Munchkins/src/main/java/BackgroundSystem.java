@@ -84,12 +84,12 @@ public class BackgroundSystem {
             }
                 catch (Exception e) {
                         while (player.hand.size() > 6) {
-                            int random = (int) p.random(player.hand.size());
-                            Card card = player.hand.get(random);
-                            player.hand.remove(random);
-                            if (tmpSpiller != player) {
-                                tmpSpiller.hand.add(card);
-                            } else {
+                                int random = (int) p.random(player.hand.size());
+                                Card card = player.hand.get(random);
+                                player.hand.remove(random);
+                                if (tmpSpiller != player) {
+                                    tmpSpiller.hand.add(card);
+                                } else {
                                 if (card.numb == 0) {
                                     roomdisc.addcard(card);
                                 } else {
