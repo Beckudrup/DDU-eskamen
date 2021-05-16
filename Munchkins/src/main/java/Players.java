@@ -46,7 +46,7 @@ public class Players {
         showhand = new Button(p, 10, 10, 130, 50, "Show hand");
     }
 
-    void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList, Deck treasure, Deck room) {
+    void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList, Deck treasure, Deck room, ArrayList<Players> playerList) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
                 if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
@@ -172,7 +172,7 @@ public class Players {
                                                         playable.name = hand.get(i).name;
                                                         once = true;
                                                         hand.remove(i);
-                                                        playables(backgroundSystem, treasure,room,treasuredisc);
+                                                        playables(backgroundSystem, treasure,room,treasuredisc, playerList);
                                                         if (playable != null) {
                                                             if (playable.numb == 0) {
                                                                 roomdisc.addcard(playable);
@@ -342,7 +342,7 @@ public class Players {
 
     }
 
-    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room, Deck treasureDisc) {
+    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room, Deck treasureDisc, ArrayList<Players> playerList) {
         //if (!backgroundSystem.battlefase) {
         if (playable != null && once) {
             if (level <= 9) {
@@ -390,7 +390,7 @@ public class Players {
                 if (playable.name.equalsIgnoreCase("Kill the hireling")) {
                     level += 1;
                     if (utility.name.equalsIgnoreCase("Hireling")) {
-                        treasure.addcard(utility);
+                        treasureDisc.addcard(utility);
                         utility = null;
                     }
                 }
@@ -401,6 +401,27 @@ public class Players {
                 if (playable.name.equalsIgnoreCase("Steal a level")) {
                     //Selected person level = level -1;
                     level += 1;
+                    int tmpLevel = level;
+                    Players tmpSpiller = null;
+                    for (int i = 0; i <4 ; i++) {
+                        if (playerList.get(i).level >tmpLevel){
+                            tmpSpiller = playerList.get(i);
+                            tmpLevel=tmpSpiller.level;
+
+                        }
+                    }
+                    try {
+                        tmpSpiller.level--;
+                        if (tmpSpiller.level<1)
+                            tmpSpiller.level=1;
+                    }
+                    catch (Exception x){
+                        tmpSpiller=playerList.get((int)p.random(4));
+                        tmpSpiller.level--;
+                        if (tmpSpiller.level<1)
+                            tmpSpiller.level=1;
+                    }
+
                //     PApplet.println(9);
                 }
             }
