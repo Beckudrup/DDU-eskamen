@@ -498,27 +498,32 @@ public class Players {
     void usable(ArrayList<Button> buttList, Deck treasure, Deck treasuredisc, Deck roomdisc,ArrayList<Players> playerList, BackgroundSystem backgroundSystem ){
         if (backgroundSystem.battlefase) {
             if (usable.name.equalsIgnoreCase("Potion of Idiotic Bravery") || usable.name.equalsIgnoreCase("Nasty-tasting sports drink") || usable.name.equalsIgnoreCase("Potion of halitosis") || usable.name.equalsIgnoreCase("Sleep Potion")) {
+                //giv plus 2 til spiller siden eller monster siden i en combat
                 buttList.add(new Button(p, 200, 500, 200, 100, "Players"));
                 buttList.add(new Button(p, 200, 625, 200, 100, "Monsters"));
                 //monster.level += 2;
 
             }
             if (usable.name.equalsIgnoreCase("Cotion of Ponfusion") || usable.name.equalsIgnoreCase("Freezing explosive potion") || usable.name.equalsIgnoreCase("Flaming poison potion")) {
+                //giv plus 3 til spiller siden eller monster siden i en combat
                 buttList.add(new Button(p, 200, 500, 200, 100, "Players"));
                 buttList.add(new Button(p, 200, 625, 200, 100, "Monsters"));
                // monster.level += 3;
 
             }
             if (usable.name.equalsIgnoreCase("Magic missile") || usable.name.equalsIgnoreCase("Electric radioactive acid potion") || usable.name.equalsIgnoreCase("Pretty Balloons")) {
+                //giv plus 5 til spiller siden eller monster siden i en combat
                 buttList.add(new Button(p, 200, 500, 200, 100, "Players"));
                 buttList.add(new Button(p, 200, 625, 200, 100, "Monsters"));
               //  powChange += 5;
                // monster.level += 5;
             }
             if (usable.name.equalsIgnoreCase("Doppelganger")) {
+                //double ens power
                 powChange = pow * 2;
             }
             if (usable.name.equalsIgnoreCase("Yuppie water")) {
+                //+2 til alle elfs
                 for (int i = 0; i < 4; i++) {
                     if (playerList.get(i).race.name.equalsIgnoreCase("Elf") || playerList.get(i).race2.name.equalsIgnoreCase("Elf")) {
                         playerList.get(i).powChange += 2;
@@ -527,9 +532,11 @@ public class Players {
 
             }
             if (usable.name.equalsIgnoreCase("Instant wall")||usable.name.equalsIgnoreCase("Invisibility Potion")||usable.name.equalsIgnoreCase("Friendship potion")){
+                //Fjern monster ingen treasure ingen level
                 backgroundSystem.battlefase=false;
             }
             if (usable.name.equalsIgnoreCase("Magic Lamp")|| usable.name.equalsIgnoreCase("Pollymorph Potion")) {
+                //Fjern monster men få treasure INTET LEVEL
                 while (treasure.allowedTreasure > 0) {
                     int treasures = (int) p.random(treasure.cardList.size());
                     Card loot = treasure.cardList.get(treasures);
