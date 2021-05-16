@@ -33,6 +33,7 @@ public class Players {
     Card race2;
     Card curse;
     Button showhand;
+    boolean big;
     boolean wanderingMonster;
     boolean once;
     boolean mirror;
@@ -51,13 +52,31 @@ public class Players {
             if (hand.get(i).hovering) {
                 if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
                     if (body != null) {
+
                         if (body.numb == 0) {
                             roomdisc.addcard(body);
                         } else {
                             if (body.numb == 1)
                                 treasuredisc.addcard(body);
                         }
+
                     }
+                    if(hand.get(i).type.equalsIgnoreCase("armor big")){
+                        big = true;
+                        if(race!=null&&!race.name.equalsIgnoreCase("dwarf")||race2!=null&&!race2.name.equalsIgnoreCase("dwarf")){
+                        if(hand1!=null&&(hand1.type.equalsIgnoreCase("1 hand big")||hand1.type.equalsIgnoreCase("2 hand big"))){
+                            treasuredisc.addcard(hand1);
+                            hand1=null;
+                        }
+                        if(hand2!=null&&(hand2.type.equalsIgnoreCase("1 hand big")||hand2.type.equalsIgnoreCase("2 hand big"))){
+                            treasuredisc.addcard(hand2);
+                            hand2=null;
+                        }
+                        if(utility!=null&&utility.type.equalsIgnoreCase("Utility big")){
+                            treasuredisc.addcard(utility);
+                            utility=null;
+                        }
+                    }}
                     hand.get(i).hovering = false;
                     body = hand.get(i);
                     hand.remove(i);
@@ -97,6 +116,22 @@ public class Players {
                                             treasuredisc.addcard(hand1);
                                     }
                                 }
+                                if(hand.get(i).type.equalsIgnoreCase("1 hand big")||hand.get(i).type.equalsIgnoreCase("2 hand big")){
+                                    big = true;
+                                    if(race!=null&&!race.name.equalsIgnoreCase("dwarf")||race2!=null&&!race2.name.equalsIgnoreCase("dwarf")){
+                                    if(body!=null&&body.type.equalsIgnoreCase("armor big")){
+                                        treasuredisc.addcard(body);
+                                        body=null;
+                                    }
+                                    if(hand2!=null&&(hand2.type.equalsIgnoreCase("1 hand big")||hand2.type.equalsIgnoreCase("2 hand big"))){
+                                        treasuredisc.addcard(hand2);
+                                        hand2=null;
+                                    }
+                                    if(utility!=null&&utility.type.equalsIgnoreCase("Utility big")){
+                                        treasuredisc.addcard(utility);
+                                        utility=null;
+                                    }
+                                }}
                                 hand.get(i).hovering = false;
                                 hand1 = hand.get(i);
                                 hand.remove(i);
@@ -110,6 +145,22 @@ public class Players {
                                                 treasuredisc.addcard(hand2);
                                         }
                                     }
+                                    if(hand.get(i).type.equalsIgnoreCase("1 hand big")||hand.get(i).type.equalsIgnoreCase("2 hand big")){
+                                        big = true;
+                                        if(race!=null&&!race.name.equalsIgnoreCase("dwarf")||race2!=null&&!race2.name.equalsIgnoreCase("dwarf")){
+                                        if(body!=null&&body.type.equalsIgnoreCase("armor big")){
+                                            treasuredisc.addcard(body);
+                                            body=null;
+                                        }
+                                        if(hand1!=null&&(hand1.type.equalsIgnoreCase("1 hand big")||hand1.type.equalsIgnoreCase("2 hand big"))){
+                                            treasuredisc.addcard(hand1);
+                                            hand1=null;
+                                        }
+                                        if(utility!=null&&utility.type.equalsIgnoreCase("Utility big")){
+                                            treasuredisc.addcard(utility);
+                                            utility=null;
+                                        }
+                                    }}
                                     hand.get(i).hovering = false;
                                     hand2 = hand.get(i);
                                     hand.remove(i);
@@ -150,6 +201,22 @@ public class Players {
                                                             treasuredisc.addcard(utility);
                                                     }
                                                 }
+                                                if(hand.get(i).type.equalsIgnoreCase("utility big")){
+                                                    big = true;
+                                                    if(race!=null&&!race.name.equalsIgnoreCase("dwarf")||race2!=null&&!race2.name.equalsIgnoreCase("dwarf")){
+                                                    if(hand1!=null&&(hand1.type.equalsIgnoreCase("1 hand big")||hand1.type.equalsIgnoreCase("2 hand big"))){
+                                                        treasuredisc.addcard(hand1);
+                                                        hand1=null;
+                                                    }
+                                                    if(hand2!=null&&(hand2.type.equalsIgnoreCase("1 hand big")||hand2.type.equalsIgnoreCase("2 hand big"))){
+                                                        treasuredisc.addcard(hand2);
+                                                        hand2=null;
+                                                    }
+                                                    if(body!=null&&body.type.equalsIgnoreCase("armor big")){
+                                                        treasuredisc.addcard(body);
+                                                        body=null;
+                                                    }
+                                                }}
                                                 hand.get(i).hovering = false;
                                                 utility = hand.get(i);
                                                 hand.remove(i);
