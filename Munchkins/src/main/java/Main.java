@@ -112,7 +112,7 @@ public class Main extends PApplet {
                         playerList.get(i).displayicon();
                         playerList.get(i).getPower();
                         playerList.get(i).raceFunction();
-                        playerList.get(i).classFunction(dice);
+                        playerList.get(i).classFunction();
                     }
                    /* for (int i = 0; i < room.cardList.size() ; i++) {
                         if(room.cardList.get(i).badStuff!=null){
@@ -132,6 +132,13 @@ public class Main extends PApplet {
                         for (int j = 0; j < playerList.get(i).hand.size(); j++) {
                             if (playerList.get(i).hand.get(j).hovering == true) {
                             }
+                        }
+                    }
+                    for (int i = 0; i <playerList.size() ; i++) {
+                        if (playerList.get(i).level==10){
+                            textSize(50);
+                            textAlign(CENTER);
+                            text("Player "+(backgroundSystem.turn+1)+" wins good game!",1000,650);
                         }
                     }
                 }

@@ -351,10 +351,15 @@ public class Players {
                     level = level + 1;
                     // PApplet.println(1);
                 }
-                if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
-                    PApplet.println(2);
-                    level += 1;
+                if (playable.name.equalsIgnoreCase("Whine at the GM")) {
+                    level+=1;
+
                 }
+                if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
+                        PApplet.println(2);
+                        level += 1;
+                    }
+
                 if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
                     level += 1;
                      PApplet.println("James beyleygh");
@@ -457,13 +462,7 @@ public class Players {
 
             }
             if (backgroundSystem.battlefase) {
-                if (playable.name.equalsIgnoreCase("Freezing Explosive Potion")) {
-                    buttList.add(new Button(p, 200, 500, 75, 30, "Player"));
-                    buttList.add(new Button(p, 200, 600, 100, 30, "Monster"));
-                    System.out.println("Jeg er fan af Jamal");
 
-
-                }
             }
         }
         once = false;
