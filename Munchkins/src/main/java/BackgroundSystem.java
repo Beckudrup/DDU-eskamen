@@ -246,11 +246,25 @@ public class BackgroundSystem {
                 startofbattlefase = false;
             }
             //neden under er skrevet forkert fix sometime @batman
-            for (int i = 0; i < 3; i++) {
-                if (buttList.get(i + 2).tryk) {
-                    allyList.add(playerList.get(i));
+            for (int i = 0; i < 4; i++) {
 
+                if (buttList.get(i + 2).tryk) {
+                    if(i==turn){i++;}
+                    if(i<5){
+                    boolean alredyadded = false;
+                    for (int j = 0; j < allyList.size() ; j++) {
+                        if(allyList.get(j)==playerList.get(i)){
+                            alredyadded = true;
+                        }
+                    }
+                    if(!alredyadded) {
+                        allyList.add(playerList.get(i));
+                    }
                 }
+                }
+            }
+            for (int i = 0; i < allyList.size() ; i++) {
+                p.text("Allie: " + allyList.get(i).playernr,1200,700+i*30);
             }
 
             if (buttList.get(buttList.size() - 1).tryk == true) {
@@ -292,10 +306,6 @@ public class BackgroundSystem {
             badstuff.badstuffhand(allyList.get(j),playerList,roomdisc,treasuredisc);
         }
     }}
-
-
-
-
                 }
                 forcestop1=false;
                 forcestop2=false;
@@ -327,9 +337,9 @@ public class BackgroundSystem {
     }
     void treasuredraw(ArrayList<Players> allyList,Deck treasure,ArrayList<Players> playerList,Deck treasuredisc, Deck roomDisc){
         for (int i = 0; i < allyList.size() ; i++) {
-            for (int j = 0; j < allyList.get(i).treasures; j++) {
+
                 treasure.drawcard(allyList.get(i).hand,2,playerList,treasuredisc,roomDisc,allyList.get(i));
-            }
+
         }
     }
 }
