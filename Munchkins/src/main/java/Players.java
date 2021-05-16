@@ -331,14 +331,14 @@ public class Players {
         }
         if (feet != null && hand2 != null)
             RunAway = (handRunAway + feetRunAway);
-        if(mirror){
-            handpow=0;
-            hand2pow=0;
-            headpow=0;
-            feetpow=0;
+        if (mirror) {
+            handpow = 0;
+            hand2pow = 0;
+            headpow = 0;
+            feetpow = 0;
         }
-            pow = headpow + bodypow + feetpow + handpow + hand2pow + level + powChange;
-            // PApplet.println(pow);
+        pow = headpow + bodypow + feetpow + handpow + hand2pow + level + powChange;
+        // PApplet.println(pow);
 
     }
 
@@ -352,19 +352,19 @@ public class Players {
                 }
                 if (playable.name.equalsIgnoreCase("Invoke obscure rules")) {
                     level = level + 1;
-                   // PApplet.println(1);
+                    // PApplet.println(1);
                 }
                 if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
                     PApplet.println(2);
-                    level +=  1;
+                    level += 1;
                 }
                 if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
                     level += 1;
-                   // PApplet.println(3);
+                    // PApplet.println(3);
                 }
                 if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
                     level += 1;
-                 //   PApplet.println(4);
+                    //   PApplet.println(4);
                 }
                 if (playable.name.equalsIgnoreCase("Boil an anthill")) {
                     PApplet.println(5);
@@ -372,22 +372,22 @@ public class Players {
                 }
                 if (playable.name.equalsIgnoreCase("Convenient addition error")) {
                     level += 1;
-                  //  PApplet.println(6);
+                    //  PApplet.println(6);
                 }
                 if (playable.name.equalsIgnoreCase("Mutilate the bodies")  /*&& backgroundSyste.battlefase ;; end of *any* combat */) {
                     level += 1;
-                //    PApplet.println(7);
+                    //    PApplet.println(7);
 
                 }
                 //If hireling is on the bord utility.name.equalsIgnoreCase("Hireling")
                 if (playable.name.equalsIgnoreCase("Kill the hireling")) {
                     level += 1;
-               //     PApplet.println(8);
+                    //     PApplet.println(8);
                 }
                 if (playable.name.equalsIgnoreCase("Steal a level")) {
                     //Selected person level = level -1;
                     level += 1;
-               //     PApplet.println(9);
+                    //     PApplet.println(9);
                 }
             }
             if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
@@ -423,17 +423,40 @@ public class Players {
         }
     }
 
-    void classFunction() {
+    void classFunction(Dice dice) {
         if (playerClass != null) {
             //This if statement is only for player one;
             if (p.mouseX > 440 && p.mouseX < 440 + 60 && p.mouseY > 800 && p.mouseY < 800 + 100) {
                 if (playerClass.name.equalsIgnoreCase("Thief")) {
-                    //You may discard a card to backstab another player (-2 in combat). You may do this only once per victim per combat, but if two or more players are fighting a monster together, you may backstab each of them;
+                    //You may discard a card to backstab another player (-2 in combat). You may do this only once per victim per combat, but if two or more players are fighting a monster together, you may backstab each of them
+                    //Giver ingen mening, for jeg tror ikke man kan aktivere på andres ture.
+
                     //You may discard a card to try to steal a small item carried by another player. Roll a die; 4 or more succeeds. Otherwise, you get whacked and lose a level;
-                    //p.println((int) p.random(1, 7));
+                    if (hand.size() > 0) {
+                        if (hand.get(hand.size() - 1).numb == 0) {
+                            Card card = hand.get(hand.size() - 1);
+                            //roomdisc.addcard(card);
+                            hand.remove(hand.size() - 1);
+                            if (dice.trowDie(7) < 4) {
+                                level = level - 1;
+                            } else {
+                                //Random player?
+                                //Get item ignore "Big"
+                            }
+                        }
+                    }
                 }
                 if (playerClass.name.equalsIgnoreCase("Cleric")) {
                     //In draw-face, you may instead take some or all top of the appropriate discard pile. You must discard one card from your hand for each card drawn;
+                    if (p.random(2) == 1) {
+                        /*for (int i = (treasurelist.size); i < treasurelist.size; i++) {
+                        treasurelist.drawcard(playerList.get(i).hand)
+                             }   */
+                    } else {
+                        /* for (int i = (p.random(roomlist.size)); i < roomlist.size; i++) {
+                            roomlist.drawcard(playerList.get(i).hand, 2, playerList, treasuredisc, roomdisc, players);
+                        }*/
+                    }
                     //Against undead creatures
                 }
                 if (playerClass.name.equalsIgnoreCase("Wizard")) {
@@ -443,7 +466,7 @@ public class Players {
                 }
                 if (playerClass.name.equalsIgnoreCase("Warrior")) {
                     //You may discard up to 3 cards in combat; each one gives you a +1 bonus;
-                    //You win ties in combat.
+                    //You win ties in combat. >.<
                 }
             }
         }

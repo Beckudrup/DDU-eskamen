@@ -112,7 +112,7 @@ public class Main extends PApplet {
                         playerList.get(i).displayicon();
                         playerList.get(i).getPower();
                         playerList.get(i).raceFunction();
-                        playerList.get(i).classFunction();
+                        playerList.get(i).classFunction(dice);
                     }
                    /* for (int i = 0; i < room.cardList.size() ; i++) {
                         if(room.cardList.get(i).badStuff!=null){

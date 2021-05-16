@@ -282,9 +282,7 @@ public class BackgroundSystem {
                             treasuredisc.addcard(card);
                             monsterList.remove(monsterList.size() - 1);
                         }
-
                     }
-
                 }
             }
         }
