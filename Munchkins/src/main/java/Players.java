@@ -345,18 +345,8 @@ public class Players {
     void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room, Deck treasureDisc, ArrayList<Players> playerList, ArrayList<Button> buttList) {
         //if (!backgroundSystem.battlefase) {
         if (playable != null && once) {
-            if (level <= 9) {
-                if (playable.name.equalsIgnoreCase("Hoard!")) {
-                    //Draw three treasures
-                    //PApplet.println(1);
-                    for (int i = 0; i < 3; i++) {
-                        int random = (int) p.random(treasure.cardList.size());
-                        Card drawncard = treasure.cardList.get(random);
-                        hand.add(drawncard);
-                        treasure.cardList.remove(random);
-                    }
+            if (level <= 8) {
 
-                }
                 if (playable.name.equalsIgnoreCase("Invoke obscure rules")) {
                     level = level + 1;
                     // PApplet.println(1);
@@ -392,22 +382,22 @@ public class Players {
                         for (int i = 0; i < 4; i++) {
                             if (playerList.get(i).utility.name.equalsIgnoreCase("Hireling")) {
                                 level += 1;
-                                treasureDisc.addcard(utility);
-                                utility = null;
+                                treasureDisc.addcard(playerList.get(i).utility);
+                                playerList.get(i).utility = null;
                             }
                         }
-
+                        System.out.println("YAYAYAY??????????????????????????????????");
                     }
                     catch (Exception y){
+
                         for (int i = 0; i <4 ; i++) {
                             if (playerList.get(i).utility==null|| !playerList.get(i).utility.name.equalsIgnoreCase("Hireling")){
 
                             }
                         }
+
                     }
                 }
-
-
                 //     PApplet.println(8);
 
 
@@ -438,12 +428,25 @@ public class Players {
                //     PApplet.println(9);
                 }
             }
+            if (playable.name.equalsIgnoreCase("Hoard!")) {
+                //Draw three treasures
+                //PApplet.println(1);
+                if (treasure.cardList.size() > 3) {
+                    for (int i = 0; i < 3; i++) {
+                        int random = (int) p.random(treasure.cardList.size());
+                        Card drawncard = treasure.cardList.get(random);
+                        hand.add(drawncard);
+                        treasure.cardList.remove(random);
+                    }
+                }
+            }
             if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
                 //Go through the discards to find any one card you want. Take that card and discard this one.
-
-                Card drawncard = treasureDisc.cardList.get(treasureDisc.cardList.size()-1);
-                hand.add(drawncard);
-                treasureDisc.cardList.remove(treasureDisc.cardList.size()-1);
+                if (treasureDisc.cardList.size()>0) {
+                    Card drawncard = treasureDisc.cardList.get(treasureDisc.cardList.size() - 1);
+                    hand.add(drawncard);
+                    treasureDisc.cardList.remove(treasureDisc.cardList.size() - 1);
+                }
             }
             if (playerClass == null || !playerClass.name.equalsIgnoreCase("Cleric")) {
                 if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
@@ -453,8 +456,8 @@ public class Players {
                 }
 
             }
-            if (backgroundSystem.battlefase){
-                if (playable.name.equalsIgnoreCase("Freezing Explosive Potion")){
+            if (backgroundSystem.battlefase) {
+                if (playable.name.equalsIgnoreCase("Freezing Explosive Potion")) {
                     buttList.add(new Button(p, 200, 500, 75, 30, "Player"));
                     buttList.add(new Button(p, 200, 600, 100, 30, "Monster"));
                     System.out.println("Jeg er fan af Jamal");
