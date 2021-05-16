@@ -585,24 +585,22 @@ public class Players {
         if (backgroundSystem.battlefase) {
             if (usable.name.equalsIgnoreCase("Potion of Idiotic Bravery") || usable.name.equalsIgnoreCase("Nasty-tasting sports drink") || usable.name.equalsIgnoreCase("Potion of halitosis") || usable.name.equalsIgnoreCase("Sleep Potion")) {
                 //giv plus 2 til spiller siden eller monster siden i en combat
-                buttList.add(new Button(p, 200, 500, 200, 100, "Players"));
-                buttList.add(new Button(p, 200, 625, 200, 100, "Monsters"));
+                powChange += 2;
                 //monster.level += 2;
 
             }
             if (usable.name.equalsIgnoreCase("Cotion of Ponfusion") || usable.name.equalsIgnoreCase("Freezing explosive potion") || usable.name.equalsIgnoreCase("Flaming poison potion")) {
                 //giv plus 3 til spiller siden eller monster siden i en combat
-                buttList.add(new Button(p, 200, 500, 200, 100, "Players"));
-                buttList.add(new Button(p, 200, 625, 200, 100, "Monsters"));
+                powChange += 3;
                // monster.level += 3;
 
             }
             if (usable.name.equalsIgnoreCase("Magic missile") || usable.name.equalsIgnoreCase("Electric radioactive acid potion") || usable.name.equalsIgnoreCase("Pretty Balloons")) {
                 //giv plus 5 til spiller siden eller monster siden i en combat
-                buttList.add(new Button(p, 200, 500, 200, 100, "Players"));
-                buttList.add(new Button(p, 200, 625, 200, 100, "Monsters"));
-              //  powChange += 5;
-               // monster.level += 5;
+
+
+              powChange += 5;
+
             }
             if (usable.name.equalsIgnoreCase("Doppelganger")) {
                 //double ens power
@@ -628,7 +626,7 @@ public class Players {
             }
             if ((usable.name.equalsIgnoreCase("Magic Lamp")|| usable.name.equalsIgnoreCase("Pollymorph Potion"))&&backgroundSystem.battlefase) {
                 //Fjern monster men få treasure INTET LEVEL
-
+                buttList.get(buttList.size()-1).tryk=true;
                 backgroundSystem.forcestop2=true;
             }
 
@@ -890,30 +888,31 @@ public class Players {
     void displayicon(int turn) {
         p.fill(255);
         p.textAlign(p.LEFT, p.BOTTOM);
+        int temp = playernr +1;
         if (turn - playernr == 0) {
             p.image(icon, 10, 950, 100, 100);
             p.text("lvl:" + level, 10, 920);
             p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 10, 940);
-            p.text("p1", p.width / 2, 750);
+            p.text("p" + temp, p.width / 2, 750);
         }
         if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
             p.image(icon, 10, 10, 100, 100);
             p.text("lvl:" + level, 110, 70);
             p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 110, 95);
-            p.text("p2", 150, 550);
+            p.text("p" + temp, 150, 550);
 
         }
         if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
             p.image(icon, 1810, 10, 100, 100);
             p.text("lvl:" + level, 1810, 150);
             p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1810, 170);
-            p.text("p3", p.width / 2, 200);
+            p.text("p" + temp, p.width / 2, 200);
         }
         if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
             p.image(icon, 1810, 950, 100, 100);
             p.text("lvl:" + level, 1710, 1010);
             p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1710, 1030);
-            p.text("p4", 1750, 500);
+            p.text("p" + temp, 1750, 500);
         }
         p.fill(0);
     }

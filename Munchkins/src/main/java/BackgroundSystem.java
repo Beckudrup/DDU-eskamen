@@ -14,6 +14,7 @@ public class BackgroundSystem {
     boolean startofbattlefase;
     boolean forcestop1=false;
     boolean forcestop2=false;
+    boolean genderchoose = true;
     int turn;
     int monstermodifire;
     ArrayList<Players> allyList = new ArrayList<>();
@@ -154,10 +155,12 @@ public class BackgroundSystem {
             }
             notDoneYet = false;
         }
+        if (genderchoose){
         if (player > 3 && !removed) {
             buttList.remove(2);
             buttList.remove(2);
             removed = true;
+            genderchoose=false;
         }
         if (player < 4) {
             int temp = player + 1;
@@ -208,7 +211,7 @@ public class BackgroundSystem {
                 player++;
                 buttList.get(3).tryk = false;
             }
-
+        }
         }
 
     }
@@ -226,22 +229,22 @@ public class BackgroundSystem {
 
             if (startofbattlefase) {
                 allyList.add(playerList.get(backgroundSystem.turn));
-                if (backgroundSystem.turn != 0) {
+
                     buttList.add(new Button(p, 200, 300, 50, 30, "p1"));
 
-                }
-                if (backgroundSystem.turn != 1) {
+
+
                     buttList.add(new Button(p, 260, 300, 50, 30, "p2"));
 
-                }
-                if (backgroundSystem.turn != 2) {
+
+
                     buttList.add(new Button(p, 200, 400, 50, 30, "p3"));
 
-                }
-                if (backgroundSystem.turn != 3) {
+
+
                     buttList.add(new Button(p, 260, 400, 50, 30, "p4"));
 
-                }
+
                 buttList.add(new Button(p, 500, 700, 100, 60, "fight/run"));
                 startofbattlefase = false;
             }
@@ -249,8 +252,8 @@ public class BackgroundSystem {
             for (int i = 0; i < 4; i++) {
 
                 if (buttList.get(i + 2).tryk) {
-                    if(i==turn){i++;}
-                    if(i<5){
+
+
                     boolean alredyadded = false;
                     for (int j = 0; j < allyList.size() ; j++) {
                         if(allyList.get(j)==playerList.get(i)){
@@ -260,13 +263,23 @@ public class BackgroundSystem {
                     if(!alredyadded) {
                         allyList.add(playerList.get(i));
                     }
-                }
+
                 }
             }
             for (int i = 0; i < allyList.size() ; i++) {
-                p.text("Allie: " + allyList.get(i).playernr,1200,700+i*30);
+                int temp = allyList.get(i).playernr+1;
+                p.text("Allie: " + temp,1200,700+i*30);
             }
-
+int allypower = 0;
+            for (int i = 0; i < allyList.size() ; i++) {
+                allypower += allyList.get(i).pow;
+            }
+            int monsterpower = monstermodifire;
+            for (int i = 0; i < monsterList.size(); i++) {
+                monsterpower += monsterList.get(i).level;
+            }
+            p.text("ally power: " + allypower,1500,600);
+            p.text("monster power: " + monsterpower,1500,700);
             if (buttList.get(buttList.size() - 1).tryk == true) {
                 int monsterPower = monstermodifire;
                 int allyPower = 0;
@@ -290,9 +303,9 @@ public class BackgroundSystem {
 
     for (int i = 0; i < monsterList.size(); i++) {
         int roll = die.trowDie(7);
-        if (monsterList.get(i).badStuff.equalsIgnoreCase("NULL")){
+       /* if (monsterList.get(i).badStuff.equalsIgnoreCase("NULL")){
             System.out.println("PLANTE");
-        }
+        }*/
         if(monsterList.get(i).badStuff.equalsIgnoreCase("- 1 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 3 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 level -3 if elf")||(monsterList.get(i).badStuff.equalsIgnoreCase("- class if no -3lvl")&&playerList.get(backgroundSystem.turn).playerClass==null)||monsterList.get(i).badStuff.equalsIgnoreCase("- head and level - 1")||monsterList.get(i).badStuff.equalsIgnoreCase("set level = to lovest player")||(monsterList.get(i).badStuff.equalsIgnoreCase("Roll die of less than 2 death else lose level = die")&&roll>2)||monsterList.get(i).badStuff.equalsIgnoreCase("Player level = 1")){
             badstuff.badstufflevel(playerList.get(j),playerList,roll,monsterList.get(i));
         }
