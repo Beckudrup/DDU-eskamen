@@ -46,7 +46,7 @@ public class Players {
         showhand = new Button(p, 10, 10, 130, 50, "Show hand");
     }
 
-    void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList, Deck treasure, Deck room, ArrayList<Players> playerList) {
+    void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList, Deck treasure, Deck room, ArrayList<Players> playerList, ArrayList<Button> buttList) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
                 if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
@@ -172,7 +172,7 @@ public class Players {
                                                         playable.name = hand.get(i).name;
                                                         once = true;
                                                         hand.remove(i);
-                                                        playables(backgroundSystem, treasure,room,treasuredisc, playerList);
+                                                        playables(backgroundSystem, treasure,room,treasuredisc, playerList, buttList);
                                                         if (playable != null) {
                                                             if (playable.numb == 0) {
                                                                 roomdisc.addcard(playable);
@@ -342,7 +342,7 @@ public class Players {
 
     }
 
-    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room, Deck treasureDisc, ArrayList<Players> playerList) {
+    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room, Deck treasureDisc, ArrayList<Players> playerList, ArrayList<Button> buttList) {
         //if (!backgroundSystem.battlefase) {
         if (playable != null && once) {
             if (level <= 9) {
@@ -367,7 +367,7 @@ public class Players {
                 }
                 if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
                     level += 1;
-                    // PApplet.println(3);
+                     PApplet.println("James beyleygh");
                 }
                 if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
                     level += 1;
@@ -388,12 +388,25 @@ public class Players {
                 }
                 //If hireling is on the bord utility.name.equalsIgnoreCase("Hireling")
                 if (playable.name.equalsIgnoreCase("Kill the hireling")) {
-                    level += 1;
-                    if (utility.name.equalsIgnoreCase("Hireling")) {
-                        treasureDisc.addcard(utility);
-                        utility = null;
+                    try {
+                        for (int i = 0; i < 4; i++) {
+                            if (playerList.get(i).utility.name.equalsIgnoreCase("Hireling")) {
+                                level += 1;
+                                treasureDisc.addcard(utility);
+                                utility = null;
+                            }
+                        }
+
+                    }
+                    catch (Exception y){
+                        for (int i = 0; i <4 ; i++) {
+                            if (playerList.get(i).utility==null|| !playerList.get(i).utility.name.equalsIgnoreCase("Hireling")){
+
+                            }
+                        }
                     }
                 }
+
 
                 //     PApplet.println(8);
 
@@ -439,6 +452,15 @@ public class Players {
                     }
                 }
 
+            }
+            if (backgroundSystem.battlefase){
+                if (playable.name.equalsIgnoreCase("Freezing Explosive Potion")){
+                    buttList.add(new Button(p, 200, 500, 75, 30, "Player"));
+                    buttList.add(new Button(p, 200, 600, 100, 30, "Monster"));
+                    System.out.println("Jeg er fan af Jamal");
+
+
+                }
             }
         }
         once = false;
