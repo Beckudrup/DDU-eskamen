@@ -67,13 +67,12 @@ public class Deck {
                         System.out.println("kål");
                     }
                     //hvis man trækker andet (class,race,"spellkort")
-                    if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")) {
+                    if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")||drawncard.type.equalsIgnoreCase("Class") || drawncard.type.equalsIgnoreCase("Race")) {
                         hand.add(drawncard);
                         System.out.println("hapini");
+
                     }
-                    if (drawncard.type.equalsIgnoreCase("Class") || drawncard.type.equalsIgnoreCase("Race")) {
-                        hand.add(drawncard);
-                    }
+
                     firstDraw = false;
                 } else {
                     //Treasure draw

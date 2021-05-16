@@ -208,7 +208,7 @@ public class Players {
                                                                 card.name = hand.get(i).name;
                                                                 once = true;
                                                                 hand.remove(i);
-                                                                monsterpowchanger(treasure);
+                                                                roombuffs(treasure);
                                                                 if (card != null) {
                                                                     if (card.numb == 0) {
                                                                         roomdisc.addcard(card);
@@ -566,7 +566,7 @@ public class Players {
 
     }
 
-    void monsterpowchanger(Deck treasure){
+    void roombuffs(Deck treasure){
         if (card.name.equalsIgnoreCase("baby")){
             monster.level-=5;
             treasure.allowedTreasure-=1;
