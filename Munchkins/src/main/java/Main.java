@@ -134,6 +134,13 @@ public class Main extends PApplet {
                             }
                         }
                     }
+                    for (int i = 0; i <playerList.size() ; i++) {
+                        if (playerList.get(i).level==10){
+                            textSize(50);
+                            textAlign(CENTER);
+                            text("Player "+(backgroundSystem.turn+1)+" wins good game!",1000,650);
+                        }
+                    }
                 }
                 //System.out.println(playerList.get(0).hand.size() + "  " + playerList.get(1).hand.size() + "  " + playerList.get(2).hand.size() + "  " + playerList.get(3).hand.size());
 
@@ -216,7 +223,7 @@ public class Main extends PApplet {
                 roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players);
                 treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players);
                 for (int i = 0; i < playerList.size(); i++) {
-                    playerList.get(i).selectCard(roomdisc, treasiredisc, backgroundSystem, monsterlist);
+                    playerList.get(i).selectCard(roomdisc, treasiredisc, backgroundSystem, monsterlist, treasure, room, playerList, buttList);
                     playerList.get(i).showhand.registerClick2(mouseX, mouseY);
                 }
             }

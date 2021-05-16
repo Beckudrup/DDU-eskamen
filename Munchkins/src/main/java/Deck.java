@@ -10,7 +10,7 @@ public class Deck {
     ArrayList<Card> boardDeck = new ArrayList<>();
     int x, y, w, h;
     int allowedTreasure = 0;
-    boolean firstDraw = true;
+    boolean firstDraw = false;
     boolean fix = true;
 
     Deck(PApplet p, int x, int y, int w, int h) {
@@ -45,7 +45,7 @@ public class Deck {
             if (drawncard.numb == 0 && !firstDraw && type != 2 && fix == true) {
                 hand.add(drawncard);
                 System.out.println("andet draw");
-                fix = false;    //TÆND IGEN! når spillet er ved at være done
+                //fix = false;    //TÆND IGEN! når spillet er ved at være done
             } else {
                 //Første room draw
                 if (drawncard.numb == 0 && firstDraw && type != 2) {
@@ -67,13 +67,12 @@ public class Deck {
                         System.out.println("kål");
                     }
                     //hvis man trækker andet (class,race,"spellkort")
-                    if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")) {
+                    if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")||drawncard.type.equalsIgnoreCase("Class") || drawncard.type.equalsIgnoreCase("Race")) {
                         hand.add(drawncard);
                         System.out.println("hapini");
+
                     }
-                    if (drawncard.type.equalsIgnoreCase("Class") || drawncard.type.equalsIgnoreCase("Race")) {
-                        hand.add(drawncard);
-                    }
+
                     firstDraw = false;
                 } else {
                     //Treasure draw
