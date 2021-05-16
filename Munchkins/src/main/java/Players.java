@@ -352,7 +352,17 @@ public class Players {
                     // PApplet.println(1);
                 }
                 if (playable.name.equalsIgnoreCase("Whine at the GM")) {
-                    level+=1;
+                    int tmpLevel = level;
+                    Players tmpSpiller;
+                    for (int i = 0; i <4 ; i++) {
+                        if (playerList.get(i).level > tmpLevel) {
+                            tmpSpiller = playerList.get(i);
+                            tmpLevel=tmpSpiller.level;
+                        }
+                    }
+                    if (level!=tmpLevel) {
+                        level += 1;
+                    }
 
                 }
                 if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
