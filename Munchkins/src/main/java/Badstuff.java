@@ -117,7 +117,22 @@ public class Badstuff {
 
             }
             player.level = 1;
-
+            if (player.race!=null) {
+                roomdiscard.addcard(player.race);
+                player.race=null;
+            }
+        if (player.playerClass!=null) {
+            roomdiscard.addcard(player.playerClass);
+            player.playerClass=null;
+        }
+        if (player.race2!=null) {
+            roomdiscard.addcard(player.race2);
+            player.race2=null;
+        }
+        if (player.playerClass2!=null) {
+            roomdiscard.addcard(player.playerClass2);
+            player.playerClass2=null;
+        }
 
         System.out.println("badstufflosedeath");
     }

@@ -414,7 +414,7 @@ public class Players {
             }
             if (race.name.equalsIgnoreCase("Dwarf")) {
                 //Carry any number of big weapons;
-                //Have 6 cards in hand (instead og 5);
+                //Have 6 cards in hand (instead og 5); (er lavet i end turn)
             }
             if (race.name.equalsIgnoreCase("Halfling")) {
                 //You may sell one item each turn for double price;
