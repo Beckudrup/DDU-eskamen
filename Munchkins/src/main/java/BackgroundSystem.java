@@ -12,7 +12,10 @@ public class BackgroundSystem {
     boolean battlefase;
     boolean gamestarted;
     boolean startofbattlefase;
+    boolean forcestop1=false;
+    boolean forcestop2=false;
     int turn;
+    int monstermodifire;
     ArrayList<Players> allyList = new ArrayList<>();
 
     BackgroundSystem(PApplet p) {
@@ -223,14 +226,22 @@ public class BackgroundSystem {
 
             if (startofbattlefase) {
                 allyList.add(playerList.get(backgroundSystem.turn));
-                if (backgroundSystem.turn != 0)
+                if (backgroundSystem.turn != 0) {
                     buttList.add(new Button(p, 200, 300, 50, 30, "p1"));
-                if (backgroundSystem.turn != 1)
+
+                }
+                if (backgroundSystem.turn != 1) {
                     buttList.add(new Button(p, 260, 300, 50, 30, "p2"));
-                if (backgroundSystem.turn != 2)
+
+                }
+                if (backgroundSystem.turn != 2) {
                     buttList.add(new Button(p, 200, 400, 50, 30, "p3"));
-                if (backgroundSystem.turn != 3)
+
+                }
+                if (backgroundSystem.turn != 3) {
                     buttList.add(new Button(p, 260, 400, 50, 30, "p4"));
+
+                }
                 buttList.add(new Button(p, 500, 700, 100, 60, "fight/run"));
                 startofbattlefase = false;
             }
@@ -243,7 +254,7 @@ public class BackgroundSystem {
             }
 
             if (buttList.get(buttList.size() - 1).tryk == true) {
-                int monsterPower = 0;
+                int monsterPower = monstermodifire;
                 int allyPower = 0;
                 for (int i = 0; i < monsterList.size(); i++) {
                     monsterPower += monsterList.get(i).level;
@@ -252,11 +263,11 @@ public class BackgroundSystem {
                     allyPower += allyList.get(i).pow;
                 }
 
-                if ((allyPower >= monsterPower && playerList.get(backgroundSystem.turn).playerClass != null && playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower)) {
+                if (((allyPower >= monsterPower && playerList.get(backgroundSystem.turn).playerClass != null && playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower||forcestop2==true))&&!forcestop1) {
 
 //treasure draw
                 }
-                if ((monsterPower >= allyPower&&playerList.get(backgroundSystem.turn).playerClass != null && !playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior"))||monsterPower > allyPower) {
+                if (((monsterPower >= allyPower&&playerList.get(backgroundSystem.turn).playerClass != null && !playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior"))||monsterPower > allyPower)&&!forcestop1||!forcestop2) {
                     // go gennem bad stuff
                     for (int j = 0; j < allyList.size(); j++) {
 
@@ -286,8 +297,8 @@ public class BackgroundSystem {
 
 
                 }
-
-
+                forcestop1=false;
+                forcestop2=false;
                 allyList.clear();
                 battlefase = false;
                 monsterfasedone = true;
@@ -311,6 +322,13 @@ public class BackgroundSystem {
                         }
                     }
                 }
+            }
+        }
+    }
+    void treasuredraw(ArrayList<Players> allyList,Deck treasure,ArrayList<Players> playerList,Deck treasuredisc, Deck roomDisc){
+        for (int i = 0; i < allyList.size() ; i++) {
+            for (int j = 0; j < allyList.get(i).treasures; j++) {
+                treasure.drawcard(allyList.get(i).hand,2,playerList,treasuredisc,roomDisc,allyList.get(i));
             }
         }
     }

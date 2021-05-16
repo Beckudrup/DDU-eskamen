@@ -106,13 +106,20 @@ public class Deck {
         p.image(backside, x, y, w, h);
     }
 
-    void resuffle(Deck disc) {
-        if (cardList.size() == 0)
+    void resuffle(Deck disc,int type) {
+
+        if (cardList.size() == 0&&type==0){
             while (disc.cardList.size() > 0) {
                 Card card = disc.cardList.get(disc.cardList.size() - 1);
                 addcard(card);
                 disc.cardList.remove(disc.cardList.size() - 1);
-            }
+            }}
+        if (type==1){
+            while (disc.cardList.size() > 0) {
+                Card card = disc.cardList.get(disc.cardList.size() - 1);
+                addcard(card);
+                disc.cardList.remove(disc.cardList.size() - 1);
+            }}
 
     }
 

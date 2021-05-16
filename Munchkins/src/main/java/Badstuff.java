@@ -6,6 +6,7 @@ public class Badstuff {
     PApplet p;
     boolean die = false;
 
+
     Badstuff(PApplet p) {
         this.p = p;
     }

@@ -19,6 +19,7 @@ public class Players {
     int RunAway;
     int playernr;
     int powChange;
+    int treasures;
     Card head;
     Card card;
     Card body;
@@ -275,7 +276,7 @@ public class Players {
                                                                 card.name = hand.get(i).name;
                                                                 once = true;
                                                                 hand.remove(i);
-                                                                roombuffs(treasure);
+                                                                roombuffs(treasure,backgroundSystem);
                                                                 if (card != null) {
                                                                     if (card.numb == 0) {
                                                                         roomdisc.addcard(card);
@@ -548,14 +549,16 @@ public class Players {
             if (playable.name.equalsIgnoreCase("Hoard!")) {
                 //Draw three treasures
                 //PApplet.println(1);
-                if (treasure.cardList.size() > 3) {
+                if (treasure.cardList.size() < 3) {
+                    treasure.resuffle(treasureDisc,1);
+                }
                     for (int i = 0; i < 3; i++) {
                         int random = (int) p.random(treasure.cardList.size());
                         Card drawncard = treasure.cardList.get(random);
                         hand.add(drawncard);
                         treasure.cardList.remove(random);
                     }
-                }
+
             }
             if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
                 //Go through the discards to find any one card you want. Take that card and discard this one.
@@ -614,18 +617,19 @@ public class Players {
                 }
 
             }
-            if (usable.name.equalsIgnoreCase("Instant wall")||usable.name.equalsIgnoreCase("Invisibility Potion")||usable.name.equalsIgnoreCase("Friendship potion")){
+            if ((usable.name.equalsIgnoreCase("Instant wall")||usable.name.equalsIgnoreCase("Invisibility Potion")||usable.name.equalsIgnoreCase("Friendship potion"))&&backgroundSystem.battlefase){
                 //Fjern monster ingen treasure ingen level
-                backgroundSystem.battlefase=false;
+
+                    buttList.get(buttList.size()-1).tryk=true;
+                    backgroundSystem.forcestop1 = true;
+
+
+
             }
-            if (usable.name.equalsIgnoreCase("Magic Lamp")|| usable.name.equalsIgnoreCase("Pollymorph Potion")) {
+            if ((usable.name.equalsIgnoreCase("Magic Lamp")|| usable.name.equalsIgnoreCase("Pollymorph Potion"))&&backgroundSystem.battlefase) {
                 //Fjern monster men få treasure INTET LEVEL
-                while (treasure.allowedTreasure > 0) {
-                    int treasures = (int) p.random(treasure.cardList.size());
-                    Card loot = treasure.cardList.get(treasures);
-                    hand.add(loot);
-                    treasure.cardList.remove(treasures);
-                }
+
+                backgroundSystem.forcestop2=true;
             }
 
         }
@@ -633,17 +637,17 @@ public class Players {
 
     }
 
-    void roombuffs(Deck treasure){
+    void roombuffs(Deck treasure,BackgroundSystem backgroundSystem){
         if (card.name.equalsIgnoreCase("baby")){
-            monster.level-=5;
+            backgroundSystem.monstermodifire-=5;
             treasure.allowedTreasure-=1;
         }
         if (card.name.equalsIgnoreCase("Enraged")||card.name.equalsIgnoreCase("Intelligent")){
-            monster.level+=5;
+            backgroundSystem.monstermodifire+=5;
             treasure.allowedTreasure+=1;
         }
         if (card.name.equalsIgnoreCase("humongous")|| card.name.equalsIgnoreCase("ancient")){
-            monster.level+=10;
+            backgroundSystem.monstermodifire+=10;
             treasure.allowedTreasure+=2;
         }
         once=false;

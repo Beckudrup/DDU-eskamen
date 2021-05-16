@@ -126,8 +126,8 @@ public class Main extends PApplet {
                     backgroundSystem.battlefase(buttList, playerList, backgroundSystem, monsterlist, roomdisc, treasiredisc, dice, room, treasure);
                     backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList, roomdisc, treasiredisc,room);
                     //println(backgroundSystem.turn);
-                    room.resuffle(roomdisc);
-                    treasure.resuffle(treasiredisc);
+                    room.resuffle(roomdisc,0);
+                    treasure.resuffle(treasiredisc,0);
                     for (int i = 0; i < playerList.size(); i++) {
                         for (int j = 0; j < playerList.get(i).hand.size(); j++) {
                             if (playerList.get(i).hand.get(j).hovering == true) {
