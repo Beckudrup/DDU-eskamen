@@ -27,6 +27,7 @@ public class Players {
     Card utility;
     Card monster;
     Card playable;
+    Card usable;
     Card playerClass;
     Card playerClass2;
     Card race;
@@ -172,7 +173,7 @@ public class Players {
                                                         playable.name = hand.get(i).name;
                                                         once = true;
                                                         hand.remove(i);
-                                                        playables(backgroundSystem, treasure,room,treasuredisc, playerList, buttList);
+                                                        playables(backgroundSystem, treasure, room, treasuredisc, playerList);
                                                         if (playable != null) {
                                                             if (playable.numb == 0) {
                                                                 roomdisc.addcard(playable);
@@ -182,17 +183,35 @@ public class Players {
                                                             }
                                                         }
                                                     } else {
-                                                        if (hand.get(i).numb == 0) {
+                                                        if (hand.get(i).type.equalsIgnoreCase("Usable")) {
+
                                                             hand.get(i).hovering = false;
-                                                            Card card = hand.get(i);
-                                                            roomdisc.addcard(card);
+                                                            usable = hand.get(i);
+                                                            usable.name = hand.get(i).name;
+                                                            once = true;
                                                             hand.remove(i);
+                                                            usable(buttList,treasure,treasuredisc,roomdisc, playerList, backgroundSystem);
+                                                            if (usable != null) {
+                                                                if (usable.numb == 0) {
+                                                                    roomdisc.addcard(usable);
+                                                                } else {
+                                                                    if (usable.numb == 1)
+                                                                        treasuredisc.addcard(usable);
+                                                                }
+                                                            }
                                                         } else {
-                                                            if (hand.get(i).numb == 1) {
+                                                            if (hand.get(i).numb == 0) {
                                                                 hand.get(i).hovering = false;
                                                                 Card card = hand.get(i);
-                                                                treasuredisc.addcard(card);
+                                                                roomdisc.addcard(card);
                                                                 hand.remove(i);
+                                                            } else {
+                                                                if (hand.get(i).numb == 1) {
+                                                                    hand.get(i).hovering = false;
+                                                                    Card card = hand.get(i);
+                                                                    treasuredisc.addcard(card);
+                                                                    hand.remove(i);
+                                                                }
                                                             }
                                                         }
                                                     }
@@ -204,8 +223,8 @@ public class Players {
                             }
                         }
                     }
-                }
 
+                }
             }
         }
     }
@@ -342,7 +361,7 @@ public class Players {
 
     }
 
-    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room, Deck treasureDisc, ArrayList<Players> playerList, ArrayList<Button> buttList) {
+    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room, Deck treasureDisc, ArrayList<Players> playerList) {
         //if (!backgroundSystem.battlefase) {
         if (playable != null && once) {
             if (level <= 8) {
@@ -471,11 +490,56 @@ public class Players {
                 }
 
             }
-            if (backgroundSystem.battlefase) {
 
-            }
         }
         once = false;
+    }
+
+    void usable(ArrayList<Button> buttList, Deck treasure, Deck treasuredisc, Deck roomdisc,ArrayList<Players> playerList, BackgroundSystem backgroundSystem ){
+        if (backgroundSystem.battlefase) {
+            if (usable.name.equalsIgnoreCase("Potion of Idiotic Bravery") || usable.name.equalsIgnoreCase("Nasty-tasting sports drink") || usable.name.equalsIgnoreCase("Potion of halitosis") || usable.name.equalsIgnoreCase("Sleep Potion")) {
+                buttList.add(new Button(p, 200, 500, 200, 100, "Players"));
+                buttList.add(new Button(p, 200, 625, 200, 100, "Monsters"));
+                //monster.level += 2;
+
+            }
+            if (usable.name.equalsIgnoreCase("Cotion of Ponfusion") || usable.name.equalsIgnoreCase("Freezing explosive potion") || usable.name.equalsIgnoreCase("Flaming poison potion")) {
+                buttList.add(new Button(p, 200, 500, 200, 100, "Players"));
+                buttList.add(new Button(p, 200, 625, 200, 100, "Monsters"));
+               // monster.level += 3;
+
+            }
+            if (usable.name.equalsIgnoreCase("Magic missile") || usable.name.equalsIgnoreCase("Electric radioactive acid potion") || usable.name.equalsIgnoreCase("Pretty Balloons")) {
+                buttList.add(new Button(p, 200, 500, 200, 100, "Players"));
+                buttList.add(new Button(p, 200, 625, 200, 100, "Monsters"));
+              //  powChange += 5;
+               // monster.level += 5;
+            }
+            if (usable.name.equalsIgnoreCase("Doppelganger")) {
+                powChange = pow * 2;
+            }
+            if (usable.name.equalsIgnoreCase("Yuppie water")) {
+                for (int i = 0; i < 4; i++) {
+                    if (playerList.get(i).race.name.equalsIgnoreCase("Elf") || playerList.get(i).race2.name.equalsIgnoreCase("Elf")) {
+                        playerList.get(i).powChange += 2;
+                    }
+                }
+
+            }
+            if (usable.name.equalsIgnoreCase("Instant wall")||usable.name.equalsIgnoreCase("Invisibility Potion")||usable.name.equalsIgnoreCase("Friendship potion")){
+                backgroundSystem.battlefase=false;
+            }
+            if (usable.name.equalsIgnoreCase("Magic Lamp")|| usable.name.equalsIgnoreCase("Pollymorph Potion")) {
+                while (treasure.allowedTreasure > 0) {
+                    int treasures = (int) p.random(treasure.cardList.size());
+                    Card loot = treasure.cardList.get(treasures);
+                    hand.add(loot);
+                    treasure.cardList.remove(treasures);
+                }
+            }
+        }
+        once=false;
+
     }
 
     void raceFunction() {
