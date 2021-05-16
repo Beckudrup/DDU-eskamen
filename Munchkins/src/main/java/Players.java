@@ -46,7 +46,7 @@ public class Players {
         showhand = new Button(p, 10, 10, 130, 50, "Show hand");
     }
 
-    void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList) {
+    void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList, Deck treasure, Deck room, ArrayList<Players> playerList, ArrayList<Button> buttList) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
                 if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
@@ -172,7 +172,7 @@ public class Players {
                                                         playable.name = hand.get(i).name;
                                                         once = true;
                                                         hand.remove(i);
-                                                        playables(backgroundSystem);
+                                                        playables(backgroundSystem, treasure,room,treasuredisc, playerList, buttList);
                                                         if (playable != null) {
                                                             if (playable.numb == 0) {
                                                                 roomdisc.addcard(playable);
@@ -342,13 +342,20 @@ public class Players {
 
     }
 
-    void playables(BackgroundSystem backgroundSystem) {
+    void playables(BackgroundSystem backgroundSystem, Deck treasure, Deck room, Deck treasureDisc, ArrayList<Players> playerList, ArrayList<Button> buttList) {
         //if (!backgroundSystem.battlefase) {
         if (playable != null && once) {
-            if (level <= 8) {
+            if (level <= 9) {
                 if (playable.name.equalsIgnoreCase("Hoard!")) {
                     //Draw three treasures
                     //PApplet.println(1);
+                    for (int i = 0; i < 3; i++) {
+                        int random = (int) p.random(treasure.cardList.size());
+                        Card drawncard = treasure.cardList.get(random);
+                        hand.add(drawncard);
+                        treasure.cardList.remove(random);
+                    }
+
                 }
                 if (playable.name.equalsIgnoreCase("Invoke obscure rules")) {
                     level = level + 1;
@@ -360,7 +367,7 @@ public class Players {
                 }
                 if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
                     level += 1;
-                    // PApplet.println(3);
+                     PApplet.println("James beyleygh");
                 }
                 if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
                     level += 1;
@@ -381,18 +388,65 @@ public class Players {
                 }
                 //If hireling is on the bord utility.name.equalsIgnoreCase("Hireling")
                 if (playable.name.equalsIgnoreCase("Kill the hireling")) {
-                    level += 1;
-                    //     PApplet.println(8);
+                    try {
+                        for (int i = 0; i < 4; i++) {
+                            if (playerList.get(i).utility.name.equalsIgnoreCase("Hireling")) {
+                                level += 1;
+                                treasureDisc.addcard(utility);
+                                utility = null;
+                            }
+                        }
+
+                    }
+                    catch (Exception y){
+                        for (int i = 0; i <4 ; i++) {
+                            if (playerList.get(i).utility==null|| !playerList.get(i).utility.name.equalsIgnoreCase("Hireling")){
+
+                            }
+                        }
+                    }
                 }
+
+
+                //     PApplet.println(8);
+
+
                 if (playable.name.equalsIgnoreCase("Steal a level")) {
                     //Selected person level = level -1;
                     level += 1;
-                    //     PApplet.println(9);
+                    int tmpLevel = level;
+                    Players tmpSpiller = null;
+                    for (int i = 0; i <4 ; i++) {
+                        if (playerList.get(i).level >tmpLevel){
+                            tmpSpiller = playerList.get(i);
+                            tmpLevel=tmpSpiller.level;
+
+                        }
+                    }
+                    try {
+                        tmpSpiller.level--;
+                        if (tmpSpiller.level<1)
+                            tmpSpiller.level=1;
+                    }
+                    catch (Exception x){
+                        tmpSpiller=playerList.get((int)p.random(4));
+                        tmpSpiller.level--;
+                        if (tmpSpiller.level<1)
+                            tmpSpiller.level=1;
+                    }
+
+               //     PApplet.println(9);
                 }
             }
+
             if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
                 //Go through the discards to find any one card you want. Take that card and discard this one.
+
+                Card drawncard = treasureDisc.cardList.get(treasureDisc.cardList.size()-1);
+                hand.add(drawncard);
+                treasureDisc.cardList.remove(treasureDisc.cardList.size()-1);
             }
+
             if (playerClass == null || !playerClass.name.equalsIgnoreCase("Cleric")) {
                 if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
                     if (level < /*other players level*/ 10) {
@@ -400,6 +454,16 @@ public class Players {
                     }
                 }
 
+            }
+            
+            if (backgroundSystem.battlefase){
+                if (playable.name.equalsIgnoreCase("Freezing Explosive Potion")){
+                    buttList.add(new Button(p, 200, 500, 75, 30, "Player"));
+                    buttList.add(new Button(p, 200, 600, 100, 30, "Monster"));
+                    System.out.println("Jeg er fan af Jamal");
+
+
+                }
             }
         }
         once = false;
@@ -414,7 +478,7 @@ public class Players {
             }
             if (race.name.equalsIgnoreCase("Dwarf")) {
                 //Carry any number of big weapons;
-                //Have 6 cards in hand (instead og 5);
+                //Have 6 cards in hand (instead og 5); (er lavet i end turn)
             }
             if (race.name.equalsIgnoreCase("Halfling")) {
                 //You may sell one item each turn for double price;

@@ -216,7 +216,7 @@ public class Main extends PApplet {
                 roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players);
                 treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players);
                 for (int i = 0; i < playerList.size(); i++) {
-                    playerList.get(i).selectCard(roomdisc, treasiredisc, backgroundSystem, monsterlist);
+                    playerList.get(i).selectCard(roomdisc, treasiredisc, backgroundSystem, monsterlist, treasure, room, playerList, buttList);
                     playerList.get(i).showhand.registerClick2(mouseX, mouseY);
                 }
             }

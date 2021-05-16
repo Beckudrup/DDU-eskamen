@@ -46,7 +46,6 @@ public class BackgroundSystem {
             }
 
 
-            if (player.race == null ||player.hand.size() >=6 && !player.race.name.equalsIgnoreCase("Dwarf") && !player.race2.name.equalsIgnoreCase("Dwarf")/* || player.race.name.equalsIgnoreCase("Dwarf") && player.hand.size() >=7 || player.race2.name.equalsIgnoreCase("Dwarf") && player.hand.size() >=7*/){
 
                 //find spiller med lavest level
                 int tmpLevel = player.level;
@@ -58,26 +57,51 @@ public class BackgroundSystem {
 
                     }
                 }
-                //hvis man er lavest - discard cards
-                //ellers giv til lavest level
-                while (player.hand.size() > 5) {
-                    int random = (int) p.random(player.hand.size());
-                    Card card = player.hand.get(random);
-                    player.hand.remove(random);
-                    if (tmpSpiller != player) {
-                        tmpSpiller.hand.add(card);
-                    } else {
-                        if (card.numb == 0) {
-                            roomdisc.addcard(card);
+                
+                    //hvis man er lavest - discard cards
+                    //ellers giv til lavest level
+            try {
+                if (player.race == null || player.race.name.equalsIgnoreCase("Elf") || player.race.name.equalsIgnoreCase("Halfling") || player.race.name.equalsIgnoreCase("Elf") && player.race2.name.equalsIgnoreCase("Halfling") || player.race2.name.equalsIgnoreCase("Elf") && player.race.name.equalsIgnoreCase("Halfling")) {
+                    while (player.hand.size() > 5) {
+                        int random = (int) p.random(player.hand.size());
+                        Card card = player.hand.get(random);
+                        player.hand.remove(random);
+                        if (tmpSpiller != player) {
+                            tmpSpiller.hand.add(card);
                         } else {
-                            if (card.numb == 1) {
-                                treasuredisc.addcard(card);
-                            }
+                            if (card.numb == 0) {
+                                roomdisc.addcard(card);
+                            } else {
+                                if (card.numb == 1) {
+                                    treasuredisc.addcard(card);
+                                }
 
+
+                            }
                         }
                     }
                 }
             }
+                catch (Exception e) {
+                        while (player.hand.size() > 6) {
+                                int random = (int) p.random(player.hand.size());
+                                Card card = player.hand.get(random);
+                                player.hand.remove(random);
+                                if (tmpSpiller != player) {
+                                    tmpSpiller.hand.add(card);
+                                } else {
+                                if (card.numb == 0) {
+                                    roomdisc.addcard(card);
+                                } else {
+                                    if (card.numb == 1) {
+                                        treasuredisc.addcard(card);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
             room.fix=true;
             room.firstDraw=true;
             monsterfasedone = false;
@@ -241,6 +265,9 @@ public class BackgroundSystem {
 
     for (int i = 0; i < monsterList.size(); i++) {
         int roll = die.trowDie(7);
+        if (monsterList.get(i).badStuff.equalsIgnoreCase("NULL")){
+            System.out.println("PLANTE");
+        }
         if(monsterList.get(i).badStuff.equalsIgnoreCase("- 1 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 3 level")||monsterList.get(i).badStuff.equalsIgnoreCase("- 2 level -3 if elf")||(monsterList.get(i).badStuff.equalsIgnoreCase("- class if no -3lvl")&&playerList.get(backgroundSystem.turn).playerClass==null)||monsterList.get(i).badStuff.equalsIgnoreCase("- head and level - 1")||monsterList.get(i).badStuff.equalsIgnoreCase("set level = to lovest player")||(monsterList.get(i).badStuff.equalsIgnoreCase("Roll die of less than 2 death else lose level = die")&&roll>2)||monsterList.get(i).badStuff.equalsIgnoreCase("Player level = 1")){
             badstuff.badstufflevel(playerList.get(j),playerList,roll,monsterList.get(i));
         }
