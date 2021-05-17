@@ -13,6 +13,7 @@ public class Players {
     int feetpow;
     int handpow;
     int hand2pow;
+    int utilitypow;
     int feetRunAway;
     int handRunAway;
     int pow;
@@ -331,6 +332,9 @@ public class Players {
         if (hand1 != null) {
             handpow = (hand1.power);
         }
+        if (utility != null) {
+            utilitypow = (utility.power);
+        }
         if (hand2 != null) {
             hand2pow = (hand2.power);
             handRunAway = (hand2.RunAway);
@@ -345,7 +349,7 @@ public class Players {
             headpow=0;
             feetpow=0;
         }
-            pow = headpow + bodypow + feetpow + handpow + hand2pow + level + powChange;
+            pow = headpow + bodypow + feetpow + handpow + hand2pow + level + utilitypow +powChange;
             // PApplet.println(pow);
 
     }

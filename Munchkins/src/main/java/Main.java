@@ -217,7 +217,7 @@ public class Main extends PApplet {
                     dice.trowDie(7);
 
                 room.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc, roomdisc, players,monsterlist,backgroundSystem);
-                
+
                 for (int i = 0; i < playerList.size(); i++) {
                     playerList.get(i).selectCard(roomdisc, treasiredisc, backgroundSystem, monsterlist, treasure, room, playerList, buttList);
                     playerList.get(i).showhand.registerClick2(mouseX, mouseY);
