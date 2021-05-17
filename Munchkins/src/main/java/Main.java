@@ -87,7 +87,7 @@ public class Main extends PApplet {
 
                 menus.ingame(buttList, imageLoader);
 
-                backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure, treasiredisc, roomdisc, players);
+                backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure, treasiredisc, roomdisc, players,monsterlist,backgroundSystem);
                 // for (int i = 0; i < room.cardList.size(); i++) {
                 //  image(room.cardList.get(i).cards, 20 + i * 70, 200, 60, 100);
                 // }
@@ -216,10 +216,10 @@ public class Main extends PApplet {
                 if (mouseX > dice.posX && mouseX < dice.posX + 50 && mouseY > dice.posY && mouseY < dice.posY + 50)
                     dice.trowDie(7);
 
-                room.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc, roomdisc, players);
-                treasure.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc, roomdisc, players);
-                roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players);
-                treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players);
+                room.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc, roomdisc, players,monsterlist,backgroundSystem);
+                treasure.clicktodraw(backgroundSystem.turn, playerList, 0, treasiredisc, roomdisc, players,monsterlist,backgroundSystem);
+                roomdisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players,monsterlist,backgroundSystem);
+                treasiredisc.clicktodraw(backgroundSystem.turn, playerList, 1, treasiredisc, roomdisc, players,monsterlist,backgroundSystem);
                 for (int i = 0; i < playerList.size(); i++) {
                     playerList.get(i).selectCard(roomdisc, treasiredisc, backgroundSystem, monsterlist, treasure, room, playerList, buttList);
                     playerList.get(i).showhand.registerClick2(mouseX, mouseY);

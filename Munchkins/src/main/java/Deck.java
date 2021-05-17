@@ -25,14 +25,14 @@ public class Deck {
         cardList.add(card);
     }
 
-    void clicktodraw(int turn, ArrayList<Players> playerList, int type, Deck treasuredisc, Deck roomdisc, Players players) {
+    void clicktodraw(int turn, ArrayList<Players> playerList, int type, Deck treasuredisc, Deck roomdisc, Players players,ArrayList<Card> monsterList,BackgroundSystem backgroundSystem) {
         if (p.mouseX > x && p.mouseX < x + w && p.mouseY > y && p.mouseY < y + h) {
-            drawcard(playerList.get(turn).hand, type, playerList, treasuredisc, roomdisc, players);
+            drawcard(playerList.get(turn).hand, type, playerList, treasuredisc, roomdisc, players,monsterList,backgroundSystem);
 
         }
     }
 
-    void drawcard(ArrayList<Card> hand, int type, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc, Players player) {
+    void drawcard(ArrayList<Card> hand, int type, ArrayList<Players> playerList, Deck treasuredisc, Deck roomdisc, Players player,ArrayList<Card> monsterList,BackgroundSystem backgroundSystem) {
         //træk fra ikke discarded decks
         if (cardList.size() > 0 && type == 0 || type == 2) {
             int random = (int) p.random(cardList.size());
@@ -63,7 +63,9 @@ public class Deck {
                     if (drawncard.type.equalsIgnoreCase("Monster")) {
                         //Monster kommer ud på bordet og engager i combat
                         //monsters(drawncard);
-                        hand.add(drawncard);
+                      monsterList.add(drawncard);
+                       backgroundSystem.startofbattlefase=true;
+                       backgroundSystem.battlefase=true;
                         System.out.println("kål");
                     }
                     //hvis man trækker andet (class,race,"spellkort")
@@ -219,8 +221,6 @@ public class Deck {
 
                 if (drawncard.name.equalsIgnoreCase("Curse! Chiken on your head")) {
                     player.chikenonhed = true;
-                    player.curse=drawncard;
-
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose your footgear")) {
                     if(player.feet!=null){
@@ -503,7 +503,7 @@ public class Deck {
                     }
                 }
             }
-            if(!player.chikenonhed)
+
             roomdisc.addcard(drawncard);
             boardDeck.remove(0);
         }

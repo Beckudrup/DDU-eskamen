@@ -132,7 +132,7 @@ public class BackgroundSystem {
         //p.println(treasureinfoList.size(), treasureinfoList.get(treasureinfoList.size() - 1).level, treasureinfoList.get(treasureinfoList.size() - 1).name);
     }
 
-    void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist, Deck treasuredisc, Deck roomdisc, Players players) {
+    void startOfGame(ArrayList<Button> buttList, ArrayList<Players> playerList, ImageLoader im, Deck roomlist, Deck treasurelist, Deck treasuredisc, Deck roomdisc, Players players,ArrayList<Card> monsterList,BackgroundSystem backgroundSystem) {
         if (notDoneYet) {
             for (int i = 0; i < 4; i++) {
                 playerList.add(new Players(p));
@@ -146,9 +146,9 @@ public class BackgroundSystem {
             buttList.add(new Button(p, 1000, 400, 200, 100, "Woman"));
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 2; j++) {
-                    treasurelist.drawcard(playerList.get(i).hand, 2, playerList, treasuredisc, roomdisc, players);
+                    treasurelist.drawcard(playerList.get(i).hand, 2, playerList, treasuredisc, roomdisc, players,monsterList,backgroundSystem);
                     //p.print(treasurelist.cardList.size());
-                    roomlist.drawcard(playerList.get(i).hand, 2, playerList, treasuredisc, roomdisc, players);
+                    roomlist.drawcard(playerList.get(i).hand, 2, playerList, treasuredisc, roomdisc, players,monsterList,backgroundSystem);
                     //p.print(roomlist.cardList.size());
 
                 }
@@ -246,7 +246,7 @@ public class BackgroundSystem {
                 startofbattlefase = false;
             }
 
-            
+
             for (int i = 0; i < 4; i++) {
 
                 if (buttList.get(i + 2).tryk) {
@@ -292,7 +292,7 @@ public class BackgroundSystem {
 
                 if (((allyPower >= monsterPower && playerList.get(backgroundSystem.turn).playerClass != null && playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower || forcestop2 == true)) && !forcestop1) {
 
-                    backgroundSystem.treasuredraw(allyList, treasure, playerList, treasuredisc, roomdisc);
+                    backgroundSystem.treasuredraw(allyList, treasure, playerList, treasuredisc, roomdisc,monsterList,backgroundSystem);
                     for (int i = 0; i < allyList.size(); i++) {
                         if (allyList.get(i) != playerList.get(turn) && (allyList.get(i).race != null && allyList.get(i).race.name.equalsIgnoreCase("elf") || allyList.get(i).race2 != null && allyList.get(i).race2.name.equalsIgnoreCase("elf"))) {
                             for (int j = 0; j < monsterList.size(); j++) {
@@ -316,6 +316,7 @@ public class BackgroundSystem {
                         int runningaway = (int) p.random(7);
                         if (allyList.get(j).chikenonhed) {
                             runningaway = (int) p.random(7) - 1;
+                            allyList.get(j).chikenonhed=false;
                         }
                         if (runningaway >= 5 - allyList.get(j).runAway) {
                             iRan = true;
@@ -348,7 +349,7 @@ public class BackgroundSystem {
                                     badstuff.badstufflevel(playerList.get(j), playerList, roll, monsterList.get(i));
                                 }
                                 if (monsterList.get(i).badStuff.equalsIgnoreCase("death") || (monsterList.get(i).badStuff.equalsIgnoreCase("death if wizard instead lose class") && (allyList.get(j).playerClass == null || !allyList.get(j).playerClass.name.equalsIgnoreCase("wizard"))) || (monsterList.get(i).badStuff.equalsIgnoreCase("Roll die if less than 2 death else lose level = die") && roll < 3)) {
-                                    badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasuredisc);
+                                    badstuff.badstuffdeath(playerList.get(backgroundSystem.turn), room, treasure, playerList, backgroundSystem, roomdisc, treasuredisc,monsterList);
                                 }
                                 if (monsterList.get(i).badStuff.equalsIgnoreCase("roll die - treasure = number on die") || monsterList.get(i).badStuff.equalsIgnoreCase("- Bigitem") || monsterList.get(i).badStuff.equalsIgnoreCase("All armor") || monsterList.get(i).badStuff.equalsIgnoreCase("Footgear") || monsterList.get(i).badStuff.equalsIgnoreCase("- 2 items, players choose") || monsterList.get(i).badStuff.equalsIgnoreCase("- class and race") || (monsterList.get(i).badStuff.equalsIgnoreCase("- class if no -3lvl") && allyList.get(j).playerClass != null) || monsterList.get(i).badStuff.equalsIgnoreCase("highlvl take item") || monsterList.get(i).badStuff.equalsIgnoreCase("- headgear") || monsterList.get(i).badStuff.equalsIgnoreCase("-1000g of items") || (monsterList.get(i).badStuff.equalsIgnoreCase("death if wizard instead lose class") && (allyList.get(i).playerClass.name.equalsIgnoreCase("wizard") || allyList.get(i).playerClass2.name.equalsIgnoreCase("wizard"))) || monsterList.get(i).badStuff.equalsIgnoreCase("lose all items and discard hand") || monsterList.get(i).badStuff.equalsIgnoreCase("players take 1 treasure from you board or hand")) {
                                     badstuff.badstuffloseitem(monsterList.get(i), allyList.get(j), playerList, die, roomdisc, treasuredisc, roll);
@@ -369,7 +370,7 @@ public class BackgroundSystem {
                     monstermodifire=0;
                     playerList.get(backgroundSystem.turn).powChange = 0;
                     playerList.get(backgroundSystem.turn).mirror = false;
-                    for (int i = 0; i < 4; i++) {
+                    for (int i = 0; i < 5; i++) {
                         buttList.remove(buttList.size() - 1);
                     }
                     while (monsterList.size() > 0) {
@@ -391,10 +392,10 @@ public class BackgroundSystem {
             }
         }
 
-    void treasuredraw(ArrayList<Players> allyList,Deck treasure,ArrayList<Players> playerList,Deck treasuredisc, Deck roomDisc){
+    void treasuredraw(ArrayList<Players> allyList,Deck treasure,ArrayList<Players> playerList,Deck treasuredisc, Deck roomDisc,ArrayList<Card> monsterList,BackgroundSystem backgroundSystem){
         for (int i = 0; i < allyList.size() ; i++) {
 
-                treasure.drawcard(allyList.get(i).hand,2,playerList,treasuredisc,roomDisc,allyList.get(i));
+                treasure.drawcard(allyList.get(i).hand,2,playerList,treasuredisc,roomDisc,allyList.get(i),monsterList,backgroundSystem);
 
         }
     }

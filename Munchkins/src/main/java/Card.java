@@ -21,7 +21,7 @@ public class Card {
     String lable;
 
 
-    Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name, int RunAway, int gold, int xp, int xp2, int treasures,String badStuff,int level,String lable) {
+    Card(PApplet p, String imglink, int numb, String type, int power, int power2, String name, int RunAway, int gold, int xp, int xp2, int treasures,String badStuff,int level, String lable) {
 
 
         this.p = p;

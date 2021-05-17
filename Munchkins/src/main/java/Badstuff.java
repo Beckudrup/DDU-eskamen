@@ -94,7 +94,7 @@ public class Badstuff {
         System.out.println("badstuffloselevel");
     }
 
-    void badstuffdeath(Players player, Deck roomlist, Deck treasurelist, ArrayList<Players> playerList, BackgroundSystem backgroundSystem, Deck roomdiscard, Deck treasurediscard) {
+    void badstuffdeath(Players player, Deck roomlist, Deck treasurelist, ArrayList<Players> playerList, BackgroundSystem backgroundSystem, Deck roomdiscard, Deck treasurediscard,ArrayList<Card> monsterList) {
 
             while (player.hand.size() > 0) {
                 if (player.hand.get(player.hand.size() - 1).numb == 0) {
@@ -112,8 +112,8 @@ public class Badstuff {
             if (player.hand.size() == 0) {
 
                     for (int j = 0; j < 2; j++) {
-                        treasurelist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player);
-                        roomlist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player);
+                        treasurelist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player,monsterList,backgroundSystem);
+                        roomlist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player,monsterList,backgroundSystem);
 
                     }
 
