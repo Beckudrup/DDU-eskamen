@@ -165,12 +165,56 @@ public class Deck {
 
                 if (drawncard.name.equalsIgnoreCase("Truly obnoxious curse!")) {
 //kig iggennem alle kort og fjern største bonus
+                    if (player.hand1==null) {
+                        if (player.head == null) {
+                            if (player.feet == null) {
+                                if (player.hand2==null) {
+                                    if (player.body==null){
+                                        System.out.println("you got lucky");
+                                    }else {
+                                        treasuredisc.addcard(player.body);
+                                        player.body = null;
+                                    }
+
+                                }else {
+                                    treasuredisc.addcard(player.hand2);
+                                    player.hand2 = null;
+                                }
+
+
+                            } else{
+                                treasuredisc.addcard(player.feet);
+                                player.feet = null;
+
+                        }
+
+                        } else {
+                            treasuredisc.addcard(player.head);
+                            player.head = null;
+
+                        }
+                        }else{
+                            if (player.hand1 != null) {
+                                treasuredisc.addcard(player.hand1);
+                                player.hand1 = null;
+                            }
+                        }
+
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 big item")) {
-
+                    if(player.hand1!=null){
+                        treasuredisc.addcard(player.hand1);
+                        player.hand1 = null;
+                    }
                 }
                 if (drawncard.name.equalsIgnoreCase("Curse! Income tax")) {
 // discard 1  item at random other people discard 1
+                    for (int i = 0; i <4 ; i++) {
+                        playerList.get(i).level-=1;
+                        if (playerList.get(i).level<=0){
+                            playerList.get(i).level=1;
+                        }
+                    }
                 }
 
                 if (drawncard.name.equalsIgnoreCase("Curse! Chiken on your head")) {
@@ -187,6 +231,10 @@ public class Deck {
 
                 if (drawncard.name.equalsIgnoreCase("Curse! Lose 1 small item")) {
 // 1 item der ikke er big
+                    if(player.hand1!=null){
+                        treasuredisc.addcard(player.hand1);
+                        player.hand1 = null;
+                    }
                 }
 
 

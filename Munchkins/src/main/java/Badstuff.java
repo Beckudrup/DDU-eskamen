@@ -18,11 +18,12 @@ public class Badstuff {
                 Card card = player.hand.get(player.hand.size() - 1);
                 roomdiscard.addcard(card);
                 player.hand.remove(player.hand.size() - 1);
-            }
-            if (player.hand.get(player.hand.size() - 1).numb == 1) {
-                Card card = player.hand.get(player.hand.size() - 1);
-                treasurediscard.addcard(card);
-                player.hand.remove(player.hand.size() - 1);
+            } else {
+                if (player.hand.get(player.hand.size() - 1).numb == 1) {
+                    Card card = player.hand.get(player.hand.size() - 1);
+                    treasurediscard.addcard(card);
+                    player.hand.remove(player.hand.size() - 1);
+                }
             }
         }
         System.out.println("badstuffhand");

@@ -33,7 +33,6 @@ public class Players {
     Card playerClass2;
     Card race;
     Card race2;
-    Card curse;
     Button showhand;
     boolean big;
     boolean wanderingMonster;
@@ -275,30 +274,33 @@ public class Players {
                                                                 card.name = hand.get(i).name;
                                                                 once = true;
                                                                 hand.remove(i);
-                                                                roombuffs(treasure,backgroundSystem);
+                                                                roombuffs(treasure, backgroundSystem);
                                                                 if (card != null) {
                                                                     if (card.numb == 0) {
                                                                         roomdisc.addcard(card);
                                                                     }
                                                                 }
-                                                            } else {
-                                                                if (hand.get(i).numb == 0) {
-                                                                    hand.get(i).hovering = false;
-                                                                    Card card = hand.get(i);
-                                                                    roomdisc.addcard(card);
-                                                                    hand.remove(i);
+
+
                                                                 } else {
-                                                                    if (hand.get(i).numb == 1) {
+                                                                    if (hand.get(i).numb == 0) {
                                                                         hand.get(i).hovering = false;
                                                                         Card card = hand.get(i);
-                                                                        treasuredisc.addcard(card);
+                                                                        roomdisc.addcard(card);
                                                                         hand.remove(i);
+                                                                    } else {
+                                                                        if (hand.get(i).numb == 1) {
+                                                                            hand.get(i).hovering = false;
+                                                                            Card card = hand.get(i);
+                                                                            treasuredisc.addcard(card);
+                                                                            hand.remove(i);
+                                                                        }
                                                                     }
                                                                 }
                                                             }
                                                         }
                                                     }
-                                                }
+
                                             }
                                         }
                                     }
@@ -497,7 +499,7 @@ public class Players {
                // monster.level += 3;
 
             }
-            if (usable.name.equalsIgnoreCase("Magic missile") || usable.name.equalsIgnoreCase("Electric radioactive acid potion") || usable.name.equalsIgnoreCase("Pretty Balloons")) {
+            if (usable.name.equalsIgnoreCase("Magic missile") || usable.name.equalsIgnoreCase("Electric radioactive acid potion") || usable.name.equalsIgnoreCase("Pretty Ballons")) {
                 //giv plus 5 til spiller siden eller monster siden i en combat
 
 
