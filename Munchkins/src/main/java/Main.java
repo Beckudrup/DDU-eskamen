@@ -102,7 +102,7 @@ public class Main extends PApplet {
                     roomdisc.showDisc(roomdisc);
                     treasiredisc.showDisc(treasiredisc);
                     //boardDeck.showBoardDeck();
-                    dice.display(200, 200);
+                   // dice.display(200, 200);
                     for (int i = 0; i < 4; i++) {
                         playerList.get(i).hoverCard(backgroundSystem);
                         playerList.get(i).displayHand(backgroundSystem.turn);
@@ -111,8 +111,6 @@ public class Main extends PApplet {
                         playerList.get(i).displayequiped(backgroundSystem.turn);
                         playerList.get(i).displayicon(backgroundSystem.turn);
                         playerList.get(i).getPower();
-                        playerList.get(i).raceFunction();
-                        playerList.get(i).classFunction();
                     }
                    /* for (int i = 0; i < room.cardList.size() ; i++) {
                         if(room.cardList.get(i).badStuff!=null){

@@ -230,21 +230,22 @@ public class BackgroundSystem {
             if (startofbattlefase) {
                 allyList.add(playerList.get(backgroundSystem.turn));
 
-                buttList.add(new Button(p, 200, 300, 50, 30, "p1"));
+                buttList.add(new Button(p, 300, 300, 50, 30, "p1"));
 
 
-                buttList.add(new Button(p, 260, 300, 50, 30, "p2"));
+                buttList.add(new Button(p, 400, 300, 50, 30, "p2"));
 
 
-                buttList.add(new Button(p, 200, 400, 50, 30, "p3"));
+                buttList.add(new Button(p, 300, 400, 50, 30, "p3"));
 
 
-                buttList.add(new Button(p, 260, 400, 50, 30, "p4"));
+                buttList.add(new Button(p, 400, 400, 50, 30, "p4"));
 
 
                 buttList.add(new Button(p, 500, 700, 100, 60, "fight/run"));
                 startofbattlefase = false;
             }
+
             //neden under er skrevet forkert fix sometime @batman
             for (int i = 0; i < 4; i++) {
 
@@ -265,7 +266,8 @@ public class BackgroundSystem {
             }
             for (int i = 0; i < allyList.size(); i++) {
                 int temp = allyList.get(i).playernr + 1;
-                p.text("Allie: " + temp, 1200, 700 + i * 30);
+                p.fill(255);
+                p.text("Ally: P" + temp, 500, 300 + i * 30);
             }
             int allypower = 0;
             for (int i = 0; i < allyList.size(); i++) {
@@ -275,8 +277,9 @@ public class BackgroundSystem {
             for (int i = 0; i < monsterList.size(); i++) {
                 monsterpower += monsterList.get(i).level;
             }
-            p.text("ally power: " + allypower, 1500, 600);
-            p.text("monster power: " + monsterpower, 1500, 700);
+            p.text("ally power: " + allypower, 310, 600);
+            p.text("monster power: " + monsterpower, 310, 630);
+            p.text("Add allies",310,260);
             if (buttList.get(buttList.size() - 1).tryk == true) {
                 int monsterPower = monstermodifire;
                 int allyPower = 0;

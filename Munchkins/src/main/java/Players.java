@@ -655,7 +655,7 @@ public class Players {
 
 
 
-    
+
 
     void changeButtonPos(BackgroundSystem backgroundSystem) {
         if (showhand.tryk == true) {
