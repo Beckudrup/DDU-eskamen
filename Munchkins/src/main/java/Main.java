@@ -114,9 +114,9 @@ public class Main extends PApplet {
                             System.out.println(room.cardList.get(i).badStuff);
                         }
                     }*/
-                    for (int i = 0; i < room.cardList.size() ; i++) {
-                        System.out.println(room.cardList.get(i).lable);
-                    }
+                    /*for (int i = 0; i < treasure.cardList.size() ; i++) {
+                        System.out.println(treasure.cardList.get(i).lable);
+                    }*/
 
                     room.displayBackside();
                     treasure.displayBackside();
