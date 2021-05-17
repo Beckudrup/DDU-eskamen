@@ -16,7 +16,7 @@ public class Players {
     int feetRunAway;
     int handRunAway;
     int pow;
-    int RunAway;
+    int runAway;
     int playernr;
     int powChange;
     int treasures;
@@ -432,8 +432,10 @@ public class Players {
             hand2pow = (hand2.power);
             handRunAway = (hand2.RunAway);
         }
-        if (feet != null && hand2 != null)
-            RunAway = (handRunAway + feetRunAway);
+
+            runAway = (handRunAway + feetRunAway);
+        if(race!=null&&race.name.equalsIgnoreCase("elf")||race2!=null&&race2.name.equalsIgnoreCase("elf"))
+            runAway +=1;
         if(mirror){
             handpow=0;
             hand2pow=0;
@@ -651,23 +653,7 @@ public class Players {
         once=false;
     }
 
-    void raceFunction() {
-        if (race != null) {
-            if (race.name.equalsIgnoreCase("Elf")) {
-                //runAway + 1;
-                //p.println("Run Away = 1");
-                //If you help kill a monster +1 level, for each killed;
-            }
-            if (race.name.equalsIgnoreCase("Dwarf")) {
-                //Carry any number of big weapons;
-                //Have 6 cards in hand (instead og 5); (er lavet i end turn)
-            }
-            if (race.name.equalsIgnoreCase("Halfling")) {
-                //You may sell one item each turn for double price;
-                //If you fail your initial Run Away roll, you may discard a card and try once more;
-            }
-        }
-    }
+
 
     void classFunction() {
         if (playerClass != null) {
