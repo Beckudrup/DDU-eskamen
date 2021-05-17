@@ -19,7 +19,6 @@ public class Players {
     int runAway;
     int playernr;
     int powChange;
-    int treasures;
     Card head;
     Card card;
     Card body;
