@@ -655,30 +655,7 @@ public class Players {
 
 
 
-    void classFunction() {
-        if (playerClass != null) {
-            //This if statement is only for player one;
-            if (p.mouseX > 440 && p.mouseX < 440 + 60 && p.mouseY > 800 && p.mouseY < 800 + 100) {
-                if (playerClass.name.equalsIgnoreCase("Thief")) {
-                    //You may discard a card to backstab another player (-2 in combat). You may do this only once per victim per combat, but if two or more players are fighting a monster together, you may backstab each of them;
-                    //You may discard a card to try to steal a small item carried by another player. Roll a die; 4 or more succeeds. Otherwise, you get whacked and lose a level;
-                    //p.println((int) p.random(1, 7));
-                }
-                if (playerClass.name.equalsIgnoreCase("Cleric")) {
-                    //In draw-face, you may instead take some or all top of the appropriate discard pile. You must discard one card from your hand for each card drawn;
-                    //Against undead creatures
-                }
-                if (playerClass.name.equalsIgnoreCase("Wizard")) {
-                    //Either
-                    //Discard up to 3 cards after rolling a Run Away die. Each discard give +1 to Run Away;
-                    //You may discard you whole hand (minimum 3) to charm a single monster instead of fighting it. Discard the monster and take its treasure, but don't gain levels. If there are other monsters in the combat fight them normally.
-                }
-                if (playerClass.name.equalsIgnoreCase("Warrior")) {
-                    //You may discard up to 3 cards in combat; each one gives you a +1 bonus;
-                    //You win ties in combat.
-                }
-            }
-        }
+    void 
     }
 
     void changeButtonPos(BackgroundSystem backgroundSystem) {
