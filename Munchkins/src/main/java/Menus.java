@@ -20,13 +20,13 @@ public class Menus {
         }
     }
 
-    void ingame(ArrayList<Button> buttList, ImageLoader imageLoader, Board board) {
+    void ingame(ArrayList<Button> buttList, ImageLoader imageLoader) {
         if (notdoneyet == true) {
             buttList.add(new Button(p, 20, 20, 50, 50, "Back"));
             buttList.add(new Button(p, 1600, 500, 100, 50, "end turn"));
             notdoneyet = false;
         }
         p.image(imageLoader.table, 0, 0);
-        board.display();
+
     }
 }

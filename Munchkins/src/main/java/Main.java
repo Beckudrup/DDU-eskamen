@@ -24,7 +24,7 @@ public class Main extends PApplet {
     Menus menus = new Menus(this);
     int screenchange = 0;
     ImageLoader imageLoader = new ImageLoader(this);
-    Board board;
+
     Rules rules = new Rules(this);
     Badstuff badstuff = new Badstuff(this);
     Players players = new Players(this);
@@ -84,9 +84,8 @@ public class Main extends PApplet {
                 menus.mainMenu(buttList, imageLoader);
             }
             if (screenchange == 1) {
-                if (menus.notdoneyet)
-                    board = new Board(this, 4);
-                menus.ingame(buttList, imageLoader, board);
+
+                menus.ingame(buttList, imageLoader);
 
                 backgroundSystem.startOfGame(buttList, playerList, imageLoader, room, treasure, treasiredisc, roomdisc, players);
                 // for (int i = 0; i < room.cardList.size(); i++) {

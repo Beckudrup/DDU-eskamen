@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Badstuff {
     PApplet p;
-    boolean die = false;
+
 
 
     Badstuff(PApplet p) {
