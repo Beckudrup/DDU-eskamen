@@ -246,7 +246,7 @@ public class BackgroundSystem {
                 startofbattlefase = false;
             }
 
-            //neden under er skrevet forkert fix sometime @batman
+            
             for (int i = 0; i < 4; i++) {
 
                 if (buttList.get(i + 2).tryk) {
