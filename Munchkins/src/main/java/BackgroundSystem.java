@@ -362,6 +362,7 @@ public class BackgroundSystem {
                     allyList.clear();
                     battlefase = false;
                     monsterfasedone = true;
+                    monstermodifire=0;
                     playerList.get(backgroundSystem.turn).powChange = 0;
                     playerList.get(backgroundSystem.turn).mirror = false;
                     for (int i = 0; i < 4; i++) {
