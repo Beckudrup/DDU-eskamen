@@ -116,7 +116,7 @@ public class BackgroundSystem {
     void loaddecks(Deck roomList, Deck treasureList, ImageLoader il, ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
         for (int i = 0; i < roominfoList.size(); i++) {
 
-            roomList.addcard(new Card(p, roominfoList.get(i).http, 0, roominfoList.get(i).type, roominfoList.get(i).power, roominfoList.get(i).power2, roominfoList.get(i).name, roominfoList.get(i).RunAway, roominfoList.get(i).gold, roominfoList.get(i).xp, roominfoList.get(i).xp2, roominfoList.get(i).treasures,roominfoList.get(i).badStuff,roominfoList.get(i).level));
+            roomList.addcard(new Card(p, roominfoList.get(i).http, 0, roominfoList.get(i).type, roominfoList.get(i).power, roominfoList.get(i).power2, roominfoList.get(i).name, roominfoList.get(i).RunAway, roominfoList.get(i).gold, roominfoList.get(i).xp, roominfoList.get(i).xp2, roominfoList.get(i).treasures,roominfoList.get(i).badStuff,roominfoList.get(i).level,roominfoList.get(i).lable));
 
             roomList.cardList.get(i).backside = il.bs1;
         }
@@ -125,7 +125,7 @@ public class BackgroundSystem {
         treasureList.backside = il.bs2;
         for (int i = 0; i < treasureinfoList.size(); i++) {
 
-            treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1, treasureinfoList.get(i).type, treasureinfoList.get(i).power, treasureinfoList.get(i).power2, treasureinfoList.get(i).name, treasureinfoList.get(i).RunAway, treasureinfoList.get(i).gold, treasureinfoList.get(i).xp, treasureinfoList.get(i).xp2, treasureinfoList.get(i).treasures,treasureinfoList.get(i).badStuff,treasureinfoList.get(i).level));
+            treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1, treasureinfoList.get(i).type, treasureinfoList.get(i).power, treasureinfoList.get(i).power2, treasureinfoList.get(i).name, treasureinfoList.get(i).RunAway, treasureinfoList.get(i).gold, treasureinfoList.get(i).xp, treasureinfoList.get(i).xp2, treasureinfoList.get(i).treasures,treasureinfoList.get(i).badStuff,treasureinfoList.get(i).level,treasureinfoList.get(i).lable));
 
             treasureList.cardList.get(i).backside = il.bs2;
         }
@@ -293,14 +293,15 @@ public class BackgroundSystem {
                 if (((allyPower >= monsterPower && playerList.get(backgroundSystem.turn).playerClass != null && playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior")) || (allyPower > monsterPower || forcestop2 == true)) && !forcestop1) {
 
                     backgroundSystem.treasuredraw(allyList, treasure, playerList, treasuredisc, roomdisc);
-                    for (int i = 0; i < allyList.size() ; i++) {
-                        if(allyList.get(i)!=playerList.get(turn)&&(allyList.get(i).race!=null&&allyList.get(i).race.name.equalsIgnoreCase("elf")||allyList.get(i).race2!=null&&allyList.get(i).race2.name.equalsIgnoreCase("elf"))){
-                          for (int j = 0; j < monsterList.size() ; j++){
-                            allyList.get(i).level+=1;  }
+                    for (int i = 0; i < allyList.size(); i++) {
+                        if (allyList.get(i) != playerList.get(turn) && (allyList.get(i).race != null && allyList.get(i).race.name.equalsIgnoreCase("elf") || allyList.get(i).race2 != null && allyList.get(i).race2.name.equalsIgnoreCase("elf"))) {
+                            for (int j = 0; j < monsterList.size(); j++) {
+                                allyList.get(i).level += 1;
+                            }
                         }
                     }
                 }
-                if (((monsterPower >= allyPower && playerList.get(backgroundSystem.turn).playerClass != null && !playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior")) || monsterPower > allyPower) && !forcestop1 || !forcestop2) {
+                if (((monsterPower >= allyPower && playerList.get(backgroundSystem.turn).playerClass != null && !playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior")) || monsterPower > allyPower) && (!forcestop1 || !forcestop2)) {
                     // go gennem bad stuff
 
                     for (int j = 0; j < allyList.size(); j++) {
@@ -313,27 +314,27 @@ public class BackgroundSystem {
                             runningaway = (int) p.random(7) - 1;
                         }
                         if (runningaway >= 5 - allyList.get(j).runAway) {
-                    iRan=true;
+                            iRan = true;
                         }
-                        if(iRan==false&&(allyList.get(j).race!=null&&playerList.get(j).race.name.equalsIgnoreCase("Halfling")||iRan==false&&allyList.get(j).race2!=null&&playerList.get(j).race2.name.equalsIgnoreCase("Halfling"))&&playerList.get(j).hand.size()>0){
+                        if (iRan == false && (allyList.get(j).race != null && playerList.get(j).race.name.equalsIgnoreCase("Halfling") || iRan == false && allyList.get(j).race2 != null && playerList.get(j).race2.name.equalsIgnoreCase("Halfling")) && playerList.get(j).hand.size() > 0) {
                             runningaway = (int) p.random(7);
                             if (allyList.get(j).chikenonhed) {
                                 runningaway = (int) p.random(7) - 1;
                             }
                             if (runningaway >= 5 - allyList.get(j).runAway) {
-                                iRan=true;
+                                iRan = true;
                             }
                             int temp = (int) p.random(allyList.get(j).hand.size());
                             Card tempCard = playerList.get(j).hand.get(temp);
                             playerList.get(j).hand.remove(temp);
-                            if (tempCard.numb==0){
+                            if (tempCard.numb == 0) {
                                 roomdisc.addcard(tempCard);
                             }
-                            if (tempCard.numb==1){
+                            if (tempCard.numb == 1) {
                                 treasuredisc.addcard(tempCard);
                             }
                         }
-                        if(!iRan){
+                        if (!iRan) {
                             for (int i = 0; i < monsterList.size(); i++) {
                                 int roll = die.trowDie(7);
        /* if (monsterList.get(i).badStuff.equalsIgnoreCase("NULL")){
@@ -355,6 +356,7 @@ public class BackgroundSystem {
                         }
                     }
                 }
+
                     forcestop1 = false;
                     forcestop2 = false;
                     allyList.clear();

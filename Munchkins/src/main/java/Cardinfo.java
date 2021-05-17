@@ -3,6 +3,7 @@ public class Cardinfo {
     String name;
     String type;
     String badStuff;
+    String lable;
     int level;
     int power;
     int power2;

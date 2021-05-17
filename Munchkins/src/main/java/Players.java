@@ -108,7 +108,7 @@ public class Players {
                             feet = hand.get(i);
                             hand.remove(i);
                         } else {
-                            if ((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 == null) {
+                            if (((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 == null)) {
                                 if (hand1 != null) {
                                     if (hand1.numb == 0) {
                                         roomdisc.addcard(hand1);
@@ -137,7 +137,7 @@ public class Players {
                                 hand1 = hand.get(i);
                                 hand.remove(i);
                             } else {
-                                if ((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 != null && (!hand1.type.equalsIgnoreCase("2 hands") || !hand1.type.equalsIgnoreCase("2 hands big"))) {
+                                if (((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 != null && (!hand1.type.equalsIgnoreCase("2 hands") || !hand1.type.equalsIgnoreCase("2 hands big")))) {
                                     if (hand2 != null) {
                                         if (hand2.numb == 0) {
                                             roomdisc.addcard(hand2);
@@ -193,7 +193,7 @@ public class Players {
                                             race = hand.get(i);
                                             hand.remove(i);
                                         } else {
-                                            if (hand.get(i).type.equalsIgnoreCase("Utility") || hand.get(i).type.equalsIgnoreCase("Utility big")) {
+                                            if ((hand.get(i).type.equalsIgnoreCase("Utility") || hand.get(i).type.equalsIgnoreCase("Utility big"))) {
                                                 if (utility != null) {
                                                     if (utility.numb == 0) {
                                                         roomdisc.addcard(utility);

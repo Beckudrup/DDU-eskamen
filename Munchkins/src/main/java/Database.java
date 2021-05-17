@@ -36,6 +36,7 @@ public class Database {
             room.xp = (db.getInt("XP"));
             room.xp2 = (db.getInt("XP2"));
             room.treasures = (db.getInt("Treasure"));
+            room.lable = (db.getString("label"));
             roominfoList.add(room);
         }
         db.query("SELECT * FROM Cards WHERE Deck = 'Treasure cards'");
@@ -51,6 +52,7 @@ public class Database {
                 treasure.badStuff = (db.getString("BadStuff"));
                 treasure.RunAway = (db.getInt("Run Away"));
                 treasure.gold = (db.getInt("Gold"));
+                treasure.lable = (db.getString("label"));
                 treasureinfoList.add(treasure);
                 //p.println(cardinfoList.size(),cardinfoList.get(cardinfoList.size()-1).level, cardinfoList.get(cardinfoList.size()-1).name, " i = " + i++ + "   At 0:" ,cardinfoList.get(0).level, cardinfoList.get(0).name);
                 //println(TreasureList.get(i++));
