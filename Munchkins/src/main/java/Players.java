@@ -313,7 +313,7 @@ public class Players {
         }
     }
 
-    
+
 
     void getPower() {
         if (head != null) {

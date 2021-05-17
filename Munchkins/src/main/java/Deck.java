@@ -303,8 +303,96 @@ public class Deck {
                                     treasuresList.remove(rando);
                                 }
                             }
-                        }}}
+                        }}
 
+                        }
+                    for (int i = 0; i < treasuresList.size(); i++) {
+                        if (treasuresList.get(i).type.equalsIgnoreCase("Armor") || (treasuresList.get(i).type.equalsIgnoreCase("armor big"))) {
+                            if (player.body != null) {
+                                if (player.body.numb == 0) {
+                                    roomdisc.addcard(player.body);
+                                } else {
+                                    if (player.body.numb == 1)
+                                        treasuredisc.addcard(player.body);
+                                }
+                            }
+                            treasuresList.get(i).hovering = false;
+                            player.body = treasuresList.get(i);
+                            treasuresList.remove(i);
+                        } else {
+                            if (treasuresList.get(i).type.equalsIgnoreCase("headgear")) {
+                                if (treasuresList != null) {
+                                    if (player.head.numb == 0) {
+                                        roomdisc.addcard(player.head);
+                                    } else {
+                                        if (player.head.numb == 1)
+                                            treasuredisc.addcard(player.head);
+                                    }
+                                }
+                                player.hand.get(i).hovering = false;
+                                player.head = treasuresList.get(i);
+                                treasuresList.remove(i);
+                            } else {
+                                if (treasuresList.get(i).type.equalsIgnoreCase("footgear")) {
+                                    if (player.feet != null) {
+                                        if (player.feet.numb == 0) {
+                                            roomdisc.addcard(player.feet);
+                                        } else {
+                                            if (player.feet.numb == 1)
+                                                treasuredisc.addcard(player.feet);
+                                        }
+                                    }
+                                    treasuresList.get(i).hovering = false;
+                                    player.feet = treasuresList.get(i);
+                                    treasuresList.remove(i);
+                                } else {
+                                    if ((treasuresList.get(i).type.equalsIgnoreCase("1 hand") || treasuresList.get(i).type.equalsIgnoreCase("1 hand big")) && player.hand1 == null) {
+                                        if (player.hand1 != null) {
+                                            if (player.hand1.numb == 0) {
+                                                roomdisc.addcard(player.hand1);
+                                            } else {
+                                                if (player.hand1.numb == 1)
+                                                    treasuredisc.addcard(player.hand1);
+                                            }
+                                        }
+                                        treasuresList.get(i).hovering = false;
+                                        player.hand1 = treasuresList.get(i);
+                                        treasuresList.remove(i);
+                                    } else {
+                                        if ((treasuresList.get(i).type.equalsIgnoreCase("1 hand") || treasuresList.get(i).type.equalsIgnoreCase("1 hand big")) && player.hand1 != null && (!player.hand1.type.equalsIgnoreCase("2 hands") || !player.hand1.type.equalsIgnoreCase("2 hands big"))) {
+                                            if (player.hand2 != null) {
+                                                if (player.hand2.numb == 0) {
+                                                    roomdisc.addcard(player.hand2);
+                                                } else {
+                                                    if (player.hand2.numb == 1)
+                                                        treasuredisc.addcard(player.hand2);
+                                                }
+                                            }
+                                            treasuresList.get(i).hovering = false;
+                                            player.hand2 = treasuresList.get(i);
+                                            treasuresList.remove(i);
+                                        } else {
+                                            if (treasuresList.get(i).type.equalsIgnoreCase("Utility") || treasuresList.get(i).type.equalsIgnoreCase("Utility big")) {
+                                                if (player.utility != null) {
+                                                    if (player.utility.numb == 0) {
+                                                        roomdisc.addcard(player.utility);
+                                                    } else {
+                                                        if (player.utility.numb == 1)
+                                                            treasuredisc.addcard(player.utility);
+                                                    }
+                                                }
+                                                treasuresList.get(i).hovering = false;
+                                                player.utility = treasuresList.get(i);
+                                                treasuresList.remove(i);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+                }
 
 
 
