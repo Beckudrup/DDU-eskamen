@@ -105,11 +105,9 @@ public class Main extends PApplet {
                    // dice.display(200, 200);
                     for (int i = 0; i < 4; i++) {
                         playerList.get(i).hoverCard(backgroundSystem);
-                        playerList.get(i).displayHand(backgroundSystem.turn);
+                        playerList.get(i).display(backgroundSystem.turn);
                         playerList.get(i).changeButtonPos(backgroundSystem);
                         playerList.get(i).showhand.drawButton();
-                        playerList.get(i).displayequiped(backgroundSystem.turn);
-                        playerList.get(i).displayicon(backgroundSystem.turn);
                         playerList.get(i).getPower();
                     }
                    /* for (int i = 0; i < room.cardList.size() ; i++) {

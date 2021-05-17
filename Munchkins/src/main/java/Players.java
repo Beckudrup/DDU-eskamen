@@ -313,106 +313,7 @@ public class Players {
         }
     }
 
-
-    void displayequiped(int turn) {
-        if (turn - playernr == 0) {
-            if (head != null)
-                head.display(200, 800, 60, 100, 1);
-            if (body != null)
-                body.display(280, 800, 60, 100, 1);
-            if (feet != null)
-                feet.display(360, 800, 60, 100, 1);
-            if (hand1 != null)
-                hand1.display(200, 920, 60, 100, 1);
-            if (hand2 != null)
-                hand2.display(280, 920, 60, 100, 1);
-            if (utility != null)
-                utility.display(360, 920, 60, 100, 1);
-            if (playerClass != null)
-                playerClass.display(440, 800, 60, 100, 1);
-            if (playerClass2 != null)
-                playerClass.display(440, 920, 60, 100, 1);
-            if (race != null)
-                race.display(520, 800, 60, 100, 1);
-            if (race2 != null)
-                race.display(520, 920, 60, 100, 1);
-        }
-        if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
-            p.pushMatrix();
-            p.rotate((float) 1.5708);
-            if (head != null)
-                head.display(130, -230, 60, 100, 1);
-            if (body != null)
-                body.display(210, -230, 60, 100, 1);
-            if (feet != null)
-                feet.display(290, -230, 60, 100, 1);
-            if (hand1 != null)
-                hand1.display(130, -110, 60, 100, 1);
-            if (hand2 != null)
-                hand2.display(210, -110, 60, 100, 1);
-            if (utility != null)
-                utility.display(290, -110, 60, 100, 1);
-            if (playerClass != null)
-                playerClass.display(370, -230, 60, 100, 1);
-            if (playerClass2 != null)
-                playerClass.display(370, -110, 60, 100, 1);
-            if (race != null)
-                race.display(450, -230, 60, 100, 1);
-            if (race2 != null)
-                race.display(450, -110, 60, 100, 1);
-            p.popMatrix();
-        }
-        if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
-            p.pushMatrix();
-            p.rotate((float) 1.5708 * 2);
-            if (head != null)
-                head.display(-1720, -260, 60, 100, 1);
-            if (body != null)
-                body.display(-1640, -260, 60, 100, 1);
-            if (feet != null)
-                feet.display(-1560, -260, 60, 100, 1);
-            if (hand1 != null)
-                hand1.display(-1720, -140, 60, 100, 1);
-            if (hand2 != null)
-                hand2.display(-1640, -140, 60, 100, 1);
-            if (utility != null)
-                utility.display(-1560, -140, 60, 100, 1);
-            if (playerClass != null)
-                playerClass.display(-1480, -260, 60, 100, 1);
-            if (playerClass2 != null)
-                playerClass.display(-1480, -140, 60, 100, 1);
-            if (race != null)
-                race.display(-1400, -260, 60, 100, 1);
-            if (race2 != null)
-                race.display(-1400, -140, 60, 100, 1);
-            p.popMatrix();
-        }
-        if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
-            p.pushMatrix();
-            p.rotate((float) 1.5708 * 3);
-            if (head != null)
-                head.display(-930, 1660, 60, 100, 1);
-            if (body != null)
-                body.display(-850, 1660, 60, 100, 1);
-            if (feet != null)
-                feet.display(-770, 1660, 60, 100, 1);
-            if (hand1 != null)
-                hand1.display(-930, 1780, 60, 100, 1);
-            if (hand2 != null)
-                hand2.display(-850, 1780, 60, 100, 1);
-            if (utility != null)
-                utility.display(-770, 1780, 60, 100, 1);
-            if (playerClass != null)
-                playerClass.display(-690, 1660, 60, 100, 1);
-            if (playerClass2 != null)
-                playerClass.display(-690, 1780, 60, 100, 1);
-            if (race != null)
-                race.display(-610, 1660, 60, 100, 1);
-            if (race2 != null)
-                race.display(-610, 1780, 60, 100, 1);
-            p.popMatrix();
-        }
-    }
+    
 
     void getPower() {
         if (head != null) {
@@ -738,9 +639,13 @@ public class Players {
         }
     }
 
-    void displayHand(int turn) {
-        if (hand.size() > 0) {
+    void display(int turn) {
+        p.fill(255);
+        p.textAlign(p.LEFT, p.BOTTOM);
+        int temp = playernr +1;
+
             if (turn - playernr == 0) {
+                if (hand.size() > 0) {
                 if (showhand.tryk == true) {
                     for (int i = 0; i < hand.size(); i++) {
                         hand.get(i).display(700 + i * 180, 800, 160, 200, 1);
@@ -750,11 +655,36 @@ public class Players {
                     for (int i = 0; i < hand.size(); i++) {
                         hand.get(i).display(700 + i * 180, 800, 160, 200, 2);
                     }
-
                 }
+                }
+                p.image(icon, 10, 950, 100, 100);
+                p.text("lvl:" + level, 10, 920);
+                p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 10, 940);
+                p.text("p" + temp, p.width / 2, 750);
+                if (head != null)
+                    head.display(200, 800, 60, 100, 1);
+                if (body != null)
+                    body.display(280, 800, 60, 100, 1);
+                if (feet != null)
+                    feet.display(360, 800, 60, 100, 1);
+                if (hand1 != null)
+                    hand1.display(200, 920, 60, 100, 1);
+                if (hand2 != null)
+                    hand2.display(280, 920, 60, 100, 1);
+                if (utility != null)
+                    utility.display(360, 920, 60, 100, 1);
+                if (playerClass != null)
+                    playerClass.display(440, 800, 60, 100, 1);
+                if (playerClass2 != null)
+                    playerClass.display(440, 920, 60, 100, 1);
+                if (race != null)
+                    race.display(520, 800, 60, 100, 1);
+                if (race2 != null)
+                    race.display(520, 920, 60, 100, 1);
             }
 
             if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
+                if (hand.size() > 0) {
                 if (showhand.tryk == true) {
                     for (int i = 0; i < hand.size(); i++) {
                         p.pushMatrix();
@@ -772,9 +702,37 @@ public class Players {
                         hand.get(i).display(370 + i * 90, -100, 160 / 2, 200 / 2, 2);
                         p.popMatrix();
                     }
-                }
+                }}
+                p.image(icon, 10, 10, 100, 100);
+                p.text("lvl:" + level, 110, 70);
+                p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 110, 95);
+                p.text("p" + temp, 150, 550);
+                p.pushMatrix();
+                p.rotate((float) 1.5708);
+                if (head != null)
+                    head.display(130, -230, 60, 100, 1);
+                if (body != null)
+                    body.display(210, -230, 60, 100, 1);
+                if (feet != null)
+                    feet.display(290, -230, 60, 100, 1);
+                if (hand1 != null)
+                    hand1.display(130, -110, 60, 100, 1);
+                if (hand2 != null)
+                    hand2.display(210, -110, 60, 100, 1);
+                if (utility != null)
+                    utility.display(290, -110, 60, 100, 1);
+                if (playerClass != null)
+                    playerClass.display(370, -230, 60, 100, 1);
+                if (playerClass2 != null)
+                    playerClass.display(370, -110, 60, 100, 1);
+                if (race != null)
+                    race.display(450, -230, 60, 100, 1);
+                if (race2 != null)
+                    race.display(450, -110, 60, 100, 1);
+                p.popMatrix();
             }
             if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
+                if (hand.size() > 0) {
                 if (showhand.tryk == true) {
                     for (int i = 0; i < hand.size(); i++) {
                         p.pushMatrix();
@@ -792,11 +750,39 @@ public class Players {
                         hand.get(i).display(-870 - i * 90, -100, 160 / 2, 200 / 2, 2);
                         p.popMatrix();
                     }
-                }
+                }}
+                p.image(icon, 1810, 10, 100, 100);
+                p.text("lvl:" + level, 1810, 150);
+                p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1810, 170);
+                p.text("p" + temp, p.width / 2, 200);
+                p.pushMatrix();
+                p.rotate((float) 1.5708 * 2);
+                if (head != null)
+                    head.display(-1720, -260, 60, 100, 1);
+                if (body != null)
+                    body.display(-1640, -260, 60, 100, 1);
+                if (feet != null)
+                    feet.display(-1560, -260, 60, 100, 1);
+                if (hand1 != null)
+                    hand1.display(-1720, -140, 60, 100, 1);
+                if (hand2 != null)
+                    hand2.display(-1640, -140, 60, 100, 1);
+                if (utility != null)
+                    utility.display(-1560, -140, 60, 100, 1);
+                if (playerClass != null)
+                    playerClass.display(-1480, -260, 60, 100, 1);
+                if (playerClass2 != null)
+                    playerClass.display(-1480, -140, 60, 100, 1);
+                if (race != null)
+                    race.display(-1400, -260, 60, 100, 1);
+                if (race2 != null)
+                    race.display(-1400, -140, 60, 100, 1);
+                p.popMatrix();
             }
 
 
             if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
+                if (hand.size() > 0) {
                 if (showhand.tryk == true) {
                     for (int i = 0; i < hand.size(); i++) {
                         p.pushMatrix();
@@ -815,9 +801,37 @@ public class Players {
                         hand.get(i).display(-370 - i * 90, 1800, 160 / 2, 200 / 2, 2);
                         p.popMatrix();
                     }
-                }
+                }}
+                p.image(icon, 1810, 950, 100, 100);
+                p.text("lvl:" + level, 1710, 1010);
+                p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1710, 1030);
+                p.text("p" + temp, 1750, 500);
+                p.pushMatrix();
+                p.rotate((float) 1.5708 * 3);
+                if (head != null)
+                    head.display(-930, 1660, 60, 100, 1);
+                if (body != null)
+                    body.display(-850, 1660, 60, 100, 1);
+                if (feet != null)
+                    feet.display(-770, 1660, 60, 100, 1);
+                if (hand1 != null)
+                    hand1.display(-930, 1780, 60, 100, 1);
+                if (hand2 != null)
+                    hand2.display(-850, 1780, 60, 100, 1);
+                if (utility != null)
+                    utility.display(-770, 1780, 60, 100, 1);
+                if (playerClass != null)
+                    playerClass.display(-690, 1660, 60, 100, 1);
+                if (playerClass2 != null)
+                    playerClass.display(-690, 1780, 60, 100, 1);
+                if (race != null)
+                    race.display(-610, 1660, 60, 100, 1);
+                if (race2 != null)
+                    race.display(-610, 1780, 60, 100, 1);
+                p.popMatrix();
             }
-        }
+            p.fill(0);
+
     }
 
     void hoverCard(BackgroundSystem backgroundSystem) {
@@ -847,35 +861,5 @@ public class Players {
         }
     }
 
-    void displayicon(int turn) {
-        p.fill(255);
-        p.textAlign(p.LEFT, p.BOTTOM);
-        int temp = playernr +1;
-        if (turn - playernr == 0) {
-            p.image(icon, 10, 950, 100, 100);
-            p.text("lvl:" + level, 10, 920);
-            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 10, 940);
-            p.text("p" + temp, p.width / 2, 750);
-        }
-        if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
-            p.image(icon, 10, 10, 100, 100);
-            p.text("lvl:" + level, 110, 70);
-            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 110, 95);
-            p.text("p" + temp, 150, 550);
 
-        }
-        if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
-            p.image(icon, 1810, 10, 100, 100);
-            p.text("lvl:" + level, 1810, 150);
-            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1810, 170);
-            p.text("p" + temp, p.width / 2, 200);
-        }
-        if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
-            p.image(icon, 1810, 950, 100, 100);
-            p.text("lvl:" + level, 1710, 1010);
-            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1710, 1030);
-            p.text("p" + temp, 1750, 500);
-        }
-        p.fill(0);
-    }
 }
