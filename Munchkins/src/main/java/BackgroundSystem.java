@@ -261,7 +261,6 @@ public class BackgroundSystem {
                     if (!alredyadded) {
                         allyList.add(playerList.get(i));
                     }
-
                 }
             }
             for (int i = 0; i < allyList.size(); i++) {

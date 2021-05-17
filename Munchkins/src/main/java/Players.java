@@ -351,9 +351,8 @@ public class Players {
         //if (!backgroundSystem.battlefase) {
         if (playable != null && once) {
             if (level <= 8) {
-
                 if (playable.name.equalsIgnoreCase("Invoke obscure rules")) {
-                    level = level + 1;
+                    level += 1;
                     // PApplet.println(1);
                 }
                 if (playable.name.equalsIgnoreCase("Whine at the GM")) {
@@ -476,9 +475,7 @@ public class Players {
                         //Player will always help, they gain no treasure, but you gain no level.
                     }
                 }
-
             }
-
         }
         once = false;
     }
@@ -687,7 +684,6 @@ public class Players {
                 if (showhand.tryk == true) {
                     for (int i = 0; i < hand.size(); i++) {
                         p.pushMatrix();
-
                         p.rotate((float) 1.5708);
                         hand.get(i).display(370 + i * 90, -100, 160 / 2, 200 / 2, 1);
                         p.popMatrix();
@@ -859,6 +855,4 @@ public class Players {
             }
         }
     }
-
-
 }
