@@ -10,12 +10,10 @@ public class Card {
     String name;
     String type;
     String badStuff;
-    String imglink;
     int RunAway;
     int level;
     int numb;
     int power;
-    int power2;
     int gold;
     int xp;
     int xp2;
