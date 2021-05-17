@@ -60,22 +60,23 @@ public class Players {
                                 treasuredisc.addcard(body);
                         }
                     }
-                    if(hand.get(i).type.equalsIgnoreCase("armor big")){
+                    if (hand.get(i).type.equalsIgnoreCase("armor big")) {
                         big = true;
-                        if(race!=null&&!race.name.equalsIgnoreCase("dwarf")||race2!=null&&!race2.name.equalsIgnoreCase("dwarf")){
-                        if(hand1!=null&&(hand1.type.equalsIgnoreCase("1 hand big")||hand1.type.equalsIgnoreCase("2 hand big"))){
-                            treasuredisc.addcard(hand1);
-                            hand1=null;
+                        if (race != null && !race.name.equalsIgnoreCase("dwarf") || race2 != null && !race2.name.equalsIgnoreCase("dwarf")) {
+                            if (hand1 != null && (hand1.type.equalsIgnoreCase("1 hand big") || hand1.type.equalsIgnoreCase("2 hand big"))) {
+                                treasuredisc.addcard(hand1);
+                                hand1 = null;
+                            }
+                            if (hand2 != null && (hand2.type.equalsIgnoreCase("1 hand big") || hand2.type.equalsIgnoreCase("2 hand big"))) {
+                                treasuredisc.addcard(hand2);
+                                hand2 = null;
+                            }
+                            if (utility != null && utility.type.equalsIgnoreCase("Utility big")) {
+                                treasuredisc.addcard(utility);
+                                utility = null;
+                            }
                         }
-                        if(hand2!=null&&(hand2.type.equalsIgnoreCase("1 hand big")||hand2.type.equalsIgnoreCase("2 hand big"))){
-                            treasuredisc.addcard(hand2);
-                            hand2=null;
-                        }
-                        if(utility!=null&&utility.type.equalsIgnoreCase("Utility big")){
-                            treasuredisc.addcard(utility);
-                            utility=null;
-                        }
-                    }}
+                    }
                     hand.get(i).hovering = false;
                     body = hand.get(i);
                     hand.remove(i);
@@ -115,22 +116,23 @@ public class Players {
                                             treasuredisc.addcard(hand1);
                                     }
                                 }
-                                if(hand.get(i).type.equalsIgnoreCase("1 hand big")||hand.get(i).type.equalsIgnoreCase("2 hand big")){
+                                if (hand.get(i).type.equalsIgnoreCase("1 hand big") || hand.get(i).type.equalsIgnoreCase("2 hand big")) {
                                     big = true;
-                                    if(race!=null&&!race.name.equalsIgnoreCase("dwarf")||race2!=null&&!race2.name.equalsIgnoreCase("dwarf")){
-                                    if(body!=null&&body.type.equalsIgnoreCase("armor big")){
-                                        treasuredisc.addcard(body);
-                                        body=null;
+                                    if (race != null && !race.name.equalsIgnoreCase("dwarf") || race2 != null && !race2.name.equalsIgnoreCase("dwarf")) {
+                                        if (body != null && body.type.equalsIgnoreCase("armor big")) {
+                                            treasuredisc.addcard(body);
+                                            body = null;
+                                        }
+                                        if (hand2 != null && (hand2.type.equalsIgnoreCase("1 hand big") || hand2.type.equalsIgnoreCase("2 hand big"))) {
+                                            treasuredisc.addcard(hand2);
+                                            hand2 = null;
+                                        }
+                                        if (utility != null && utility.type.equalsIgnoreCase("Utility big")) {
+                                            treasuredisc.addcard(utility);
+                                            utility = null;
+                                        }
                                     }
-                                    if(hand2!=null&&(hand2.type.equalsIgnoreCase("1 hand big")||hand2.type.equalsIgnoreCase("2 hand big"))){
-                                        treasuredisc.addcard(hand2);
-                                        hand2=null;
-                                    }
-                                    if(utility!=null&&utility.type.equalsIgnoreCase("Utility big")){
-                                        treasuredisc.addcard(utility);
-                                        utility=null;
-                                    }
-                                }}
+                                }
                                 hand.get(i).hovering = false;
                                 hand1 = hand.get(i);
                                 hand.remove(i);
@@ -144,22 +146,23 @@ public class Players {
                                                 treasuredisc.addcard(hand2);
                                         }
                                     }
-                                    if(hand.get(i).type.equalsIgnoreCase("1 hand big")||hand.get(i).type.equalsIgnoreCase("2 hand big")){
+                                    if (hand.get(i).type.equalsIgnoreCase("1 hand big") || hand.get(i).type.equalsIgnoreCase("2 hand big")) {
                                         big = true;
-                                        if(race!=null&&!race.name.equalsIgnoreCase("dwarf")||race2!=null&&!race2.name.equalsIgnoreCase("dwarf")){
-                                        if(body!=null&&body.type.equalsIgnoreCase("armor big")){
-                                            treasuredisc.addcard(body);
-                                            body=null;
+                                        if (race != null && !race.name.equalsIgnoreCase("dwarf") || race2 != null && !race2.name.equalsIgnoreCase("dwarf")) {
+                                            if (body != null && body.type.equalsIgnoreCase("armor big")) {
+                                                treasuredisc.addcard(body);
+                                                body = null;
+                                            }
+                                            if (hand1 != null && (hand1.type.equalsIgnoreCase("1 hand big") || hand1.type.equalsIgnoreCase("2 hand big"))) {
+                                                treasuredisc.addcard(hand1);
+                                                hand1 = null;
+                                            }
+                                            if (utility != null && utility.type.equalsIgnoreCase("Utility big")) {
+                                                treasuredisc.addcard(utility);
+                                                utility = null;
+                                            }
                                         }
-                                        if(hand1!=null&&(hand1.type.equalsIgnoreCase("1 hand big")||hand1.type.equalsIgnoreCase("2 hand big"))){
-                                            treasuredisc.addcard(hand1);
-                                            hand1=null;
-                                        }
-                                        if(utility!=null&&utility.type.equalsIgnoreCase("Utility big")){
-                                            treasuredisc.addcard(utility);
-                                            utility=null;
-                                        }
-                                    }}
+                                    }
                                     hand.get(i).hovering = false;
                                     hand2 = hand.get(i);
                                     hand.remove(i);
@@ -200,22 +203,23 @@ public class Players {
                                                             treasuredisc.addcard(utility);
                                                     }
                                                 }
-                                                if(hand.get(i).type.equalsIgnoreCase("utility big")){
+                                                if (hand.get(i).type.equalsIgnoreCase("utility big")) {
                                                     big = true;
-                                                    if(race!=null&&!race.name.equalsIgnoreCase("dwarf")||race2!=null&&!race2.name.equalsIgnoreCase("dwarf")){
-                                                    if(hand1!=null&&(hand1.type.equalsIgnoreCase("1 hand big")||hand1.type.equalsIgnoreCase("2 hand big"))){
-                                                        treasuredisc.addcard(hand1);
-                                                        hand1=null;
+                                                    if (race != null && !race.name.equalsIgnoreCase("dwarf") || race2 != null && !race2.name.equalsIgnoreCase("dwarf")) {
+                                                        if (hand1 != null && (hand1.type.equalsIgnoreCase("1 hand big") || hand1.type.equalsIgnoreCase("2 hand big"))) {
+                                                            treasuredisc.addcard(hand1);
+                                                            hand1 = null;
+                                                        }
+                                                        if (hand2 != null && (hand2.type.equalsIgnoreCase("1 hand big") || hand2.type.equalsIgnoreCase("2 hand big"))) {
+                                                            treasuredisc.addcard(hand2);
+                                                            hand2 = null;
+                                                        }
+                                                        if (body != null && body.type.equalsIgnoreCase("armor big")) {
+                                                            treasuredisc.addcard(body);
+                                                            body = null;
+                                                        }
                                                     }
-                                                    if(hand2!=null&&(hand2.type.equalsIgnoreCase("1 hand big")||hand2.type.equalsIgnoreCase("2 hand big"))){
-                                                        treasuredisc.addcard(hand2);
-                                                        hand2=null;
-                                                    }
-                                                    if(body!=null&&body.type.equalsIgnoreCase("armor big")){
-                                                        treasuredisc.addcard(body);
-                                                        body=null;
-                                                    }
-                                                }}
+                                                }
                                                 hand.get(i).hovering = false;
                                                 utility = hand.get(i);
                                                 hand.remove(i);
@@ -280,24 +284,24 @@ public class Players {
                                                                 }
 
 
+                                                            } else {
+                                                                if (hand.get(i).numb == 0) {
+                                                                    hand.get(i).hovering = false;
+                                                                    Card card = hand.get(i);
+                                                                    roomdisc.addcard(card);
+                                                                    hand.remove(i);
                                                                 } else {
-                                                                    if (hand.get(i).numb == 0) {
+                                                                    if (hand.get(i).numb == 1) {
                                                                         hand.get(i).hovering = false;
                                                                         Card card = hand.get(i);
-                                                                        roomdisc.addcard(card);
+                                                                        treasuredisc.addcard(card);
                                                                         hand.remove(i);
-                                                                    } else {
-                                                                        if (hand.get(i).numb == 1) {
-                                                                            hand.get(i).hovering = false;
-                                                                            Card card = hand.get(i);
-                                                                            treasuredisc.addcard(card);
-                                                                            hand.remove(i);
-                                                                        }
                                                                     }
                                                                 }
                                                             }
                                                         }
                                                     }
+                                                }
 
                                             }
                                         }
@@ -311,7 +315,6 @@ public class Players {
             }
         }
     }
-
 
 
     void getPower() {
@@ -333,17 +336,17 @@ public class Players {
             handRunAway = (hand2.RunAway);
         }
 
-            runAway = (handRunAway + feetRunAway);
-        if(race!=null&&race.name.equalsIgnoreCase("elf")||race2!=null&&race2.name.equalsIgnoreCase("elf"))
-            runAway +=1;
-        if(mirror){
-            handpow=0;
-            hand2pow=0;
-            headpow=0;
-            feetpow=0;
+        runAway = (handRunAway + feetRunAway);
+        if (race != null && race.name.equalsIgnoreCase("elf") || race2 != null && race2.name.equalsIgnoreCase("elf"))
+            runAway += 1;
+        if (mirror) {
+            handpow = 0;
+            hand2pow = 0;
+            headpow = 0;
+            feetpow = 0;
         }
-            pow = headpow + bodypow + feetpow + handpow + hand2pow + level + powChange;
-            // PApplet.println(pow);
+        pow = headpow + bodypow + feetpow + handpow + hand2pow + level + powChange;
+        // PApplet.println(pow);
 
     }
 
@@ -358,25 +361,25 @@ public class Players {
                 if (playable.name.equalsIgnoreCase("Whine at the GM")) {
                     int tmpLevel = level;
                     Players tmpSpiller;
-                    for (int i = 0; i <4 ; i++) {
+                    for (int i = 0; i < 4; i++) {
                         if (playerList.get(i).level > tmpLevel) {
                             tmpSpiller = playerList.get(i);
-                            tmpLevel=tmpSpiller.level;
+                            tmpLevel = tmpSpiller.level;
                         }
                     }
-                    if (level!=tmpLevel) {
+                    if (level != tmpLevel) {
                         level += 1;
                     }
 
                 }
                 if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
-                        PApplet.println(2);
-                        level += 1;
-                    }
+                    PApplet.println(2);
+                    level += 1;
+                }
 
                 if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
                     level += 1;
-                     PApplet.println("James beyleygh");
+                    PApplet.println("James beyleygh");
                 }
                 if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
                     level += 1;
@@ -406,11 +409,10 @@ public class Players {
                             }
                         }
                         System.out.println("YAYAYAY??????????????????????????????????");
-                    }
-                    catch (Exception y){
+                    } catch (Exception y) {
 
-                        for (int i = 0; i <4 ; i++) {
-                            if (playerList.get(i).utility==null|| !playerList.get(i).utility.name.equalsIgnoreCase("Hireling")){
+                        for (int i = 0; i < 4; i++) {
+                            if (playerList.get(i).utility == null || !playerList.get(i).utility.name.equalsIgnoreCase("Hireling")) {
 
                             }
                         }
@@ -425,45 +427,44 @@ public class Players {
                     level += 1;
                     int tmpLevel = level;
                     Players tmpSpiller = null;
-                    for (int i = 0; i <4 ; i++) {
-                        if (playerList.get(i).level >tmpLevel){
+                    for (int i = 0; i < 4; i++) {
+                        if (playerList.get(i).level > tmpLevel) {
                             tmpSpiller = playerList.get(i);
-                            tmpLevel=tmpSpiller.level;
+                            tmpLevel = tmpSpiller.level;
 
                         }
                     }
                     try {
                         tmpSpiller.level--;
-                        if (tmpSpiller.level<1)
-                            tmpSpiller.level=1;
-                    }
-                    catch (Exception x){
-                        tmpSpiller=playerList.get((int)p.random(4));
+                        if (tmpSpiller.level < 1)
+                            tmpSpiller.level = 1;
+                    } catch (Exception x) {
+                        tmpSpiller = playerList.get((int) p.random(4));
                         tmpSpiller.level--;
-                        if (tmpSpiller.level<1)
-                            tmpSpiller.level=1;
+                        if (tmpSpiller.level < 1)
+                            tmpSpiller.level = 1;
                     }
 
-               //     PApplet.println(9);
+                    //     PApplet.println(9);
                 }
             }
             if (playable.name.equalsIgnoreCase("Hoard!")) {
                 //Draw three treasures
                 //PApplet.println(1);
                 if (treasure.cardList.size() < 3) {
-                    treasure.resuffle(treasureDisc,1);
+                    treasure.resuffle(treasureDisc, 1);
                 }
-                    for (int i = 0; i < 3; i++) {
-                        int random = (int) p.random(treasure.cardList.size());
-                        Card drawncard = treasure.cardList.get(random);
-                        hand.add(drawncard);
-                        treasure.cardList.remove(random);
-                    }
+                for (int i = 0; i < 3; i++) {
+                    int random = (int) p.random(treasure.cardList.size());
+                    Card drawncard = treasure.cardList.get(random);
+                    hand.add(drawncard);
+                    treasure.cardList.remove(random);
+                }
 
             }
             if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
                 //Go through the discards to find any one card you want. Take that card and discard this one.
-                if (treasureDisc.cardList.size()>0) {
+                if (treasureDisc.cardList.size() > 0) {
                     Card drawncard = treasureDisc.cardList.get(treasureDisc.cardList.size() - 1);
                     hand.add(drawncard);
                     treasureDisc.cardList.remove(treasureDisc.cardList.size() - 1);
@@ -480,7 +481,7 @@ public class Players {
         once = false;
     }
 
-    void usable(ArrayList<Button> buttList, Deck treasure, Deck treasuredisc,ArrayList<Players> playerList, BackgroundSystem backgroundSystem ){
+    void usable(ArrayList<Button> buttList, Deck treasure, Deck treasuredisc, ArrayList<Players> playerList, BackgroundSystem backgroundSystem) {
         if (backgroundSystem.battlefase) {
             if (usable.name.equalsIgnoreCase("Potion of Idiotic Bravery") || usable.name.equalsIgnoreCase("Nasty-tasting sports drink") || usable.name.equalsIgnoreCase("Potion of halitosis") || usable.name.equalsIgnoreCase("Sleep Potion")) {
                 //giv plus 2 til spiller siden eller monster siden i en combat
@@ -491,14 +492,14 @@ public class Players {
             if (usable.name.equalsIgnoreCase("Cotion of Ponfusion") || usable.name.equalsIgnoreCase("Freezing explosive potion") || usable.name.equalsIgnoreCase("Flaming poison potion")) {
                 //giv plus 3 til spiller siden eller monster siden i en combat
                 powChange += 3;
-               // monster.level += 3;
+                // monster.level += 3;
 
             }
             if (usable.name.equalsIgnoreCase("Magic missile") || usable.name.equalsIgnoreCase("Electric radioactive acid potion") || usable.name.equalsIgnoreCase("Pretty Ballons")) {
                 //giv plus 5 til spiller siden eller monster siden i en combat
 
 
-              powChange += 5;
+                powChange += 5;
 
             }
             if (usable.name.equalsIgnoreCase("Doppelganger")) {
@@ -514,44 +515,40 @@ public class Players {
                 }
 
             }
-            if ((usable.name.equalsIgnoreCase("Instant wall")||usable.name.equalsIgnoreCase("Invisibility Potion")||usable.name.equalsIgnoreCase("Friendship potion"))&&backgroundSystem.battlefase){
+            if ((usable.name.equalsIgnoreCase("Instant wall") || usable.name.equalsIgnoreCase("Invisibility Potion") || usable.name.equalsIgnoreCase("Friendship potion")) && backgroundSystem.battlefase) {
                 //Fjern monster ingen treasure ingen level
 
-                    buttList.get(buttList.size()-1).tryk=true;
-                    backgroundSystem.forcestop1 = true;
-
+                buttList.get(buttList.size() - 1).tryk = true;
+                backgroundSystem.forcestop1 = true;
 
 
             }
-            if ((usable.name.equalsIgnoreCase("Magic Lamp")|| usable.name.equalsIgnoreCase("Pollymorph Potion"))&&backgroundSystem.battlefase) {
+            if ((usable.name.equalsIgnoreCase("Magic Lamp") || usable.name.equalsIgnoreCase("Pollymorph Potion")) && backgroundSystem.battlefase) {
                 //Fjern monster men få treasure INTET LEVEL
-                buttList.get(buttList.size()-1).tryk=true;
-                backgroundSystem.forcestop2=true;
+                buttList.get(buttList.size() - 1).tryk = true;
+                backgroundSystem.forcestop2 = true;
             }
 
         }
-        once=false;
+        once = false;
 
     }
 
-    void roombuffs(Deck treasure,BackgroundSystem backgroundSystem){
-        if (card.name.equalsIgnoreCase("baby")){
-            backgroundSystem.monstermodifire-=5;
-            treasure.allowedTreasure-=1;
+    void roombuffs(Deck treasure, BackgroundSystem backgroundSystem) {
+        if (card.name.equalsIgnoreCase("baby")) {
+            backgroundSystem.monstermodifire -= 5;
+            treasure.allowedTreasure -= 1;
         }
-        if (card.name.equalsIgnoreCase("Enraged")||card.name.equalsIgnoreCase("Intelligent")){
-            backgroundSystem.monstermodifire+=5;
-            treasure.allowedTreasure+=1;
+        if (card.name.equalsIgnoreCase("Enraged") || card.name.equalsIgnoreCase("Intelligent")) {
+            backgroundSystem.monstermodifire += 5;
+            treasure.allowedTreasure += 1;
         }
-        if (card.name.equalsIgnoreCase("humongous")|| card.name.equalsIgnoreCase("ancient")){
-            backgroundSystem.monstermodifire+=10;
-            treasure.allowedTreasure+=2;
+        if (card.name.equalsIgnoreCase("humongous") || card.name.equalsIgnoreCase("ancient")) {
+            backgroundSystem.monstermodifire += 10;
+            treasure.allowedTreasure += 2;
         }
-        once=false;
+        once = false;
     }
-
-
-
 
 
     void changeButtonPos(BackgroundSystem backgroundSystem) {
@@ -638,10 +635,10 @@ public class Players {
     void display(int turn) {
         p.fill(255);
         p.textAlign(p.LEFT, p.BOTTOM);
-        int temp = playernr +1;
+        int temp = playernr + 1;
 
-            if (turn - playernr == 0) {
-                if (hand.size() > 0) {
+        if (turn - playernr == 0) {
+            if (hand.size() > 0) {
                 if (showhand.tryk == true) {
                     for (int i = 0; i < hand.size(); i++) {
                         hand.get(i).display(700 + i * 180, 800, 160, 200, 1);
@@ -652,35 +649,35 @@ public class Players {
                         hand.get(i).display(700 + i * 180, 800, 160, 200, 2);
                     }
                 }
-                }
-                p.image(icon, 10, 950, 100, 100);
-                p.text("lvl:" + level, 10, 920);
-                p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 10, 940);
-                p.text("p" + temp, p.width / 2, 750);
-                if (head != null)
-                    head.display(200, 800, 60, 100, 1);
-                if (body != null)
-                    body.display(280, 800, 60, 100, 1);
-                if (feet != null)
-                    feet.display(360, 800, 60, 100, 1);
-                if (hand1 != null)
-                    hand1.display(200, 920, 60, 100, 1);
-                if (hand2 != null)
-                    hand2.display(280, 920, 60, 100, 1);
-                if (utility != null)
-                    utility.display(360, 920, 60, 100, 1);
-                if (playerClass != null)
-                    playerClass.display(440, 800, 60, 100, 1);
-                if (playerClass2 != null)
-                    playerClass.display(440, 920, 60, 100, 1);
-                if (race != null)
-                    race.display(520, 800, 60, 100, 1);
-                if (race2 != null)
-                    race.display(520, 920, 60, 100, 1);
             }
+            p.image(icon, 10, 950, 100, 100);
+            p.text("lvl:" + level, 10, 920);
+            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 10, 940);
+            p.text("p" + temp, p.width / 2, 750);
+            if (head != null)
+                head.display(200, 800, 60, 100, 1);
+            if (body != null)
+                body.display(280, 800, 60, 100, 1);
+            if (feet != null)
+                feet.display(360, 800, 60, 100, 1);
+            if (hand1 != null)
+                hand1.display(200, 920, 60, 100, 1);
+            if (hand2 != null)
+                hand2.display(280, 920, 60, 100, 1);
+            if (utility != null)
+                utility.display(360, 920, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(440, 800, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(440, 920, 60, 100, 1);
+            if (race != null)
+                race.display(520, 800, 60, 100, 1);
+            if (race2 != null)
+                race.display(520, 920, 60, 100, 1);
+        }
 
-            if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
-                if (hand.size() > 0) {
+        if ((playernr == 1 && turn == 0) || (playernr == 2 && turn == 1) || (playernr == 3 && turn == 2) || (playernr == 0 && turn == 3)) {
+            if (hand.size() > 0) {
                 if (showhand.tryk == true) {
                     for (int i = 0; i < hand.size(); i++) {
                         p.pushMatrix();
@@ -697,37 +694,38 @@ public class Players {
                         hand.get(i).display(370 + i * 90, -100, 160 / 2, 200 / 2, 2);
                         p.popMatrix();
                     }
-                }}
-                p.image(icon, 10, 10, 100, 100);
-                p.text("lvl:" + level, 110, 70);
-                p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 110, 95);
-                p.text("p" + temp, 150, 550);
-                p.pushMatrix();
-                p.rotate((float) 1.5708);
-                if (head != null)
-                    head.display(130, -230, 60, 100, 1);
-                if (body != null)
-                    body.display(210, -230, 60, 100, 1);
-                if (feet != null)
-                    feet.display(290, -230, 60, 100, 1);
-                if (hand1 != null)
-                    hand1.display(130, -110, 60, 100, 1);
-                if (hand2 != null)
-                    hand2.display(210, -110, 60, 100, 1);
-                if (utility != null)
-                    utility.display(290, -110, 60, 100, 1);
-                if (playerClass != null)
-                    playerClass.display(370, -230, 60, 100, 1);
-                if (playerClass2 != null)
-                    playerClass.display(370, -110, 60, 100, 1);
-                if (race != null)
-                    race.display(450, -230, 60, 100, 1);
-                if (race2 != null)
-                    race.display(450, -110, 60, 100, 1);
-                p.popMatrix();
+                }
             }
-            if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
-                if (hand.size() > 0) {
+            p.image(icon, 10, 10, 100, 100);
+            p.text("lvl:" + level, 110, 70);
+            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 110, 95);
+            p.text("p" + temp, 150, 550);
+            p.pushMatrix();
+            p.rotate((float) 1.5708);
+            if (head != null)
+                head.display(130, -230, 60, 100, 1);
+            if (body != null)
+                body.display(210, -230, 60, 100, 1);
+            if (feet != null)
+                feet.display(290, -230, 60, 100, 1);
+            if (hand1 != null)
+                hand1.display(130, -110, 60, 100, 1);
+            if (hand2 != null)
+                hand2.display(210, -110, 60, 100, 1);
+            if (utility != null)
+                utility.display(290, -110, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(370, -230, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(370, -110, 60, 100, 1);
+            if (race != null)
+                race.display(450, -230, 60, 100, 1);
+            if (race2 != null)
+                race.display(450, -110, 60, 100, 1);
+            p.popMatrix();
+        }
+        if ((playernr == 2 && turn == 0) || (playernr == 3 && turn == 1) || (playernr == 0 && turn == 2) || (playernr == 1 && turn == 3)) {
+            if (hand.size() > 0) {
                 if (showhand.tryk == true) {
                     for (int i = 0; i < hand.size(); i++) {
                         p.pushMatrix();
@@ -745,39 +743,40 @@ public class Players {
                         hand.get(i).display(-870 - i * 90, -100, 160 / 2, 200 / 2, 2);
                         p.popMatrix();
                     }
-                }}
-                p.image(icon, 1810, 10, 100, 100);
-                p.text("lvl:" + level, 1810, 150);
-                p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1810, 170);
-                p.text("p" + temp, p.width / 2, 200);
-                p.pushMatrix();
-                p.rotate((float) 1.5708 * 2);
-                if (head != null)
-                    head.display(-1720, -260, 60, 100, 1);
-                if (body != null)
-                    body.display(-1640, -260, 60, 100, 1);
-                if (feet != null)
-                    feet.display(-1560, -260, 60, 100, 1);
-                if (hand1 != null)
-                    hand1.display(-1720, -140, 60, 100, 1);
-                if (hand2 != null)
-                    hand2.display(-1640, -140, 60, 100, 1);
-                if (utility != null)
-                    utility.display(-1560, -140, 60, 100, 1);
-                if (playerClass != null)
-                    playerClass.display(-1480, -260, 60, 100, 1);
-                if (playerClass2 != null)
-                    playerClass.display(-1480, -140, 60, 100, 1);
-                if (race != null)
-                    race.display(-1400, -260, 60, 100, 1);
-                if (race2 != null)
-                    race.display(-1400, -140, 60, 100, 1);
-                p.popMatrix();
+                }
             }
+            p.image(icon, 1810, 10, 100, 100);
+            p.text("lvl:" + level, 1810, 150);
+            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1810, 170);
+            p.text("p" + temp, p.width / 2, 200);
+            p.pushMatrix();
+            p.rotate((float) 1.5708 * 2);
+            if (head != null)
+                head.display(-1720, -260, 60, 100, 1);
+            if (body != null)
+                body.display(-1640, -260, 60, 100, 1);
+            if (feet != null)
+                feet.display(-1560, -260, 60, 100, 1);
+            if (hand1 != null)
+                hand1.display(-1720, -140, 60, 100, 1);
+            if (hand2 != null)
+                hand2.display(-1640, -140, 60, 100, 1);
+            if (utility != null)
+                utility.display(-1560, -140, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(-1480, -260, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(-1480, -140, 60, 100, 1);
+            if (race != null)
+                race.display(-1400, -260, 60, 100, 1);
+            if (race2 != null)
+                race.display(-1400, -140, 60, 100, 1);
+            p.popMatrix();
+        }
 
 
-            if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
-                if (hand.size() > 0) {
+        if ((playernr == 3 && turn == 0) || (playernr == 0 && turn == 1) || (playernr == 1 && turn == 2) || (playernr == 2 && turn == 3)) {
+            if (hand.size() > 0) {
                 if (showhand.tryk == true) {
                     for (int i = 0; i < hand.size(); i++) {
                         p.pushMatrix();
@@ -796,36 +795,37 @@ public class Players {
                         hand.get(i).display(-370 - i * 90, 1800, 160 / 2, 200 / 2, 2);
                         p.popMatrix();
                     }
-                }}
-                p.image(icon, 1810, 950, 100, 100);
-                p.text("lvl:" + level, 1710, 1010);
-                p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1710, 1030);
-                p.text("p" + temp, 1750, 500);
-                p.pushMatrix();
-                p.rotate((float) 1.5708 * 3);
-                if (head != null)
-                    head.display(-930, 1660, 60, 100, 1);
-                if (body != null)
-                    body.display(-850, 1660, 60, 100, 1);
-                if (feet != null)
-                    feet.display(-770, 1660, 60, 100, 1);
-                if (hand1 != null)
-                    hand1.display(-930, 1780, 60, 100, 1);
-                if (hand2 != null)
-                    hand2.display(-850, 1780, 60, 100, 1);
-                if (utility != null)
-                    utility.display(-770, 1780, 60, 100, 1);
-                if (playerClass != null)
-                    playerClass.display(-690, 1660, 60, 100, 1);
-                if (playerClass2 != null)
-                    playerClass.display(-690, 1780, 60, 100, 1);
-                if (race != null)
-                    race.display(-610, 1660, 60, 100, 1);
-                if (race2 != null)
-                    race.display(-610, 1780, 60, 100, 1);
-                p.popMatrix();
+                }
             }
-            p.fill(0);
+            p.image(icon, 1810, 950, 100, 100);
+            p.text("lvl:" + level, 1710, 1010);
+            p.text("power:" + (headpow + bodypow + feetpow + handpow + hand2pow + level), 1710, 1030);
+            p.text("p" + temp, 1750, 500);
+            p.pushMatrix();
+            p.rotate((float) 1.5708 * 3);
+            if (head != null)
+                head.display(-930, 1660, 60, 100, 1);
+            if (body != null)
+                body.display(-850, 1660, 60, 100, 1);
+            if (feet != null)
+                feet.display(-770, 1660, 60, 100, 1);
+            if (hand1 != null)
+                hand1.display(-930, 1780, 60, 100, 1);
+            if (hand2 != null)
+                hand2.display(-850, 1780, 60, 100, 1);
+            if (utility != null)
+                utility.display(-770, 1780, 60, 100, 1);
+            if (playerClass != null)
+                playerClass.display(-690, 1660, 60, 100, 1);
+            if (playerClass2 != null)
+                playerClass.display(-690, 1780, 60, 100, 1);
+            if (race != null)
+                race.display(-610, 1660, 60, 100, 1);
+            if (race2 != null)
+                race.display(-610, 1780, 60, 100, 1);
+            p.popMatrix();
+        }
+        p.fill(0);
 
     }
 

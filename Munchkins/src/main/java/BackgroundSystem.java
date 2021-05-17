@@ -12,8 +12,8 @@ public class BackgroundSystem {
     boolean battlefase;
     boolean gamestarted;
     boolean startofbattlefase;
-    boolean forcestop1=false;
-    boolean forcestop2=false;
+    boolean forcestop1 = false;
+    boolean forcestop2 = false;
     boolean genderchoose = true;
     int turn;
     int monstermodifire;
@@ -23,7 +23,7 @@ public class BackgroundSystem {
         this.p = p;
     }
 
-    void endturn(ArrayList<Button> buttList, Players player, ArrayList<Players> playerList, Deck roomdisc, Deck treasuredisc,Deck room) {
+    void endturn(ArrayList<Button> buttList, Players player, ArrayList<Players> playerList, Deck roomdisc, Deck treasuredisc, Deck room) {
         if (buttList.get(1).tryk && !battlefase) {
             if (turn < 3) {
                 turn++;
@@ -50,20 +50,19 @@ public class BackgroundSystem {
             }
 
 
+            //find spiller med lavest level
+            int tmpLevel = player.level;
+            Players tmpSpiller = player;
+            for (int i = 0; i < 4; i++) {
+                if (playerList.get(i).level < tmpLevel) {
+                    tmpSpiller = playerList.get(i);
+                    tmpLevel = tmpSpiller.level;
 
-                //find spiller med lavest level
-                int tmpLevel = player.level;
-                Players tmpSpiller = player;
-                for (int i = 0; i < 4; i++) {
-                    if (playerList.get(i).level < tmpLevel) {
-                        tmpSpiller = playerList.get(i);
-                        tmpLevel = tmpSpiller.level;
-
-                    }
                 }
-                
-                    //hvis man er lavest - discard cards
-                    //ellers giv til lavest level
+            }
+
+            //hvis man er lavest - discard cards
+            //ellers giv til lavest level
             try {
                 if (player.race == null || player.race.name.equalsIgnoreCase("Elf") || player.race.name.equalsIgnoreCase("Halfling") || player.race.name.equalsIgnoreCase("Elf") && player.race2.name.equalsIgnoreCase("Halfling") || player.race2.name.equalsIgnoreCase("Elf") && player.race.name.equalsIgnoreCase("Halfling")) {
                     while (player.hand.size() > 5) {
@@ -85,29 +84,28 @@ public class BackgroundSystem {
                         }
                     }
                 }
-            }
-                catch (Exception e) {
-                        while (player.hand.size() > 6) {
-                                int random = (int) p.random(player.hand.size());
-                                Card card = player.hand.get(random);
-                                player.hand.remove(random);
-                                if (tmpSpiller != player) {
-                                    tmpSpiller.hand.add(card);
-                                } else {
-                                if (card.numb == 0) {
-                                    roomdisc.addcard(card);
-                                } else {
-                                    if (card.numb == 1) {
-                                        treasuredisc.addcard(card);
-                                    }
-                                }
+            } catch (Exception e) {
+                while (player.hand.size() > 6) {
+                    int random = (int) p.random(player.hand.size());
+                    Card card = player.hand.get(random);
+                    player.hand.remove(random);
+                    if (tmpSpiller != player) {
+                        tmpSpiller.hand.add(card);
+                    } else {
+                        if (card.numb == 0) {
+                            roomdisc.addcard(card);
+                        } else {
+                            if (card.numb == 1) {
+                                treasuredisc.addcard(card);
                             }
                         }
                     }
+                }
+            }
 
 
-            room.fix=true;
-            room.firstDraw=true;
+            room.fix = true;
+            room.firstDraw = true;
             monsterfasedone = false;
         }
     }
@@ -116,7 +114,7 @@ public class BackgroundSystem {
     void loaddecks(Deck roomList, Deck treasureList, ImageLoader il, ArrayList<Cardinfo> treasureinfoList, ArrayList<Cardinfo> roominfoList) {
         for (int i = 0; i < roominfoList.size(); i++) {
 
-            roomList.addcard(new Card(p, roominfoList.get(i).http, 0, roominfoList.get(i).type, roominfoList.get(i).power, roominfoList.get(i).power2, roominfoList.get(i).name, roominfoList.get(i).RunAway, roominfoList.get(i).gold, roominfoList.get(i).xp, roominfoList.get(i).xp2, roominfoList.get(i).treasures,roominfoList.get(i).badStuff,roominfoList.get(i).level,roominfoList.get(i).lable));
+            roomList.addcard(new Card(p, roominfoList.get(i).http, 0, roominfoList.get(i).type, roominfoList.get(i).power, roominfoList.get(i).power2, roominfoList.get(i).name, roominfoList.get(i).RunAway, roominfoList.get(i).gold, roominfoList.get(i).xp, roominfoList.get(i).xp2, roominfoList.get(i).treasures, roominfoList.get(i).badStuff, roominfoList.get(i).level, roominfoList.get(i).lable));
 
             roomList.cardList.get(i).backside = il.bs1;
         }
@@ -125,7 +123,7 @@ public class BackgroundSystem {
         treasureList.backside = il.bs2;
         for (int i = 0; i < treasureinfoList.size(); i++) {
 
-            treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1, treasureinfoList.get(i).type, treasureinfoList.get(i).power, treasureinfoList.get(i).power2, treasureinfoList.get(i).name, treasureinfoList.get(i).RunAway, treasureinfoList.get(i).gold, treasureinfoList.get(i).xp, treasureinfoList.get(i).xp2, treasureinfoList.get(i).treasures,treasureinfoList.get(i).badStuff,treasureinfoList.get(i).level,treasureinfoList.get(i).lable));
+            treasureList.addcard(new Card(p, treasureinfoList.get(i).http, 1, treasureinfoList.get(i).type, treasureinfoList.get(i).power, treasureinfoList.get(i).power2, treasureinfoList.get(i).name, treasureinfoList.get(i).RunAway, treasureinfoList.get(i).gold, treasureinfoList.get(i).xp, treasureinfoList.get(i).xp2, treasureinfoList.get(i).treasures, treasureinfoList.get(i).badStuff, treasureinfoList.get(i).level, treasureinfoList.get(i).lable));
 
             treasureList.cardList.get(i).backside = il.bs2;
         }
@@ -155,63 +153,63 @@ public class BackgroundSystem {
             }
             notDoneYet = false;
         }
-        if (genderchoose){
-        if (player > 3 && !removed) {
-            buttList.remove(2);
-            buttList.remove(2);
-            removed = true;
-            genderchoose=false;
-        }
-        if (player < 4) {
-            int temp = player + 1;
-            p.text("Player: " + temp, 900, 350);
-        }
-        if (buttList.size() >= 3 && buttList.get(2).tryk) {
-            if (player == 3) {
-                playerList.get(3).gender = 1;
-                player++;
-                buttList.get(2).tryk = false;
-                gamestarted = true;
+        if (genderchoose) {
+            if (player > 3 && !removed) {
+                buttList.remove(2);
+                buttList.remove(2);
+                removed = true;
+                genderchoose = false;
             }
-            if (player == 2) {
-                playerList.get(2).gender = 1;
-                player++;
-                buttList.get(2).tryk = false;
+            if (player < 4) {
+                int temp = player + 1;
+                p.text("Player: " + temp, 900, 350);
             }
-            if (player == 1) {
-                playerList.get(1).gender = 1;
-                player++;
-                buttList.get(2).tryk = false;
+            if (buttList.size() >= 3 && buttList.get(2).tryk) {
+                if (player == 3) {
+                    playerList.get(3).gender = 1;
+                    player++;
+                    buttList.get(2).tryk = false;
+                    gamestarted = true;
+                }
+                if (player == 2) {
+                    playerList.get(2).gender = 1;
+                    player++;
+                    buttList.get(2).tryk = false;
+                }
+                if (player == 1) {
+                    playerList.get(1).gender = 1;
+                    player++;
+                    buttList.get(2).tryk = false;
+                }
+                if (player == 0) {
+                    playerList.get(0).gender = 1;
+                    player++;
+                    buttList.get(2).tryk = false;
+                }
             }
-            if (player == 0) {
-                playerList.get(0).gender = 1;
-                player++;
-                buttList.get(2).tryk = false;
+            if (buttList.size() >= 3 && buttList.get(3).tryk) {
+                if (player == 3) {
+                    playerList.get(3).gender = 2;
+                    player++;
+                    buttList.get(3).tryk = false;
+                    gamestarted = true;
+                }
+                if (player == 2) {
+                    playerList.get(2).gender = 2;
+                    player++;
+                    buttList.get(3).tryk = false;
+                }
+                if (player == 1) {
+                    playerList.get(1).gender = 2;
+                    player++;
+                    buttList.get(3).tryk = false;
+                }
+                if (player == 0) {
+                    playerList.get(0).gender = 2;
+                    player++;
+                    buttList.get(3).tryk = false;
+                }
             }
-        }
-        if (buttList.size() >= 3 && buttList.get(3).tryk) {
-            if (player == 3) {
-                playerList.get(3).gender = 2;
-                player++;
-                buttList.get(3).tryk = false;
-                gamestarted = true;
-            }
-            if (player == 2) {
-                playerList.get(2).gender = 2;
-                player++;
-                buttList.get(3).tryk = false;
-            }
-            if (player == 1) {
-                playerList.get(1).gender = 2;
-                player++;
-                buttList.get(3).tryk = false;
-            }
-            if (player == 0) {
-                playerList.get(0).gender = 2;
-                player++;
-                buttList.get(3).tryk = false;
-            }
-        }
         }
 
     }
@@ -246,7 +244,7 @@ public class BackgroundSystem {
                 startofbattlefase = false;
             }
 
-            
+
             for (int i = 0; i < 4; i++) {
 
                 if (buttList.get(i + 2).tryk) {
@@ -278,7 +276,7 @@ public class BackgroundSystem {
             }
             p.text("ally power: " + allypower, 310, 600);
             p.text("monster power: " + monsterpower, 310, 630);
-            p.text("Add allies",310,260);
+            p.text("Add allies", 310, 260);
             if (buttList.get(buttList.size() - 1).tryk == true) {
                 int monsterPower = monstermodifire;
                 int allyPower = 0;
@@ -360,40 +358,40 @@ public class BackgroundSystem {
                     }
                 }
 
-                    forcestop1 = false;
-                    forcestop2 = false;
-                    allyList.clear();
-                    battlefase = false;
-                    monsterfasedone = true;
-                    monstermodifire=0;
-                    playerList.get(backgroundSystem.turn).powChange = 0;
-                    playerList.get(backgroundSystem.turn).mirror = false;
-                    for (int i = 0; i < 4; i++) {
-                        buttList.remove(buttList.size() - 1);
-                    }
-                    while (monsterList.size() > 0) {
-                        if (monsterList.get(monsterList.size() - 1).numb == 0) {
+                forcestop1 = false;
+                forcestop2 = false;
+                allyList.clear();
+                battlefase = false;
+                monsterfasedone = true;
+                monstermodifire = 0;
+                playerList.get(backgroundSystem.turn).powChange = 0;
+                playerList.get(backgroundSystem.turn).mirror = false;
+                for (int i = 0; i < 4; i++) {
+                    buttList.remove(buttList.size() - 1);
+                }
+                while (monsterList.size() > 0) {
+                    if (monsterList.get(monsterList.size() - 1).numb == 0) {
+                        monsterList.get(monsterList.size() - 1).hovering = false;
+                        Card card = monsterList.get(monsterList.size() - 1);
+                        roomdisc.addcard(card);
+                        monsterList.remove(monsterList.size() - 1);
+                    } else {
+                        if (monsterList.get(monsterList.size() - 1).numb == 1) {
                             monsterList.get(monsterList.size() - 1).hovering = false;
                             Card card = monsterList.get(monsterList.size() - 1);
-                            roomdisc.addcard(card);
+                            treasuredisc.addcard(card);
                             monsterList.remove(monsterList.size() - 1);
-                        } else {
-                            if (monsterList.get(monsterList.size() - 1).numb == 1) {
-                                monsterList.get(monsterList.size() - 1).hovering = false;
-                                Card card = monsterList.get(monsterList.size() - 1);
-                                treasuredisc.addcard(card);
-                                monsterList.remove(monsterList.size() - 1);
-                            }
                         }
                     }
                 }
             }
         }
+    }
 
-    void treasuredraw(ArrayList<Players> allyList,Deck treasure,ArrayList<Players> playerList,Deck treasuredisc, Deck roomDisc){
-        for (int i = 0; i < allyList.size() ; i++) {
+    void treasuredraw(ArrayList<Players> allyList, Deck treasure, ArrayList<Players> playerList, Deck treasuredisc, Deck roomDisc) {
+        for (int i = 0; i < allyList.size(); i++) {
 
-                treasure.drawcard(allyList.get(i).hand,2,playerList,treasuredisc,roomDisc,allyList.get(i));
+            treasure.drawcard(allyList.get(i).hand, 2, playerList, treasuredisc, roomDisc, allyList.get(i));
 
         }
     }

@@ -6,7 +6,6 @@ public class Badstuff {
     PApplet p;
 
 
-
     Badstuff(PApplet p) {
         this.p = p;
     }
@@ -96,53 +95,51 @@ public class Badstuff {
 
     void badstuffdeath(Players player, Deck roomlist, Deck treasurelist, ArrayList<Players> playerList, BackgroundSystem backgroundSystem, Deck roomdiscard, Deck treasurediscard) {
 
-            while (player.hand.size() > 0) {
-                if (player.hand.get(player.hand.size() - 1).numb == 0) {
+        while (player.hand.size() > 0) {
+            if (player.hand.get(player.hand.size() - 1).numb == 0) {
+                Card card = player.hand.get(player.hand.size() - 1);
+                roomdiscard.addcard(card);
+                player.hand.remove(player.hand.size() - 1);
+            } else {
+                if (player.hand.get(player.hand.size() - 1).numb == 1) {
                     Card card = player.hand.get(player.hand.size() - 1);
-                    roomdiscard.addcard(card);
+                    treasurediscard.addcard(card);
                     player.hand.remove(player.hand.size() - 1);
-                } else {
-                    if (player.hand.get(player.hand.size() - 1).numb == 1) {
-                        Card card = player.hand.get(player.hand.size() - 1);
-                        treasurediscard.addcard(card);
-                        player.hand.remove(player.hand.size() - 1);
-                    }
                 }
             }
-            if (player.hand.size() == 0) {
+        }
+        if (player.hand.size() == 0) {
 
-                    for (int j = 0; j < 2; j++) {
-                        treasurelist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player);
-                        roomlist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player);
-
-                    }
+            for (int j = 0; j < 2; j++) {
+                treasurelist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player);
+                roomlist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player);
 
             }
-            player.level = 1;
-            if (player.race!=null) {
-                roomdiscard.addcard(player.race);
-                player.race=null;
-            }
-        if (player.playerClass!=null) {
+
+        }
+        player.level = 1;
+        if (player.race != null) {
+            roomdiscard.addcard(player.race);
+            player.race = null;
+        }
+        if (player.playerClass != null) {
             roomdiscard.addcard(player.playerClass);
-            player.playerClass=null;
+            player.playerClass = null;
         }
-        if (player.race2!=null) {
+        if (player.race2 != null) {
             roomdiscard.addcard(player.race2);
-            player.race2=null;
+            player.race2 = null;
         }
-        if (player.playerClass2!=null) {
+        if (player.playerClass2 != null) {
             roomdiscard.addcard(player.playerClass2);
-            player.playerClass2=null;
+            player.playerClass2 = null;
         }
 
         System.out.println("badstufflosedeath");
     }
 
 
-    
-
-    void badstuffloseitem(Card monster,Players player,ArrayList<Players> playerList,Dice die,Deck roomdisc,Deck treasuredisc, int roll) {
+    void badstuffloseitem(Card monster, Players player, ArrayList<Players> playerList, Dice die, Deck roomdisc, Deck treasuredisc, int roll) {
         if (monster.badStuff.equalsIgnoreCase("all armor")) {
 
 
@@ -254,7 +251,7 @@ public class Badstuff {
 
             }
         }
-        if (monster.badStuff.equalsIgnoreCase("roll die - treasure = number on die")||monster.badStuff.equalsIgnoreCase("- 2 items, players choose")||monster.badStuff.equalsIgnoreCase("-1000g of items")) {
+        if (monster.badStuff.equalsIgnoreCase("roll die - treasure = number on die") || monster.badStuff.equalsIgnoreCase("- 2 items, players choose") || monster.badStuff.equalsIgnoreCase("-1000g of items")) {
             ArrayList<Card> treasuresList = new ArrayList<>();
             if (player.body != null) {
                 treasuresList.add(player.body);
@@ -284,17 +281,17 @@ public class Badstuff {
                 treasuresList.add(player.utility);
                 player.utility = null;
             }
-            if(monster.badStuff.equalsIgnoreCase("roll die - treasure = number on die")){
-            for (int i = 0; i < roll; i++) {
-                if (treasuresList.size() > 0) {
-                    int rando = (int) p.random(treasuresList.size());
-                    Card temp = treasuresList.get(rando);
-                    treasuredisc.addcard(temp);
-                    treasuresList.remove(rando);
+            if (monster.badStuff.equalsIgnoreCase("roll die - treasure = number on die")) {
+                for (int i = 0; i < roll; i++) {
+                    if (treasuresList.size() > 0) {
+                        int rando = (int) p.random(treasuresList.size());
+                        Card temp = treasuresList.get(rando);
+                        treasuredisc.addcard(temp);
+                        treasuresList.remove(rando);
+                    }
                 }
             }
-            }
-            if(monster.badStuff.equalsIgnoreCase("- 2 items, players choose")){
+            if (monster.badStuff.equalsIgnoreCase("- 2 items, players choose")) {
                 for (int i = 0; i < 2; i++) {
                     if (treasuresList.size() > 0) {
                         int rando = (int) p.random(treasuresList.size());
@@ -304,39 +301,39 @@ public class Badstuff {
                     }
                 }
             }
-            if(monster.badStuff.equalsIgnoreCase("highlvl take item")&&treasuresList.size()>0){
-               int highestlvl=0;
-               int playernr=0;
-                for (int i = 0; i < playerList.size() ; i++) {
-                  if(playerList.get(i).level>highestlvl&&player!=playerList.get(i)){
-                      highestlvl=playerList.get(i).level;
-                      playernr=playerList.get(i).playernr;
-                  }
+            if (monster.badStuff.equalsIgnoreCase("highlvl take item") && treasuresList.size() > 0) {
+                int highestlvl = 0;
+                int playernr = 0;
+                for (int i = 0; i < playerList.size(); i++) {
+                    if (playerList.get(i).level > highestlvl && player != playerList.get(i)) {
+                        highestlvl = playerList.get(i).level;
+                        playernr = playerList.get(i).playernr;
+                    }
                 }
                 playerList.get(playernr).hand.add(treasuresList.get((int) p.random(treasuresList.size())));
             }
-            if(monster.badStuff.equalsIgnoreCase("-1000g of items")){
+            if (monster.badStuff.equalsIgnoreCase("-1000g of items")) {
                 int value = 0;
                 for (int i = 0; i < treasuresList.size(); i++) {
                     value += treasuresList.get(i).gold;
                 }
-                if(value<=1000){
+                if (value <= 1000) {
                     for (int i = 0; i < treasuresList.size(); i++) {
                         Card temp = treasuresList.get(i);
-                       roomdisc.addcard(temp);
-                       treasuresList.remove(i);
+                        roomdisc.addcard(temp);
+                        treasuresList.remove(i);
                     }
                 }
-                if(value>1000){
+                if (value > 1000) {
                     ArrayList<Card> temp2 = new ArrayList<>();
-                    while(value>1000){
+                    while (value > 1000) {
                         value = 0;
-                        int rando = (int)p.random(treasuresList.size()) ;
+                        int rando = (int) p.random(treasuresList.size());
                         Card temp = treasuresList.get(rando);
                         temp2.add(temp);
                         treasuresList.remove(rando);
-                        for (int i = 0; i < treasuresList.size() ; i++) {
-                            value+= treasuresList.get(i).gold;
+                        for (int i = 0; i < treasuresList.size(); i++) {
+                            value += treasuresList.get(i).gold;
                         }
                     }
                     for (int i = 0; i < treasuresList.size(); i++) {
@@ -445,7 +442,7 @@ mist 1000g værd af items
 Mist specifikt gear piece
  */
 
-System.out.println("badstuffloseitem");
+        System.out.println("badstuffloseitem");
     }
 
 

@@ -45,7 +45,6 @@ public class Button {
     }
 
 
-
     void release() {
         tryk = false;
     }
