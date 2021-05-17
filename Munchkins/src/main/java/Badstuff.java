@@ -439,11 +439,7 @@ public class Badstuff {
             }
         }
 
-/*
-Mist 1 item
-mist 1000g værd af items
-Mist specifikt gear piece
- */
+
 
 System.out.println("badstuffloseitem");
     }

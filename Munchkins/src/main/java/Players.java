@@ -33,6 +33,7 @@ public class Players {
     Card playerClass2;
     Card race;
     Card race2;
+    Card curse;
     Button showhand;
     boolean big;
     boolean wanderingMonster;
@@ -361,25 +362,25 @@ public class Players {
                 if (playable.name.equalsIgnoreCase("Whine at the GM")) {
                     int tmpLevel = level;
                     Players tmpSpiller;
-                    for (int i = 0; i <4 ; i++) {
+                    for (int i = 0; i < 4; i++) {
                         if (playerList.get(i).level > tmpLevel) {
                             tmpSpiller = playerList.get(i);
-                            tmpLevel=tmpSpiller.level;
+                            tmpLevel = tmpSpiller.level;
                         }
                     }
-                    if (level!=tmpLevel) {
+                    if (level != tmpLevel) {
                         level += 1;
                     }
 
                 }
                 if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
-                        PApplet.println(2);
-                        level += 1;
-                    }
+                    PApplet.println(2);
+                    level += 1;
+                }
 
                 if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
                     level += 1;
-                     PApplet.println("James beyleygh");
+                    PApplet.println("James beyleygh");
                 }
                 if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
                     level += 1;
@@ -409,11 +410,10 @@ public class Players {
                             }
                         }
                         System.out.println("YAYAYAY??????????????????????????????????");
-                    }
-                    catch (Exception y){
+                    } catch (Exception y) {
 
-                        for (int i = 0; i <4 ; i++) {
-                            if (playerList.get(i).utility==null|| !playerList.get(i).utility.name.equalsIgnoreCase("Hireling")){
+                        for (int i = 0; i < 4; i++) {
+                            if (playerList.get(i).utility == null || !playerList.get(i).utility.name.equalsIgnoreCase("Hireling")) {
 
                             }
                         }
@@ -428,34 +428,41 @@ public class Players {
                     level += 1;
                     int tmpLevel = level;
                     Players tmpSpiller = null;
-                    for (int i = 0; i <4 ; i++) {
-                        if (playerList.get(i).level >tmpLevel){
+                    for (int i = 0; i < 4; i++) {
+                        if (playerList.get(i).level > tmpLevel) {
                             tmpSpiller = playerList.get(i);
-                            tmpLevel=tmpSpiller.level;
+                            tmpLevel = tmpSpiller.level;
 
                         }
                     }
                     try {
                         tmpSpiller.level--;
-                        if (tmpSpiller.level<1)
-                            tmpSpiller.level=1;
-                    }
-                    catch (Exception x){
-                        tmpSpiller=playerList.get((int)p.random(4));
-                        tmpSpiller.level--;
-                        if (tmpSpiller.level<1)
-                            tmpSpiller.level=1;
-                    }
+                        if (tmpSpiller.level < 1)
+                            tmpSpiller.level = 1;
+                    } catch (Exception x) {
+                        tmpSpiller = playerList.get((int) p.random(4));
+                        if (tmpSpiller.playernr != playernr) {
+                            tmpSpiller.level--;
+                            if (tmpSpiller.level < 1)
+                                tmpSpiller.level = 1;
+                        } else {
+                            tmpSpiller = playerList.get((int) p.random(4));
+                            if (tmpSpiller.playernr != playernr) {
+                                tmpSpiller.level--;
+                            }
+                            if (tmpSpiller.level < 1)
+                                tmpSpiller.level = 1;
+                        }
 
-               //     PApplet.println(9);
+                        //     PApplet.println(9);
+                    }
                 }
-            }
-            if (playable.name.equalsIgnoreCase("Hoard!")) {
-                //Draw three treasures
-                //PApplet.println(1);
-                if (treasure.cardList.size() < 3) {
-                    treasure.resuffle(treasureDisc,1);
-                }
+                if (playable.name.equalsIgnoreCase("Hoard!")) {
+                    //Draw three treasures
+                    //PApplet.println(1);
+                    if (treasure.cardList.size() < 3) {
+                        treasure.resuffle(treasureDisc, 1);
+                    }
                     for (int i = 0; i < 3; i++) {
                         int random = (int) p.random(treasure.cardList.size());
                         Card drawncard = treasure.cardList.get(random);
@@ -463,26 +470,27 @@ public class Players {
                         treasure.cardList.remove(random);
                     }
 
-            }
-            if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
-                //Go through the discards to find any one card you want. Take that card and discard this one.
-                if (treasureDisc.cardList.size()>0) {
-                    Card drawncard = treasureDisc.cardList.get(treasureDisc.cardList.size() - 1);
-                    hand.add(drawncard);
-                    treasureDisc.cardList.remove(treasureDisc.cardList.size() - 1);
                 }
-            }
-            if (playerClass == null || !playerClass.name.equalsIgnoreCase("Cleric")) {
-                if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
-                    if (level < /*other players level*/ 10) {
-                        //Player will always help, they gain no treasure, but you gain no level.
+                if (playable.name.equalsIgnoreCase("Wand of dowsing")) {
+                    //Go through the discards to find any one card you want. Take that card and discard this one.
+                    if (treasureDisc.cardList.size() > 0) {
+                        Card drawncard = treasureDisc.cardList.get(treasureDisc.cardList.size() - 1);
+                        hand.add(drawncard);
+                        treasureDisc.cardList.remove(treasureDisc.cardList.size() - 1);
                     }
                 }
+                if (playerClass == null || !playerClass.name.equalsIgnoreCase("Cleric")) {
+                    if (playable.name.equalsIgnoreCase("Kneepads of allure")) {
+                        if (level < /*other players level*/ 10) {
+                            //Player will always help, they gain no treasure, but you gain no level.
+                        }
+                    }
+
+                }
 
             }
-
+            once = false;
         }
-        once = false;
     }
 
     void usable(ArrayList<Button> buttList, Deck treasure, Deck treasuredisc,ArrayList<Players> playerList, BackgroundSystem backgroundSystem ){
