@@ -52,7 +52,7 @@ public class Players {
     void selectCard(Deck roomdisc, Deck treasuredisc, BackgroundSystem backgroundSystem, ArrayList<Card> monsterList, Deck treasure, Deck room, ArrayList<Players> playerList, ArrayList<Button> buttList) {
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).hovering) {
-                if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
+                if ((hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big")))&&((hand.get(i).lable!=null&&playerClass!=null&&hand.get(i).lable==playerClass.name||hand.get(i).lable!=null&&playerClass2!=null&&hand.get(i).lable==playerClass2.name)||hand.get(i).lable==null)) {
                     if (body != null) {
 
                         if (body.numb == 0) {
@@ -83,7 +83,7 @@ public class Players {
                     body = hand.get(i);
                     hand.remove(i);
                 } else {
-                    if (hand.get(i).type.equalsIgnoreCase("headgear")) {
+                    if (hand.get(i).type.equalsIgnoreCase("headgear")&&((hand.get(i).lable!=null&&playerClass!=null&&hand.get(i).lable==playerClass.name||hand.get(i).lable!=null&&playerClass2!=null&&hand.get(i).lable==playerClass2.name)||hand.get(i).lable==null)) {
                         if (head != null) {
                             if (head.numb == 0) {
                                 roomdisc.addcard(head);
@@ -96,7 +96,7 @@ public class Players {
                         head = hand.get(i);
                         hand.remove(i);
                     } else {
-                        if (hand.get(i).type.equalsIgnoreCase("footgear")) {
+                        if (hand.get(i).type.equalsIgnoreCase("footgear")&&((hand.get(i).lable!=null&&playerClass!=null&&hand.get(i).lable==playerClass.name||hand.get(i).lable!=null&&playerClass2!=null&&hand.get(i).lable==playerClass2.name)||hand.get(i).lable==null)) {
                             if (feet != null) {
                                 if (feet.numb == 0) {
                                     roomdisc.addcard(feet);
@@ -109,7 +109,7 @@ public class Players {
                             feet = hand.get(i);
                             hand.remove(i);
                         } else {
-                            if ((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 == null) {
+                            if (((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 == null)&&((hand.get(i).lable!=null&&playerClass!=null&&hand.get(i).lable==playerClass.name||hand.get(i).lable!=null&&playerClass2!=null&&hand.get(i).lable==playerClass2.name)||hand.get(i).lable==null)) {
                                 if (hand1 != null) {
                                     if (hand1.numb == 0) {
                                         roomdisc.addcard(hand1);
@@ -138,7 +138,7 @@ public class Players {
                                 hand1 = hand.get(i);
                                 hand.remove(i);
                             } else {
-                                if ((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 != null && (!hand1.type.equalsIgnoreCase("2 hands") || !hand1.type.equalsIgnoreCase("2 hands big"))) {
+                                if (((hand.get(i).type.equalsIgnoreCase("1 hand") || hand.get(i).type.equalsIgnoreCase("1 hand big")) && hand1 != null && (!hand1.type.equalsIgnoreCase("2 hands") || !hand1.type.equalsIgnoreCase("2 hands big")))&&((hand.get(i).lable!=null&&playerClass!=null&&hand.get(i).lable==playerClass.name||hand.get(i).lable!=null&&playerClass2!=null&&hand.get(i).lable==playerClass2.name)||hand.get(i).lable==null)) {
                                     if (hand2 != null) {
                                         if (hand2.numb == 0) {
                                             roomdisc.addcard(hand2);
@@ -194,7 +194,7 @@ public class Players {
                                             race = hand.get(i);
                                             hand.remove(i);
                                         } else {
-                                            if (hand.get(i).type.equalsIgnoreCase("Utility") || hand.get(i).type.equalsIgnoreCase("Utility big")) {
+                                            if ((hand.get(i).type.equalsIgnoreCase("Utility") || hand.get(i).type.equalsIgnoreCase("Utility big"))&&((hand.get(i).lable!=null&&playerClass!=null&&hand.get(i).lable==playerClass.name||hand.get(i).lable!=null&&playerClass2!=null&&hand.get(i).lable==playerClass2.name)||hand.get(i).lable==null)) {
                                                 if (utility != null) {
                                                     if (utility.numb == 0) {
                                                         roomdisc.addcard(utility);
