@@ -101,7 +101,7 @@ public class Main extends PApplet {
                     roomdisc.showDisc(roomdisc);
                     treasiredisc.showDisc(treasiredisc);
                     //boardDeck.showBoardDeck();
-                   // dice.display(200, 200);
+                    // dice.display(200, 200);
                     for (int i = 0; i < 4; i++) {
                         playerList.get(i).hoverCard(backgroundSystem);
                         playerList.get(i).display(backgroundSystem.turn);
@@ -122,21 +122,21 @@ public class Main extends PApplet {
                     treasure.displayBackside();
                     backgroundSystem.displayenemy(monsterlist);
                     backgroundSystem.battlefase(buttList, playerList, backgroundSystem, monsterlist, roomdisc, treasiredisc, dice, room, treasure);
-                    backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList, roomdisc, treasiredisc,room);
+                    backgroundSystem.endturn(buttList, playerList.get(backgroundSystem.turn), playerList, roomdisc, treasiredisc, room);
                     //println(backgroundSystem.turn);
-                    room.resuffle(roomdisc,0);
-                    treasure.resuffle(treasiredisc,0);
+                    room.resuffle(roomdisc, 0);
+                    treasure.resuffle(treasiredisc, 0);
                     for (int i = 0; i < playerList.size(); i++) {
                         for (int j = 0; j < playerList.get(i).hand.size(); j++) {
                             if (playerList.get(i).hand.get(j).hovering == true) {
                             }
                         }
                     }
-                    for (int i = 0; i <playerList.size() ; i++) {
-                        if (playerList.get(i).level==10){
+                    for (int i = 0; i < playerList.size(); i++) {
+                        if (playerList.get(i).level == 10) {
                             textSize(50);
                             textAlign(CENTER);
-                            text("Player "+(backgroundSystem.turn+1)+" wins good game!",1000,650);
+                            text("Player " + (backgroundSystem.turn + 1) + " wins good game!", 1000, 650);
                         }
                     }
                 }
