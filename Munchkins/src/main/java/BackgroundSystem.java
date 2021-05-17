@@ -300,6 +300,10 @@ public class BackgroundSystem {
                             }
                         }
                     }
+                    for (int i = 0; i < monsterList.size(); i++) {
+                        playerList.get(turn).level += monsterList.get(i).xp;
+                    }
+
                 }
                 if (((monsterPower >= allyPower && playerList.get(backgroundSystem.turn).playerClass != null && !playerList.get(backgroundSystem.turn).playerClass.name.equalsIgnoreCase("warrior")) || monsterPower > allyPower) && (!forcestop1 || !forcestop2)) {
                     // go gennem bad stuff

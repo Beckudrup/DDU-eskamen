@@ -53,14 +53,12 @@ public class Players {
             if (hand.get(i).hovering) {
                 if (hand.get(i).type.equalsIgnoreCase("Armor") || (hand.get(i).type.equalsIgnoreCase("armor big"))) {
                     if (body != null) {
-
                         if (body.numb == 0) {
                             roomdisc.addcard(body);
                         } else {
                             if (body.numb == 1)
                                 treasuredisc.addcard(body);
                         }
-
                     }
                     if(hand.get(i).type.equalsIgnoreCase("armor big")){
                         big = true;
