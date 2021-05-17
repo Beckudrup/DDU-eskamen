@@ -110,37 +110,35 @@ public class Badstuff {
 
             if (player.hand.size() == 0) {
 
-                    for (int j = 0; j < 2; j++) {
-                        treasurelist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player,monsterList,backgroundSystem);
-                        roomlist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player,monsterList,backgroundSystem);
+                for (int j = 0; j < 2; j++) {
+                    treasurelist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player, monsterList, backgroundSystem);
+                    roomlist.drawcard(player.hand, 2, playerList, treasurediscard, roomdiscard, player, monsterList, backgroundSystem);
 
-        }
-        
+                }
 
-            
 
-        }
-        player.level = 1;
-        if (player.race != null) {
-            roomdiscard.addcard(player.race);
-            player.race = null;
-        }
-        if (player.playerClass != null) {
-            roomdiscard.addcard(player.playerClass);
-            player.playerClass = null;
-        }
-        if (player.race2 != null) {
-            roomdiscard.addcard(player.race2);
-            player.race2 = null;
-        }
-        if (player.playerClass2 != null) {
-            roomdiscard.addcard(player.playerClass2);
-            player.playerClass2 = null;
-        }
+            }
+            player.level = 1;
+            if (player.race != null) {
+                roomdiscard.addcard(player.race);
+                player.race = null;
+            }
+            if (player.playerClass != null) {
+                roomdiscard.addcard(player.playerClass);
+                player.playerClass = null;
+            }
+            if (player.race2 != null) {
+                roomdiscard.addcard(player.race2);
+                player.race2 = null;
+            }
+            if (player.playerClass2 != null) {
+                roomdiscard.addcard(player.playerClass2);
+                player.playerClass2 = null;
+            }
 
-        System.out.println("badstufflosedeath");
+            System.out.println("badstufflosedeath");
+        }
     }
-
 
     void badstuffloseitem(Card monster, Players player, ArrayList<Players> playerList, Dice die, Deck roomdisc, Deck treasuredisc, int roll) {
         if (monster.badStuff.equalsIgnoreCase("all armor")) {
