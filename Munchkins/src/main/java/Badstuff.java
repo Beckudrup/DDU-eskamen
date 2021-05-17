@@ -139,7 +139,7 @@ public class Badstuff {
         }
 
         System.out.println("badstufflosedeath");
-    }
+    }}
 
 
     void badstuffloseitem(Card monster, Players player, ArrayList<Players> playerList, Dice die, Deck roomdisc, Deck treasuredisc, int roll) {
