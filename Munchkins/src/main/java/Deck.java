@@ -10,7 +10,7 @@ public class Deck {
     ArrayList<Card> boardDeck = new ArrayList<>();
     int x, y, w, h;
     int allowedTreasure = 0;
-    boolean firstDraw = false;
+    boolean firstDraw = true;
     boolean fix = true;
 
     Deck(PApplet p, int x, int y, int w, int h) {
@@ -45,7 +45,7 @@ public class Deck {
             if (drawncard.numb == 0 && !firstDraw && type != 2 && fix == true) {
                 hand.add(drawncard);
                 System.out.println("andet draw");
-                //fix = false;    //TÆND IGEN! når spillet er ved at være done
+                fix = false;    //TÆND IGEN! når spillet er ved at være done
             } else {
                 //Første room draw
                 if (drawncard.numb == 0 && firstDraw && type != 2) {
@@ -56,29 +56,31 @@ public class Deck {
 
                         curses(drawncard, player, playerList, treasuredisc, roomdisc); //kig på senere måske bad
 
-                       // hand.add(drawncard);
-                        System.out.println("Henrik");
+                        // hand.add(drawncard);
+                        //System.out.println("Curse");
                     }
                     //Hvis man trækker et monster
                     if (drawncard.type.equalsIgnoreCase("Monster")) {
                         //Monster kommer ud på bordet og engager i combat
                         //monsters(drawncard);
+
                       monsterList.add(drawncard);
                        backgroundSystem.startofbattlefase=true;
                        backgroundSystem.battlefase=true;
                         System.out.println("kål");
+
                     }
                     //hvis man trækker andet (class,race,"spellkort")
-                    if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat")||drawncard.type.equalsIgnoreCase("Class") || drawncard.type.equalsIgnoreCase("Race")) {
+                    if (drawncard.type.equalsIgnoreCase("Card") || drawncard.type.equalsIgnoreCase("Cheat") || drawncard.type.equalsIgnoreCase("Class") || drawncard.type.equalsIgnoreCase("Race")) {
                         hand.add(drawncard);
-                        System.out.println("hapini");
+                        //System.out.println("Card");
 
                     }
 
                     firstDraw = false;
                 } else {
                     //Treasure draw
-                    if (drawncard.numb == 1 /*&& allowedTreasure > 0*/) {
+                    if (drawncard.numb == 1 && allowedTreasure > 0 || drawncard.numb == 1 && type == 2) {
                         hand.add(drawncard);
                         allowedTreasure--;
                     }
@@ -86,22 +88,24 @@ public class Deck {
             }
         } else {
             //træk fra discarded decks
-            if (cardList.size() > 0 && type == 1 /*||type==2*/) {
-                Card drawncard = cardList.get(cardList.size() - 1);
-                hand.add(drawncard);
-                cardList.remove(cardList.size() - 1);
-            } else {
-                if (cardList.size() > 0 /*&& type == 2*/) {
-                    int rando = (int) p.random(cardList.size());
-                    Card drawncard = cardList.get(rando);
+
+                if (cardList.size() > 0 && type == 1 ) {
+                    Card drawncard = cardList.get(cardList.size() - 1);
                     hand.add(drawncard);
                     cardList.remove(cardList.size() - 1);
+                } else {
+                    if (cardList.size() > 0 ) {
+                        int rando = (int) p.random(cardList.size());
+                        Card drawncard = cardList.get(rando);
+                        hand.add(drawncard);
+                        cardList.remove(cardList.size() - 1);
 
+                    }
                 }
             }
 
         }
-    }
+
 
 
     void displayBackside() {

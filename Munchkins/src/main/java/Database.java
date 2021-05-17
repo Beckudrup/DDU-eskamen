@@ -54,10 +54,7 @@ public class Database {
                 treasure.gold = (db.getInt("Gold"));
                 treasure.lable = (db.getString("label"));
                 treasureinfoList.add(treasure);
-                //p.println(cardinfoList.size(),cardinfoList.get(cardinfoList.size()-1).level, cardinfoList.get(cardinfoList.size()-1).name, " i = " + i++ + "   At 0:" ,cardinfoList.get(0).level, cardinfoList.get(0).name);
-                //println(TreasureList.get(i++));
             }
-            //p.println("Check [0] and ["+cardinfoList.size()+"]:",cardinfoList.size(),cardinfoList.get(cardinfoList.size()-1).level, cardinfoList.get(cardinfoList.size()-1).name, " i = " + i++ + "  At 0:" ,cardinfoList.get(0).level, cardinfoList.get(0).name);
         }
     }
 }
