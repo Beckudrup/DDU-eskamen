@@ -374,20 +374,20 @@ public class Players {
 
                 }
                 if (playable.name.equalsIgnoreCase("Bribe GM with food")) {
-                    PApplet.println(2);
+                    //PApplet.println(2);
                     level += 1;
                 }
 
                 if (playable.name.equalsIgnoreCase("Potion of general studliness")) {
                     level += 1;
-                    PApplet.println("James beyleygh");
+                    //PApplet.println("James beyleygh");
                 }
                 if (playable.name.equalsIgnoreCase("1,000 gold peices")) {
                     level += 1;
                     //   PApplet.println(4);
                 }
                 if (playable.name.equalsIgnoreCase("Boil an anthill")) {
-                    PApplet.println(5);
+                    //PApplet.println(5);
                     level += 1;
                 }
                 if (playable.name.equalsIgnoreCase("Convenient addition error")) {
@@ -409,7 +409,7 @@ public class Players {
                                 playerList.get(i).utility = null;
                             }
                         }
-                        System.out.println("YAYAYAY??????????????????????????????????");
+                        //System.out.println("YAYAYAY??????????????????????????????????");
                     } catch (Exception y) {
 
                         for (int i = 0; i < 4; i++) {

@@ -44,17 +44,16 @@ public class Deck {
             //Andet og start game room draw
             if (drawncard.numb == 0 && !firstDraw && type != 2 && fix == true) {
                 hand.add(drawncard);
-                System.out.println("andet draw");
+                //System.out.println("andet draw");
                 fix = false;    //TÆND IGEN! når spillet er ved at være done
             } else {
                 //Første room draw
                 if (drawncard.numb == 0 && firstDraw && type != 2) {
                     //hvis man trækker en curse
                     if (drawncard.type.equalsIgnoreCase("Curse")) {
-                        System.out.println("Henrik");
                         //Cursen skal komme ud på bordet og blive brugt
 
-                        curses(drawncard, player, playerList, treasuredisc, roomdisc); //kig på senere måske bad
+                        curses(drawncard, player, playerList, treasuredisc, roomdisc);
 
                         // hand.add(drawncard);
                         //System.out.println("Curse");
@@ -67,7 +66,7 @@ public class Deck {
                       monsterList.add(drawncard);
                        backgroundSystem.startofbattlefase=true;
                        backgroundSystem.battlefase=true;
-                        System.out.println("kål");
+                        //System.out.println("kål");
 
                     }
                     //hvis man trækker andet (class,race,"spellkort")

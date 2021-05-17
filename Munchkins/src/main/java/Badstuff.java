@@ -25,7 +25,7 @@ public class Badstuff {
                 }
             }
         }
-        System.out.println("badstuffhand");
+        //System.out.println("badstuffhand");
     }
 
 
@@ -137,7 +137,7 @@ public class Badstuff {
             }
 
 
-            System.out.println("badstufflosedeath");
+            //System.out.println("badstufflosedeath");
         }
     }
 
@@ -441,7 +441,7 @@ public class Badstuff {
 
 
 
-        System.out.println("badstuffloseitem");
+        //System.out.println("badstuffloseitem");
     }
 
 
